@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menú Moderno | Fuego & Pan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+        animation: fadeUp 0.4s ease-out;
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      /* Animación para el carrito */
+      .pop {
+        animation: pop 0.3s ease-in-out;
+      }
+      @keyframes pop {
+        50% {
+          transform: scale(1.2);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-zinc-900 font-sans text-zinc-100 antialiased pb-24">
+    <!-- Contenedor Mobile -->
+    <div
+      class="max-w-md mx-auto bg-black min-h-screen shadow-2xl relative flex flex-col border-x border-zinc-900"
+    >
+      <!-- Hero (Imagen de Portada y Logo) -->
+      <header
+        class="relative h-56 rounded-b-[2rem] overflow-hidden shadow-lg shadow-orange-900/20"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=600"
+          alt="Parrilla"
+          class="w-full h-full object-cover opacity-60"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"
+        ></div>
+        <div class="absolute bottom-6 left-6 right-6 flex items-end gap-4">
+          <div
+            class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center text-white text-3xl shadow-xl border-2 border-black"
+          >
+            <i class="fa-solid fa-fire"></i>
+          </div>
+          <div class="pb-1">
+            <h1
+              class="text-3xl font-black tracking-tight text-white leading-none"
+            >
+              Fuego & Pan
+            </h1>
+            <p
+              class="text-xs font-semibold text-orange-400 tracking-wider uppercase mt-1"
+            >
+              Sanguchería & Bar
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <!-- Navegación de Categorías (Tabs) -->
+      <nav
+        class="sticky top-0 z-30 bg-black/80 backdrop-blur-md border-b border-zinc-800 flex overflow-x-auto mt-2 no-scrollbar shadow-sm"
+      >
+        <button
+          onclick="openTab(event, 'principales')"
+          class="tab-btn flex-1 py-4 px-4 text-sm font-bold text-white border-b-2 border-orange-500 whitespace-nowrap transition-colors"
+          id="defaultOpen"
+        >
+          🍔 Principales
+        </button>
+        <button
+          onclick="openTab(event, 'extras')"
+          class="tab-btn flex-1 py-4 px-4 text-sm font-bold text-zinc-500 border-b-2 border-transparent hover:text-white whitespace-nowrap transition-colors"
+        >
+          🍟 Para Picar
+        </button>
+        <button
+          onclick="openTab(event, 'bebidas')"
+          class="tab-btn flex-1 py-4 px-4 text-sm font-bold text-zinc-500 border-b-2 border-transparent hover:text-white whitespace-nowrap transition-colors"
+        >
+          🍺 Bebidas
+        </button>
+      </nav>
+
+      <!-- CONTENIDO: PRINCIPALES -->
+      <main id="principales" class="tab-content active px-4 py-6 space-y-5">
+        <!-- Producto: Sánguche de Milanesa -->
+        <div
+          class="bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-800 shadow-md"
+        >
+          <div class="h-40 w-full relative">
+            <img
+              src="https://media.istockphoto.com/id/2221231361/photo/fresh-chicken-milanesa-torta-with-lettuce-and-fries-plate.jpg?s=1024x1024&w=is&k=20&c=TV61X1w8r0dz6Vws_WX5I0byNT8PyGXPQMpT9baXC9g="
+              alt="Sánguche Milanesa"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-black uppercase px-2 py-1 rounded-md shadow-lg"
+            >
+              Más Vendido
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-white text-lg leading-tight">
+              Sánguche de Milanesa Tucumano
+            </h3>
+            <p class="text-xs text-zinc-400 mt-1 line-clamp-2 mb-3">
+              Milanesa extra grande de nalga, lechuga repollada, tomate,
+              cebolla, ají y aderezos. Pan tostado al momento.
+            </p>
+            <div class="flex items-center justify-between mt-2">
+              <span class="font-black text-orange-500 text-xl block"
+                >$15.500</span
+              >
+              <!-- BOTÓN AÑADIR -->
+              <button
+                onclick="addToCart('Sánguche de Milanesa', 15500)"
+                class="bg-white text-black w-10 h-10 rounded-xl flex items-center justify-center font-bold hover:bg-orange-500 hover:text-white transition active:scale-95 shadow-md"
+              >
+                <i class="fa-solid fa-plus text-lg"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto: Lomito Especial -->
+        <div
+          class="flex bg-zinc-900 rounded-2xl border border-zinc-800 shadow-md overflow-hidden p-3 gap-3"
+        >
+          <div
+            class="w-28 h-28 flex-shrink-0 bg-zinc-800 rounded-xl overflow-hidden"
+          >
+            <img
+              src="https://media.istockphoto.com/id/1645492860/photo/flavorful-cordoba-delight-savory-lomito-sandwich-with-a-south-american-twist.jpg?s=1024x1024&w=is&k=20&c=bNxXSGP8aTsh5rALALMjzo8bcihLJH8GOmtU1yUIs9s="
+              alt="Lomito"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="flex-1 flex flex-col justify-between py-1">
+            <div>
+              <h3 class="font-bold text-white leading-tight">
+                Lomito Especial
+              </h3>
+              <p class="text-xs text-zinc-400 mt-1 line-clamp-2">
+                Lomo, queso tybo fundido, jamón, huevo frito y chimichurri
+                suave.
+              </p>
+            </div>
+            <div class="flex items-center justify-between mt-2">
+              <span class="font-black text-orange-500 text-lg">$18.000</span>
+              <!-- BOTÓN AÑADIR -->
+              <button
+                onclick="addToCart('Lomito Especial', 18000)"
+                class="bg-white text-black w-8 h-8 rounded-lg flex items-center justify-center font-bold hover:bg-orange-500 hover:text-white transition active:scale-95 shadow-md"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto: Smash Burger -->
+        <div
+          class="flex bg-zinc-900 rounded-2xl border border-zinc-800 shadow-md overflow-hidden p-3 gap-3"
+        >
+          <div
+            class="w-28 h-28 flex-shrink-0 bg-zinc-800 rounded-xl overflow-hidden"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=300"
+              alt="Smash Burger"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="flex-1 flex flex-col justify-between py-1">
+            <div>
+              <h3 class="font-bold text-white leading-tight">
+                Smash Burger Doble
+              </h3>
+              <p class="text-xs text-zinc-400 mt-1 line-clamp-2">
+                Doble medallón de 100g, doble cheddar, panceta y salsa secreta.
+              </p>
+            </div>
+            <div class="flex items-center justify-between mt-2">
+              <span class="font-black text-orange-500 text-lg">$13.000</span>
+              <!-- BOTÓN AÑADIR -->
+              <button
+                onclick="addToCart('Smash Burger Doble', 13000)"
+                class="bg-white text-black w-8 h-8 rounded-lg flex items-center justify-center font-bold hover:bg-orange-500 hover:text-white transition active:scale-95 shadow-md"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- CONTENIDO: EXTRAS -->
+      <main id="extras" class="tab-content px-4 py-6 space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <!-- Empanadas -->
+          <div
+            class="bg-zinc-900 rounded-2xl border border-zinc-800 p-3 flex flex-col relative"
+          >
+            <div
+              class="h-24 w-full rounded-xl bg-zinc-800 overflow-hidden mb-3"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1624128082323-beb6b8b508db?q=80&w=1530&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
+                class="w-full h-full object-cover"
+                alt="Empanadas"
+              />
+            </div>
+            <h3 class="font-bold text-white text-sm leading-tight mb-1">
+              Docena Empanadas
+            </h3>
+            <p class="text-[10px] text-zinc-400 mb-2 flex-1">
+              Carne suave o picante cortada a cuchillo.
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="font-black text-orange-500 text-sm">$16.000</span>
+              <!-- BOTÓN AÑADIR -->
+              <button
+                onclick="addToCart('Docena Empanadas', 16000)"
+                class="bg-white text-black w-6 h-6 rounded flex items-center justify-center font-bold hover:bg-orange-500 hover:text-white transition active:scale-95"
+              >
+                <i class="fa-solid fa-plus text-[10px]"></i>
+              </button>
+            </div>
+          </div>
+          <!-- Papas -->
+          <div
+            class="bg-zinc-900 rounded-2xl border border-zinc-800 p-3 flex flex-col relative"
+          >
+            <div
+              class="h-24 w-full rounded-xl bg-zinc-800 overflow-hidden mb-3 relative"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1576107232684-1279f390859f?q=80&w=300"
+                class="w-full h-full object-cover grayscale opacity-40"
+                alt="Papas"
+              />
+              <div class="absolute inset-0 flex items-center justify-center">
+                <span
+                  class="bg-black text-white text-[9px] font-black uppercase px-2 py-1 rounded"
+                  >Agotado</span
+                >
+              </div>
+            </div>
+            <h3
+              class="font-bold text-white text-sm leading-tight mb-1 text-zinc-500"
+            >
+              Papas Cheddar
+            </h3>
+            <p class="text-[10px] text-zinc-600 mb-2 flex-1">
+              Abundante porción con bacon.
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="font-black text-zinc-600 text-sm">$8.500</span>
+              <button
+                disabled
+                class="bg-zinc-800 text-zinc-600 w-6 h-6 rounded flex items-center justify-center cursor-not-allowed"
+              >
+                <i class="fa-solid fa-xmark text-[10px]"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- CONTENIDO: BEBIDAS -->
+      <main id="bebidas" class="tab-content px-4 py-6 space-y-3">
+        <div
+          class="bg-zinc-900 rounded-xl p-4 flex justify-between items-center border border-zinc-800"
+        >
+          <div>
+            <h3 class="font-bold text-white">Gaseosas 500ml</h3>
+            <p class="text-xs text-zinc-500">Línea Coca-Cola</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="font-black text-orange-500">$3.000</div>
+            <!-- BOTÓN AÑADIR -->
+            <button
+              onclick="addToCart('Gaseosa 500ml', 3000)"
+              class="bg-white text-black w-8 h-8 rounded-lg flex items-center justify-center font-bold hover:bg-orange-500 hover:text-white transition active:scale-95 shadow-md"
+            >
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div
+          class="bg-zinc-900 rounded-xl p-4 flex justify-between items-center border border-zinc-800"
+        >
+          <div>
+            <h3 class="font-bold text-white">Cerveza Artesanal</h3>
+            <p class="text-xs text-zinc-500">Pinta (IPA / Rubia)</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="font-black text-orange-500">$4.800</div>
+            <!-- BOTÓN AÑADIR -->
+            <button
+              onclick="addToCart('Pinta Artesanal', 4800)"
+              class="bg-white text-black w-8 h-8 rounded-lg flex items-center justify-center font-bold hover:bg-orange-500 hover:text-white transition active:scale-95 shadow-md"
+            >
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer / Disclaimer -->
+      <footer class="mt-auto px-6 py-10 text-center">
+        <div
+          class="bg-zinc-900/50 p-4 rounded-2xl border border-zinc-800/50 inline-block"
+        >
+          <p
+            class="text-xs font-black text-zinc-300 uppercase tracking-widest mb-2"
+          >
+            <i class="fa-solid fa-laptop-code text-orange-500"></i> DEMOSTRACIÓN
+          </p>
+          <p
+            class="text-[11px] text-zinc-500 leading-relaxed max-w-[250px] mx-auto"
+          >
+            Este es un menú ficticio diseñado para demostración comercial. Los
+            precios e imágenes son ilustrativos.
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- WIDGET DEL CARRITO FLOTANTE -->
+    <!-- ========================================== -->
+    <button
+      id="cart-widget"
+      onclick="toggleCart()"
+      class="fixed bottom-6 right-6 lg:right-[calc(50%-12rem)] bg-orange-500 text-white h-16 w-16 rounded-full shadow-[0_10px_25px_rgba(249,115,22,0.4)] flex items-center justify-center text-xl z-40 hidden transition-transform active:scale-95 border-2 border-orange-400"
+    >
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span
+        id="cart-count"
+        class="absolute -top-2 -right-2 bg-white text-orange-600 border-2 border-orange-500 text-xs font-black w-7 h-7 rounded-full flex items-center justify-center"
+        >0</span
+      >
+    </button>
+
+    <!-- MODAL DEL CARRITO -->
+    <div id="cart-modal" class="fixed inset-0 z-50 hidden">
+      <!-- Overlay oscuro -->
+      <div
+        class="absolute inset-0 bg-black/80 backdrop-blur-sm"
+        onclick="toggleCart()"
+      ></div>
+
+      <!-- Panel del Carrito (BottomSheet) -->
+      <div
+        class="absolute bottom-0 w-full max-w-md left-1/2 -translate-x-1/2 bg-zinc-900 rounded-t-[2rem] border-t border-zinc-700 flex flex-col max-h-[85vh]"
+      >
+        <!-- Cabecera Carrito -->
+        <div
+          class="p-6 border-b border-zinc-800 flex justify-between items-center"
+        >
+          <h2 class="text-xl font-black text-white">Tu Pedido</h2>
+          <button
+            onclick="toggleCart()"
+            class="text-zinc-400 hover:text-white bg-zinc-800 w-8 h-8 rounded-full flex items-center justify-center"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Lista de Productos -->
+        <div id="cart-items" class="p-6 overflow-y-auto space-y-4 flex-1">
+          <!-- Inyectado por JS -->
+        </div>
+
+        <!-- Total y Botón Enviar -->
+        <div class="p-6 bg-zinc-800/50 rounded-t-3xl border-t border-zinc-700">
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-zinc-400 font-medium">Total a pagar:</span>
+            <span id="cart-total" class="text-2xl font-black text-orange-500"
+              >$0</span
+            >
+          </div>
+          <!-- Botón de Enviar Pedido a WhatsApp -->
+          <button
+            onclick="sendWhatsApp()"
+            class="w-full bg-[#25D366] text-white py-4 rounded-xl font-black text-lg flex items-center justify-center gap-3 shadow-lg shadow-green-900/50 hover:bg-[#1ebd5a] active:scale-95 transition-all"
+          >
+            <i class="fa-brands fa-whatsapp text-2xl"></i> Enviar Pedido
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script General -->
+    <script>
+      // ---- Lógica de las Pestañas (Tabs) ----
+      function openTab(evt, tabName) {
+        let i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].classList.remove("active");
+        }
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].classList.remove("text-white", "border-orange-500");
+          tablinks[i].classList.add("text-zinc-500", "border-transparent");
+        }
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.remove(
+          "text-zinc-500",
+          "border-transparent",
+        );
+        evt.currentTarget.classList.add("text-white", "border-orange-500");
+      }
+      document.getElementById("defaultOpen").click();
+
+      // ---- Lógica del Carrito de Compras ----
+      let cart = [];
+
+      const formatter = new Intl.NumberFormat("es-AR", {
+        style: "currency",
+        currency: "ARS",
+        minimumFractionDigits: 0,
+      });
+
+      function addToCart(name, price) {
+        const existingItem = cart.find((item) => item.name === name);
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({ name: name, price: price, quantity: 1 });
+        }
+
+        const widget = document.getElementById("cart-widget");
+        widget.classList.remove("pop");
+        void widget.offsetWidth;
+        widget.classList.add("pop");
+
+        updateCartUI();
+      }
+
+      function updateQuantity(name, change) {
+        const item = cart.find((item) => item.name === name);
+        if (item) {
+          item.quantity += change;
+          if (item.quantity <= 0) {
+            cart = cart.filter((i) => i.name !== name);
+          }
+        }
+        updateCartUI();
+      }
+
+      function updateCartUI() {
+        const widget = document.getElementById("cart-widget");
+        const countBadge = document.getElementById("cart-count");
+        const itemsContainer = document.getElementById("cart-items");
+        const totalElement = document.getElementById("cart-total");
+
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+        if (totalItems > 0) {
+          widget.classList.remove("hidden");
+          countBadge.innerText = totalItems;
+        } else {
+          widget.classList.add("hidden");
+          document.getElementById("cart-modal").classList.add("hidden");
+        }
+
+        itemsContainer.innerHTML = "";
+        let totalPrice = 0;
+
+        cart.forEach((item) => {
+          const subtotal = item.price * item.quantity;
+          totalPrice += subtotal;
+
+          itemsContainer.innerHTML += `
+            <div class="flex justify-between items-center bg-zinc-800 p-3 rounded-xl border border-zinc-700">
+              <div class="flex-1">
+                <h4 class="text-sm font-bold text-zinc-100">${item.name}</h4>
+                <p class="text-orange-500 font-black text-sm">${formatter.format(item.price)}</p>
+              </div>
+              <div class="flex items-center gap-3 bg-zinc-900 rounded-lg p-1 border border-zinc-700">
+                <button onclick="updateQuantity('${item.name}', -1)" class="w-8 h-8 flex items-center justify-center text-zinc-400 hover:text-white active:bg-zinc-700 rounded-md">
+                  <i class="fa-solid fa-minus text-xs"></i>
+                </button>
+                <span class="font-bold text-white w-4 text-center">${item.quantity}</span>
+                <button onclick="updateQuantity('${item.name}', 1)" class="w-8 h-8 flex items-center justify-center text-orange-500 hover:text-orange-400 active:bg-zinc-700 rounded-md">
+                  <i class="fa-solid fa-plus text-xs"></i>
+                </button>
+              </div>
+            </div>
+          `;
+        });
+
+        totalElement.innerText = formatter.format(totalPrice);
+      }
+
+      function toggleCart() {
+        const modal = document.getElementById("cart-modal");
+        if (modal.classList.contains("hidden")) {
+          if (cart.length > 0) modal.classList.remove("hidden");
+        } else {
+          modal.classList.add("hidden");
+        }
+      }
+
+      function sendWhatsApp() {
+        if (cart.length === 0) return;
+
+        let total = 0;
+        let text =
+          "🔥 *Hola Fuego & Pan!* Quiero hacer el siguiente pedido:\n\n";
+
+        cart.forEach((item) => {
+          let subtotal = item.price * item.quantity;
+          total += subtotal;
+          text += `▪️ ${item.quantity}x ${item.name} (${formatter.format(subtotal)})\n`;
+        });
+
+        text += `\n💰 *Total a pagar: ${formatter.format(total)}*\n\n`;
+        text += "✏️ *Mis datos para el envío/retiro:*\n";
+        text += "Nombre: \n";
+        text += "Dirección: \n";
+        text += "Método de Pago (Efectivo/Transferencia): ";
+
+        const phoneNumber = "5493816320130";
+        const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
+
+        window.open(url, "_blank");
+      }
+    </script>
+  </body>
+</html>
