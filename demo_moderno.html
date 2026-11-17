@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menú Moderno | Fuego & Pan</title>
+    <title>Demo Menú Moderno | Fuego & Pan Tucumán</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       rel="stylesheet"
     />
     <style>
@@ -22,12 +22,12 @@
       }
       .tab-content.active {
         display: block;
-        animation: fadeUp 0.4s ease-out;
+        animation: fadeUp 0.35s ease-out;
       }
       @keyframes fadeUp {
         from {
           opacity: 0;
-          transform: translateY(10px);
+          transform: translateY(8px);
         }
         to {
           opacity: 1;
@@ -39,48 +39,82 @@
       }
       @keyframes pop {
         50% {
-          transform: scale(1.2);
+          transform: scale(1.18);
         }
-      }
-      .modal-anim {
-        animation: scaleIn 0.3s forwards;
-      }
-      @keyframes scaleIn {
-        from {
-          opacity: 0;
-          transform: scale(0.9);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-      /* Estilo adicional para el ticket */
-      .font-ticket {
-        font-family: "Courier New", Courier, monospace;
       }
     </style>
   </head>
-  <body class="bg-zinc-900 font-sans text-zinc-100 antialiased pb-24">
+  <body class="bg-zinc-950 font-sans text-zinc-100 antialiased pb-28">
+    <!-- Barra superior de navegación de demo -->
+    <div
+      class="bg-emerald-950 border-b border-emerald-800/60 text-xs py-2 px-4 text-center flex items-center justify-between max-w-md mx-auto"
+    >
+      <a
+        href="index.html"
+        class="text-emerald-300 hover:text-white font-bold flex items-center gap-1.5"
+      >
+        <i class="fa-solid fa-arrow-left"></i> Volver a Smart Menu
+      </a>
+      <span
+        class="bg-orange-500/20 text-orange-400 px-2 py-0.5 rounded font-bold"
+        >DEMO MODERNO</span
+      >
+    </div>
+
+    <!-- MODAL DE PROMOCIÓN -->
+    <div
+      id="promo-modal"
+      class="fixed inset-0 z-50 hidden items-center justify-center p-4"
+    >
+      <div
+        class="absolute inset-0 bg-black/85 backdrop-blur-sm"
+        onclick="closePromo()"
+      ></div>
+      <div
+        class="bg-zinc-900 rounded-3xl border-2 border-orange-500 relative z-10 w-full max-w-sm p-6 text-center shadow-2xl"
+      >
+        <div
+          class="w-16 h-16 bg-orange-500 text-white rounded-2xl mx-auto flex items-center justify-center text-3xl mb-3 shadow-lg"
+        >
+          🔥
+        </div>
+        <h2 class="text-2xl font-black text-white mb-2">
+          ¡Sándwiches Gigantes P/2!
+        </h2>
+        <p class="text-zinc-400 text-sm mb-6">
+          Ideales para compartir con abundantes papas fritas crocantes. Armá tu
+          pedido y envialo directo a WhatsApp.
+        </p>
+        <button
+          onclick="closePromo()"
+          class="w-full bg-white text-black font-black py-3 rounded-xl hover:bg-zinc-200 transition"
+        >
+          ¡Ver Carta!
+        </button>
+      </div>
+    </div>
+
     <div
       class="max-w-md mx-auto bg-black min-h-screen shadow-2xl relative flex flex-col border-x border-zinc-900"
     >
-      <!-- Hero con Botón de Moneda -->
+      <!-- Header -->
       <header class="relative h-56 rounded-b-[2rem] overflow-hidden shadow-lg">
         <img
-          src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=600"
+          src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=700&auto=format&fit=crop"
+          alt="Fuego y Pan"
           class="w-full h-full object-cover opacity-60"
         />
         <div
           class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"
         ></div>
 
+        <!-- Selector Moneda Referencial -->
         <button
           onclick="toggleCurrency()"
-          class="absolute top-4 right-4 bg-green-600/90 backdrop-blur text-white px-3 py-1.5 rounded-full text-xs font-bold border border-green-400 shadow-lg flex items-center gap-2 active:scale-95"
+          class="absolute top-4 right-4 bg-emerald-700/90 backdrop-blur text-white px-3 py-1.5 rounded-full text-xs font-bold border border-emerald-400/50 shadow-lg flex items-center gap-1.5 active:scale-95"
         >
           <i class="fa-solid fa-money-bill-transfer"></i>
-          <span id="currency-label">Ver en USD</span>
+          <span id="currency-label">Ver en USD*</span>
         </button>
 
         <div class="absolute bottom-6 left-6 flex items-end gap-4">
@@ -91,59 +125,59 @@
           </div>
           <div class="pb-1">
             <h1 class="text-3xl font-black text-white leading-none">
-              Fuego & Pan
+              Fuego &amp; Pan
             </h1>
             <p class="text-xs font-semibold text-orange-400 uppercase mt-1">
-              Sanguchería & Bar | Tucumán
+              Sanguchería &amp; Bar | Tucumán
             </p>
           </div>
         </div>
       </header>
 
-      <!-- Navegación por Pestañas -->
+      <!-- Pestañas -->
       <nav
-        class="sticky top-0 z-30 bg-black/90 backdrop-blur-md border-b border-zinc-800 flex overflow-x-auto mt-2 no-scrollbar shadow-sm"
+        class="sticky top-0 z-30 bg-black/95 backdrop-blur-md border-b border-zinc-800 flex overflow-x-auto mt-2 no-scrollbar"
       >
         <button
           onclick="openTab(event, 'sandwiches')"
-          class="tab-btn py-4 px-4 text-sm font-bold text-white border-b-2 border-orange-500 whitespace-nowrap"
+          class="tab-btn py-3.5 px-4 text-sm font-bold text-white border-b-2 border-orange-500 whitespace-nowrap"
           id="defaultOpen"
         >
-          🍔 Sándwiches
+          🥪 Sándwiches
         </button>
         <button
           onclick="openTab(event, 'alplato')"
-          class="tab-btn py-4 px-4 text-sm font-bold text-zinc-500 border-b-2 border-transparent whitespace-nowrap"
+          class="tab-btn py-3.5 px-4 text-sm font-bold text-zinc-500 border-b-2 border-transparent whitespace-nowrap"
         >
           🍽️ Al Plato
         </button>
         <button
           onclick="openTab(event, 'hamburguesas')"
-          class="tab-btn py-4 px-4 text-sm font-bold text-zinc-500 border-b-2 border-transparent whitespace-nowrap"
+          class="tab-btn py-3.5 px-4 text-sm font-bold text-zinc-500 border-b-2 border-transparent whitespace-nowrap"
         >
           🍔 Burgers
         </button>
         <button
           onclick="openTab(event, 'pizzas')"
-          class="tab-btn py-4 px-4 text-sm font-bold text-zinc-500 border-b-2 border-transparent whitespace-nowrap"
+          class="tab-btn py-3.5 px-4 text-sm font-bold text-zinc-500 border-b-2 border-transparent whitespace-nowrap"
         >
           🍕 Pizzas
         </button>
         <button
           onclick="openTab(event, 'tartas')"
-          class="tab-btn py-4 px-4 text-sm font-bold text-zinc-500 border-b-2 border-transparent whitespace-nowrap"
+          class="tab-btn py-3.5 px-4 text-sm font-bold text-zinc-500 border-b-2 border-transparent whitespace-nowrap"
         >
           🥧 Tartas
         </button>
         <button
           onclick="openTab(event, 'empanadas')"
-          class="tab-btn py-4 px-4 text-sm font-bold text-zinc-500 border-b-2 border-transparent whitespace-nowrap"
+          class="tab-btn py-3.5 px-4 text-sm font-bold text-zinc-500 border-b-2 border-transparent whitespace-nowrap"
         >
           🥟 Empanadas
         </button>
         <button
           onclick="openTab(event, 'bebidas')"
-          class="tab-btn py-4 px-4 text-sm font-bold text-zinc-500 border-b-2 border-transparent whitespace-nowrap"
+          class="tab-btn py-3.5 px-4 text-sm font-bold text-zinc-500 border-b-2 border-transparent whitespace-nowrap"
         >
           🥤 Bebidas
         </button>
@@ -152,35 +186,46 @@
       <!-- 1. SÁNDWICHES -->
       <main id="sandwiches" class="tab-content active px-4 py-6 space-y-4">
         <div
-          class="bg-gradient-to-r from-orange-900/40 to-black rounded-2xl border-2 border-orange-500/50 p-4 relative"
+          class="bg-gradient-to-r from-orange-950/60 to-zinc-900 rounded-2xl border-2 border-orange-500/60 p-4 relative overflow-hidden"
         >
           <div
             class="absolute top-0 right-0 bg-orange-500 text-white text-[10px] font-black uppercase px-3 py-1 rounded-bl-lg"
           >
-            ¡Recomendado P/2!
+            ¡Destacado P/2!
           </div>
-          <h3 class="font-black text-white text-lg">
-            Sándwich Gigante Especial C/ Papas
-          </h3>
-          <p class="text-xs text-zinc-400 mt-1">
-            Ideal para compartir. Abundante y con papas crocantes.
-          </p>
-          <div class="flex items-center justify-between mt-3">
-            <span
-              class="font-black text-orange-400 text-xl price-tag"
-              data-ars="15000"
-              >$15.000</span
-            >
-            <button
-              onclick="addToCart('Sándwich Gigante Especial C/ Papas', 15000)"
-              class="bg-orange-500 text-white w-9 h-9 rounded-xl font-bold active:scale-95"
-            >
-              <i class="fa-solid fa-plus"></i>
-            </button>
+          <div class="flex gap-3.5 items-center">
+            <img
+              src="https://images.unsplash.com/photo-1553909489-cd47e0907980?q=80&w=300&auto=format&fit=crop"
+              alt="Sándwich Gigante"
+              class="w-20 h-20 rounded-xl object-cover border border-zinc-700"
+            />
+            <div class="flex-1">
+              <h3 class="font-black text-white text-base leading-tight">
+                Sándwich Gigante Especial C/ Papas
+              </h3>
+              <p class="text-xs text-zinc-400 mt-1">
+                Para 2 personas. Jamón, queso, huevo, lechuga, tomate y papas.
+              </p>
+              <div class="flex items-center justify-between mt-2.5">
+                <span
+                  class="font-black text-orange-400 text-lg price-tag"
+                  data-ars="15000"
+                  >$15.000</span
+                >
+                <button
+                  onclick="
+                    addToCart('Sándwich Gigante Especial C/ Papas', 15000)
+                  "
+                  class="bg-orange-500 text-white w-9 h-9 rounded-xl font-bold active:scale-95"
+                >
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="space-y-3">
+        <div class="space-y-2.5">
           <div
             class="flex bg-zinc-900 rounded-xl border border-zinc-800 p-3 justify-between items-center"
           >
@@ -188,33 +233,14 @@
               <h3 class="font-bold text-white text-sm">
                 Sándwich Gigante Común C/ Papas
               </h3>
-              <p class="text-[10px] text-zinc-400">Para 2 personas.</p>
+              <p class="text-[11px] text-zinc-400">Para 2 personas</p>
             </div>
             <div class="flex items-center gap-3">
               <span class="font-black text-white price-tag" data-ars="13000"
                 >$13.000</span
               ><button
                 onclick="addToCart('Sándwich Gigante Común C/ Papas', 13000)"
-                class="bg-white text-black w-8 h-8 rounded-lg"
-              >
-                <i class="fa-solid fa-plus"></i>
-              </button>
-            </div>
-          </div>
-          <div
-            class="flex bg-zinc-900 rounded-xl border border-zinc-800 p-3 justify-between items-center"
-          >
-            <div>
-              <h3 class="font-bold text-white text-sm">
-                Milanesa Especial C/ Papas
-              </h3>
-            </div>
-            <div class="flex items-center gap-3">
-              <span class="font-black text-white price-tag" data-ars="9000"
-                >$9.000</span
-              ><button
-                onclick="addToCart('Milanesa Especial C/ Papas', 9000)"
-                class="bg-white text-black w-8 h-8 rounded-lg"
+                class="bg-white text-black w-8 h-8 rounded-lg font-bold"
               >
                 <i class="fa-solid fa-plus"></i>
               </button>
@@ -233,7 +259,7 @@
                 >$8.000</span
               ><button
                 onclick="addToCart('Milanesa Común C/ Papas', 8000)"
-                class="bg-white text-black w-8 h-8 rounded-lg"
+                class="bg-white text-black w-8 h-8 rounded-lg font-bold"
               >
                 <i class="fa-solid fa-plus"></i>
               </button>
@@ -244,15 +270,15 @@
           >
             <div>
               <h3 class="font-bold text-white text-sm">
-                Suprema Especial C/ Papas
+                Milanesa Especial C/ Papas
               </h3>
             </div>
             <div class="flex items-center gap-3">
               <span class="font-black text-white price-tag" data-ars="9000"
                 >$9.000</span
               ><button
-                onclick="addToCart('Suprema Especial C/ Papas', 9000)"
-                class="bg-white text-black w-8 h-8 rounded-lg"
+                onclick="addToCart('Milanesa Especial C/ Papas', 9000)"
+                class="bg-white text-black w-8 h-8 rounded-lg font-bold"
               >
                 <i class="fa-solid fa-plus"></i>
               </button>
@@ -271,7 +297,7 @@
                 >$8.000</span
               ><button
                 onclick="addToCart('Suprema Común C/ Papas', 8000)"
-                class="bg-white text-black w-8 h-8 rounded-lg"
+                class="bg-white text-black w-8 h-8 rounded-lg font-bold"
               >
                 <i class="fa-solid fa-plus"></i>
               </button>
@@ -282,53 +308,15 @@
           >
             <div>
               <h3 class="font-bold text-white text-sm">
-                Lomito de Pollo Especial C/ Papas
+                Suprema Especial C/ Papas
               </h3>
             </div>
             <div class="flex items-center gap-3">
               <span class="font-black text-white price-tag" data-ars="9000"
                 >$9.000</span
               ><button
-                onclick="addToCart('Lomito de Pollo Especial C/ Papas', 9000)"
-                class="bg-white text-black w-8 h-8 rounded-lg"
-              >
-                <i class="fa-solid fa-plus"></i>
-              </button>
-            </div>
-          </div>
-          <div
-            class="flex bg-zinc-900 rounded-xl border border-zinc-800 p-3 justify-between items-center"
-          >
-            <div>
-              <h3 class="font-bold text-white text-sm">
-                Lomito de Pollo Común C/ Papas
-              </h3>
-            </div>
-            <div class="flex items-center gap-3">
-              <span class="font-black text-white price-tag" data-ars="8000"
-                >$8.000</span
-              ><button
-                onclick="addToCart('Lomito de Pollo Común C/ Papas', 8000)"
-                class="bg-white text-black w-8 h-8 rounded-lg"
-              >
-                <i class="fa-solid fa-plus"></i>
-              </button>
-            </div>
-          </div>
-          <div
-            class="flex bg-zinc-900 rounded-xl border border-zinc-800 p-3 justify-between items-center"
-          >
-            <div>
-              <h3 class="font-bold text-white text-sm">
-                Lomito Especial C/ Papas
-              </h3>
-            </div>
-            <div class="flex items-center gap-3">
-              <span class="font-black text-white price-tag" data-ars="9000"
-                >$9.000</span
-              ><button
-                onclick="addToCart('Lomito Especial C/ Papas', 9000)"
-                class="bg-white text-black w-8 h-8 rounded-lg"
+                onclick="addToCart('Suprema Especial C/ Papas', 9000)"
+                class="bg-white text-black w-8 h-8 rounded-lg font-bold"
               >
                 <i class="fa-solid fa-plus"></i>
               </button>
@@ -347,7 +335,64 @@
                 >$8.000</span
               ><button
                 onclick="addToCart('Lomito Común C/ Papas', 8000)"
-                class="bg-white text-black w-8 h-8 rounded-lg"
+                class="bg-white text-black w-8 h-8 rounded-lg font-bold"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div
+            class="flex bg-zinc-900 rounded-xl border border-zinc-800 p-3 justify-between items-center"
+          >
+            <div>
+              <h3 class="font-bold text-white text-sm">
+                Lomito Especial C/ Papas
+              </h3>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="font-black text-white price-tag" data-ars="9000"
+                >$9.000</span
+              ><button
+                onclick="addToCart('Lomito Especial C/ Papas', 9000)"
+                class="bg-white text-black w-8 h-8 rounded-lg font-bold"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div
+            class="flex bg-zinc-900 rounded-xl border border-zinc-800 p-3 justify-between items-center"
+          >
+            <div>
+              <h3 class="font-bold text-white text-sm">
+                Lomito de Pollo Común C/ Papas
+              </h3>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="font-black text-white price-tag" data-ars="8000"
+                >$8.000</span
+              ><button
+                onclick="addToCart('Lomito de Pollo Común C/ Papas', 8000)"
+                class="bg-white text-black w-8 h-8 rounded-lg font-bold"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div
+            class="flex bg-zinc-900 rounded-xl border border-zinc-800 p-3 justify-between items-center"
+          >
+            <div>
+              <h3 class="font-bold text-white text-sm">
+                Lomito de Pollo Especial C/ Papas
+              </h3>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="font-black text-white price-tag" data-ars="9000"
+                >$9.000</span
+              ><button
+                onclick="addToCart('Lomito de Pollo Especial C/ Papas', 9000)"
+                class="bg-white text-black w-8 h-8 rounded-lg font-bold"
               >
                 <i class="fa-solid fa-plus"></i>
               </button>
@@ -357,8 +402,8 @@
       </main>
 
       <!-- 2. AL PLATO -->
-      <main id="alplato" class="tab-content px-4 py-6 space-y-3">
-        <h2 class="text-lg font-black text-orange-400 mb-2">
+      <main id="alplato" class="tab-content px-4 py-6 space-y-2.5">
+        <h2 class="text-base font-black text-orange-400 mb-3">
           🍽️ Platos Principales con Guarnición
         </h2>
         <div
@@ -400,6 +445,44 @@
         >
           <div>
             <h3 class="font-bold text-white text-sm">
+              Napolitana P/1 C/ Guarnición
+            </h3>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="font-black text-white price-tag" data-ars="11000"
+              >$11.000</span
+            ><button
+              onclick="addToCart('Napolitana P/1 C/ Guarnición', 11000)"
+              class="bg-white text-black w-8 h-8 rounded-lg"
+            >
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div
+          class="flex bg-zinc-900 rounded-xl border border-zinc-800 p-3 justify-between items-center"
+        >
+          <div>
+            <h3 class="font-bold text-white text-sm">
+              Napolitana P/2 C/ Guarnición
+            </h3>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="font-black text-white price-tag" data-ars="22000"
+              >$22.000</span
+            ><button
+              onclick="addToCart('Napolitana P/2 C/ Guarnición', 22000)"
+              class="bg-white text-black w-8 h-8 rounded-lg"
+            >
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div
+          class="flex bg-zinc-900 rounded-xl border border-zinc-800 p-3 justify-between items-center"
+        >
+          <div>
+            <h3 class="font-bold text-white text-sm">
               Suprema Napolitana P/1 C/ Guarnición
             </h3>
           </div>
@@ -427,44 +510,6 @@
               >$18.000</span
             ><button
               onclick="addToCart('Suprema Napolitana P/2', 18000)"
-              class="bg-white text-black w-8 h-8 rounded-lg"
-            >
-              <i class="fa-solid fa-plus"></i>
-            </button>
-          </div>
-        </div>
-        <div
-          class="flex bg-zinc-900 rounded-xl border border-zinc-800 p-3 justify-between items-center"
-        >
-          <div>
-            <h3 class="font-bold text-white text-sm">
-              Napolitana P/1 C/ Guarnición
-            </h3>
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="font-black text-white price-tag" data-ars="11000"
-              >$11.000</span
-            ><button
-              onclick="addToCart('Napolitana P/1', 11000)"
-              class="bg-white text-black w-8 h-8 rounded-lg"
-            >
-              <i class="fa-solid fa-plus"></i>
-            </button>
-          </div>
-        </div>
-        <div
-          class="flex bg-zinc-900 rounded-xl border border-zinc-800 p-3 justify-between items-center"
-        >
-          <div>
-            <h3 class="font-bold text-white text-sm">
-              Napolitana P/2 C/ Guarnición
-            </h3>
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="font-black text-white price-tag" data-ars="22000"
-              >$22.000</span
-            ><button
-              onclick="addToCart('Napolitana P/2', 22000)"
               class="bg-white text-black w-8 h-8 rounded-lg"
             >
               <i class="fa-solid fa-plus"></i>
@@ -550,8 +595,8 @@
       </main>
 
       <!-- 3. HAMBURGUESAS -->
-      <main id="hamburguesas" class="tab-content px-4 py-6 space-y-3">
-        <h2 class="text-lg font-black text-orange-400 mb-2">
+      <main id="hamburguesas" class="tab-content px-4 py-6 space-y-2.5">
+        <h2 class="text-base font-black text-orange-400 mb-3">
           🍔 Hamburguesas con Papas
         </h2>
         <div
@@ -614,8 +659,8 @@
       </main>
 
       <!-- 4. PIZZAS -->
-      <main id="pizzas" class="tab-content px-4 py-6 space-y-3">
-        <h2 class="text-lg font-black text-orange-400 mb-2">
+      <main id="pizzas" class="tab-content px-4 py-6 space-y-2.5">
+        <h2 class="text-base font-black text-orange-400 mb-3">
           🍕 Pizzas Tradicionales y Especiales
         </h2>
         <div
@@ -751,8 +796,8 @@
       </main>
 
       <!-- 5. TARTAS -->
-      <main id="tartas" class="tab-content px-4 py-6 space-y-3">
-        <h2 class="text-lg font-black text-orange-400 mb-2">
+      <main id="tartas" class="tab-content px-4 py-6 space-y-2.5">
+        <h2 class="text-base font-black text-orange-400 mb-3">
           🥧 Tartas Caseras
         </h2>
         <div
@@ -810,86 +855,99 @@
 
       <!-- 6. EMPANADAS -->
       <main id="empanadas" class="tab-content px-4 py-6 space-y-3">
-        <h2 class="text-lg font-black text-orange-400 mb-2">
+        <h2 class="text-base font-black text-orange-400 mb-3">
           🥟 Empanadas Tucumanas
         </h2>
         <div class="grid grid-cols-2 gap-3">
           <div
-            class="bg-zinc-900 rounded-xl border border-zinc-800 p-3 flex flex-col items-center text-center"
+            class="bg-zinc-900 rounded-xl border border-zinc-800 p-3 text-center"
           >
             <h3 class="font-bold text-white text-sm">Docena Carne</h3>
             <span
-              class="font-black text-orange-500 my-2 price-tag"
+              class="block font-black text-orange-500 my-2 price-tag"
               data-ars="18000"
               >$18.000</span
             >
             <button
               onclick="addToCart('Docena Carne', 18000)"
-              class="w-full bg-white text-black rounded py-1 font-bold text-xs"
+              class="w-full bg-white text-black rounded-lg py-1.5 font-bold text-xs"
             >
               Agregar
             </button>
           </div>
           <div
-            class="bg-zinc-900 rounded-xl border border-zinc-800 p-3 flex flex-col items-center text-center"
+            class="bg-zinc-900 rounded-xl border border-zinc-800 p-3 text-center"
           >
             <h3 class="font-bold text-white text-sm">Docena Pollo</h3>
             <span
-              class="font-black text-orange-500 my-2 price-tag"
+              class="block font-black text-orange-500 my-2 price-tag"
               data-ars="18000"
               >$18.000</span
             >
             <button
               onclick="addToCart('Docena Pollo', 18000)"
-              class="w-full bg-white text-black rounded py-1 font-bold text-xs"
+              class="w-full bg-white text-black rounded-lg py-1.5 font-bold text-xs"
             >
               Agregar
             </button>
           </div>
           <div
-            class="bg-zinc-900 rounded-xl border border-zinc-800 p-3 flex flex-col items-center text-center"
+            class="bg-zinc-900 rounded-xl border border-zinc-800 p-3 text-center"
           >
             <h3 class="font-bold text-white text-sm">Docena Sfijas</h3>
             <span
-              class="font-black text-orange-500 my-2 price-tag"
+              class="block font-black text-orange-500 my-2 price-tag"
               data-ars="18000"
               >$18.000</span
             >
             <button
               onclick="addToCart('Docena Sfijas', 18000)"
-              class="w-full bg-white text-black rounded py-1 font-bold text-xs"
+              class="w-full bg-white text-black rounded-lg py-1.5 font-bold text-xs"
             >
               Agregar
             </button>
           </div>
           <div
-            class="bg-zinc-900 rounded-xl border border-zinc-800 p-3 flex flex-col items-center text-center"
+            class="bg-zinc-900 rounded-xl border border-zinc-800 p-3 text-center"
           >
-            <h3 class="font-bold text-white text-sm">Docena JyQ</h3>
+            <h3 class="font-bold text-white text-sm">Docena Jamón y Queso</h3>
             <span
-              class="font-black text-orange-500 my-2 price-tag"
+              class="block font-black text-orange-500 my-2 price-tag"
               data-ars="18000"
               >$18.000</span
             >
             <button
               onclick="addToCart('Docena Jamón y Queso', 18000)"
-              class="w-full bg-white text-black rounded py-1 font-bold text-xs"
+              class="w-full bg-white text-black rounded-lg py-1.5 font-bold text-xs"
             >
               Agregar
             </button>
           </div>
         </div>
-        <p class="text-xs text-zinc-500 text-center mt-3">
-          *Valor por unidad individual:
-          <span class="price-tag font-bold text-orange-400" data-ars="1800"
-            >$1.800</span
-          >
-        </p>
+        <div
+          class="flex bg-zinc-900 rounded-xl border border-zinc-800 p-3 justify-between items-center mt-2"
+        >
+          <div>
+            <h3 class="font-bold text-white text-sm">
+              Empanada por Unidad (Surtida)
+            </h3>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="font-black text-orange-400 price-tag" data-ars="1800"
+              >$1.800</span
+            ><button
+              onclick="addToCart('Empanada Unidad', 1800)"
+              class="bg-white text-black w-8 h-8 rounded-lg"
+            >
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+        </div>
       </main>
 
       <!-- 7. BEBIDAS -->
-      <main id="bebidas" class="tab-content px-4 py-6 space-y-3">
-        <h2 class="text-lg font-black text-orange-400 mb-2">
+      <main id="bebidas" class="tab-content px-4 py-6 space-y-2.5">
+        <h2 class="text-base font-black text-orange-400 mb-3">
           🥤 Bebidas y Cervezas
         </h2>
         <div
@@ -921,7 +979,26 @@
             <span class="font-black text-white price-tag" data-ars="4500"
               >$4.500</span
             ><button
-              onclick="addToCart('Cerveza Litro', 4500)"
+              onclick="addToCart('Cerveza Litro Retornable', 4500)"
+              class="bg-white text-black w-8 h-8 rounded-lg"
+            >
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div
+          class="flex bg-zinc-900 rounded-xl border border-zinc-800 p-3 justify-between items-center"
+        >
+          <div>
+            <h3 class="font-bold text-white text-sm">
+              Pinta Cerveza Artesanal IPA
+            </h3>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="font-black text-white price-tag" data-ars="4800"
+              >$4.800</span
+            ><button
+              onclick="addToCart('Pinta Cerveza Artesanal IPA', 4800)"
               class="bg-white text-black w-8 h-8 rounded-lg"
             >
               <i class="fa-solid fa-plus"></i>
@@ -930,107 +1007,85 @@
         </div>
       </main>
 
-      <!-- Footer -->
-      <footer class="mt-auto px-6 py-10 text-center">
+      <!-- Footer Legal Demo -->
+      <footer class="mt-auto px-5 py-8 text-center">
         <div
-          class="bg-zinc-900/50 p-4 rounded-2xl border border-zinc-800/50 inline-block mb-4"
+          class="bg-zinc-900/70 p-4 rounded-2xl border border-zinc-800 text-[11px] text-zinc-500 space-y-1.5"
         >
-          <p class="text-[11px] text-zinc-500">
-            Demostración comercial creada por Smart Menu Tucumán.<br />Atención
-            personalizada por Santiago Molina.
+          <p class="font-bold text-zinc-400">
+            Sitio de Demostración Comercial — Smart Menu Tucumán
           </p>
-        </div>
-
-        <!-- CARTEL UPSELL PDF -->
-        <div
-          class="bg-orange-500/10 border border-orange-500/30 p-4 rounded-xl flex items-start gap-3 text-left"
-        >
-          <i class="fa-solid fa-print text-orange-500 mt-1"></i>
-          <div>
-            <p class="text-xs font-bold text-orange-400">
-              ¿Necesitás este menú impreso?
-            </p>
-            <p class="text-[10px] text-zinc-400">
-              Ofrecemos la exportación a PDF de alta calidad lista para imprimir
-              en tus mesas por un costo extra.
-            </p>
-          </div>
+          <p>
+            *Conversión a USD meramente referencial. En un menú real, los
+            precios, productos y cobros son responsabilidad exclusiva del
+            comercio titular.
+          </p>
         </div>
       </footer>
     </div>
 
-    <!-- WIDGET DEL CARRITO -->
+    <!-- BOTÓN FLOTANTE CARRITO -->
     <button
       id="cart-widget"
       onclick="toggleCart()"
-      class="fixed bottom-6 right-6 lg:right-[calc(50%-12rem)] bg-orange-500 text-white h-16 w-16 rounded-full shadow-2xl flex items-center justify-center text-xl z-40 hidden active:scale-95 border-2 border-white"
+      class="fixed bottom-6 right-6 bg-orange-500 text-white h-16 w-16 rounded-full shadow-2xl flex items-center justify-center text-xl z-40 hidden active:scale-95"
     >
       <i class="fa-solid fa-cart-shopping"></i>
       <span
         id="cart-count"
-        class="absolute -top-2 -right-2 bg-white text-black text-xs font-black w-7 h-7 rounded-full flex items-center justify-center shadow-lg"
+        class="absolute -top-1.5 -right-1.5 bg-white text-orange-600 text-xs font-black w-7 h-7 rounded-full flex items-center justify-center shadow"
         >0</span
       >
     </button>
 
-    <!-- MODAL CARRITO ESTILO TICKET DE COMPRA -->
+    <!-- MODAL CARRITO -->
     <div id="cart-modal" class="fixed inset-0 z-50 hidden">
       <div
-        class="absolute inset-0 bg-black/80 backdrop-blur-sm"
+        class="absolute inset-0 bg-black/85 backdrop-blur-sm"
         onclick="toggleCart()"
       ></div>
       <div
-        class="absolute bottom-0 w-full max-w-md left-1/2 -translate-x-1/2 bg-white rounded-t-3xl flex flex-col max-h-[85vh] shadow-2xl"
+        class="absolute bottom-0 w-full max-w-md left-1/2 -translate-x-1/2 bg-zinc-900 rounded-t-[2rem] flex flex-col max-h-[88vh] border-t border-zinc-700"
       >
-        <!-- Encabezado del Ticket -->
         <div
-          class="p-6 border-b-2 border-dashed border-gray-300 flex justify-between items-center bg-gray-50 rounded-t-3xl relative"
+          class="p-5 border-b border-zinc-800 flex justify-between items-center"
         >
-          <div
-            class="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-1.5 bg-gray-300 rounded-b-lg"
-          ></div>
-          <h2 class="text-xl font-black text-black tracking-widest uppercase">
-            Ticket de Pedido
-          </h2>
+          <h2 class="text-lg font-black text-white">Tu Pedido</h2>
           <button
             onclick="toggleCart()"
-            class="text-gray-500 w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition"
+            class="text-zinc-400 w-8 h-8 bg-zinc-800 rounded-full flex items-center justify-center"
           >
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
-
-        <!-- Cuerpo del Ticket -->
-        <div
-          id="cart-items"
-          class="p-6 overflow-y-auto space-y-3 flex-1 font-ticket text-black bg-white"
-        ></div>
-
-        <!-- Total y Botón -->
-        <div
-          class="p-6 bg-gray-50 border-t-2 border-dashed border-gray-300 relative"
-        >
-          <!-- Efecto de ticket cortado (decorativo) -->
-          <div
-            class="absolute -top-3 -left-3 w-6 h-6 bg-black rounded-full"
-          ></div>
-          <div
-            class="absolute -top-3 -right-3 w-6 h-6 bg-black rounded-full"
-          ></div>
-
-          <div class="flex justify-between items-center mb-6 font-ticket">
-            <span class="text-gray-600 font-bold uppercase"
-              >Total a pagar:</span
-            >
-            <span id="cart-total" class="text-3xl font-black text-black"
+        <div id="cart-items" class="p-5 overflow-y-auto space-y-3 flex-1"></div>
+        <div class="p-5 bg-zinc-950 border-t border-zinc-800 space-y-3">
+          <div class="grid grid-cols-2 gap-2">
+            <input
+              type="text"
+              id="order-name"
+              placeholder="Tu nombre"
+              class="bg-zinc-900 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-orange-500"
+            />
+            <input
+              type="text"
+              id="order-location"
+              placeholder="Mesa o Dirección"
+              class="bg-zinc-900 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-orange-500"
+            />
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-zinc-400 text-sm">Total estimado:</span>
+            <span id="cart-total" class="text-2xl font-black text-orange-500"
               >$0</span
             >
           </div>
           <button
             onclick="sendWhatsApp()"
-            class="w-full bg-[#25D366] text-white py-4 rounded-xl font-black text-lg flex items-center justify-center gap-3 hover:bg-green-600 transition shadow-lg shadow-green-200"
+            class="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white py-3.5 rounded-xl font-black text-base flex items-center justify-center gap-2.5 shadow-lg"
           >
-            <i class="fa-brands fa-whatsapp text-2xl"></i> Enviar a WhatsApp
+            <i class="fa-brands fa-whatsapp text-xl"></i> Enviar Pedido por
+            WhatsApp
           </button>
         </div>
       </div>
@@ -1042,11 +1097,10 @@
 
       function formatPrice(amountARS) {
         if (isUSD) {
-          let inUSD = amountARS / usdRate;
           return new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "USD",
-          }).format(inUSD);
+          }).format(amountARS / usdRate);
         }
         return new Intl.NumberFormat("es-AR", {
           style: "currency",
@@ -1059,10 +1113,9 @@
         isUSD = !isUSD;
         document.getElementById("currency-label").innerText = isUSD
           ? "Ver en ARS"
-          : "Ver en USD";
+          : "Ver en USD*";
         document.querySelectorAll(".price-tag").forEach((el) => {
-          let basePrice = parseFloat(el.getAttribute("data-ars"));
-          el.innerText = formatPrice(basePrice);
+          el.innerText = formatPrice(parseFloat(el.getAttribute("data-ars")));
         });
         updateCartUI();
       }
@@ -1082,27 +1135,39 @@
           "border-transparent",
         );
       }
+      document.getElementById("defaultOpen").click();
 
-      // Iniciar con precios ARS
       document.addEventListener("DOMContentLoaded", () => {
-        document.getElementById("defaultOpen").click();
-        document.querySelectorAll(".price-tag").forEach((el) => {
-          let basePrice = parseFloat(el.getAttribute("data-ars"));
-          el.innerText = formatPrice(basePrice);
-        });
+        if (!sessionStorage.getItem("promo_smartmenu")) {
+          setTimeout(() => {
+            const m = document.getElementById("promo-modal");
+            m.classList.remove("hidden");
+            m.classList.add("flex");
+          }, 1200);
+        }
       });
 
+      function closePromo() {
+        const m = document.getElementById("promo-modal");
+        m.classList.add("hidden");
+        m.classList.remove("flex");
+        sessionStorage.setItem("promo_smartmenu", "true");
+      }
+
       let cart = [];
+
       function addToCart(name, priceARS) {
         const item = cart.find((i) => i.name === name);
         if (item) item.quantity++;
         else cart.push({ name, price: priceARS, quantity: 1 });
+
         const widget = document.getElementById("cart-widget");
         widget.classList.remove("pop");
         void widget.offsetWidth;
         widget.classList.add("pop");
         updateCartUI();
       }
+
       function updateQuantity(name, change) {
         const item = cart.find((i) => i.name === name);
         if (item) {
@@ -1128,48 +1193,49 @@
         itemsContainer.innerHTML = "";
         let totalPrice = 0;
 
-        // Construir el ticket
         cart.forEach((item) => {
-          let subtotal = item.price * item.quantity;
-          totalPrice += subtotal;
+          totalPrice += item.price * item.quantity;
           itemsContainer.innerHTML += `
-          <div class="flex justify-between items-center py-2 border-b border-gray-100">
-            <div class="flex-1">
-              <h4 class="text-sm font-bold text-gray-800">${item.quantity}x ${item.name}</h4>
-              <p class="text-gray-500 text-xs">${formatPrice(item.price)} c/u</p>
+          <div class="flex justify-between items-center bg-zinc-800/80 p-3 rounded-xl border border-zinc-700/70">
+            <div class="flex-1 pr-2">
+              <h4 class="text-xs font-bold text-white">${item.name}</h4>
+              <p class="text-orange-400 font-black text-xs mt-0.5">${formatPrice(item.price)}</p>
             </div>
-            <div class="flex flex-col items-end gap-2">
-              <span class="font-black text-black">${formatPrice(subtotal)}</span>
-              <div class="flex items-center gap-2 bg-gray-100 rounded px-2 py-1">
-                <button onclick="updateQuantity('${item.name}', -1)" class="text-gray-600 px-1"><i class="fa-solid fa-minus text-xs"></i></button>
-                <button onclick="updateQuantity('${item.name}', 1)" class="text-black px-1"><i class="fa-solid fa-plus text-xs"></i></button>
-              </div>
+            <div class="flex items-center gap-2.5 bg-zinc-950 rounded-lg p-1">
+              <button onclick="updateQuantity('${item.name}', -1)" class="w-7 h-7 text-zinc-400"><i class="fa-solid fa-minus text-xs"></i></button>
+              <span class="font-bold text-white text-xs w-4 text-center">${item.quantity}</span>
+              <button onclick="updateQuantity('${item.name}', 1)" class="w-7 h-7 text-orange-500"><i class="fa-solid fa-plus text-xs"></i></button>
             </div>
           </div>`;
         });
+
         document.getElementById("cart-total").innerText =
           formatPrice(totalPrice);
       }
 
       function toggleCart() {
         const modal = document.getElementById("cart-modal");
-        if (modal.classList.contains("hidden")) {
-          if (cart.length > 0) modal.classList.remove("hidden");
-        } else {
-          modal.classList.add("hidden");
-        }
+        if (modal.classList.contains("hidden") && cart.length > 0)
+          modal.classList.remove("hidden");
+        else modal.classList.add("hidden");
       }
 
       function sendWhatsApp() {
         if (cart.length === 0) return;
+        const clientName =
+          document.getElementById("order-name").value.trim() || "A confirmar";
+        const clientLoc =
+          document.getElementById("order-location").value.trim() ||
+          "A confirmar";
+
         let total = 0;
-        let text = "🧾 *TICKET DE PEDIDO - FUEGO & PAN*\n\n";
+        let text =
+          "🔥 *Hola Fuego & Pan!* Quiero hacer el siguiente pedido (Demo Smart Menu):\n\n";
         cart.forEach((item) => {
-          let subtotal = item.price * item.quantity;
-          total += subtotal;
-          text += `▪️ ${item.quantity}x ${item.name} ($${item.price} ARS)\n`;
+          total += item.price * item.quantity;
+          text += `▪️ ${item.quantity}x ${item.name} ($${item.price.toLocaleString("es-AR")} ARS)\n`;
         });
-        text += `\n💰 *Total a pagar: $${total} ARS*\n\n✏️ *Datos del cliente:*\nNombre: \nDirección/Mesa: `;
+        text += `\n💰 *Total a pagar: $${total.toLocaleString("es-AR")} ARS*\n\n👤 *Nombre:* ${clientName}\n📍 *Mesa / Dirección:* ${clientLoc}`;
         window.open(
           `https://wa.me/5493816320130?text=${encodeURIComponent(text)}`,
           "_blank",

@@ -1,0 +1,1160 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Armá tu Presupuesto | SmartMenu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background-color: #f8fafc;
+        color: #0f172a;
+      }
+      .card-selected {
+        border-color: #f97316 !important;
+        background-color: #fff7ed !important;
+      }
+      .maint-selected {
+        border-color: #10b981 !important;
+        background-color: #ecfdf5 !important;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <!-- NAVBAR -->
+    <header
+      class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-200"
+    >
+      <div
+        class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between"
+      >
+        <a
+          href="index.html"
+          class="flex items-center gap-2 font-extrabold text-xl tracking-tight"
+        >
+          <span
+            class="w-8 h-8 rounded-lg bg-orange-500 text-white flex items-center justify-center text-sm"
+            >SM</span
+          >
+          <span>Smart<span class="text-orange-500">Menu</span></span>
+        </a>
+        <div class="flex items-center gap-3">
+          <a
+            href="#consulta-personalizada"
+            class="text-xs sm:text-sm font-semibold text-slate-700 hover:text-orange-600 transition"
+          >
+            ¿Dudas? Agendá llamada
+          </a>
+          <a
+            href="index.html"
+            class="text-xs sm:text-sm font-semibold px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition"
+          >
+            Volver
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-8 sm:py-12 space-y-8">
+      <!-- ENCABEZADO -->
+      <section class="text-center space-y-3">
+        <span
+          class="inline-block px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-bold tracking-wide"
+        >
+          Precios expresados en Pesos Argentinos (ARS)
+        </span>
+        <h1
+          class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900"
+        >
+          Armá tu presupuesto y revisá los requisitos
+        </h1>
+        <p class="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto">
+          Elegí la modalidad que mejor se adapte a tu negocio: envío directo a
+          tu WhatsApp o Sistema Pro con Panel Administrativo en tiempo real.
+        </p>
+      </section>
+
+      <!-- CUADRO COMPARATIVO: LANDING VS SISTEMA PRO -->
+      <section
+        class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden"
+      >
+        <div class="p-5 sm:p-6 border-b border-slate-100 bg-slate-50/70">
+          <h2 class="text-base sm:text-lg font-bold text-slate-900">
+            ¿Qué diferencia hay entre Modo Landing y Modo Sistema Pro?
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">
+            Compará ambas modalidades antes de seleccionar tu plan base.
+          </p>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs sm:text-sm">
+            <thead>
+              <tr class="border-b border-slate-200 bg-slate-50">
+                <th class="p-3.5 sm:p-4 font-bold text-slate-700 w-1/4">
+                  Característica
+                </th>
+                <th class="p-3.5 sm:p-4 font-bold text-slate-900 w-[37.5%]">
+                  Plan 1: Modo Landing / Directo a WhatsApp
+                </th>
+                <th
+                  class="p-3.5 sm:p-4 font-bold text-orange-600 w-[37.5%] bg-orange-50/40"
+                >
+                  Plan 2: Modo Sistema Pro (Con Panel Admin)
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              <tr>
+                <td class="p-3.5 sm:p-4 font-semibold text-slate-700">
+                  Ideal para
+                </td>
+                <td class="p-3.5 sm:p-4 text-slate-600">
+                  Deliverys de barrio, emprendedores, catálogos simples,
+                  profesionales independientes.
+                </td>
+                <td class="p-3.5 sm:p-4 text-slate-700 bg-orange-50/20">
+                  Bares/Restaurantes con mesas en vivo, Gimnasios con cupos,
+                  Clínicas, Comercios con Stock y Personal.
+                </td>
+              </tr>
+              <tr>
+                <td class="p-3.5 sm:p-4 font-semibold text-slate-700">
+                  ¿Cómo funciona?
+                </td>
+                <td class="p-3.5 sm:p-4 text-slate-600">
+                  El cliente arma su pedido o elige su turno y la web envía el
+                  mensaje armado directo al WhatsApp del dueño.
+                </td>
+                <td class="p-3.5 sm:p-4 text-slate-700 bg-orange-50/20">
+                  El cliente pide desde la mesa o reserva su cupo e impacta en
+                  tiempo real en el Panel Admin/Caja sin depender de WhatsApp.
+                </td>
+              </tr>
+              <tr>
+                <td class="p-3.5 sm:p-4 font-semibold text-slate-700">
+                  Autogestión
+                </td>
+                <td class="p-3.5 sm:p-4 text-slate-600">
+                  Sin panel privado. Si necesitás cambiar precios, fotos u
+                  horarios, nos avisás y lo actualizamos por vos.
+                </td>
+                <td class="p-3.5 sm:p-4 text-slate-700 bg-orange-50/20">
+                  <strong>Panel privado 24/7:</strong> el dueño o cajero edita
+                  precios, disponibilidad, cupos, mesas y horarios al instante.
+                </td>
+              </tr>
+              <tr>
+                <td class="p-3.5 sm:p-4 font-semibold text-slate-700">
+                  Estructura de Cobro
+                </td>
+                <td class="p-3.5 sm:p-4 text-slate-600">
+                  Setup inicial único + Mantenimiento mensual económico
+                  (opcional, o pago por actualización puntual).
+                </td>
+                <td class="p-3.5 sm:p-4 text-slate-700 bg-orange-50/20">
+                  Setup inicial + Abono mensual o anual obligatorio (cubre
+                  servidores en tiempo real, base de datos y soporte).
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SELECTOR DE RUBRO / SERVICIO -->
+      <section
+        class="grid grid-cols-2 sm:grid-cols-4 gap-2.5"
+        id="service-tabs"
+      >
+        <button
+          type="button"
+          data-service="menu"
+          class="service-tab px-4 py-3 rounded-xl font-bold text-xs sm:text-sm border transition flex items-center justify-center gap-2 bg-orange-500 text-white border-orange-500 shadow-sm"
+        >
+          🍔 Menú Digital
+        </button>
+        <button
+          type="button"
+          data-service="catalogo"
+          class="service-tab px-4 py-3 rounded-xl font-bold text-xs sm:text-sm border transition flex items-center justify-center gap-2 bg-white text-slate-700 border-slate-200 hover:border-orange-300"
+        >
+          🛍️ Tienda / Catálogo
+        </button>
+        <button
+          type="button"
+          data-service="turnos"
+          class="service-tab px-4 py-3 rounded-xl font-bold text-xs sm:text-sm border transition flex items-center justify-center gap-2 bg-white text-slate-700 border-slate-200 hover:border-orange-300"
+        >
+          📅 Turnos Online
+        </button>
+        <button
+          type="button"
+          data-service="gestion"
+          class="service-tab px-4 py-3 rounded-xl font-bold text-xs sm:text-sm border transition flex items-center justify-center gap-2 bg-white text-slate-700 border-slate-200 hover:border-orange-300"
+        >
+          📦 Gestión y Stock
+        </button>
+      </section>
+
+      <!-- PASO 1: PLAN BASE -->
+      <section
+        class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4"
+      >
+        <div>
+          <h2 class="text-lg font-extrabold text-slate-900">
+            1. Elegí el Plan Base
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500" id="step1-subtitle">
+            Seleccioná si preferís modalidad directa a WhatsApp o con Panel
+            Administrativo 24/7.
+          </p>
+        </div>
+        <div
+          id="plans-container"
+          class="grid grid-cols-1 sm:grid-cols-2 gap-3.5"
+        ></div>
+      </section>
+
+      <!-- PASO 2: MANTENIMIENTO Y HOSTING -->
+      <section
+        class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4"
+      >
+        <div>
+          <h2 class="text-lg font-extrabold text-slate-900">
+            2. Mantenimiento, Hosting y Soporte
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500">
+            Cubre servidores 24/7, certificado SSL, soporte prioritario y
+            actualizaciones según tu plan.
+          </p>
+        </div>
+        <div id="maintenance-container" class="space-y-3"></div>
+        <p
+          id="realtime-notice"
+          class="hidden text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-xl p-3"
+        >
+          ℹ️ <strong>Nota:</strong> Al elegir un plan con
+          <strong>Panel Admin en tiempo real</strong>, se requiere abono mensual
+          o anual activo para mantener los servidores y la base de datos
+          funcionando 24/7.
+        </p>
+      </section>
+
+      <!-- PASO 3: EXTRAS, DOMINIO Y CAPACITACIÓN -->
+      <section
+        class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-5"
+      >
+        <div>
+          <h2 class="text-lg font-extrabold text-slate-900">
+            3. Módulos Extras, Dominio y Capacitación
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500">
+            Potenciá tu plataforma con herramientas específicas para tu
+            operación (pago único).
+          </p>
+        </div>
+
+        <!-- Módulos específicos del rubro -->
+        <div class="space-y-2.5">
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-400">
+            Módulos Adicionales del Servicio
+          </p>
+          <div id="addons-container" class="space-y-2.5"></div>
+        </div>
+
+        <!-- Dominio Web -->
+        <div class="space-y-2.5 pt-2 border-t border-slate-100">
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-400">
+            Dominio Web
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <label
+              class="flex items-center justify-between p-3.5 rounded-xl border-2 border-emerald-500 bg-emerald-50/40 cursor-pointer domain-option"
+              data-domain="free"
+            >
+              <div>
+                <p class="text-sm font-bold text-slate-900">
+                  Subdominio SmartMenu
+                </p>
+                <p class="text-xs text-slate-500">tunegocio.smartmenu.com.ar</p>
+              </div>
+              <span
+                class="px-2 py-0.5 text-xs font-bold bg-emerald-600 text-white rounded"
+                >GRATIS</span
+              >
+            </label>
+            <label
+              class="flex items-center justify-between p-3.5 rounded-xl border border-slate-200 hover:border-slate-300 cursor-pointer domain-option"
+              data-domain="custom"
+            >
+              <div>
+                <p class="text-sm font-bold text-slate-900">
+                  Usar mi Dominio (.com.ar / .com)
+                </p>
+                <p class="text-xs text-slate-500">
+                  Configuración DNS personalizada
+                </p>
+              </div>
+              <span class="text-xs font-bold text-orange-600">+ $15.000</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Capacitación -->
+        <div class="space-y-2.5 pt-2 border-t border-slate-100">
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-400">
+            Capacitación de Uso
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <div
+              class="p-3.5 rounded-xl border border-emerald-200 bg-emerald-50/30 flex items-center justify-between"
+            >
+              <div>
+                <p class="text-sm font-bold text-slate-900">Guía PDF de Uso</p>
+                <p class="text-xs text-slate-500">
+                  Instructivo paso a paso para vos y tu equipo
+                </p>
+              </div>
+              <span
+                class="px-2 py-0.5 text-xs font-bold bg-emerald-100 text-emerald-700 rounded"
+                >INCLUIDO</span
+              >
+            </div>
+            <label
+              class="p-3.5 rounded-xl border border-slate-200 hover:border-orange-300 cursor-pointer flex items-start gap-3"
+            >
+              <input
+                type="checkbox"
+                id="onsite-training"
+                class="mt-1 rounded text-orange-500 focus:ring-orange-500"
+              />
+              <div>
+                <p class="text-sm font-bold text-slate-900">
+                  Capacitación Presencial en Local
+                </p>
+                <p class="text-xs text-slate-500">
+                  A cotizar según zona y cantidad de empleados
+                </p>
+              </div>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- PASO 4: REQUISITOS -->
+      <section
+        class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-3"
+      >
+        <h2 class="text-lg font-extrabold text-slate-900">
+          📋 4. Requisitos Necesarios para Comenzar
+        </h2>
+        <ul
+          id="requirements-list"
+          class="space-y-2 text-xs sm:text-sm text-slate-600 list-disc pl-5"
+        ></ul>
+        <div
+          class="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-800"
+        >
+          <strong>Importante:</strong> Una vez aprobado el presupuesto y
+          recibida la información, la entrega demora entre
+          <strong>48 y 72 horas hábiles</strong>.
+        </div>
+      </section>
+
+      <!-- RESUMEN DE COTIZACIÓN -->
+      <section
+        class="bg-white rounded-2xl border-2 border-slate-900 p-5 sm:p-7 shadow-lg space-y-5"
+        id="resumen-box"
+      >
+        <div
+          class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4"
+        >
+          <div>
+            <span
+              class="text-xs font-extrabold uppercase tracking-wider text-orange-600"
+              >Resumen de tu Cotización</span
+            >
+            <h3
+              id="summary-title"
+              class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-0.5"
+            >
+              Menú Moderno + Panel Admin
+            </h3>
+          </div>
+          <span
+            id="summary-badge"
+            class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700"
+          >
+            Menú Digital
+          </span>
+        </div>
+
+        <div class="space-y-2.5 text-sm">
+          <div class="flex justify-between">
+            <span class="text-slate-600">Setup Inicial (Plan Base):</span>
+            <span id="summary-setup" class="font-bold text-slate-900"
+              >$ 90.000</span
+            >
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-600">Módulos Extras + Dominio:</span>
+            <span id="summary-extras" class="font-bold text-slate-900"
+              >$ 0</span
+            >
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-600">Mantenimiento / Hosting:</span>
+            <span id="summary-maint" class="font-bold text-emerald-600"
+              >$ 20.000 / mes</span
+            >
+          </div>
+          <div
+            id="summary-addons-tags"
+            class="flex flex-wrap gap-1.5 pt-1"
+          ></div>
+        </div>
+
+        <div
+          class="pt-4 border-t border-slate-200 flex items-baseline justify-between"
+        >
+          <div>
+            <p class="text-xs font-bold uppercase text-slate-400">
+              Total a Pagar Hoy
+            </p>
+            <p class="text-xs text-slate-500">
+              Incluye setup inicial + primer período elegido
+            </p>
+          </div>
+          <p
+            id="summary-total"
+            class="text-3xl sm:text-4xl font-extrabold text-slate-900"
+          >
+            $ 110.000
+          </p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+          <div>
+            <label
+              for="business-name"
+              class="block text-xs font-bold text-slate-700 mb-1"
+              >Nombre de tu negocio o profesional *</label
+            >
+            <input
+              type="text"
+              id="business-name"
+              placeholder="Ej: Bar La Esquina / Consultorio Dra. Pérez"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-orange-500"
+            />
+          </div>
+
+          <label
+            class="flex items-start gap-2.5 text-xs text-slate-600 cursor-pointer"
+          >
+            <input
+              type="checkbox"
+              id="accept-terms"
+              class="mt-0.5 rounded text-orange-500 focus:ring-orange-500"
+            />
+            <span
+              >Leí y acepto los
+              <a
+                href="terminos.html"
+                target="_blank"
+                class="underline font-semibold text-orange-600"
+                >Términos y Condiciones</a
+              >, incluyendo el alcance del mantenimiento y los requisitos de
+              entrega.</span
+            >
+          </label>
+
+          <button
+            type="button"
+            id="btn-send-quote"
+            class="w-full py-3.5 px-5 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-extrabold text-sm sm:text-base shadow-md transition flex items-center justify-center gap-2"
+          >
+            <span>Solicitar este Presupuesto por WhatsApp</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- NUEVA SECCIÓN: CONSULTA PERSONALIZADA / AGENDAR LLAMADA -->
+      <section
+        id="consulta-personalizada"
+        class="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-md space-y-5"
+      >
+        <div class="space-y-2">
+          <span
+            class="inline-block px-3 py-1 rounded-full bg-orange-500/20 text-orange-300 text-xs font-bold"
+          >
+            Asesoramiento 1 a 1 sin cargo
+          </span>
+          <h2 class="text-xl sm:text-2xl font-extrabold">
+            ¿Necesitás algo a medida o preferís que te llamemos?
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-300">
+            Si tenés dudas sobre qué plan te conviene o buscás un desarrollo
+            personalizado, dejá tus datos y coordinamos una llamada breve.
+          </p>
+        </div>
+
+        <form
+          id="custom-call-form"
+          class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-slate-900"
+        >
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1"
+              >Tu Nombre *</label
+            >
+            <input
+              type="text"
+              id="lead-name"
+              required
+              placeholder="Ej: Martín Gómez"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-white text-sm focus:outline-none"
+            />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1"
+              >Tu WhatsApp o Email *</label
+            >
+            <input
+              type="text"
+              id="lead-contact"
+              required
+              placeholder="Ej: 381 555-1234 / martin@mail.com"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-white text-sm focus:outline-none"
+            />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1"
+              >Día preferido para hablar *</label
+            >
+            <input
+              type="date"
+              id="lead-date"
+              required
+              class="w-full px-3.5 py-2.5 rounded-xl bg-white text-sm focus:outline-none"
+            />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1"
+              >Franja horaria preferida *</label
+            >
+            <select
+              id="lead-time"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-white text-sm focus:outline-none"
+            >
+              <option value="Mañana (09:00 a 12:30)">
+                Mañana (09:00 a 12:30)
+              </option>
+              <option value="Siesta / Tarde (14:00 a 17:30)">
+                Siesta / Tarde (14:00 a 17:30)
+              </option>
+              <option value="Tarde / Noche (18:00 a 21:00)">
+                Tarde / Noche (18:00 a 21:00)
+              </option>
+            </select>
+          </div>
+          <div class="sm:col-span-2">
+            <label class="block text-xs font-semibold text-slate-300 mb-1"
+              >Contanos brevemente sobre tu negocio (opcional)</label
+            >
+            <input
+              type="text"
+              id="lead-notes"
+              placeholder="Ej: Tengo un bar con 15 mesas y quiero pedidos en vivo..."
+              class="w-full px-3.5 py-2.5 rounded-xl bg-white text-sm focus:outline-none"
+            />
+          </div>
+          <div
+            class="sm:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2"
+          >
+            <button
+              type="button"
+              id="btn-lead-wsp"
+              class="py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm transition"
+            >
+              📲 Enviar y coordinar por WhatsApp
+            </button>
+            <button
+              type="button"
+              id="btn-lead-mail"
+              class="py-3 px-4 rounded-xl bg-slate-700 hover:bg-slate-600 text-white font-bold text-sm transition"
+            >
+              ✉️ Enviar solicitud por Email
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="border-t border-slate-200 bg-white py-6 mt-12">
+      <div
+        class="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500"
+      >
+        <p>© 2026 SmartMenu. Todos los derechos reservados.</p>
+        <a href="terminos.html" class="underline hover:text-slate-800"
+          >Términos y Condiciones</a
+        >
+      </div>
+    </footer>
+
+    <script>
+      // ==========================================
+      // CONFIGURACIÓN DE CONTACTO
+      // ==========================================
+      const CONFIG = {
+        whatsappNumber: "5493816320130",
+        contactEmail: "smartmenuprofesional@gmail.com",
+      };
+
+      // ==========================================
+      // BASE DE DATOS DE PLANES Y EXTRAS
+      // ==========================================
+      const SERVICES = {
+        menu: {
+          label: "Menú Digital",
+          subtitle:
+            "Elegí entre recepción directa por WhatsApp o Sistema Pro con Panel Admin y pedidos en vivo a caja.",
+          plans: [
+            {
+              id: "m-clasico",
+              badge: "MÁS ECONÓMICO",
+              name: "Menú Clásico (Texto)",
+              price: 30000,
+              isPro: false,
+              desc: "Listado ágil por categorías con envío de pedido directo a tu WhatsApp.",
+            },
+            {
+              id: "m-clasico-pro",
+              badge: "AUTOGESTIÓN",
+              name: "Menú Clásico + Panel Admin",
+              price: 70000,
+              isPro: true,
+              desc: "Editá precios 24/7 y elegí entre pedidos por WhatsApp o en vivo a caja.",
+            },
+            {
+              id: "m-moderno",
+              badge: "VISUAL",
+              name: "Menú Moderno (Con Fotos)",
+              price: 50000,
+              isPro: false,
+              desc: "Diseño visual con fotos HD, destacados y pedido armado directo a WhatsApp.",
+            },
+            {
+              id: "m-moderno-pro",
+              badge: "IDEAL BARES / RESTÓ",
+              name: "Menú Moderno + Panel Admin",
+              price: 90000,
+              isPro: true,
+              desc: "Panel 24/7 + Pedidos en Vivo directo a Caja/Barra por mesa o WhatsApp.",
+            },
+          ],
+          addons: [
+            {
+              id: "addon-dashboard",
+              name: "Dashboard de Ventas y Métricas",
+              price: 25000,
+              desc: "Reportes detallados de ventas por día, semana, mes y trimestre.",
+            },
+            {
+              id: "addon-staff",
+              name: "Control de Personal y Meseros",
+              price: 25000,
+              desc: "Usuarios por rol para registrar qué mesero atendió cada mesa o pedido.",
+            },
+            {
+              id: "addon-pdf",
+              name: "Versión PDF Adicional Imprimible",
+              price: 15000,
+              desc: "Carta física lista para imprimir con código QR integrado.",
+            },
+          ],
+          requirements: [
+            "Logo en alta calidad (PNG, SVG o PDF).",
+            "Lista de platos/bebidas con precios y descripciones (Excel, Word o texto).",
+            "Fotografías de los productos (si elegiste Menú Moderno).",
+            "Horarios de atención, zonas de delivery y medios de pago aceptados.",
+          ],
+        },
+        catalogo: {
+          label: "Tienda / Catálogo",
+          subtitle:
+            "Mostrá tus productos con carrito de compras hacia WhatsApp o gestioná stock en tiempo real.",
+          plans: [
+            {
+              id: "c-basico",
+              badge: "DIRECTO A WHATSAPP",
+              name: "Catálogo Comercio",
+              price: 50000,
+              isPro: false,
+              desc: "Catálogo con carrito de compras. El cliente arma su pedido y te llega al WhatsApp.",
+            },
+            {
+              id: "c-pro",
+              badge: "AUTOGESTIÓN 24/7",
+              name: "Smart Catálogo + Panel Admin",
+              price: 100000,
+              isPro: true,
+              desc: "Panel privado para subir productos, variantes, precios y controlar stock al instante.",
+            },
+          ],
+          addons: [
+            {
+              id: "addon-dashboard",
+              name: "Dashboard de Ventas y Métricas",
+              price: 25000,
+              desc: "Estadísticas de productos más vendidos y facturación por período.",
+            },
+            {
+              id: "addon-staff",
+              name: "Control de Personal / Vendedores",
+              price: 25000,
+              desc: "Asignación de permisos y registro de ventas por vendedor.",
+            },
+            {
+              id: "addon-pdf",
+              name: "Catálogo PDF Imprimible",
+              price: 15000,
+              desc: "Versión descargable en PDF lista para enviar por difusión o imprimir.",
+            },
+          ],
+          requirements: [
+            "Logo de la marca y paleta de colores.",
+            "Listado de productos, categorías, talles/variantes y precios.",
+            "Fotos de los productos (preferentemente fondo limpio o buena iluminación).",
+            "Políticas de envío, retiro en local y formas de pago.",
+          ],
+        },
+        turnos: {
+          label: "Turnos Online",
+          subtitle:
+            "Automatizá la reserva de citas para consultorios, barberías, estética o canchas.",
+          plans: [
+            {
+              id: "t-landing",
+              badge: "SIMPLE",
+              name: "Landing Turnos (WhatsApp)",
+              price: 35000,
+              isPro: false,
+              desc: "El cliente selecciona servicio, día y horario, y te envía la solicitud por WhatsApp.",
+            },
+            {
+              id: "t-pro",
+              badge: "AGENDA EN VIVO",
+              name: "Sistema Turnos Pro + Panel Admin",
+              price: 75000,
+              isPro: true,
+              desc: "Agenda en tiempo real con bloqueo automático de turnos ocupados y panel 24/7.",
+            },
+          ],
+          addons: [
+            {
+              id: "addon-pdf-turnos",
+              name: "Grilla Semanal de Turnos Imprimible (PDF)",
+              price: 10000,
+              desc: "Planilla semanal limpia para imprimir y tener en recepción.",
+            },
+            {
+              id: "addon-reportes-turnos",
+              name: "Reportes de Asistencia y Caja",
+              price: 20000,
+              desc: "Historial de turnos asistidos, cancelados e ingresos por profesional.",
+            },
+          ],
+          requirements: [
+            "Nombre del profesional o centro y logo.",
+            "Lista de servicios con duración estimada y valor (opcional).",
+            "Días y franjas horarias de atención por cada profesional.",
+            "Datos de ubicación (Google Maps) y políticas de cancelación.",
+          ],
+        },
+        gestion: {
+          label: "Gestión y Stock",
+          subtitle:
+            "Sistema integral en la nube con Panel Administrativo y control de caja incluidos de base.",
+          plans: [
+            {
+              id: "g-pro",
+              badge: "PANEL ADMIN INCLUIDO",
+              name: "Sistema Integral Gestión y Stock",
+              price: 120000,
+              isPro: true,
+              desc: "Control total de inventario, entradas/salidas, punto de venta (caja) y métricas en tiempo real.",
+            },
+          ],
+          addons: [
+            {
+              id: "addon-staff-caja",
+              name: "Control de Empleados y Turnos de Caja",
+              price: 25000,
+              desc: "Apertura/cierre de caja por empleado y auditoría de movimientos.",
+            },
+            {
+              id: "addon-pdf-stock",
+              name: "Exportación de Precios / Inventario PDF",
+              price: 10000,
+              desc: "Generación rápida de listas de precios mayoristas/minoristas en PDF.",
+            },
+          ],
+          requirements: [
+            "Logo y datos comerciales del establecimiento.",
+            "Planilla inicial de productos/insumos con costos, precios y stock actual.",
+            "Definición de categorías y proveedores principales.",
+            "Listado de usuarios/cajeros que operarán el sistema.",
+          ],
+        },
+      };
+
+      const MAINTENANCE_OPTIONS = [
+        {
+          id: "monthly",
+          badge: "RECOMENDADO",
+          title: "Plan Mantenimiento Mensual",
+          price: 20000,
+          periodLabel: "/ mes",
+          desc: "Hosting 24/7, SSL, soporte prioritario y hasta 2 actualizaciones mensuales (o mejoras menores de diseño).",
+        },
+        {
+          id: "annual",
+          badge: "50% OFF — AHORRÁS $120.000",
+          title: "Plan Ahorro Anual (12 meses)",
+          originalPrice: 240000,
+          price: 120000,
+          periodLabel: "/ año",
+          desc: "Pagás una sola vez al año con 50% de descuento. Incluye hosting 24/7, soporte y mantenimiento todo el año.",
+        },
+        {
+          id: "none",
+          badge: "SIN ABONO",
+          title: "Solo Setup Inicial",
+          price: 0,
+          periodLabel: "único",
+          desc: "Abonás únicamente la creación inicial. Cambios o soporte futuro se cotizan por solicitud puntual.",
+        },
+      ];
+
+      // ==========================================
+      // ESTADO ACTUAL
+      // ==========================================
+      let state = {
+        serviceKey: "menu",
+        planId: "m-moderno-pro",
+        maintId: "monthly",
+        selectedAddons: [],
+        domain: "free", // 'free' | 'custom'
+        onsiteTraining: false,
+      };
+
+      const formatARS = (num) => "$ " + num.toLocaleString("es-AR");
+
+      // ==========================================
+      // RENDERIZADO DINÁMICO
+      // ==========================================
+      function renderAll() {
+        const service = SERVICES[state.serviceKey];
+        document.getElementById("step1-subtitle").textContent =
+          service.subtitle;
+
+        // 1. Render Planes
+        const plansContainer = document.getElementById("plans-container");
+        plansContainer.innerHTML = service.plans
+          .map((plan) => {
+            const isSelected = plan.id === state.planId;
+            return `
+          <div onclick="selectPlan('${plan.id}')" class="p-4 rounded-xl border-2 cursor-pointer transition flex flex-col justify-between ${isSelected ? "card-selected border-orange-500" : "border-slate-200 hover:border-orange-300 bg-white"}">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <span class="text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded ${plan.isPro ? "bg-orange-100 text-orange-700" : "bg-slate-100 text-slate-600"}">
+                  ${plan.badge}
+                </span>
+                <span class="w-4 h-4 rounded-full border flex items-center justify-center ${isSelected ? "border-orange-500 bg-orange-500" : "border-slate-300"}">
+                  ${isSelected ? '<span class="w-1.5 h-1.5 rounded-full bg-white"></span>' : ""}
+                </span>
+              </div>
+              <h3 class="font-extrabold text-base text-slate-900">${plan.name}</h3>
+              <p class="text-2xl font-extrabold text-slate-900 my-1.5">${formatARS(plan.price)} <span class="text-xs font-medium text-slate-500">/ único</span></p>
+              <p class="text-xs text-slate-600 leading-relaxed">${plan.desc}</p>
+            </div>
+          </div>
+        `;
+          })
+          .join("");
+
+        const currentPlan =
+          service.plans.find((p) => p.id === state.planId) || service.plans[0];
+
+        // Si es Pro, no permitir mantenimiento "none"
+        if (currentPlan.isPro && state.maintId === "none") {
+          state.maintId = "monthly";
+        }
+        document
+          .getElementById("realtime-notice")
+          .classList.toggle("hidden", !currentPlan.isPro);
+
+        // 2. Render Mantenimiento
+        const maintContainer = document.getElementById("maintenance-container");
+        maintContainer.innerHTML = MAINTENANCE_OPTIONS.map((m) => {
+          const disabled = currentPlan.isPro && m.id === "none";
+          const isSelected = m.id === state.maintId;
+          return `
+          <div ${disabled ? "" : `onclick="selectMaint('${m.id}')"`} class="p-4 rounded-xl border-2 transition ${disabled ? "opacity-40 cursor-not-allowed bg-slate-50 border-slate-200" : "cursor-pointer " + (isSelected ? "maint-selected border-emerald-500" : "border-slate-200 hover:border-emerald-300 bg-white")}">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div class="space-y-1">
+                <span class="inline-block text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded ${m.id === "annual" ? "bg-emerald-600 text-white" : "bg-slate-100 text-slate-700"}">
+                  ${m.badge}
+                </span>
+                <h3 class="font-extrabold text-base text-slate-900">${m.title}</h3>
+              </div>
+              <div class="text-right">
+                ${m.originalPrice ? `<p class="text-xs line-through text-slate-400">${formatARS(m.originalPrice)} / año</p>` : ""}
+                <p class="text-xl font-extrabold text-slate-900">${formatARS(m.price)} <span class="text-xs font-medium text-slate-500">${m.periodLabel}</span></p>
+              </div>
+            </div>
+            <p class="text-xs text-slate-600 mt-1.5">${m.desc}</p>
+          </div>
+        `;
+        }).join("");
+
+        // 3. Render Addons específicos
+        const addonsContainer = document.getElementById("addons-container");
+        addonsContainer.innerHTML = service.addons
+          .map((addon) => {
+            const checked = state.selectedAddons.includes(addon.id);
+            return `
+          <label class="flex items-start justify-between gap-3 p-3.5 rounded-xl border cursor-pointer transition ${checked ? "border-orange-500 bg-orange-50/40" : "border-slate-200 hover:border-slate-300"}">
+            <div class="flex items-start gap-3">
+              <input type="checkbox" onchange="toggleAddon('${addon.id}')" ${checked ? "checked" : ""} class="mt-1 rounded text-orange-500 focus:ring-orange-500">
+              <div>
+                <p class="text-sm font-bold text-slate-900">${addon.name}</p>
+                <p class="text-xs text-slate-500">${addon.desc}</p>
+              </div>
+            </div>
+            <span class="text-xs sm:text-sm font-extrabold text-orange-600 whitespace-nowrap">+ ${formatARS(addon.price)}</span>
+          </label>
+        `;
+          })
+          .join("");
+
+        // 4. Render Requisitos
+        document.getElementById("requirements-list").innerHTML =
+          service.requirements.map((req) => `<li>${req}</li>`).join("");
+
+        // 5. Actualizar Resumen
+        updateSummary(service, currentPlan);
+      }
+
+      function updateSummary(service, currentPlan) {
+        const maint = MAINTENANCE_OPTIONS.find((m) => m.id === state.maintId);
+        const activeAddons = service.addons.filter((a) =>
+          state.selectedAddons.includes(a.id),
+        );
+        const addonsCost = activeAddons.reduce(
+          (acc, item) => acc + item.price,
+          0,
+        );
+        const domainCost = state.domain === "custom" ? 15000 : 0;
+        const extrasTotal = addonsCost + domainCost;
+        const grandTotal = currentPlan.price + extrasTotal + maint.price;
+
+        document.getElementById("summary-title").textContent = currentPlan.name;
+        document.getElementById("summary-badge").textContent = service.label;
+        document.getElementById("summary-setup").textContent = formatARS(
+          currentPlan.price,
+        );
+        document.getElementById("summary-extras").textContent =
+          formatARS(extrasTotal);
+        document.getElementById("summary-maint").textContent =
+          `${formatARS(maint.price)} ${maint.periodLabel}`;
+        document.getElementById("summary-total").textContent =
+          formatARS(grandTotal);
+
+        const tagsContainer = document.getElementById("summary-addons-tags");
+        let tags = activeAddons.map(
+          (a) =>
+            `<span class="px-2 py-0.5 rounded bg-orange-100 text-orange-800 text-[11px] font-semibold">+ ${a.name}</span>`,
+        );
+        if (state.domain === "custom")
+          tags.push(
+            `<span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-semibold">+ Dominio Propio</span>`,
+          );
+        if (state.onsiteTraining)
+          tags.push(
+            `<span class="px-2 py-0.5 rounded bg-blue-100 text-blue-800 text-[11px] font-semibold">+ Capacitación Presencial (A cotizar)</span>`,
+          );
+        tagsContainer.innerHTML = tags.join("");
+      }
+
+      // ==========================================
+      // INTERACCIONES
+      // ==========================================
+      function selectPlan(planId) {
+        state.planId = planId;
+        renderAll();
+      }
+
+      function selectMaint(maintId) {
+        state.maintId = maintId;
+        renderAll();
+      }
+
+      function toggleAddon(addonId) {
+        if (state.selectedAddons.includes(addonId)) {
+          state.selectedAddons = state.selectedAddons.filter(
+            (id) => id !== addonId,
+          );
+        } else {
+          state.selectedAddons.push(addonId);
+        }
+        renderAll();
+      }
+
+      // Tabs de servicio
+      document.querySelectorAll(".service-tab").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".service-tab").forEach((b) => {
+            b.className =
+              "service-tab px-4 py-3 rounded-xl font-bold text-xs sm:text-sm border transition flex items-center justify-center gap-2 bg-white text-slate-700 border-slate-200 hover:border-orange-300";
+          });
+          btn.className =
+            "service-tab px-4 py-3 rounded-xl font-bold text-xs sm:text-sm border transition flex items-center justify-center gap-2 bg-orange-500 text-white border-orange-500 shadow-sm";
+
+          state.serviceKey = btn.dataset.service;
+          state.planId = SERVICES[state.serviceKey].plans[0].id;
+          state.selectedAddons = [];
+          renderAll();
+        });
+      });
+
+      // Dominio
+      document.querySelectorAll(".domain-option").forEach((opt) => {
+        opt.addEventListener("click", () => {
+          state.domain = opt.dataset.domain;
+          document.querySelectorAll(".domain-option").forEach((o) => {
+            o.className =
+              "flex items-center justify-between p-3.5 rounded-xl border border-slate-200 hover:border-slate-300 cursor-pointer domain-option";
+          });
+          opt.className =
+            "flex items-center justify-between p-3.5 rounded-xl border-2 border-emerald-500 bg-emerald-50/40 cursor-pointer domain-option";
+          renderAll();
+        });
+      });
+
+      // Capacitación presencial
+      document
+        .getElementById("onsite-training")
+        .addEventListener("change", (e) => {
+          state.onsiteTraining = e.target.checked;
+          renderAll();
+        });
+
+      // Enviar Cotización por WhatsApp
+      document
+        .getElementById("btn-send-quote")
+        .addEventListener("click", () => {
+          const business = document
+            .getElementById("business-name")
+            .value.trim();
+          const accepted = document.getElementById("accept-terms").checked;
+
+          if (!business) {
+            alert("Por favor, ingresá el nombre de tu negocio o profesional.");
+            document.getElementById("business-name").focus();
+            return;
+          }
+          if (!accepted) {
+            alert(
+              "Por favor, aceptá los Términos y Condiciones para continuar.",
+            );
+            return;
+          }
+
+          const service = SERVICES[state.serviceKey];
+          const currentPlan = service.plans.find((p) => p.id === state.planId);
+          const maint = MAINTENANCE_OPTIONS.find((m) => m.id === state.maintId);
+          const activeAddons = service.addons.filter((a) =>
+            state.selectedAddons.includes(a.id),
+          );
+          const extrasTotal =
+            activeAddons.reduce((acc, i) => acc + i.price, 0) +
+            (state.domain === "custom" ? 15000 : 0);
+          const grandTotal = currentPlan.price + extrasTotal + maint.price;
+
+          const msg = [
+            `Hola Santiago! Quiero solicitar un presupuesto de *SmartMenu*:`,
+            `• *Negocio:* ${business}`,
+            `• *Servicio:* ${service.label}`,
+            `• *Plan Base:* ${currentPlan.name} (${formatARS(currentPlan.price)})`,
+            `• *Mantenimiento:* ${maint.title} (${formatARS(maint.price)} ${maint.periodLabel})`,
+            activeAddons.length
+              ? `• *Módulos Extras:* ${activeAddons.map((a) => a.name).join(", ")}`
+              : null,
+            `• *Dominio:* ${state.domain === "custom" ? "Dominio propio (+ $15.000)" : "Subdominio Gratis"}`,
+            `• *Capacitación:* ${state.onsiteTraining ? "Guía PDF + Solicito cotizar Capacitación Presencial" : "Guía PDF de uso incluida"}`,
+            `• *TOTAL ESTIMADO HOY:* *${formatARS(grandTotal)}*`,
+          ]
+            .filter(Boolean)
+            .join("\n");
+
+          window.open(
+            `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`,
+            "_blank",
+          );
+        });
+
+      // Enviar Solicitud de Llamada Personalizada
+      function getLeadMessage() {
+        const name = document.getElementById("lead-name").value.trim();
+        const contact = document.getElementById("lead-contact").value.trim();
+        const date = document.getElementById("lead-date").value;
+        const time = document.getElementById("lead-time").value;
+        const notes = document.getElementById("lead-notes").value.trim();
+
+        if (!name || !contact || !date) {
+          alert("Por favor completá tu nombre, contacto y día preferido.");
+          return null;
+        }
+
+        return [
+          `Hola Santiago! Quiero agendar una *Consulta Personalizada*:`,
+          `• *Nombre:* ${name}`,
+          `• *Contacto:* ${contact}`,
+          `• *Día preferido:* ${date}`,
+          `• *Horario:* ${time}`,
+          notes ? `• *Comentario:* ${notes}` : null,
+        ]
+          .filter(Boolean)
+          .join("\n");
+      }
+
+      document.getElementById("btn-lead-wsp").addEventListener("click", () => {
+        const text = getLeadMessage();
+        if (text)
+          window.open(
+            `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(text)}`,
+            "_blank",
+          );
+      });
+
+      document.getElementById("btn-lead-mail").addEventListener("click", () => {
+        const text = getLeadMessage();
+        if (text) {
+          const subject = encodeURIComponent(
+            "Consulta Personalizada - SmartMenu",
+          );
+          window.location.href = `mailto:${CONFIG.contactEmail}?subject=${subject}&body=${encodeURIComponent(text)}`;
+        }
+      });
+
+      // Inicializar
+      renderAll();
+    </script>
+  </body>
+</html>

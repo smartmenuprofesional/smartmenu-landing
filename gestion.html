@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestión y Stock en Tiempo Real | Smart Menu Tucumán</title>
+    <meta
+      name="description"
+      content="Simulador en tiempo real de tienda online + panel administrativo de stock, pedidos y clientes desarrollado por Smart Menu."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      };
+      if (localStorage.getItem('smartmenu_theme') === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="bg-stone-50 text-stone-900 dark:bg-zinc-950 dark:text-zinc-100 font-sans antialiased pb-20 selection:bg-orange-500 selection:text-white transition-colors"
+  >
+    <!-- NAVBAR UNIFICADO -->
+    <header
+      class="sticky top-0 z-50 bg-white/95 dark:bg-zinc-950/90 backdrop-blur-md border-b border-stone-200 dark:border-emerald-900/40 transition-colors"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2"
+      >
+        <a href="index.html" class="flex items-center gap-2.5 shrink-0">
+          <div
+            class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-900 border border-emerald-400/30 flex items-center justify-center text-orange-400 font-black shadow-md"
+          >
+            <i class="fa-solid fa-qrcode"></i>
+          </div>
+          <span class="font-black text-xl tracking-tight text-stone-900 dark:text-white">
+            Smart<span class="text-orange-500">Menu</span>
+          </span>
+        </a>
+
+        <nav
+          class="hidden lg:flex items-center gap-6 text-sm font-semibold text-stone-600 dark:text-zinc-300"
+        >
+          <a href="index.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Inicio</a>
+          <a href="demo_moderno.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Menú Moderno</a>
+          <a href="demo_clasico.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Menú Clásico</a>
+          <a href="catalogos.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Catálogos</a>
+          <a href="turnos.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Turnos</a>
+          <a href="gestion.html" class="text-orange-600 dark:text-orange-500 font-extrabold">Gestión y Stock</a>
+          <a href="planes.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Planes</a>
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <button
+            onclick="toggleTheme()"
+            title="Cambiar entre Modo Día y Modo Noche"
+            class="bg-stone-100 hover:bg-stone-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 border border-stone-300 dark:border-zinc-700 px-3 py-1.5 rounded-full text-xs font-extrabold text-stone-800 dark:text-zinc-200 flex items-center gap-1.5 transition"
+          >
+            <i class="fa-solid fa-moon text-stone-700 theme-icon"></i>
+            <span class="hidden sm:inline theme-label">Modo Noche</span>
+          </button>
+          <button
+            onclick="toggleCurrency()"
+            class="bg-emerald-100 dark:bg-emerald-950/80 text-emerald-900 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700/50 px-3 py-1.5 rounded-full text-xs font-extrabold flex items-center gap-1.5 hover:bg-emerald-200 dark:hover:bg-emerald-900 transition"
+          >
+            <i class="fa-solid fa-money-bill-transfer"></i>
+            <span id="currency-label">Ver en USD*</span>
+          </button>
+          <a
+            href="planes.html"
+            class="hidden sm:inline-block bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-xl text-xs font-bold transition shadow-md"
+          >
+            Ver Planes Gestión
+          </a>
+          <button
+            onclick="toggleMobileMenu()"
+            aria-label="Abrir menú"
+            class="lg:hidden w-9 h-9 rounded-xl bg-stone-100 dark:bg-zinc-900 border border-stone-300 dark:border-zinc-700 text-stone-800 dark:text-zinc-200 flex items-center justify-center"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Menú Móvil -->
+      <div
+        id="mobile-menu"
+        class="hidden lg:hidden bg-white dark:bg-zinc-950 border-t border-stone-200 dark:border-zinc-800 px-4 py-3 space-y-1 shadow-lg"
+      >
+        <a href="index.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Inicio</a>
+        <a href="demo_moderno.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Menú Moderno</a>
+        <a href="demo_clasico.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Menú Clásico</a>
+        <a href="catalogos.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Catálogos</a>
+        <a href="turnos.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Turnos</a>
+        <a href="gestion.html" class="block px-3 py-2 rounded-xl text-sm font-bold bg-orange-50 text-orange-600 dark:bg-orange-500/15 dark:text-orange-400">Gestión y Stock</a>
+        <a href="planes.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Planes</a>
+      </div>
+    </header>
+
+    <!-- ENCABEZADO & SWITCHER DE VISTAS -->
+    <section
+      class="pt-10 pb-8 bg-gradient-to-b from-emerald-50/80 to-stone-50 dark:from-emerald-950/25 dark:to-zinc-950 border-b border-stone-200 dark:border-zinc-900"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="flex flex-col lg:flex-row lg:items-center justify-between gap-6"
+        >
+          <div>
+            <span
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 dark:bg-orange-500/15 border border-orange-300 dark:border-orange-500/30 text-orange-700 dark:text-orange-400 text-xs font-extrabold mb-2"
+            >
+              <i class="fa-solid fa-arrows-rotate"></i> Demo Interactiva
+              Sincronizada
+            </span>
+            <h1
+              class="text-3xl sm:text-4xl font-black tracking-tight text-stone-900 dark:text-white"
+            >
+              Gestión <span class="text-orange-500">Smart Menu</span> (Stock,
+              Ventas &amp; Clientes)
+            </h1>
+            <p class="text-stone-600 dark:text-zinc-400 text-xs sm:text-sm mt-1.5 max-w-2xl">
+              Simulá una compra en la
+              <strong class="text-stone-900 dark:text-zinc-200">Vista Cliente</strong> y observá
+              cómo automáticamente se descuenta el
+              <strong class="text-stone-900 dark:text-zinc-200">Stock</strong>, ingresa la orden y
+              se registra el historial del comprador en el
+              <strong class="text-stone-900 dark:text-zinc-200">Panel Admin</strong>.
+            </p>
+          </div>
+
+          <!-- CONTROLES DE VISTA -->
+          <div
+            class="flex flex-wrap gap-2 bg-white dark:bg-zinc-900 p-1.5 rounded-2xl border border-stone-200 dark:border-zinc-800 shadow-sm"
+          >
+            <button
+              onclick="setViewMode('split')"
+              id="view-split"
+              class="hidden xl:flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-extrabold bg-orange-500 text-white transition"
+            >
+              <i class="fa-solid fa-table-columns"></i> Vista Dividida
+            </button>
+            <button
+              onclick="setViewMode('client')"
+              id="view-client"
+              class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-extrabold text-stone-700 dark:text-zinc-300 hover:text-stone-900 dark:hover:text-white transition"
+            >
+              <i class="fa-solid fa-bag-shopping"></i> Vista Cliente
+            </button>
+            <button
+              onclick="setViewMode('admin')"
+              id="view-admin"
+              class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-extrabold text-stone-700 dark:text-zinc-300 hover:text-stone-900 dark:hover:text-white transition relative"
+            >
+              <i class="fa-solid fa-gauge-high"></i> Panel Admin
+              <span
+                id="unseen-badge"
+                class="hidden bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded-full animate-bounce"
+                >0</span
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div id="workspace-grid" class="grid xl:grid-cols-12 gap-8 items-start">
+        <!-- COLUMNA CLIENTE -->
+        <section
+          id="client-panel"
+          class="xl:col-span-6 bg-white dark:bg-zinc-900 rounded-3xl border border-stone-200 dark:border-zinc-800 p-6 shadow-md"
+        >
+          <div
+            class="flex items-center justify-between pb-4 mb-5 border-b border-stone-200 dark:border-zinc-800"
+          >
+            <div>
+              <span
+                class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950 border border-emerald-300 dark:border-emerald-700/50 px-2.5 py-0.5 rounded-full"
+              >
+                Experiencia del Comprador
+              </span>
+              <h2 class="text-xl font-black text-stone-900 dark:text-white mt-1.5">
+                Tienda Gestión Smart Menu
+              </h2>
+            </div>
+            <div class="text-right">
+              <span class="text-xs text-stone-500 dark:text-zinc-400">En carrito:</span>
+              <span
+                id="client-cart-count"
+                class="font-extrabold text-orange-600 dark:text-orange-400 text-sm ml-1"
+                >0 ítems</span
+              >
+            </div>
+          </div>
+
+          <div id="store-products" class="grid sm:grid-cols-2 gap-3 mb-6"></div>
+
+          <!-- Carrito y Checkout Simulado -->
+          <div class="bg-stone-50 dark:bg-zinc-950 rounded-2xl border border-stone-200 dark:border-zinc-800 p-4">
+            <h3
+              class="text-sm font-extrabold text-stone-900 dark:text-white mb-3 flex items-center gap-2"
+            >
+              <i class="fa-solid fa-cart-shopping text-orange-500"></i> Carrito
+              y Simulación de Compra
+            </h3>
+
+            <div id="store-cart-items" class="space-y-2 mb-4 text-xs"></div>
+
+            <div class="grid sm:grid-cols-2 gap-2.5 mb-3">
+              <input
+                type="text"
+                id="checkout-name"
+                placeholder="Nombre del cliente (Ej: Valentina Ruiz)"
+                class="px-3 py-2.5 rounded-xl border border-stone-300 dark:border-zinc-800 text-xs bg-white dark:bg-zinc-900 text-stone-900 dark:text-white placeholder-stone-400 dark:placeholder-zinc-500 focus:outline-none focus:border-orange-500"
+              />
+              <select
+                id="checkout-payment"
+                class="px-3 py-2.5 rounded-xl border border-stone-300 dark:border-zinc-800 text-xs bg-white dark:bg-zinc-900 text-stone-900 dark:text-white focus:outline-none focus:border-orange-500"
+              >
+                <option value="Transferencia">Transferencia Bancaria</option>
+                <option value="Mercado Pago">
+                  Mercado Pago (Directo al local)
+                </option>
+                <option value="Efectivo en Local">Efectivo en Local</option>
+                <option value="Tarjeta">Tarjeta en Mostrador</option>
+              </select>
+            </div>
+
+            <div
+              class="flex items-center justify-between pt-3 border-t border-stone-200 dark:border-zinc-800"
+            >
+              <div>
+                <span
+                  class="block text-[10px] uppercase font-bold text-stone-500 dark:text-zinc-500"
+                  >Total Estimado</span
+                >
+                <span
+                  id="store-cart-total"
+                  class="text-lg font-black text-stone-900 dark:text-white"
+                  >$0</span
+                >
+              </div>
+              <button
+                onclick="processCheckout()"
+                class="bg-emerald-700 hover:bg-emerald-600 text-white font-extrabold text-xs px-5 py-3 rounded-xl shadow transition flex items-center gap-2"
+              >
+                <i class="fa-solid fa-check-circle"></i> Simular Compra
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- COLUMNA ADMIN -->
+        <section
+          id="admin-panel"
+          class="xl:col-span-6 bg-white dark:bg-gradient-to-b dark:from-emerald-950/30 dark:to-zinc-900 text-stone-900 dark:text-white rounded-3xl border border-stone-200 dark:border-emerald-800/40 p-6 shadow-md"
+        >
+          <div
+            class="flex items-center justify-between pb-4 mb-5 border-b border-stone-200 dark:border-zinc-800"
+          >
+            <div>
+              <span
+                class="text-[10px] font-extrabold uppercase tracking-wider text-orange-700 dark:text-orange-400 bg-orange-100 dark:bg-orange-500/15 px-2.5 py-0.5 rounded-full"
+              >
+                Backoffice en Tiempo Real
+              </span>
+              <h2 class="text-xl font-black mt-1.5">
+                Panel Admin • Gestión Smart Menu
+              </h2>
+            </div>
+            <button
+              onclick="resetDemoData()"
+              class="text-[11px] text-stone-500 dark:text-zinc-400 hover:text-orange-600 underline"
+            >
+              Reiniciar demo
+            </button>
+          </div>
+
+          <!-- KPIs Rápidos -->
+          <div class="grid grid-cols-3 gap-3 mb-6">
+            <div
+              class="bg-stone-50 dark:bg-zinc-950/90 p-3.5 rounded-2xl border border-stone-200 dark:border-zinc-800"
+            >
+              <span class="text-[10px] uppercase font-bold text-stone-500 dark:text-zinc-400"
+                >Facturación Sim.</span
+              >
+              <p
+                id="kpi-revenue"
+                class="text-base sm:text-lg font-black text-emerald-700 dark:text-emerald-400 mt-0.5"
+              >
+                $0
+              </p>
+            </div>
+            <div
+              class="bg-stone-50 dark:bg-zinc-950/90 p-3.5 rounded-2xl border border-stone-200 dark:border-zinc-800"
+            >
+              <span class="text-[10px] uppercase font-bold text-stone-500 dark:text-zinc-400"
+                >Pedidos</span
+              >
+              <p
+                id="kpi-orders"
+                class="text-base sm:text-lg font-black text-stone-900 dark:text-white mt-0.5"
+              >
+                0
+              </p>
+            </div>
+            <div
+              class="bg-stone-50 dark:bg-zinc-950/90 p-3.5 rounded-2xl border border-stone-200 dark:border-zinc-800"
+            >
+              <span class="text-[10px] uppercase font-bold text-stone-500 dark:text-zinc-400"
+                >Clientes</span
+              >
+              <p
+                id="kpi-customers"
+                class="text-base sm:text-lg font-black text-orange-600 dark:text-orange-400 mt-0.5"
+              >
+                0
+              </p>
+            </div>
+          </div>
+
+          <!-- Sub-pestañas Admin -->
+          <div
+            class="flex gap-2 mb-4 border-b border-stone-200 dark:border-zinc-800 pb-3 text-xs font-extrabold"
+          >
+            <button
+              onclick="setAdminTab('orders')"
+              id="atab-orders"
+              class="px-3.5 py-1.5 rounded-lg bg-orange-500 text-white"
+            >
+              Pedidos (<span id="tab-orders-count">3</span>)
+            </button>
+            <button
+              onclick="setAdminTab('stock')"
+              id="atab-stock"
+              class="px-3.5 py-1.5 rounded-lg bg-stone-100 dark:bg-zinc-800 text-stone-700 dark:text-zinc-300"
+            >
+              Control de Stock
+            </button>
+            <button
+              onclick="setAdminTab('customers')"
+              id="atab-customers"
+              class="px-3.5 py-1.5 rounded-lg bg-stone-100 dark:bg-zinc-800 text-stone-700 dark:text-zinc-300"
+            >
+              Clientes
+            </button>
+          </div>
+
+          <div
+            id="admin-content-orders"
+            class="space-y-3 max-h-[420px] overflow-y-auto pr-1"
+          ></div>
+          <div
+            id="admin-content-stock"
+            class="hidden space-y-2.5 max-h-[420px] overflow-y-auto pr-1"
+          ></div>
+          <div
+            id="admin-content-customers"
+            class="hidden space-y-2.5 max-h-[420px] overflow-y-auto pr-1"
+          ></div>
+        </section>
+      </div>
+    </main>
+
+    <!-- FOOTER LEGAL -->
+    <footer
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 pt-8 border-t border-stone-200 dark:border-zinc-900 text-xs text-stone-500 space-y-4"
+    >
+      <div
+        class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
+      >
+        <div>
+          <span class="font-black text-base text-stone-900 dark:text-white"
+            >Smart<span class="text-orange-500">Menu</span></span
+          >
+          <span class="ml-2"
+            >Sistemas Web de Gestión e Inventario — San Miguel de Tucumán.</span
+          >
+        </div>
+        <div class="flex flex-wrap gap-4 font-bold text-stone-600 dark:text-zinc-400">
+          <a href="index.html" class="hover:text-orange-600">Inicio</a>
+          <a href="planes.html" class="hover:text-orange-600">Planes y Presupuestos</a>
+          <a
+            href="terminos.html"
+            class="text-orange-600 dark:text-orange-400 underline"
+            >Términos y Condiciones</a
+          >
+        </div>
+      </div>
+      <p
+        class="text-[11px] bg-stone-100 dark:bg-zinc-900/60 border border-stone-200 dark:border-zinc-800 rounded-xl p-3.5 leading-relaxed"
+      >
+        <strong class="text-stone-800 dark:text-zinc-400">Aviso Legal de Demostración:</strong> Esta
+        interfaz es una simulación funcional en memoria local del navegador. Los
+        módulos de Gestión y Stock se desarrollan a medida según el alcance
+        contratado. Smart Menu no actúa como sistema contable homologado por
+        ARCA/AFIP ni como pasarela financiera; la facturación fiscal y el
+        resguardo operativo de datos corresponden exclusivamente al comercio
+        titular. Ver
+        <a href="terminos.html" class="text-orange-600 dark:text-orange-400 underline font-bold"
+          >Términos y Condiciones</a
+        >.
+      </p>
+    </footer>
+
+    <script>
+      function toggleTheme() {
+        const html = document.documentElement;
+        const isDark = html.classList.toggle('dark');
+        localStorage.setItem('smartmenu_theme', isDark ? 'dark' : 'light');
+        updateThemeIcons();
+      }
+      function updateThemeIcons() {
+        const isDark = document.documentElement.classList.contains('dark');
+        document.querySelectorAll('.theme-icon').forEach((el) => {
+          el.className = isDark
+            ? 'fa-solid fa-sun text-amber-400 theme-icon'
+            : 'fa-solid fa-moon text-stone-700 theme-icon';
+        });
+        document.querySelectorAll('.theme-label').forEach((el) => {
+          el.innerText = isDark ? 'Modo Día' : 'Modo Noche';
+        });
+      }
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        if (menu) menu.classList.toggle('hidden');
+      }
+      document.addEventListener('DOMContentLoaded', updateThemeIcons);
+
+      const USD_RATE = 1200;
+      let isUSD = false;
+      let unseenOrdersCount = 0;
+
+      const INITIAL_PRODUCTS = [
+        { id: "prod-1", name: "Auriculares Inalámbricos Pro", price: 45000, stock: 8 },
+        { id: "prod-2", name: "Mochila Urbana Smart Menu", price: 39000, stock: 5 },
+        { id: "prod-3", name: "Botella Térmica 1L Acero", price: 18500, stock: 12 },
+        { id: "prod-4", name: "Teclado Mecánico Compacto", price: 68000, stock: 3 },
+      ];
+
+      const INITIAL_ORDERS = [
+        { number: "ORD-1001", customerName: "Martina López", itemsSummary: "1x Auriculares Inalámbricos Pro, 1x Botella Térmica 1L", total: 63500, paymentMethod: "Mercado Pago", status: "Entregado" },
+        { number: "ORD-1002", customerName: "Lucas Fernández", itemsSummary: "1x Teclado Mecánico Compacto", total: 68000, paymentMethod: "Tarjeta en Mostrador", status: "Preparando" },
+        { number: "ORD-1003", customerName: "Sofía Pereyra", itemsSummary: "2x Mochila Urbana Smart Menu", total: 78000, paymentMethod: "Transferencia", status: "Pendiente" },
+      ];
+
+      const INITIAL_CUSTOMERS = [
+        { name: "Martina López", phone: "+54 381 452-8890", ordersCount: 1, totalSpent: 63500 },
+        { name: "Lucas Fernández", phone: "+54 381 612-3340", ordersCount: 1, totalSpent: 68000 },
+        { name: "Sofía Pereyra", phone: "+54 381 504-9912", ordersCount: 1, totalSpent: 78000 },
+      ];
+
+      let products = JSON.parse(JSON.stringify(INITIAL_PRODUCTS));
+      let orders = JSON.parse(JSON.stringify(INITIAL_ORDERS));
+      let customers = JSON.parse(JSON.stringify(INITIAL_CUSTOMERS));
+      let cart = [];
+
+      function formatPrice(ars) {
+        if (isUSD) {
+          return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(ars / USD_RATE);
+        }
+        return new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS", minimumFractionDigits: 0 }).format(ars);
+      }
+
+      function toggleCurrency() {
+        isUSD = !isUSD;
+        document.getElementById("currency-label").innerText = isUSD ? "Ver en ARS" : "Ver en USD*";
+        renderAll();
+      }
+
+      function setViewMode(mode) {
+        const clientPanel = document.getElementById("client-panel");
+        const adminPanel = document.getElementById("admin-panel");
+
+        ["split", "client", "admin"].forEach((m) => {
+          const btn = document.getElementById(`view-${m}`);
+          if (btn) {
+            btn.className =
+              m === mode
+                ? `${m === "split" ? "hidden xl:flex" : "flex"} items-center gap-2 px-4 py-2 rounded-xl text-xs font-extrabold bg-orange-500 text-white transition relative`
+                : `${m === "split" ? "hidden xl:flex" : "flex"} items-center gap-2 px-4 py-2 rounded-xl text-xs font-extrabold text-stone-700 dark:text-zinc-300 hover:text-stone-900 dark:hover:text-white transition relative`;
+          }
+        });
+
+        if (mode === "split") {
+          clientPanel.classList.remove("hidden", "xl:col-span-12");
+          adminPanel.classList.remove("hidden", "xl:col-span-12");
+          clientPanel.classList.add("xl:col-span-6");
+          adminPanel.classList.add("xl:col-span-6");
+        } else if (mode === "client") {
+          clientPanel.classList.remove("hidden", "xl:col-span-6");
+          clientPanel.classList.add("xl:col-span-12");
+          adminPanel.classList.add("hidden");
+        } else {
+          adminPanel.classList.remove("hidden", "xl:col-span-6");
+          adminPanel.classList.add("xl:col-span-12");
+          clientPanel.classList.add("hidden");
+          unseenOrdersCount = 0;
+          updateUnseenBadge();
+        }
+      }
+
+      function setAdminTab(tab) {
+        ["orders", "stock", "customers"].forEach((t) => {
+          document.getElementById(`admin-content-${t}`).classList.toggle("hidden", t !== tab);
+          document.getElementById(`atab-${t}`).className =
+            t === tab
+              ? "px-3.5 py-1.5 rounded-lg bg-orange-500 text-white"
+              : "px-3.5 py-1.5 rounded-lg bg-stone-100 dark:bg-zinc-800 text-stone-700 dark:text-zinc-300";
+        });
+      }
+
+      function addToCart(productId) {
+        const prod = products.find((p) => p.id === productId);
+        if (!prod || prod.stock <= 0) return;
+
+        const existing = cart.find((c) => c.id === productId);
+        if (existing) {
+          if (existing.qty >= prod.stock) return;
+          existing.qty += 1;
+        } else {
+          cart.push({ id: prod.id, name: prod.name, price: prod.price, qty: 1 });
+        }
+        renderAll();
+      }
+
+      function removeFromCart(productId) {
+        cart = cart.filter((c) => c.id !== productId);
+        renderAll();
+      }
+
+      function processCheckout() {
+        if (cart.length === 0) {
+          alert("Agregá al menos un producto al carrito para simular la venta.");
+          return;
+        }
+
+        const cleanName = document.getElementById("checkout-name").value.trim() || "Cliente Web Tucumán";
+        const paymentMethod = document.getElementById("checkout-payment").value;
+        const orderTotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+        const orderNumber = `ORD-${1000 + orders.length + 1}`;
+        const itemsSummary = cart.map((i) => `${i.qty}x ${i.name}`).join(", ");
+
+        orders.unshift({
+          number: orderNumber,
+          customerName: cleanName,
+          itemsSummary,
+          total: orderTotal,
+          paymentMethod,
+          status: "Preparando",
+        });
+
+        cart.forEach((item) => {
+          const prod = products.find((p) => p.id === item.id);
+          if (prod) prod.stock = Math.max(0, prod.stock - item.qty);
+        });
+
+        const existingCust = customers.find((c) => c.name.toLowerCase() === cleanName.toLowerCase());
+        if (existingCust) {
+          existingCust.ordersCount += 1;
+          existingCust.totalSpent += orderTotal;
+        } else {
+          customers.unshift({
+            name: cleanName,
+            phone: "+54 381 555-0199",
+            ordersCount: 1,
+            totalSpent: orderTotal,
+          });
+        }
+
+        cart = [];
+        document.getElementById("checkout-name").value = "";
+        unseenOrdersCount += 1;
+        updateUnseenBadge();
+        renderAll();
+      }
+
+      function adjustStock(productId, delta) {
+        const prod = products.find((p) => p.id === productId);
+        if (!prod) return;
+        prod.stock = Math.max(0, prod.stock + delta);
+        renderAll();
+      }
+
+      function cycleOrderStatus(index) {
+        const states = ["Pendiente", "Preparando", "Entregado"];
+        const current = orders[index].status;
+        orders[index].status = states[(states.indexOf(current) + 1) % states.length];
+        renderAll();
+      }
+
+      function resetDemoData() {
+        products = JSON.parse(JSON.stringify(INITIAL_PRODUCTS));
+        orders = JSON.parse(JSON.stringify(INITIAL_ORDERS));
+        customers = JSON.parse(JSON.stringify(INITIAL_CUSTOMERS));
+        cart = [];
+        unseenOrdersCount = 0;
+        updateUnseenBadge();
+        renderAll();
+      }
+
+      function updateUnseenBadge() {
+        const badge = document.getElementById("unseen-badge");
+        if (unseenOrdersCount > 0) {
+          badge.innerText = unseenOrdersCount;
+          badge.classList.remove("hidden");
+        } else {
+          badge.classList.add("hidden");
+        }
+      }
+
+      function renderAll() {
+        document.getElementById("store-products").innerHTML = products
+          .map(
+            (p) => `
+          <div class="p-4 rounded-2xl border ${p.stock === 0 ? "bg-stone-100 dark:bg-zinc-950/60 border-stone-200 dark:border-zinc-800 opacity-50" : "bg-stone-50 dark:bg-zinc-950 border-stone-200 dark:border-zinc-800"} flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center mb-1.5">
+                <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full ${
+                  p.stock > 3
+                    ? "bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700/40"
+                    : p.stock > 0
+                      ? "bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700/40"
+                      : "bg-red-100 dark:bg-red-950 text-red-800 dark:text-red-300 border border-red-300 dark:border-red-700/40"
+                }">
+                  ${p.stock > 0 ? `Stock: ${p.stock} un.` : "Sin Stock"}
+                </span>
+              </div>
+              <h4 class="font-extrabold text-sm text-stone-900 dark:text-white">${p.name}</h4>
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-stone-200 dark:border-zinc-800/80 flex items-center justify-between">
+              <span class="font-black text-sm text-orange-600 dark:text-orange-400">${formatPrice(p.price)}</span>
+              <button
+                onclick="addToCart('${p.id}')"
+                ${p.stock === 0 ? "disabled" : ""}
+                class="bg-emerald-800 hover:bg-orange-500 disabled:bg-stone-300 dark:disabled:bg-zinc-800 disabled:text-stone-500 dark:disabled:text-zinc-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition"
+              >
+                + Agregar
+              </button>
+            </div>
+          </div>
+        `,
+          )
+          .join("");
+
+        const totalItems = cart.reduce((s, i) => s + i.qty, 0);
+        const totalAmount = cart.reduce((s, i) => s + i.price * i.qty, 0);
+        document.getElementById("client-cart-count").innerText = `${totalItems} ítems`;
+        document.getElementById("store-cart-total").innerText = formatPrice(totalAmount);
+
+        const cartEl = document.getElementById("store-cart-items");
+        if (cart.length === 0) {
+          cartEl.innerHTML = `<p class="text-stone-500 dark:text-zinc-500 italic">El carrito está vacío. Agregá productos arriba para probar la sincronización.</p>`;
+        } else {
+          cartEl.innerHTML = cart
+            .map(
+              (item) => `
+            <div class="flex justify-between items-center bg-white dark:bg-zinc-900 px-3 py-2 rounded-xl border border-stone-200 dark:border-zinc-800">
+              <span class="text-stone-800 dark:text-zinc-200"><strong>${item.qty}x</strong> ${item.name}</span>
+              <div class="flex items-center gap-3">
+                <span class="font-bold text-orange-600 dark:text-orange-400">${formatPrice(item.price * item.qty)}</span>
+                <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-600"><i class="fa-solid fa-trash"></i></button>
+              </div>
+            </div>
+          `,
+            )
+            .join("");
+        }
+
+        const totalRevenue = orders.reduce((s, o) => s + o.total, 0);
+        document.getElementById("kpi-revenue").innerText = formatPrice(totalRevenue);
+        document.getElementById("kpi-orders").innerText = orders.length;
+        document.getElementById("kpi-customers").innerText = customers.length;
+        document.getElementById("tab-orders-count").innerText = orders.length;
+
+        document.getElementById("admin-content-orders").innerHTML = orders
+          .map(
+            (o, idx) => `
+          <div class="bg-stone-50 dark:bg-zinc-950/90 border border-stone-200 dark:border-zinc-800 p-4 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-black text-orange-600 dark:text-orange-400">${o.number}</span>
+                <span class="text-sm font-extrabold text-stone-900 dark:text-white">${o.customerName}</span>
+                <span class="text-[10px] bg-stone-200 dark:bg-zinc-800 text-stone-700 dark:text-zinc-300 px-2 py-0.5 rounded">${o.paymentMethod}</span>
+              </div>
+              <p class="text-xs text-stone-500 dark:text-zinc-400 mt-1">${o.itemsSummary}</p>
+            </div>
+            <div class="flex items-center justify-between sm:flex-col sm:items-end gap-2">
+              <span class="font-extrabold text-sm text-emerald-700 dark:text-emerald-400">${formatPrice(o.total)}</span>
+              <button
+                onclick="cycleOrderStatus(${idx})"
+                class="text-[11px] font-bold px-2.5 py-1 rounded-lg ${
+                  o.status === "Entregado"
+                    ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-500/20 dark:text-emerald-300"
+                    : o.status === "Preparando"
+                      ? "bg-amber-100 text-amber-800 dark:bg-amber-500/20 dark:text-amber-300"
+                      : "bg-stone-200 text-stone-700 dark:bg-zinc-800 dark:text-zinc-300"
+                }"
+              >
+                ${o.status} ↻
+              </button>
+            </div>
+          </div>
+        `,
+          )
+          .join("");
+
+        document.getElementById("admin-content-stock").innerHTML = products
+          .map(
+            (p) => `
+          <div class="bg-stone-50 dark:bg-zinc-950/90 border border-stone-200 dark:border-zinc-800 p-3.5 rounded-2xl flex items-center justify-between">
+            <div>
+              <p class="font-bold text-sm text-stone-900 dark:text-white">${p.name}</p>
+              <p class="text-xs text-stone-500 dark:text-zinc-400">Precio unitario: ${formatPrice(p.price)}</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="adjustStock('${p.id}', -1)" class="w-7 h-7 rounded-lg bg-stone-200 dark:bg-zinc-800 hover:bg-red-500 hover:text-white font-bold">-</button>
+              <span class="w-14 text-center text-xs font-extrabold ${p.stock <= 2 ? "text-red-600 dark:text-red-400" : "text-emerald-700 dark:text-emerald-400"}">${p.stock} un.</span>
+              <button onclick="adjustStock('${p.id}', 1)" class="w-7 h-7 rounded-lg bg-stone-200 dark:bg-zinc-800 hover:bg-emerald-600 hover:text-white font-bold">+</button>
+            </div>
+          </div>
+        `,
+          )
+          .join("");
+
+        document.getElementById("admin-content-customers").innerHTML = customers
+          .map(
+            (c) => `
+          <div class="bg-stone-50 dark:bg-zinc-950/90 border border-stone-200 dark:border-zinc-800 p-3.5 rounded-2xl flex items-center justify-between">
+            <div>
+              <p class="font-bold text-sm text-stone-900 dark:text-white">${c.name}</p>
+              <p class="text-xs text-stone-500 dark:text-zinc-400">${c.phone} • ${c.ordersCount} pedido(s)</p>
+            </div>
+            <span class="font-extrabold text-sm text-orange-600 dark:text-orange-400">${formatPrice(c.totalSpent)}</span>
+          </div>
+        `,
+          )
+          .join("");
+      }
+
+      document.addEventListener("DOMContentLoaded", renderAll);
+    </script>
+  </body>
+</html>

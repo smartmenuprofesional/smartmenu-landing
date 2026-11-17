@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catálogos Interactivos | Smart Menu Tucumán</title>
+    <meta
+      name="description"
+      content="Catálogos digitales interactivos por rubro con precios en ARS y USD referencial y consultas directas a WhatsApp. Sin comisiones por venta."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      };
+      if (localStorage.getItem('smartmenu_theme') === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="bg-stone-50 text-stone-900 dark:bg-zinc-950 dark:text-zinc-100 font-sans antialiased pb-24 selection:bg-orange-500 selection:text-white transition-colors"
+  >
+    <!-- NAVBAR UNIFICADO -->
+    <header
+      class="sticky top-0 z-50 bg-white/95 dark:bg-zinc-950/90 backdrop-blur-md border-b border-stone-200 dark:border-emerald-900/40 transition-colors"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2"
+      >
+        <a href="index.html" class="flex items-center gap-2.5 shrink-0">
+          <div
+            class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-900 border border-emerald-400/30 flex items-center justify-center text-orange-400 font-black shadow-md"
+          >
+            <i class="fa-solid fa-qrcode"></i>
+          </div>
+          <span class="font-black text-xl tracking-tight text-stone-900 dark:text-white">
+            Smart<span class="text-orange-500">Menu</span>
+          </span>
+        </a>
+
+        <nav
+          class="hidden lg:flex items-center gap-6 text-sm font-semibold text-stone-600 dark:text-zinc-300"
+        >
+          <a href="index.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Inicio</a>
+          <a href="demo_moderno.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Menú Moderno</a>
+          <a href="demo_clasico.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Menú Clásico</a>
+          <a href="catalogos.html" class="text-orange-600 dark:text-orange-500 font-extrabold">Catálogos</a>
+          <a href="turnos.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Turnos</a>
+          <a href="gestion.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Gestión y Stock</a>
+          <a href="planes.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Planes</a>
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <button
+            onclick="toggleTheme()"
+            title="Cambiar entre Modo Día y Modo Noche"
+            class="bg-stone-100 hover:bg-stone-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 border border-stone-300 dark:border-zinc-700 px-3 py-1.5 rounded-full text-xs font-extrabold text-stone-800 dark:text-zinc-200 flex items-center gap-1.5 transition"
+          >
+            <i class="fa-solid fa-moon text-stone-700 theme-icon"></i>
+            <span class="hidden sm:inline theme-label">Modo Noche</span>
+          </button>
+          <button
+            onclick="toggleCurrency()"
+            class="bg-emerald-100 dark:bg-emerald-950/80 text-emerald-900 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700/50 px-3 py-1.5 rounded-full text-xs font-extrabold flex items-center gap-1.5 hover:bg-emerald-200 dark:hover:bg-emerald-900 transition"
+          >
+            <i class="fa-solid fa-money-bill-transfer"></i>
+            <span id="currency-label">Ver en USD*</span>
+          </button>
+          <a
+            href="planes.html"
+            class="hidden sm:inline-block bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-xl text-xs font-bold transition shadow-md"
+          >
+            Cotizar Catálogo
+          </a>
+          <button
+            onclick="toggleMobileMenu()"
+            aria-label="Abrir menú"
+            class="lg:hidden w-9 h-9 rounded-xl bg-stone-100 dark:bg-zinc-900 border border-stone-300 dark:border-zinc-700 text-stone-800 dark:text-zinc-200 flex items-center justify-center"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Menú Móvil -->
+      <div
+        id="mobile-menu"
+        class="hidden lg:hidden bg-white dark:bg-zinc-950 border-t border-stone-200 dark:border-zinc-800 px-4 py-3 space-y-1 shadow-lg"
+      >
+        <a href="index.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Inicio</a>
+        <a href="demo_moderno.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Menú Moderno</a>
+        <a href="demo_clasico.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Menú Clásico</a>
+        <a href="catalogos.html" class="block px-3 py-2 rounded-xl text-sm font-bold bg-orange-50 text-orange-600 dark:bg-orange-500/15 dark:text-orange-400">Catálogos</a>
+        <a href="turnos.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Turnos</a>
+        <a href="gestion.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Gestión y Stock</a>
+        <a href="planes.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Planes</a>
+      </div>
+    </header>
+
+    <!-- HEADER & SELECTOR DE RUBRO -->
+    <section
+      class="pt-10 pb-10 bg-gradient-to-b from-emerald-50/80 to-stone-50 dark:from-emerald-950/25 dark:to-zinc-950 border-b border-stone-200 dark:border-zinc-900"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8"
+        >
+          <div>
+            <span
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-700/50 text-emerald-900 dark:text-emerald-300 text-xs font-bold mb-3"
+            >
+              <i class="fa-solid fa-sparkles text-orange-500"></i> Demo
+              Interactiva • Catálogos Comerciales
+            </span>
+            <h1
+              class="text-3xl sm:text-5xl font-black tracking-tight text-stone-900 dark:text-white"
+            >
+              Catálogo <span class="text-orange-500">Smart Menu</span>
+            </h1>
+            <p class="text-stone-600 dark:text-zinc-400 text-sm sm:text-base mt-2 max-w-2xl">
+              Elegí un rubro para explorar
+              <strong class="text-stone-900 dark:text-zinc-200">12 artículos por categoría</strong>
+              con precios en pesos argentinos (ARS) y dólares referenciales
+              (USD*), armá una consulta y mirá cómo llega estructurada a
+              WhatsApp.
+            </p>
+          </div>
+          <div
+            class="bg-white dark:bg-zinc-900/90 px-4 py-2.5 rounded-2xl text-xs text-stone-600 dark:text-zinc-400 border border-stone-200 dark:border-zinc-800 shadow-sm"
+          >
+            <span class="font-bold text-emerald-700 dark:text-emerald-400">Cotización ref.*:</span> 1
+            USD = $1.200 ARS
+          </div>
+        </div>
+
+        <!-- PESTAÑAS DE RUBROS -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          <button
+            onclick="selectRubro('libreria')"
+            id="btn-libreria"
+            class="rubro-btn p-4 rounded-2xl border-2 text-left transition flex items-center gap-3 bg-emerald-50 dark:bg-emerald-950/50 border-orange-500 shadow-md"
+          >
+            <div
+              class="w-10 h-10 rounded-xl bg-orange-500 text-white flex items-center justify-center text-lg shrink-0"
+            >
+              <i class="fa-solid fa-pen-ruler"></i>
+            </div>
+            <div>
+              <p class="font-extrabold text-sm text-stone-900 dark:text-white">Librería</p>
+              <p class="text-[11px] text-stone-500 dark:text-zinc-400">
+                12 artículos escolares/oficina
+              </p>
+            </div>
+          </button>
+
+          <button
+            onclick="selectRubro('gimnasia')"
+            id="btn-gimnasia"
+            class="rubro-btn p-4 rounded-2xl border-2 text-left transition flex items-center gap-3 bg-white dark:bg-zinc-900 border-stone-200 dark:border-zinc-800 hover:border-stone-400"
+          >
+            <div
+              class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-lg shrink-0"
+            >
+              <i class="fa-solid fa-dumbbell"></i>
+            </div>
+            <div>
+              <p class="font-extrabold text-sm text-stone-900 dark:text-white">Art. de Gimnasia</p>
+              <p class="text-[11px] text-stone-500 dark:text-zinc-400">12 accesorios fitness</p>
+            </div>
+          </button>
+
+          <button
+            onclick="selectRubro('automotor')"
+            id="btn-automotor"
+            class="rubro-btn p-4 rounded-2xl border-2 text-left transition flex items-center gap-3 bg-white dark:bg-zinc-900 border-stone-200 dark:border-zinc-800 hover:border-stone-400"
+          >
+            <div
+              class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center text-lg shrink-0"
+            >
+              <i class="fa-solid fa-car"></i>
+            </div>
+            <div>
+              <p class="font-extrabold text-sm text-stone-900 dark:text-white">Automotor Usados</p>
+              <p class="text-[11px] text-stone-500 dark:text-zinc-400">
+                12 vehículos seleccionados
+              </p>
+            </div>
+          </button>
+
+          <button
+            onclick="selectRubro('artesanias')"
+            id="btn-artesanias"
+            class="rubro-btn p-4 rounded-2xl border-2 text-left transition flex items-center gap-3 bg-white dark:bg-zinc-900 border-stone-200 dark:border-zinc-800 hover:border-stone-400"
+          >
+            <div
+              class="w-10 h-10 rounded-xl bg-amber-600 text-white flex items-center justify-center text-lg shrink-0"
+            >
+              <i class="fa-solid fa-hands-holding-circle"></i>
+            </div>
+            <div>
+              <p class="font-extrabold text-sm text-stone-900 dark:text-white">Artesanías</p>
+              <p class="text-[11px] text-stone-500 dark:text-zinc-400">12 piezas regionales</p>
+            </div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-8">
+          <div
+            class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6"
+          >
+            <div>
+              <h2 id="rubro-title" class="text-2xl font-black text-stone-900 dark:text-white">
+                Librería Smart Menu
+              </h2>
+              <p id="rubro-subtitle" class="text-xs text-stone-500 dark:text-zinc-400">
+                Mostrando 12 productos disponibles para consulta o pedido directo.
+              </p>
+            </div>
+            <div class="relative">
+              <i
+                class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400 dark:text-zinc-500 text-xs"
+              ></i>
+              <input
+                type="text"
+                id="search-input"
+                oninput="renderProducts()"
+                placeholder="Buscar en este catálogo..."
+                class="pl-9 pr-4 py-2.5 rounded-xl border border-stone-300 dark:border-zinc-800 text-xs font-medium bg-white dark:bg-zinc-900 text-stone-900 dark:text-white placeholder-stone-400 dark:placeholder-zinc-500 focus:outline-none focus:border-orange-500 w-full sm:w-64 shadow-sm"
+              />
+            </div>
+          </div>
+
+          <div
+            id="products-grid"
+            class="grid sm:grid-cols-2 md:grid-cols-3 gap-4"
+          ></div>
+        </div>
+
+        <!-- Columna Derecha: Vista Previa al Dueño por WhatsApp -->
+        <aside class="lg:col-span-4 sticky top-20 space-y-4">
+          <div
+            class="bg-white dark:bg-zinc-900 text-stone-900 dark:text-white rounded-3xl p-6 shadow-xl border border-stone-200 dark:border-zinc-800"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="inline-flex items-center gap-2 text-xs font-extrabold text-[#1da851] dark:text-[#25D366] uppercase tracking-wider"
+              >
+                <i class="fa-brands fa-whatsapp text-base"></i> Vista Previa al
+                Dueño
+              </span>
+              <span
+                id="selected-badge"
+                class="bg-orange-500 text-white text-[11px] font-extrabold px-2.5 py-0.5 rounded-full"
+              >
+                0 elegidos
+              </span>
+            </div>
+
+            <p class="text-xs text-stone-600 dark:text-zinc-400 mb-4 leading-relaxed">
+              Así recibe tu negocio el mensaje ordenado en WhatsApp cuando un
+              cliente selecciona artículos:
+            </p>
+
+            <!-- Burbuja Simulada de WhatsApp -->
+            <div class="bg-[#efeae2] dark:bg-[#0b141a] p-4 rounded-2xl border border-stone-200 dark:border-zinc-800">
+              <div
+                class="bg-[#d9fdd3] dark:bg-[#005c4b] text-stone-900 dark:text-white p-3.5 rounded-2xl rounded-tr-none text-xs font-mono whitespace-pre-line leading-relaxed shadow"
+                id="whatsapp-preview"
+              ></div>
+              <p class="text-[10px] text-right text-stone-500 dark:text-zinc-400 mt-1.5">
+                23:50 ✓✓
+              </p>
+            </div>
+
+            <div
+              id="selected-items-list"
+              class="mt-4 space-y-2 max-h-40 overflow-y-auto"
+            ></div>
+
+            <div class="mt-5 pt-4 border-t border-stone-200 dark:border-zinc-800 flex flex-col gap-2">
+              <button
+                onclick="sendCatalogWhatsApp()"
+                class="w-full bg-[#25D366] hover:bg-[#20bd5a] text-stone-950 font-black py-3.5 rounded-xl text-sm flex items-center justify-center gap-2 transition shadow-md"
+              >
+                <i class="fa-brands fa-whatsapp text-lg"></i> Probar Envío Real
+                a WhatsApp
+              </button>
+              <button
+                onclick="clearSelection()"
+                class="w-full text-stone-500 hover:text-stone-900 dark:text-zinc-400 dark:hover:text-white text-xs font-semibold py-1.5"
+              >
+                Vaciar selección
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/50 rounded-2xl p-4 text-xs text-stone-700 dark:text-zinc-300"
+          >
+            <p class="font-extrabold text-orange-600 dark:text-orange-400 mb-1">
+              💡 Vendé sin comisiones por operación
+            </p>
+            <p class="leading-relaxed">
+              Catálogo interactivo desde
+              <strong class="text-stone-900 dark:text-white">$50.000 ARS</strong> (setup inicial)
+              con subdominio activo y simulación personalizable en
+              <a href="planes.html" class="text-orange-600 dark:text-orange-400 underline font-bold"
+                >Planes</a
+              >.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <!-- FOOTER LEGAL -->
+    <footer
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 pt-8 border-t border-stone-200 dark:border-zinc-900 text-xs text-stone-500 dark:text-zinc-500 space-y-4"
+    >
+      <div
+        class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
+      >
+        <div>
+          <span class="font-black text-base text-stone-900 dark:text-white"
+            >Smart<span class="text-orange-500">Menu</span></span
+          >
+          <span class="ml-2"
+            >Catálogos Comerciales Interactivos — San Miguel de Tucumán.</span
+          >
+        </div>
+        <div class="flex flex-wrap gap-4 font-bold text-stone-600 dark:text-zinc-400">
+          <a href="index.html" class="hover:text-orange-600">Inicio</a>
+          <a href="planes.html" class="hover:text-orange-600">Planes y Presupuestos</a>
+          <a
+            href="terminos.html"
+            class="text-orange-600 dark:text-orange-400 underline"
+            >Términos y Condiciones</a
+          >
+        </div>
+      </div>
+      <p
+        class="text-[11px] bg-stone-100 dark:bg-zinc-900/60 border border-stone-200 dark:border-zinc-800 rounded-xl p-3.5 leading-relaxed"
+      >
+        <strong class="text-stone-800 dark:text-zinc-400">Aviso Legal de Demostración:</strong> Los
+        productos, vehículos, imágenes y precios exhibidos en esta sección son
+        ejemplos ilustrativos. *La conversión a USD es meramente referencial y
+        no constituye cotización oficial. Smart Menu no actúa como intermediario
+        comercial, concesionario ni pasarela de pagos; en cada catálogo
+        contratado, el comercio titular es único responsable por el stock,
+        precios, garantías y facturación. Ver
+        <a href="terminos.html" class="text-orange-600 dark:text-orange-400 underline font-bold"
+          >Términos y Condiciones</a
+        >.
+      </p>
+    </footer>
+
+    <script>
+      function toggleTheme() {
+        const html = document.documentElement;
+        const isDark = html.classList.toggle('dark');
+        localStorage.setItem('smartmenu_theme', isDark ? 'dark' : 'light');
+        updateThemeIcons();
+      }
+      function updateThemeIcons() {
+        const isDark = document.documentElement.classList.contains('dark');
+        document.querySelectorAll('.theme-icon').forEach((el) => {
+          el.className = isDark
+            ? 'fa-solid fa-sun text-amber-400 theme-icon'
+            : 'fa-solid fa-moon text-stone-700 theme-icon';
+        });
+        document.querySelectorAll('.theme-label').forEach((el) => {
+          el.innerText = isDark ? 'Modo Día' : 'Modo Noche';
+        });
+      }
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        if (menu) menu.classList.toggle('hidden');
+      }
+      document.addEventListener('DOMContentLoaded', updateThemeIcons);
+
+      const USD_RATE = 1200;
+      let isUSD = false;
+      let currentRubro = "libreria";
+      let selectedItems = [];
+
+      const CATALOG_DATA = {
+        libreria: {
+          title: "Librería Smart Menu",
+          subtitle: "Artículos escolares, universitarios y de oficina con precios actualizados.",
+          items: [
+            { id: "lib-1", name: "Resma Autor A4 75g x500 Hojas", desc: "Papel alcalino multifunción.", ars: 8500, img: "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?q=80&w=500" },
+            { id: "lib-2", name: "Cuaderno Universitario 84 Hojas", desc: "Tapa dura rayado o cuadriculado.", ars: 4200, img: "https://images.unsplash.com/photo-1531346878377-a5be20888e57?q=80&w=500" },
+            { id: "lib-3", name: "Mochila Urbana Porta Notebook", desc: "Tela impermeable reforzada 15.6'.", ars: 38000, img: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=500" },
+            { id: "lib-4", name: "Set Marcadores Pastel x12", desc: "Punta cónica lavable.", ars: 7900, img: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?q=80&w=500" },
+            { id: "lib-5", name: "Calculadora Científica 240 Funciones", desc: "Pantalla 2 líneas con tapa rígida.", ars: 19500, img: "https://images.unsplash.com/photo-1587145820266-a5951ee6f620?q=80&w=500" },
+            { id: "lib-6", name: "Carpeta Escolar N°3 Negra", desc: "3 anillos metálicos reforzados.", ars: 5400, img: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=500" },
+            { id: "lib-7", name: "Cartuchera Doble Cierre", desc: "Gran capacidad, cierres metálicos.", ars: 9800, img: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=500" },
+            { id: "lib-8", name: "Lápices de Colores x24 Largos", desc: "Mina blanda resistente.", ars: 8900, img: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?q=80&w=500" },
+            { id: "lib-9", name: "Agenda Ejecutiva 2026 Diaria", desc: "Tapa símil cuero con elástico.", ars: 16500, img: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?q=80&w=500" },
+            { id: "lib-10", name: "Set Bolígrafos Gel Colores x6", desc: "Trazo fino 0.7mm secado rápido.", ars: 6200, img: "https://images.unsplash.com/photo-1585336261022-680e295ce3fe?q=80&w=500" },
+            { id: "lib-11", name: "Block de Dibujo N°5 Blanco", desc: "24 hojas de 120g para arte.", ars: 3600, img: "https://images.unsplash.com/photo-1517842645767-c639042777db?q=80&w=500" },
+            { id: "lib-12", name: "Resaltadores Flúor x4 Unidades", desc: "Punta biselada larga duración.", ars: 4800, img: "https://images.unsplash.com/photo-1568849676085-51415703900f?q=80&w=500" },
+          ],
+        },
+        gimnasia: {
+          title: "Artículos de Gimnasia Smart Menu",
+          subtitle: "Equipamiento fitness y entrenamiento funcional en casa o gimnasio.",
+          items: [
+            { id: "gym-1", name: "Par Mancuernas Hexagonales 5kg", desc: "Recubiertas en caucho antideslizante.", ars: 34000, img: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=500" },
+            { id: "gym-2", name: "Colchoneta Yoga Mat 6mm", desc: "Alta densidad con correa de transporte.", ars: 18500, img: "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?q=80&w=500" },
+            { id: "gym-3", name: "Set 3 Bandas Elásticas Circulares", desc: "Intensidad baja, media y alta.", ars: 12900, img: "https://images.unsplash.com/photo-1598289431512-b97b0917affc?q=80&w=500" },
+            { id: "gym-4", name: "Soga de Saltar Speed Rulemanes", desc: "Cable de acero recubierto regulable.", ars: 11500, img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=500" },
+            { id: "gym-5", name: "Rueda Abdominal Doble Rueda", desc: "Incluye pad apoya rodillas.", ars: 14200, img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=500" },
+            { id: "gym-6", name: "Pesa Rusa Kettlebell 8kg", desc: "Hierro fundido con base plana.", ars: 26000, img: "https://images.unsplash.com/photo-1517963879433-6ad2b056d712?q=80&w=500" },
+            { id: "gym-7", name: "Guantes Entrenamiento con Muñequera", desc: "Palma acolchada respirable.", ars: 13800, img: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=500" },
+            { id: "gym-8", name: "Par Tobilleras con Peso 2kg c/u", desc: "Abrojo reforzado de alta resistencia.", ars: 15900, img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=500" },
+            { id: "gym-9", name: "Barra Dominadas Extensible Puerta", desc: "Soporta hasta 120kg sin tornillos.", ars: 29500, img: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=500" },
+            { id: "gym-10", name: "Pelota Esferodinamia 65cm", desc: "Sistema anti-explosión + inflador.", ars: 21000, img: "https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=500" },
+            { id: "gym-11", name: "Botella Térmica Deportiva 1L", desc: "Acero inoxidable doble pared.", ars: 18500, img: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?q=80&w=500" },
+            { id: "gym-12", name: "Rodillo Masajeador Foam Roller", desc: "Recuperación muscular miofascial.", ars: 17400, img: "https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=500" },
+          ],
+        },
+        automotor: {
+          title: "Automotor Smart Menu",
+          subtitle: "Unidades seleccionadas con financiación y permuta • Consulta directa por WhatsApp.",
+          items: [
+            { id: "auto-1", name: "Toyota Hilux SRX 2.8 4x4 AT (2022)", desc: "68.000 km • Único dueño • Service oficiales.", ars: 43200000, img: "https://images.unsplash.com/photo-1559416523-140ddc3d238c?q=80&w=500" },
+            { id: "auto-2", name: "VW Amarok V6 Extreme 258cv (2021)", desc: "74.000 km • Automática • Cubiertas nuevas.", ars: 40800000, img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=500" },
+            { id: "auto-3", name: "Fiat Cronos Drive 1.3 Pack (2023)", desc: "29.000 km • Impecable • GNC 5ta Gen.", ars: 18600000, img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=500" },
+            { id: "auto-4", name: "Peugeot 208 Allure 1.6 (2022)", desc: "41.000 km • Techo panorámico • CarPlay.", ars: 20400000, img: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=500" },
+            { id: "auto-5", name: "Ford Ranger XLT 3.2 4x2 (2020)", desc: "89.000 km • Caja manual • Barra y lona.", ars: 31200000, img: "https://images.unsplash.com/photo-1551830820-330a71b99659?q=80&w=500" },
+            { id: "auto-6", name: "Chevrolet Onix LTZ 1.0 Turbo (2021)", desc: "52.000 km • Bajo consumo • 6 airbags.", ars: 17900000, img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=500" },
+            { id: "auto-7", name: "Toyota Corolla SEG 2.0 CVT (2021)", desc: "58.000 km • Cuero • Toyota Safety Sense.", ars: 27600000, img: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?q=80&w=500" },
+            { id: "auto-8", name: "Honda HR-V EXL 1.8 CVT (2020)", desc: "64.000 km • Tapizado cuero • Cámara retroceso.", ars: 25800000, img: "https://images.unsplash.com/photo-1568844293986-8d0400bd4745?q=80&w=500" },
+            { id: "auto-9", name: "Renault Kangoo Stepway 1.6 (2022)", desc: "47.000 km • 5 asientos • Doble portón.", ars: 21500000, img: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?q=80&w=500" },
+            { id: "auto-10", name: "VW Gol Trend MSI 1.6 (2019)", desc: "79.000 km • Aire y dirección • VTV al día.", ars: 13800000, img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=500" },
+            { id: "auto-11", name: "Jeep Renegade Sport 1.8 AT (2021)", desc: "55.000 km • Control crucero • Excelente estado.", ars: 24900000, img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=500" },
+            { id: "auto-12", name: "Citroën C4 Cactus Feel Pack (2022)", desc: "38.000 km • Bitono • Pantalla táctil 7'.", ars: 21900000, img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=500" },
+          ],
+        },
+        artesanias: {
+          title: "Artesanías Smart Menu",
+          subtitle: "Piezas únicas hechas a mano en el Norte Argentino • Envíos a todo el país.",
+          items: [
+            { id: "art-1", name: "Mate Imperial Calabaza y Alpaca", desc: "Cincelado a mano, virola gruesa de alpaca.", ars: 48000, img: "https://images.unsplash.com/photo-1589396575653-c09c794ff6a6?q=80&w=500" },
+            { id: "art-2", name: "Bombilla Pico de Loro Alpaca", desc: "Filtro pala desmontable, soldadura plata.", ars: 19500, img: "https://images.unsplash.com/photo-1589396575653-c09c794ff6a6?q=80&w=500" },
+            { id: "art-3", name: "Tabla de Asado Algarrobo 50x30", desc: "Curada con cera de abejas, canaleta jugos.", ars: 29000, img: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?q=80&w=500" },
+            { id: "art-4", name: "Poncho Tucumano Telar Criollo", desc: "Lana de oveja teñida con tintes naturales.", ars: 95000, img: "https://images.unsplash.com/photo-1544967082-d9d25d867d66?q=80&w=500" },
+            { id: "art-5", name: "Cuenco Cerámica Gres Esmaltado", desc: "Horneado a 1250°C, apto microondas.", ars: 14500, img: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?q=80&w=500" },
+            { id: "art-6", name: "Cuchillo Criollo Acero al Carbono 16cm", desc: "Cabo de asta de ciervo y vaina de cuero.", ars: 54000, img: "https://images.unsplash.com/photo-1593618998160-e34014e67546?q=80&w=500" },
+            { id: "art-7", name: "Set Matero Cuero Crudo Cosido", desc: "Yerbera, azucarera y porta termo.", ars: 42000, img: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?q=80&w=500" },
+            { id: "art-8", name: "Camino de Mesa Tejido en Telar", desc: "Algodón rústico 1.80m x 0.45m.", ars: 24500, img: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=500" },
+            { id: "art-9", name: "Lámpara Colgante Mimbre Tejido", desc: "45cm diámetro, incluye portalámparas.", ars: 36000, img: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?q=80&w=500" },
+            { id: "art-10", name: "Mortero de Piedra Tallada con Pilón", desc: "Ideal para especias y chimichurri.", ars: 22000, img: "https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?q=80&w=500" },
+            { id: "art-11", name: "Cartera Bandolera Cuero Repujado", desc: "Trabajo artesanal con cierre imantado.", ars: 49000, img: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=500" },
+            { id: "art-12", name: "Juego de 6 Posavasos Madera y Cuero", desc: "Incluye soporte organizador.", ars: 12800, img: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?q=80&w=500" },
+          ],
+        },
+      };
+
+      function formatPrice(ars) {
+        if (isUSD) {
+          return new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD",
+            maximumFractionDigits: 0,
+          }).format(ars / USD_RATE);
+        }
+        return new Intl.NumberFormat("es-AR", {
+          style: "currency",
+          currency: "ARS",
+          minimumFractionDigits: 0,
+        }).format(ars);
+      }
+
+      function toggleCurrency() {
+        isUSD = !isUSD;
+        document.getElementById("currency-label").innerText = isUSD
+          ? "Ver en ARS"
+          : "Ver en USD*";
+        renderProducts();
+        updateWhatsAppPreview();
+      }
+
+      function selectRubro(rubro) {
+        currentRubro = rubro;
+        document.querySelectorAll(".rubro-btn").forEach((b) => {
+          b.className =
+            "rubro-btn p-4 rounded-2xl border-2 text-left transition flex items-center gap-3 bg-white dark:bg-zinc-900 border-stone-200 dark:border-zinc-800 hover:border-stone-400";
+        });
+        const activeBtn = document.getElementById(`btn-${rubro}`);
+        activeBtn.className =
+          "rubro-btn p-4 rounded-2xl border-2 text-left transition flex items-center gap-3 bg-emerald-50 dark:bg-emerald-950/50 border-orange-500 shadow-md";
+
+        document.getElementById("rubro-title").innerText =
+          CATALOG_DATA[rubro].title;
+        document.getElementById("rubro-subtitle").innerText =
+          CATALOG_DATA[rubro].subtitle;
+        renderProducts();
+        updateWhatsAppPreview();
+      }
+
+      function toggleProductSelection(id) {
+        const allItems = CATALOG_DATA[currentRubro].items;
+        const prod = allItems.find((p) => p.id === id);
+        if (!prod) return;
+
+        const existing = selectedItems.find((i) => i.id === id);
+        if (existing) existing.qty += 1;
+        else
+          selectedItems.push({
+            ...prod,
+            qty: 1,
+            rubroTitle: CATALOG_DATA[currentRubro].title,
+          });
+
+        renderProducts();
+        updateWhatsAppPreview();
+      }
+
+      function removeOneItem(id) {
+        const existing = selectedItems.find((i) => i.id === id);
+        if (!existing) return;
+        existing.qty -= 1;
+        if (existing.qty <= 0)
+          selectedItems = selectedItems.filter((i) => i.id !== id);
+        renderProducts();
+        updateWhatsAppPreview();
+      }
+
+      function clearSelection() {
+        selectedItems = [];
+        renderProducts();
+        updateWhatsAppPreview();
+      }
+
+      function renderProducts() {
+        const query = document
+          .getElementById("search-input")
+          .value.toLowerCase();
+        const grid = document.getElementById("products-grid");
+        const items = CATALOG_DATA[currentRubro].items.filter(
+          (i) =>
+            i.name.toLowerCase().includes(query) ||
+            i.desc.toLowerCase().includes(query),
+        );
+
+        grid.innerHTML = items
+          .map((item) => {
+            const inCart = selectedItems.find((s) => s.id === item.id);
+            return `
+              <div class="bg-white dark:bg-zinc-900 rounded-2xl border ${inCart ? "border-orange-500 ring-2 ring-orange-500/20" : "border-stone-200 dark:border-zinc-800 hover:border-emerald-500"} overflow-hidden shadow-sm transition flex flex-col justify-between">
+                <div>
+                  <div class="h-36 bg-stone-100 dark:bg-zinc-950 relative overflow-hidden">
+                    <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover hover:scale-105 transition duration-300" />
+                    ${inCart ? `<span class="absolute top-2 right-2 bg-orange-500 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full shadow">Elegido (${inCart.qty})</span>` : ""}
+                  </div>
+                  <div class="p-4">
+                    <h3 class="font-extrabold text-sm text-stone-900 dark:text-white leading-snug mb-1">${item.name}</h3>
+                    <p class="text-[11px] text-stone-500 dark:text-zinc-400 line-clamp-2">${item.desc}</p>
+                  </div>
+                </div>
+                <div class="px-4 pb-4 pt-2 border-t border-stone-100 dark:border-zinc-800/80 flex items-center justify-between gap-2">
+                  <div>
+                    <span class="block text-[10px] uppercase font-bold text-stone-400 dark:text-zinc-500">${isUSD ? "USD Ref.*" : "Precio ARS"}</span>
+                    <span class="font-black text-sm text-orange-600 dark:text-orange-400">${formatPrice(item.ars)}</span>
+                  </div>
+                  <button
+                    onclick="toggleProductSelection('${item.id}')"
+                    class="bg-emerald-800 hover:bg-orange-500 text-white text-xs font-bold px-3 py-2 rounded-xl transition flex items-center gap-1.5"
+                  >
+                    <i class="fa-solid fa-plus text-[10px]"></i> Consultar
+                  </button>
+                </div>
+              </div>
+            `;
+          })
+          .join("");
+      }
+
+      function buildMessageText() {
+        const title = CATALOG_DATA[currentRubro].title;
+        if (selectedItems.length === 0) {
+          const sample = CATALOG_DATA[currentRubro].items[0];
+          return `Hola *${title}*! 👋
+Vi su catálogo digital y me interesa consultar por:
+
+▪️ 1x ${sample.name} (${formatPrice(sample.ars)})
+
+💰 *Total estimado: ${formatPrice(sample.ars)}*
+📍 *Mi nombre:* [Tu Nombre]`;
+        }
+
+        let totalARS = 0;
+        let msg = `Hola *${title}*! 👋
+Quiero consultar / encargar los siguientes artículos de su catálogo:
+
+`;
+        selectedItems.forEach((item) => {
+          const sub = item.ars * item.qty;
+          totalARS += sub;
+          msg += `▪️ ${item.qty}x ${item.name} — ${formatPrice(sub)}
+`;
+        });
+        msg += `
+💰 *Total estimado: ${formatPrice(totalARS)}*
+📍 *Mi nombre:* `;
+        return msg;
+      }
+
+      function updateWhatsAppPreview() {
+        const totalCount = selectedItems.reduce((sum, i) => sum + i.qty, 0);
+        document.getElementById("selected-badge").innerText =
+          `${totalCount} elegidos`;
+        document.getElementById("whatsapp-preview").innerText =
+          buildMessageText();
+
+        const listEl = document.getElementById("selected-items-list");
+        if (selectedItems.length === 0) {
+          listEl.innerHTML = `<p class="text-[11px] text-stone-500 dark:text-zinc-500 italic text-center">Tocá "+ Consultar" en cualquier producto para armar tu mensaje arriba.</p>`;
+          return;
+        }
+        listEl.innerHTML = selectedItems
+          .map(
+            (item) => `
+          <div class="flex items-center justify-between bg-stone-100 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 px-3 py-2 rounded-xl text-xs">
+            <span class="truncate pr-2 font-medium text-stone-800 dark:text-zinc-200">${item.qty}x ${item.name}</span>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <button onclick="removeOneItem('${item.id}')" class="w-6 h-6 rounded bg-stone-200 dark:bg-zinc-800 hover:bg-red-500 hover:text-white font-bold">-</button>
+              <button onclick="toggleProductSelection('${item.id}')" class="w-6 h-6 rounded bg-stone-200 dark:bg-zinc-800 hover:bg-emerald-600 hover:text-white font-bold">+</button>
+            </div>
+          </div>
+        `,
+          )
+          .join("");
+      }
+
+      function sendCatalogWhatsApp() {
+        const text = buildMessageText();
+        window.open(
+          `https://wa.me/5493816320130?text=${encodeURIComponent(text)}`,
+          "_blank",
+        );
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        renderProducts();
+        updateWhatsAppPreview();
+      });
+    </script>
+  </body>
+</html>
