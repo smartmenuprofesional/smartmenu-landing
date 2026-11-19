@@ -8,13 +8,14 @@
       name="description"
       content="Simulador en tiempo real de tienda online + panel administrativo de stock, pedidos y clientes desarrollado por Smart Menu."
     />
+    <script src="config.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
-        darkMode: 'class',
+        darkMode: "class",
       };
-      if (localStorage.getItem('smartmenu_theme') === 'dark') {
-        document.documentElement.classList.add('dark');
+      if (localStorage.getItem("smartmenu_theme") === "dark") {
+        document.documentElement.classList.add("dark");
       }
     </script>
     <link
@@ -38,7 +39,9 @@
           >
             <i class="fa-solid fa-qrcode"></i>
           </div>
-          <span class="font-black text-xl tracking-tight text-stone-900 dark:text-white">
+          <span
+            class="font-black text-xl tracking-tight text-stone-900 dark:text-white"
+          >
             Smart<span class="text-orange-500">Menu</span>
           </span>
         </a>
@@ -46,13 +49,41 @@
         <nav
           class="hidden lg:flex items-center gap-6 text-sm font-semibold text-stone-600 dark:text-zinc-300"
         >
-          <a href="index.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Inicio</a>
-          <a href="demo_moderno.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Menú Moderno</a>
-          <a href="demo_clasico.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Menú Clásico</a>
-          <a href="catalogos.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Catálogos</a>
-          <a href="turnos.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Turnos</a>
-          <a href="gestion.html" class="text-orange-600 dark:text-orange-500 font-extrabold">Gestión y Stock</a>
-          <a href="planes.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Planes</a>
+          <a
+            href="index.html"
+            class="hover:text-orange-600 dark:hover:text-orange-400 transition"
+            >Inicio</a
+          >
+          <a
+            href="demo_moderno.html"
+            class="hover:text-orange-600 dark:hover:text-orange-400 transition"
+            >Menú Moderno</a
+          >
+          <a
+            href="demo_clasico.html"
+            class="hover:text-orange-600 dark:hover:text-orange-400 transition"
+            >Menú Clásico</a
+          >
+          <a
+            href="catalogos.html"
+            class="hover:text-orange-600 dark:hover:text-orange-400 transition"
+            >Catálogos</a
+          >
+          <a
+            href="turnos.html"
+            class="hover:text-orange-600 dark:hover:text-orange-400 transition"
+            >Turnos</a
+          >
+          <a
+            href="gestion.html"
+            class="text-orange-600 dark:text-orange-500 font-extrabold"
+            >Gestión y Stock</a
+          >
+          <a
+            href="planes.html"
+            class="hover:text-orange-600 dark:hover:text-orange-400 transition"
+            >Planes</a
+          >
         </nav>
 
         <div class="flex items-center gap-2">
@@ -92,13 +123,41 @@
         id="mobile-menu"
         class="hidden lg:hidden bg-white dark:bg-zinc-950 border-t border-stone-200 dark:border-zinc-800 px-4 py-3 space-y-1 shadow-lg"
       >
-        <a href="index.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Inicio</a>
-        <a href="demo_moderno.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Menú Moderno</a>
-        <a href="demo_clasico.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Menú Clásico</a>
-        <a href="catalogos.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Catálogos</a>
-        <a href="turnos.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Turnos</a>
-        <a href="gestion.html" class="block px-3 py-2 rounded-xl text-sm font-bold bg-orange-50 text-orange-600 dark:bg-orange-500/15 dark:text-orange-400">Gestión y Stock</a>
-        <a href="planes.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Planes</a>
+        <a
+          href="index.html"
+          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >Inicio</a
+        >
+        <a
+          href="demo_moderno.html"
+          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >Menú Moderno</a
+        >
+        <a
+          href="demo_clasico.html"
+          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >Menú Clásico</a
+        >
+        <a
+          href="catalogos.html"
+          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >Catálogos</a
+        >
+        <a
+          href="turnos.html"
+          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >Turnos</a
+        >
+        <a
+          href="gestion.html"
+          class="block px-3 py-2 rounded-xl text-sm font-bold bg-orange-50 text-orange-600 dark:bg-orange-500/15 dark:text-orange-400"
+          >Gestión y Stock</a
+        >
+        <a
+          href="planes.html"
+          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >Planes</a
+        >
       </div>
     </header>
 
@@ -123,13 +182,19 @@
               Gestión <span class="text-orange-500">Smart Menu</span> (Stock,
               Ventas &amp; Clientes)
             </h1>
-            <p class="text-stone-600 dark:text-zinc-400 text-xs sm:text-sm mt-1.5 max-w-2xl">
+            <p
+              class="text-stone-600 dark:text-zinc-400 text-xs sm:text-sm mt-1.5 max-w-2xl"
+            >
               Simulá una compra en la
-              <strong class="text-stone-900 dark:text-zinc-200">Vista Cliente</strong> y observá
-              cómo automáticamente se descuenta el
-              <strong class="text-stone-900 dark:text-zinc-200">Stock</strong>, ingresa la orden y
-              se registra el historial del comprador en el
-              <strong class="text-stone-900 dark:text-zinc-200">Panel Admin</strong>.
+              <strong class="text-stone-900 dark:text-zinc-200"
+                >Vista Cliente</strong
+              >
+              y observá cómo automáticamente se descuenta el
+              <strong class="text-stone-900 dark:text-zinc-200">Stock</strong>,
+              ingresa la orden y se registra el historial del comprador en el
+              <strong class="text-stone-900 dark:text-zinc-200"
+                >Panel Admin</strong
+              >.
             </p>
           </div>
 
@@ -185,12 +250,16 @@
               >
                 Experiencia del Comprador
               </span>
-              <h2 class="text-xl font-black text-stone-900 dark:text-white mt-1.5">
+              <h2
+                class="text-xl font-black text-stone-900 dark:text-white mt-1.5"
+              >
                 Tienda Gestión Smart Menu
               </h2>
             </div>
             <div class="text-right">
-              <span class="text-xs text-stone-500 dark:text-zinc-400">En carrito:</span>
+              <span class="text-xs text-stone-500 dark:text-zinc-400"
+                >En carrito:</span
+              >
               <span
                 id="client-cart-count"
                 class="font-extrabold text-orange-600 dark:text-orange-400 text-sm ml-1"
@@ -202,7 +271,9 @@
           <div id="store-products" class="grid sm:grid-cols-2 gap-3 mb-6"></div>
 
           <!-- Carrito y Checkout Simulado -->
-          <div class="bg-stone-50 dark:bg-zinc-950 rounded-2xl border border-stone-200 dark:border-zinc-800 p-4">
+          <div
+            class="bg-stone-50 dark:bg-zinc-950 rounded-2xl border border-stone-200 dark:border-zinc-800 p-4"
+          >
             <h3
               class="text-sm font-extrabold text-stone-900 dark:text-white mb-3 flex items-center gap-2"
             >
@@ -287,7 +358,8 @@
             <div
               class="bg-stone-50 dark:bg-zinc-950/90 p-3.5 rounded-2xl border border-stone-200 dark:border-zinc-800"
             >
-              <span class="text-[10px] uppercase font-bold text-stone-500 dark:text-zinc-400"
+              <span
+                class="text-[10px] uppercase font-bold text-stone-500 dark:text-zinc-400"
                 >Facturación Sim.</span
               >
               <p
@@ -300,7 +372,8 @@
             <div
               class="bg-stone-50 dark:bg-zinc-950/90 p-3.5 rounded-2xl border border-stone-200 dark:border-zinc-800"
             >
-              <span class="text-[10px] uppercase font-bold text-stone-500 dark:text-zinc-400"
+              <span
+                class="text-[10px] uppercase font-bold text-stone-500 dark:text-zinc-400"
                 >Pedidos</span
               >
               <p
@@ -313,7 +386,8 @@
             <div
               class="bg-stone-50 dark:bg-zinc-950/90 p-3.5 rounded-2xl border border-stone-200 dark:border-zinc-800"
             >
-              <span class="text-[10px] uppercase font-bold text-stone-500 dark:text-zinc-400"
+              <span
+                class="text-[10px] uppercase font-bold text-stone-500 dark:text-zinc-400"
                 >Clientes</span
               >
               <p
@@ -383,9 +457,13 @@
             >Sistemas Web de Gestión e Inventario — San Miguel de Tucumán.</span
           >
         </div>
-        <div class="flex flex-wrap gap-4 font-bold text-stone-600 dark:text-zinc-400">
+        <div
+          class="flex flex-wrap gap-4 font-bold text-stone-600 dark:text-zinc-400"
+        >
           <a href="index.html" class="hover:text-orange-600">Inicio</a>
-          <a href="planes.html" class="hover:text-orange-600">Planes y Presupuestos</a>
+          <a href="planes.html" class="hover:text-orange-600"
+            >Planes y Presupuestos</a
+          >
           <a
             href="terminos.html"
             class="text-orange-600 dark:text-orange-400 underline"
@@ -396,14 +474,18 @@
       <p
         class="text-[11px] bg-stone-100 dark:bg-zinc-900/60 border border-stone-200 dark:border-zinc-800 rounded-xl p-3.5 leading-relaxed"
       >
-        <strong class="text-stone-800 dark:text-zinc-400">Aviso Legal de Demostración:</strong> Esta
-        interfaz es una simulación funcional en memoria local del navegador. Los
-        módulos de Gestión y Stock se desarrollan a medida según el alcance
-        contratado. Smart Menu no actúa como sistema contable homologado por
-        ARCA/AFIP ni como pasarela financiera; la facturación fiscal y el
-        resguardo operativo de datos corresponden exclusivamente al comercio
-        titular. Ver
-        <a href="terminos.html" class="text-orange-600 dark:text-orange-400 underline font-bold"
+        <strong class="text-stone-800 dark:text-zinc-400"
+          >Aviso Legal de Demostración:</strong
+        >
+        Esta interfaz es una simulación funcional en memoria local del
+        navegador. Los módulos de Gestión y Stock se desarrollan a medida según
+        el alcance contratado. Smart Menu no actúa como sistema contable
+        homologado por ARCA/AFIP ni como pasarela financiera; la facturación
+        fiscal y el resguardo operativo de datos corresponden exclusivamente al
+        comercio titular. Ver
+        <a
+          href="terminos.html"
+          class="text-orange-600 dark:text-orange-400 underline font-bold"
           >Términos y Condiciones</a
         >.
       </p>
@@ -412,48 +494,106 @@
     <script>
       function toggleTheme() {
         const html = document.documentElement;
-        const isDark = html.classList.toggle('dark');
-        localStorage.setItem('smartmenu_theme', isDark ? 'dark' : 'light');
+        const isDark = html.classList.toggle("dark");
+        localStorage.setItem("smartmenu_theme", isDark ? "dark" : "light");
         updateThemeIcons();
       }
       function updateThemeIcons() {
-        const isDark = document.documentElement.classList.contains('dark');
-        document.querySelectorAll('.theme-icon').forEach((el) => {
+        const isDark = document.documentElement.classList.contains("dark");
+        document.querySelectorAll(".theme-icon").forEach((el) => {
           el.className = isDark
-            ? 'fa-solid fa-sun text-amber-400 theme-icon'
-            : 'fa-solid fa-moon text-stone-700 theme-icon';
+            ? "fa-solid fa-sun text-amber-400 theme-icon"
+            : "fa-solid fa-moon text-stone-700 theme-icon";
         });
-        document.querySelectorAll('.theme-label').forEach((el) => {
-          el.innerText = isDark ? 'Modo Día' : 'Modo Noche';
+        document.querySelectorAll(".theme-label").forEach((el) => {
+          el.innerText = isDark ? "Modo Día" : "Modo Noche";
         });
       }
       function toggleMobileMenu() {
-        const menu = document.getElementById('mobile-menu');
-        if (menu) menu.classList.toggle('hidden');
+        const menu = document.getElementById("mobile-menu");
+        if (menu) menu.classList.toggle("hidden");
       }
-      document.addEventListener('DOMContentLoaded', updateThemeIcons);
+      document.addEventListener("DOMContentLoaded", updateThemeIcons);
 
-      const USD_RATE = 1200;
+      const USD_RATE =
+        (window.SMARTMENU_CONFIG && window.SMARTMENU_CONFIG.usdRate) || 1600;
       let isUSD = false;
       let unseenOrdersCount = 0;
 
       const INITIAL_PRODUCTS = [
-        { id: "prod-1", name: "Auriculares Inalámbricos Pro", price: 45000, stock: 8 },
-        { id: "prod-2", name: "Mochila Urbana Smart Menu", price: 39000, stock: 5 },
-        { id: "prod-3", name: "Botella Térmica 1L Acero", price: 18500, stock: 12 },
-        { id: "prod-4", name: "Teclado Mecánico Compacto", price: 68000, stock: 3 },
+        {
+          id: "prod-1",
+          name: "Auriculares Inalámbricos Pro",
+          price: 45000,
+          stock: 8,
+        },
+        {
+          id: "prod-2",
+          name: "Mochila Urbana Smart Menu",
+          price: 39000,
+          stock: 5,
+        },
+        {
+          id: "prod-3",
+          name: "Botella Térmica 1L Acero",
+          price: 18500,
+          stock: 12,
+        },
+        {
+          id: "prod-4",
+          name: "Teclado Mecánico Compacto",
+          price: 68000,
+          stock: 3,
+        },
       ];
 
       const INITIAL_ORDERS = [
-        { number: "ORD-1001", customerName: "Martina López", itemsSummary: "1x Auriculares Inalámbricos Pro, 1x Botella Térmica 1L", total: 63500, paymentMethod: "Mercado Pago", status: "Entregado" },
-        { number: "ORD-1002", customerName: "Lucas Fernández", itemsSummary: "1x Teclado Mecánico Compacto", total: 68000, paymentMethod: "Tarjeta en Mostrador", status: "Preparando" },
-        { number: "ORD-1003", customerName: "Sofía Pereyra", itemsSummary: "2x Mochila Urbana Smart Menu", total: 78000, paymentMethod: "Transferencia", status: "Pendiente" },
+        {
+          number: "ORD-1001",
+          customerName: "Martina López",
+          itemsSummary:
+            "1x Auriculares Inalámbricos Pro, 1x Botella Térmica 1L",
+          total: 63500,
+          paymentMethod: "Mercado Pago",
+          status: "Entregado",
+        },
+        {
+          number: "ORD-1002",
+          customerName: "Lucas Fernández",
+          itemsSummary: "1x Teclado Mecánico Compacto",
+          total: 68000,
+          paymentMethod: "Tarjeta en Mostrador",
+          status: "Preparando",
+        },
+        {
+          number: "ORD-1003",
+          customerName: "Sofía Pereyra",
+          itemsSummary: "2x Mochila Urbana Smart Menu",
+          total: 78000,
+          paymentMethod: "Transferencia",
+          status: "Pendiente",
+        },
       ];
 
       const INITIAL_CUSTOMERS = [
-        { name: "Martina López", phone: "+54 381 452-8890", ordersCount: 1, totalSpent: 63500 },
-        { name: "Lucas Fernández", phone: "+54 381 612-3340", ordersCount: 1, totalSpent: 68000 },
-        { name: "Sofía Pereyra", phone: "+54 381 504-9912", ordersCount: 1, totalSpent: 78000 },
+        {
+          name: "Martina López",
+          phone: "+54 381 452-8890",
+          ordersCount: 1,
+          totalSpent: 63500,
+        },
+        {
+          name: "Lucas Fernández",
+          phone: "+54 381 612-3340",
+          ordersCount: 1,
+          totalSpent: 68000,
+        },
+        {
+          name: "Sofía Pereyra",
+          phone: "+54 381 504-9912",
+          ordersCount: 1,
+          totalSpent: 78000,
+        },
       ];
 
       let products = JSON.parse(JSON.stringify(INITIAL_PRODUCTS));
@@ -463,14 +603,23 @@
 
       function formatPrice(ars) {
         if (isUSD) {
-          return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(ars / USD_RATE);
+          return new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD",
+          }).format(ars / USD_RATE);
         }
-        return new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS", minimumFractionDigits: 0 }).format(ars);
+        return new Intl.NumberFormat("es-AR", {
+          style: "currency",
+          currency: "ARS",
+          minimumFractionDigits: 0,
+        }).format(ars);
       }
 
       function toggleCurrency() {
         isUSD = !isUSD;
-        document.getElementById("currency-label").innerText = isUSD ? "Ver en ARS" : "Ver en USD*";
+        document.getElementById("currency-label").innerText = isUSD
+          ? "Ver en ARS"
+          : "Ver en USD*";
         renderAll();
       }
 
@@ -508,7 +657,9 @@
 
       function setAdminTab(tab) {
         ["orders", "stock", "customers"].forEach((t) => {
-          document.getElementById(`admin-content-${t}`).classList.toggle("hidden", t !== tab);
+          document
+            .getElementById(`admin-content-${t}`)
+            .classList.toggle("hidden", t !== tab);
           document.getElementById(`atab-${t}`).className =
             t === tab
               ? "px-3.5 py-1.5 rounded-lg bg-orange-500 text-white"
@@ -525,7 +676,12 @@
           if (existing.qty >= prod.stock) return;
           existing.qty += 1;
         } else {
-          cart.push({ id: prod.id, name: prod.name, price: prod.price, qty: 1 });
+          cart.push({
+            id: prod.id,
+            name: prod.name,
+            price: prod.price,
+            qty: 1,
+          });
         }
         renderAll();
       }
@@ -537,13 +693,20 @@
 
       function processCheckout() {
         if (cart.length === 0) {
-          alert("Agregá al menos un producto al carrito para simular la venta.");
+          alert(
+            "Agregá al menos un producto al carrito para simular la venta.",
+          );
           return;
         }
 
-        const cleanName = document.getElementById("checkout-name").value.trim() || "Cliente Web Tucumán";
+        const cleanName =
+          document.getElementById("checkout-name").value.trim() ||
+          "Cliente Web Tucumán";
         const paymentMethod = document.getElementById("checkout-payment").value;
-        const orderTotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+        const orderTotal = cart.reduce(
+          (sum, item) => sum + item.price * item.qty,
+          0,
+        );
         const orderNumber = `ORD-${1000 + orders.length + 1}`;
         const itemsSummary = cart.map((i) => `${i.qty}x ${i.name}`).join(", ");
 
@@ -561,7 +724,9 @@
           if (prod) prod.stock = Math.max(0, prod.stock - item.qty);
         });
 
-        const existingCust = customers.find((c) => c.name.toLowerCase() === cleanName.toLowerCase());
+        const existingCust = customers.find(
+          (c) => c.name.toLowerCase() === cleanName.toLowerCase(),
+        );
         if (existingCust) {
           existingCust.ordersCount += 1;
           existingCust.totalSpent += orderTotal;
@@ -591,7 +756,8 @@
       function cycleOrderStatus(index) {
         const states = ["Pendiente", "Preparando", "Entregado"];
         const current = orders[index].status;
-        orders[index].status = states[(states.indexOf(current) + 1) % states.length];
+        orders[index].status =
+          states[(states.indexOf(current) + 1) % states.length];
         renderAll();
       }
 
@@ -651,8 +817,10 @@
 
         const totalItems = cart.reduce((s, i) => s + i.qty, 0);
         const totalAmount = cart.reduce((s, i) => s + i.price * i.qty, 0);
-        document.getElementById("client-cart-count").innerText = `${totalItems} ítems`;
-        document.getElementById("store-cart-total").innerText = formatPrice(totalAmount);
+        document.getElementById("client-cart-count").innerText =
+          `${totalItems} ítems`;
+        document.getElementById("store-cart-total").innerText =
+          formatPrice(totalAmount);
 
         const cartEl = document.getElementById("store-cart-items");
         if (cart.length === 0) {
@@ -674,7 +842,8 @@
         }
 
         const totalRevenue = orders.reduce((s, o) => s + o.total, 0);
-        document.getElementById("kpi-revenue").innerText = formatPrice(totalRevenue);
+        document.getElementById("kpi-revenue").innerText =
+          formatPrice(totalRevenue);
         document.getElementById("kpi-orders").innerText = orders.length;
         document.getElementById("kpi-customers").innerText = customers.length;
         document.getElementById("tab-orders-count").innerText = orders.length;

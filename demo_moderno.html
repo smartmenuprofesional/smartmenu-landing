@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Demo Menú Moderno | Fuego & Pan Tucumán</title>
+    <script src="config.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -1093,14 +1094,15 @@
 
     <script>
       let isUSD = false;
-      const usdRate = 1200;
+      const USD_RATE =
+        (window.SMARTMENU_CONFIG && window.SMARTMENU_CONFIG.usdRate) || 1600;
 
       function formatPrice(amountARS) {
         if (isUSD) {
           return new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "USD",
-          }).format(amountARS / usdRate);
+          }).format(amountARS / USD_RATE);
         }
         return new Intl.NumberFormat("es-AR", {
           style: "currency",
@@ -1236,8 +1238,11 @@
           text += `▪️ ${item.quantity}x ${item.name} ($${item.price.toLocaleString("es-AR")} ARS)\n`;
         });
         text += `\n💰 *Total a pagar: $${total.toLocaleString("es-AR")} ARS*\n\n👤 *Nombre:* ${clientName}\n📍 *Mesa / Dirección:* ${clientLoc}`;
+        const waNumber =
+          (window.SMARTMENU_CONFIG && window.SMARTMENU_CONFIG.whatsappNumber) ||
+          "5493816320130";
         window.open(
-          `https://wa.me/5493816320130?text=${encodeURIComponent(text)}`,
+          `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`,
           "_blank",
         );
       }

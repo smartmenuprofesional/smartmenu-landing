@@ -8,13 +8,14 @@
       name="description"
       content="Catálogos digitales interactivos por rubro con precios en ARS y USD referencial y consultas directas a WhatsApp. Sin comisiones por venta."
     />
+    <script src="config.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
-        darkMode: 'class',
+        darkMode: "class",
       };
-      if (localStorage.getItem('smartmenu_theme') === 'dark') {
-        document.documentElement.classList.add('dark');
+      if (localStorage.getItem("smartmenu_theme") === "dark") {
+        document.documentElement.classList.add("dark");
       }
     </script>
     <link
@@ -38,7 +39,9 @@
           >
             <i class="fa-solid fa-qrcode"></i>
           </div>
-          <span class="font-black text-xl tracking-tight text-stone-900 dark:text-white">
+          <span
+            class="font-black text-xl tracking-tight text-stone-900 dark:text-white"
+          >
             Smart<span class="text-orange-500">Menu</span>
           </span>
         </a>
@@ -46,13 +49,41 @@
         <nav
           class="hidden lg:flex items-center gap-6 text-sm font-semibold text-stone-600 dark:text-zinc-300"
         >
-          <a href="index.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Inicio</a>
-          <a href="demo_moderno.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Menú Moderno</a>
-          <a href="demo_clasico.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Menú Clásico</a>
-          <a href="catalogos.html" class="text-orange-600 dark:text-orange-500 font-extrabold">Catálogos</a>
-          <a href="turnos.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Turnos</a>
-          <a href="gestion.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Gestión y Stock</a>
-          <a href="planes.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Planes</a>
+          <a
+            href="index.html"
+            class="hover:text-orange-600 dark:hover:text-orange-400 transition"
+            >Inicio</a
+          >
+          <a
+            href="demo_moderno.html"
+            class="hover:text-orange-600 dark:hover:text-orange-400 transition"
+            >Menú Moderno</a
+          >
+          <a
+            href="demo_clasico.html"
+            class="hover:text-orange-600 dark:hover:text-orange-400 transition"
+            >Menú Clásico</a
+          >
+          <a
+            href="catalogos.html"
+            class="text-orange-600 dark:text-orange-500 font-extrabold"
+            >Catálogos</a
+          >
+          <a
+            href="turnos.html"
+            class="hover:text-orange-600 dark:hover:text-orange-400 transition"
+            >Turnos</a
+          >
+          <a
+            href="gestion.html"
+            class="hover:text-orange-600 dark:hover:text-orange-400 transition"
+            >Gestión y Stock</a
+          >
+          <a
+            href="planes.html"
+            class="hover:text-orange-600 dark:hover:text-orange-400 transition"
+            >Planes</a
+          >
         </nav>
 
         <div class="flex items-center gap-2">
@@ -92,13 +123,41 @@
         id="mobile-menu"
         class="hidden lg:hidden bg-white dark:bg-zinc-950 border-t border-stone-200 dark:border-zinc-800 px-4 py-3 space-y-1 shadow-lg"
       >
-        <a href="index.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Inicio</a>
-        <a href="demo_moderno.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Menú Moderno</a>
-        <a href="demo_clasico.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Menú Clásico</a>
-        <a href="catalogos.html" class="block px-3 py-2 rounded-xl text-sm font-bold bg-orange-50 text-orange-600 dark:bg-orange-500/15 dark:text-orange-400">Catálogos</a>
-        <a href="turnos.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Turnos</a>
-        <a href="gestion.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Gestión y Stock</a>
-        <a href="planes.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Planes</a>
+        <a
+          href="index.html"
+          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >Inicio</a
+        >
+        <a
+          href="demo_moderno.html"
+          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >Menú Moderno</a
+        >
+        <a
+          href="demo_clasico.html"
+          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >Menú Clásico</a
+        >
+        <a
+          href="catalogos.html"
+          class="block px-3 py-2 rounded-xl text-sm font-bold bg-orange-50 text-orange-600 dark:bg-orange-500/15 dark:text-orange-400"
+          >Catálogos</a
+        >
+        <a
+          href="turnos.html"
+          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >Turnos</a
+        >
+        <a
+          href="gestion.html"
+          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >Gestión y Stock</a
+        >
+        <a
+          href="planes.html"
+          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >Planes</a
+        >
       </div>
     </header>
 
@@ -122,9 +181,13 @@
             >
               Catálogo <span class="text-orange-500">Smart Menu</span>
             </h1>
-            <p class="text-stone-600 dark:text-zinc-400 text-sm sm:text-base mt-2 max-w-2xl">
+            <p
+              class="text-stone-600 dark:text-zinc-400 text-sm sm:text-base mt-2 max-w-2xl"
+            >
               Elegí un rubro para explorar
-              <strong class="text-stone-900 dark:text-zinc-200">12 artículos por categoría</strong>
+              <strong class="text-stone-900 dark:text-zinc-200"
+                >12 artículos por categoría</strong
+              >
               con precios en pesos argentinos (ARS) y dólares referenciales
               (USD*), armá una consulta y mirá cómo llega estructurada a
               WhatsApp.
@@ -133,8 +196,10 @@
           <div
             class="bg-white dark:bg-zinc-900/90 px-4 py-2.5 rounded-2xl text-xs text-stone-600 dark:text-zinc-400 border border-stone-200 dark:border-zinc-800 shadow-sm"
           >
-            <span class="font-bold text-emerald-700 dark:text-emerald-400">Cotización ref.*:</span> 1
-            USD = $1.200 ARS
+            <span class="font-bold text-emerald-700 dark:text-emerald-400"
+              >Cotización ref.*:</span
+            >
+            1 USD = $<span id="usd-rate-badge">1.600</span> ARS
           </div>
         </div>
 
@@ -151,7 +216,9 @@
               <i class="fa-solid fa-pen-ruler"></i>
             </div>
             <div>
-              <p class="font-extrabold text-sm text-stone-900 dark:text-white">Librería</p>
+              <p class="font-extrabold text-sm text-stone-900 dark:text-white">
+                Librería
+              </p>
               <p class="text-[11px] text-stone-500 dark:text-zinc-400">
                 12 artículos escolares/oficina
               </p>
@@ -169,8 +236,12 @@
               <i class="fa-solid fa-dumbbell"></i>
             </div>
             <div>
-              <p class="font-extrabold text-sm text-stone-900 dark:text-white">Art. de Gimnasia</p>
-              <p class="text-[11px] text-stone-500 dark:text-zinc-400">12 accesorios fitness</p>
+              <p class="font-extrabold text-sm text-stone-900 dark:text-white">
+                Art. de Gimnasia
+              </p>
+              <p class="text-[11px] text-stone-500 dark:text-zinc-400">
+                12 accesorios fitness
+              </p>
             </div>
           </button>
 
@@ -185,7 +256,9 @@
               <i class="fa-solid fa-car"></i>
             </div>
             <div>
-              <p class="font-extrabold text-sm text-stone-900 dark:text-white">Automotor Usados</p>
+              <p class="font-extrabold text-sm text-stone-900 dark:text-white">
+                Automotor Usados
+              </p>
               <p class="text-[11px] text-stone-500 dark:text-zinc-400">
                 12 vehículos seleccionados
               </p>
@@ -203,8 +276,12 @@
               <i class="fa-solid fa-hands-holding-circle"></i>
             </div>
             <div>
-              <p class="font-extrabold text-sm text-stone-900 dark:text-white">Artesanías</p>
-              <p class="text-[11px] text-stone-500 dark:text-zinc-400">12 piezas regionales</p>
+              <p class="font-extrabold text-sm text-stone-900 dark:text-white">
+                Artesanías
+              </p>
+              <p class="text-[11px] text-stone-500 dark:text-zinc-400">
+                12 piezas regionales
+              </p>
             </div>
           </button>
         </div>
@@ -219,11 +296,18 @@
             class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6"
           >
             <div>
-              <h2 id="rubro-title" class="text-2xl font-black text-stone-900 dark:text-white">
+              <h2
+                id="rubro-title"
+                class="text-2xl font-black text-stone-900 dark:text-white"
+              >
                 Librería Smart Menu
               </h2>
-              <p id="rubro-subtitle" class="text-xs text-stone-500 dark:text-zinc-400">
-                Mostrando 12 productos disponibles para consulta o pedido directo.
+              <p
+                id="rubro-subtitle"
+                class="text-xs text-stone-500 dark:text-zinc-400"
+              >
+                Mostrando 12 productos disponibles para consulta o pedido
+                directo.
               </p>
             </div>
             <div class="relative">
@@ -266,18 +350,24 @@
               </span>
             </div>
 
-            <p class="text-xs text-stone-600 dark:text-zinc-400 mb-4 leading-relaxed">
+            <p
+              class="text-xs text-stone-600 dark:text-zinc-400 mb-4 leading-relaxed"
+            >
               Así recibe tu negocio el mensaje ordenado en WhatsApp cuando un
               cliente selecciona artículos:
             </p>
 
             <!-- Burbuja Simulada de WhatsApp -->
-            <div class="bg-[#efeae2] dark:bg-[#0b141a] p-4 rounded-2xl border border-stone-200 dark:border-zinc-800">
+            <div
+              class="bg-[#efeae2] dark:bg-[#0b141a] p-4 rounded-2xl border border-stone-200 dark:border-zinc-800"
+            >
               <div
                 class="bg-[#d9fdd3] dark:bg-[#005c4b] text-stone-900 dark:text-white p-3.5 rounded-2xl rounded-tr-none text-xs font-mono whitespace-pre-line leading-relaxed shadow"
                 id="whatsapp-preview"
               ></div>
-              <p class="text-[10px] text-right text-stone-500 dark:text-zinc-400 mt-1.5">
+              <p
+                class="text-[10px] text-right text-stone-500 dark:text-zinc-400 mt-1.5"
+              >
                 23:50 ✓✓
               </p>
             </div>
@@ -287,7 +377,9 @@
               class="mt-4 space-y-2 max-h-40 overflow-y-auto"
             ></div>
 
-            <div class="mt-5 pt-4 border-t border-stone-200 dark:border-zinc-800 flex flex-col gap-2">
+            <div
+              class="mt-5 pt-4 border-t border-stone-200 dark:border-zinc-800 flex flex-col gap-2"
+            >
               <button
                 onclick="sendCatalogWhatsApp()"
                 class="w-full bg-[#25D366] hover:bg-[#20bd5a] text-stone-950 font-black py-3.5 rounded-xl text-sm flex items-center justify-center gap-2 transition shadow-md"
@@ -312,9 +404,14 @@
             </p>
             <p class="leading-relaxed">
               Catálogo interactivo desde
-              <strong class="text-stone-900 dark:text-white">$50.000 ARS</strong> (setup inicial)
-              con subdominio activo y simulación personalizable en
-              <a href="planes.html" class="text-orange-600 dark:text-orange-400 underline font-bold"
+              <strong class="text-stone-900 dark:text-white"
+                >$50.000 ARS</strong
+              >
+              (setup inicial) con subdominio activo y simulación personalizable
+              en
+              <a
+                href="planes.html"
+                class="text-orange-600 dark:text-orange-400 underline font-bold"
                 >Planes</a
               >.
             </p>
@@ -338,9 +435,13 @@
             >Catálogos Comerciales Interactivos — San Miguel de Tucumán.</span
           >
         </div>
-        <div class="flex flex-wrap gap-4 font-bold text-stone-600 dark:text-zinc-400">
+        <div
+          class="flex flex-wrap gap-4 font-bold text-stone-600 dark:text-zinc-400"
+        >
           <a href="index.html" class="hover:text-orange-600">Inicio</a>
-          <a href="planes.html" class="hover:text-orange-600">Planes y Presupuestos</a>
+          <a href="planes.html" class="hover:text-orange-600"
+            >Planes y Presupuestos</a
+          >
           <a
             href="terminos.html"
             class="text-orange-600 dark:text-orange-400 underline"
@@ -351,14 +452,18 @@
       <p
         class="text-[11px] bg-stone-100 dark:bg-zinc-900/60 border border-stone-200 dark:border-zinc-800 rounded-xl p-3.5 leading-relaxed"
       >
-        <strong class="text-stone-800 dark:text-zinc-400">Aviso Legal de Demostración:</strong> Los
-        productos, vehículos, imágenes y precios exhibidos en esta sección son
-        ejemplos ilustrativos. *La conversión a USD es meramente referencial y
-        no constituye cotización oficial. Smart Menu no actúa como intermediario
-        comercial, concesionario ni pasarela de pagos; en cada catálogo
-        contratado, el comercio titular es único responsable por el stock,
-        precios, garantías y facturación. Ver
-        <a href="terminos.html" class="text-orange-600 dark:text-orange-400 underline font-bold"
+        <strong class="text-stone-800 dark:text-zinc-400"
+          >Aviso Legal de Demostración:</strong
+        >
+        Los productos, vehículos, imágenes y precios exhibidos en esta sección
+        son ejemplos ilustrativos. *La conversión a USD es meramente referencial
+        y no constituye cotización oficial. Smart Menu no actúa como
+        intermediario comercial, concesionario ni pasarela de pagos; en cada
+        catálogo contratado, el comercio titular es único responsable por el
+        stock, precios, garantías y facturación. Ver
+        <a
+          href="terminos.html"
+          class="text-orange-600 dark:text-orange-400 underline font-bold"
           >Términos y Condiciones</a
         >.
       </p>
@@ -367,28 +472,29 @@
     <script>
       function toggleTheme() {
         const html = document.documentElement;
-        const isDark = html.classList.toggle('dark');
-        localStorage.setItem('smartmenu_theme', isDark ? 'dark' : 'light');
+        const isDark = html.classList.toggle("dark");
+        localStorage.setItem("smartmenu_theme", isDark ? "dark" : "light");
         updateThemeIcons();
       }
       function updateThemeIcons() {
-        const isDark = document.documentElement.classList.contains('dark');
-        document.querySelectorAll('.theme-icon').forEach((el) => {
+        const isDark = document.documentElement.classList.contains("dark");
+        document.querySelectorAll(".theme-icon").forEach((el) => {
           el.className = isDark
-            ? 'fa-solid fa-sun text-amber-400 theme-icon'
-            : 'fa-solid fa-moon text-stone-700 theme-icon';
+            ? "fa-solid fa-sun text-amber-400 theme-icon"
+            : "fa-solid fa-moon text-stone-700 theme-icon";
         });
-        document.querySelectorAll('.theme-label').forEach((el) => {
-          el.innerText = isDark ? 'Modo Día' : 'Modo Noche';
+        document.querySelectorAll(".theme-label").forEach((el) => {
+          el.innerText = isDark ? "Modo Día" : "Modo Noche";
         });
       }
       function toggleMobileMenu() {
-        const menu = document.getElementById('mobile-menu');
-        if (menu) menu.classList.toggle('hidden');
+        const menu = document.getElementById("mobile-menu");
+        if (menu) menu.classList.toggle("hidden");
       }
-      document.addEventListener('DOMContentLoaded', updateThemeIcons);
+      document.addEventListener("DOMContentLoaded", updateThemeIcons);
 
-      const USD_RATE = 1200;
+      const USD_RATE =
+        (window.SMARTMENU_CONFIG && window.SMARTMENU_CONFIG.usdRate) || 1600;
       let isUSD = false;
       let currentRubro = "libreria";
       let selectedItems = [];
@@ -396,74 +502,366 @@
       const CATALOG_DATA = {
         libreria: {
           title: "Librería Smart Menu",
-          subtitle: "Artículos escolares, universitarios y de oficina con precios actualizados.",
+          subtitle:
+            "Artículos escolares, universitarios y de oficina con precios actualizados.",
           items: [
-            { id: "lib-1", name: "Resma Autor A4 75g x500 Hojas", desc: "Papel alcalino multifunción.", ars: 8500, img: "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?q=80&w=500" },
-            { id: "lib-2", name: "Cuaderno Universitario 84 Hojas", desc: "Tapa dura rayado o cuadriculado.", ars: 4200, img: "https://images.unsplash.com/photo-1531346878377-a5be20888e57?q=80&w=500" },
-            { id: "lib-3", name: "Mochila Urbana Porta Notebook", desc: "Tela impermeable reforzada 15.6'.", ars: 38000, img: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=500" },
-            { id: "lib-4", name: "Set Marcadores Pastel x12", desc: "Punta cónica lavable.", ars: 7900, img: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?q=80&w=500" },
-            { id: "lib-5", name: "Calculadora Científica 240 Funciones", desc: "Pantalla 2 líneas con tapa rígida.", ars: 19500, img: "https://images.unsplash.com/photo-1587145820266-a5951ee6f620?q=80&w=500" },
-            { id: "lib-6", name: "Carpeta Escolar N°3 Negra", desc: "3 anillos metálicos reforzados.", ars: 5400, img: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=500" },
-            { id: "lib-7", name: "Cartuchera Doble Cierre", desc: "Gran capacidad, cierres metálicos.", ars: 9800, img: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=500" },
-            { id: "lib-8", name: "Lápices de Colores x24 Largos", desc: "Mina blanda resistente.", ars: 8900, img: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?q=80&w=500" },
-            { id: "lib-9", name: "Agenda Ejecutiva 2026 Diaria", desc: "Tapa símil cuero con elástico.", ars: 16500, img: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?q=80&w=500" },
-            { id: "lib-10", name: "Set Bolígrafos Gel Colores x6", desc: "Trazo fino 0.7mm secado rápido.", ars: 6200, img: "https://images.unsplash.com/photo-1585336261022-680e295ce3fe?q=80&w=500" },
-            { id: "lib-11", name: "Block de Dibujo N°5 Blanco", desc: "24 hojas de 120g para arte.", ars: 3600, img: "https://images.unsplash.com/photo-1517842645767-c639042777db?q=80&w=500" },
-            { id: "lib-12", name: "Resaltadores Flúor x4 Unidades", desc: "Punta biselada larga duración.", ars: 4800, img: "https://images.unsplash.com/photo-1568849676085-51415703900f?q=80&w=500" },
+            {
+              id: "lib-1",
+              name: "Resma Autor A4 75g x500 Hojas",
+              desc: "Papel alcalino multifunción.",
+              ars: 8500,
+              img: "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?q=80&w=500",
+            },
+            {
+              id: "lib-2",
+              name: "Cuaderno Universitario 84 Hojas",
+              desc: "Tapa dura rayado o cuadriculado.",
+              ars: 4200,
+              img: "https://images.unsplash.com/photo-1531346878377-a5be20888e57?q=80&w=500",
+            },
+            {
+              id: "lib-3",
+              name: "Mochila Urbana Porta Notebook",
+              desc: "Tela impermeable reforzada 15.6'.",
+              ars: 38000,
+              img: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=500",
+            },
+            {
+              id: "lib-4",
+              name: "Set Marcadores Pastel x12",
+              desc: "Punta cónica lavable.",
+              ars: 7900,
+              img: "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80",
+            },
+            {
+              id: "lib-5",
+              name: "Calculadora Científica 240 Funciones",
+              desc: "Pantalla 2 líneas con tapa rígida.",
+              ars: 19500,
+              img: "https://images.unsplash.com/photo-1587145820266-a5951ee6f620?q=80&w=500",
+            },
+            {
+              id: "lib-6",
+              name: "Carpeta Escolar N°3 Negra",
+              desc: "3 anillos metálicos reforzados.",
+              ars: 5400,
+              img: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=500",
+            },
+            {
+              id: "lib-7",
+              name: "Cartuchera Doble Cierre",
+              desc: "Gran capacidad, cierres metálicos.",
+              ars: 9800,
+              img: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=500",
+            },
+            {
+              id: "lib-8",
+              name: "Lápices de Colores x24 Largos",
+              desc: "Mina blanda resistente.",
+              ars: 8900,
+              img: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=600&q=80",
+            },
+            {
+              id: "lib-9",
+              name: "Agenda Ejecutiva 2026 Diaria",
+              desc: "Tapa símil cuero con elástico.",
+              ars: 16500,
+              img: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?q=80&w=500",
+            },
+            {
+              id: "lib-10",
+              name: "Set Bolígrafos Gel Colores x6",
+              desc: "Trazo fino 0.7mm secado rápido.",
+              ars: 6200,
+              img: "https://images.unsplash.com/photo-1585336261022-680e295ce3fe?q=80&w=500",
+            },
+            {
+              id: "lib-11",
+              name: "Block de Dibujo N°5 Blanco",
+              desc: "24 hojas de 120g para arte.",
+              ars: 3600,
+              img: "https://images.unsplash.com/photo-1517842645767-c639042777db?q=80&w=500",
+            },
+            {
+              id: "lib-12",
+              name: "Resaltadores Flúor x4 Unidades",
+              desc: "Punta biselada larga duración.",
+              ars: 4800,
+              img: "https://images.unsplash.com/photo-1568849676085-51415703900f?q=80&w=500",
+            },
           ],
         },
         gimnasia: {
           title: "Artículos de Gimnasia Smart Menu",
-          subtitle: "Equipamiento fitness y entrenamiento funcional en casa o gimnasio.",
+          subtitle:
+            "Equipamiento fitness y entrenamiento funcional en casa o gimnasio.",
           items: [
-            { id: "gym-1", name: "Par Mancuernas Hexagonales 5kg", desc: "Recubiertas en caucho antideslizante.", ars: 34000, img: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=500" },
-            { id: "gym-2", name: "Colchoneta Yoga Mat 6mm", desc: "Alta densidad con correa de transporte.", ars: 18500, img: "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?q=80&w=500" },
-            { id: "gym-3", name: "Set 3 Bandas Elásticas Circulares", desc: "Intensidad baja, media y alta.", ars: 12900, img: "https://images.unsplash.com/photo-1598289431512-b97b0917affc?q=80&w=500" },
-            { id: "gym-4", name: "Soga de Saltar Speed Rulemanes", desc: "Cable de acero recubierto regulable.", ars: 11500, img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=500" },
-            { id: "gym-5", name: "Rueda Abdominal Doble Rueda", desc: "Incluye pad apoya rodillas.", ars: 14200, img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=500" },
-            { id: "gym-6", name: "Pesa Rusa Kettlebell 8kg", desc: "Hierro fundido con base plana.", ars: 26000, img: "https://images.unsplash.com/photo-1517963879433-6ad2b056d712?q=80&w=500" },
-            { id: "gym-7", name: "Guantes Entrenamiento con Muñequera", desc: "Palma acolchada respirable.", ars: 13800, img: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=500" },
-            { id: "gym-8", name: "Par Tobilleras con Peso 2kg c/u", desc: "Abrojo reforzado de alta resistencia.", ars: 15900, img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=500" },
-            { id: "gym-9", name: "Barra Dominadas Extensible Puerta", desc: "Soporta hasta 120kg sin tornillos.", ars: 29500, img: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=500" },
-            { id: "gym-10", name: "Pelota Esferodinamia 65cm", desc: "Sistema anti-explosión + inflador.", ars: 21000, img: "https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=500" },
-            { id: "gym-11", name: "Botella Térmica Deportiva 1L", desc: "Acero inoxidable doble pared.", ars: 18500, img: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?q=80&w=500" },
-            { id: "gym-12", name: "Rodillo Masajeador Foam Roller", desc: "Recuperación muscular miofascial.", ars: 17400, img: "https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=500" },
+            {
+              id: "gym-1",
+              name: "Par Mancuernas Hexagonales 5kg",
+              desc: "Recubiertas en caucho antideslizante.",
+              ars: 34000,
+              img: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=500",
+            },
+            {
+              id: "gym-2",
+              name: "Colchoneta Yoga Mat 6mm",
+              desc: "Alta densidad con correa de transporte.",
+              ars: 18500,
+              img: "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?q=80&w=500",
+            },
+            {
+              id: "gym-3",
+              name: "Set 3 Bandas Elásticas Circulares",
+              desc: "Intensidad baja, media y alta.",
+              ars: 12900,
+              img: "https://images.unsplash.com/photo-1598289431512-b97b0917affc?q=80&w=500",
+            },
+            {
+              id: "gym-4",
+              name: "Soga de Saltar Speed Rulemanes",
+              desc: "Cable de acero recubierto regulable.",
+              ars: 11500,
+              img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=500",
+            },
+            {
+              id: "gym-5",
+              name: "Rueda Abdominal Doble Rueda",
+              desc: "Incluye pad apoya rodillas.",
+              ars: 14200,
+              img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=500",
+            },
+            {
+              id: "gym-6",
+              name: "Pesa Rusa Kettlebell 8kg",
+              desc: "Hierro fundido con base plana.",
+              ars: 26000,
+              img: "https://images.unsplash.com/photo-1517963879433-6ad2b056d712?q=80&w=500",
+            },
+            {
+              id: "gym-7",
+              name: "Guantes Entrenamiento con Muñequera",
+              desc: "Palma acolchada respirable.",
+              ars: 13800,
+              img: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=500",
+            },
+            {
+              id: "gym-8",
+              name: "Par Tobilleras con Peso 2kg c/u",
+              desc: "Abrojo reforzado de alta resistencia.",
+              ars: 15900,
+              img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=500",
+            },
+            {
+              id: "gym-9",
+              name: "Barra Dominadas Extensible Puerta",
+              desc: "Soporta hasta 120kg sin tornillos.",
+              ars: 29500,
+              img: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=500",
+            },
+            {
+              id: "gym-10",
+              name: "Pelota Esferodinamia 65cm",
+              desc: "Sistema anti-explosión + inflador.",
+              ars: 21000,
+              img: "https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=500",
+            },
+            {
+              id: "gym-11",
+              name: "Botella Térmica Deportiva 1L",
+              desc: "Acero inoxidable doble pared.",
+              ars: 18500,
+              img: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?q=80&w=500",
+            },
+            {
+              id: "gym-12",
+              name: "Rodillo Masajeador Foam Roller",
+              desc: "Recuperación muscular miofascial.",
+              ars: 17400,
+              img: "https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=500",
+            },
           ],
         },
         automotor: {
           title: "Automotor Smart Menu",
-          subtitle: "Unidades seleccionadas con financiación y permuta • Consulta directa por WhatsApp.",
+          subtitle:
+            "Unidades seleccionadas con financiación y permuta • Consulta directa por WhatsApp.",
           items: [
-            { id: "auto-1", name: "Toyota Hilux SRX 2.8 4x4 AT (2022)", desc: "68.000 km • Único dueño • Service oficiales.", ars: 43200000, img: "https://images.unsplash.com/photo-1559416523-140ddc3d238c?q=80&w=500" },
-            { id: "auto-2", name: "VW Amarok V6 Extreme 258cv (2021)", desc: "74.000 km • Automática • Cubiertas nuevas.", ars: 40800000, img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=500" },
-            { id: "auto-3", name: "Fiat Cronos Drive 1.3 Pack (2023)", desc: "29.000 km • Impecable • GNC 5ta Gen.", ars: 18600000, img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=500" },
-            { id: "auto-4", name: "Peugeot 208 Allure 1.6 (2022)", desc: "41.000 km • Techo panorámico • CarPlay.", ars: 20400000, img: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=500" },
-            { id: "auto-5", name: "Ford Ranger XLT 3.2 4x2 (2020)", desc: "89.000 km • Caja manual • Barra y lona.", ars: 31200000, img: "https://images.unsplash.com/photo-1551830820-330a71b99659?q=80&w=500" },
-            { id: "auto-6", name: "Chevrolet Onix LTZ 1.0 Turbo (2021)", desc: "52.000 km • Bajo consumo • 6 airbags.", ars: 17900000, img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=500" },
-            { id: "auto-7", name: "Toyota Corolla SEG 2.0 CVT (2021)", desc: "58.000 km • Cuero • Toyota Safety Sense.", ars: 27600000, img: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?q=80&w=500" },
-            { id: "auto-8", name: "Honda HR-V EXL 1.8 CVT (2020)", desc: "64.000 km • Tapizado cuero • Cámara retroceso.", ars: 25800000, img: "https://images.unsplash.com/photo-1568844293986-8d0400bd4745?q=80&w=500" },
-            { id: "auto-9", name: "Renault Kangoo Stepway 1.6 (2022)", desc: "47.000 km • 5 asientos • Doble portón.", ars: 21500000, img: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?q=80&w=500" },
-            { id: "auto-10", name: "VW Gol Trend MSI 1.6 (2019)", desc: "79.000 km • Aire y dirección • VTV al día.", ars: 13800000, img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=500" },
-            { id: "auto-11", name: "Jeep Renegade Sport 1.8 AT (2021)", desc: "55.000 km • Control crucero • Excelente estado.", ars: 24900000, img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=500" },
-            { id: "auto-12", name: "Citroën C4 Cactus Feel Pack (2022)", desc: "38.000 km • Bitono • Pantalla táctil 7'.", ars: 21900000, img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=500" },
+            {
+              id: "auto-1",
+              name: "Toyota Hilux SRX 2.8 4x4 AT (2022)",
+              desc: "68.000 km • Único dueño • Service oficiales.",
+              ars: 43200000,
+              img: "https://images.unsplash.com/photo-1559416523-140ddc3d238c?q=80&w=500",
+            },
+            {
+              id: "auto-2",
+              name: "VW Amarok V6 Extreme 258cv (2021)",
+              desc: "74.000 km • Automática • Cubiertas nuevas.",
+              ars: 40800000,
+              img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=500",
+            },
+            {
+              id: "auto-3",
+              name: "Fiat Cronos Drive 1.3 Pack (2023)",
+              desc: "29.000 km • Impecable • GNC 5ta Gen.",
+              ars: 18600000,
+              img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=500",
+            },
+            {
+              id: "auto-4",
+              name: "Peugeot 208 Allure 1.6 (2022)",
+              desc: "41.000 km • Techo panorámico • CarPlay.",
+              ars: 20400000,
+              img: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=500",
+            },
+            {
+              id: "auto-5",
+              name: "Ford Ranger XLT 3.2 4x2 (2020)",
+              desc: "89.000 km • Caja manual • Barra y lona.",
+              ars: 31200000,
+              img: "https://images.unsplash.com/photo-1551830820-330a71b99659?q=80&w=500",
+            },
+            {
+              id: "auto-6",
+              name: "Chevrolet Onix LTZ 1.0 Turbo (2021)",
+              desc: "52.000 km • Bajo consumo • 6 airbags.",
+              ars: 17900000,
+              img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=500",
+            },
+            {
+              id: "auto-7",
+              name: "Toyota Corolla SEG 2.0 CVT (2021)",
+              desc: "58.000 km • Cuero • Toyota Safety Sense.",
+              ars: 27600000,
+              img: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?q=80&w=500",
+            },
+            {
+              id: "auto-8",
+              name: "Honda HR-V EXL 1.8 CVT (2020)",
+              desc: "64.000 km • Tapizado cuero • Cámara retroceso.",
+              ars: 25800000,
+              img: "https://images.unsplash.com/photo-1568844293986-8d0400bd4745?q=80&w=500",
+            },
+            {
+              id: "auto-9",
+              name: "Renault Kangoo Stepway 1.6 (2022)",
+              desc: "47.000 km • 5 asientos • Doble portón.",
+              ars: 21500000,
+              img: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?q=80&w=500",
+            },
+            {
+              id: "auto-10",
+              name: "VW Gol Trend MSI 1.6 (2019)",
+              desc: "79.000 km • Aire y dirección • VTV al día.",
+              ars: 13800000,
+              img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=500",
+            },
+            {
+              id: "auto-11",
+              name: "Jeep Renegade Sport 1.8 AT (2021)",
+              desc: "55.000 km • Control crucero • Excelente estado.",
+              ars: 24900000,
+              img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=500",
+            },
+            {
+              id: "auto-12",
+              name: "Citroën C4 Cactus Feel Pack (2022)",
+              desc: "38.000 km • Bitono • Pantalla táctil 7'.",
+              ars: 21900000,
+              img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=500",
+            },
           ],
         },
         artesanias: {
           title: "Artesanías Smart Menu",
-          subtitle: "Piezas únicas hechas a mano en el Norte Argentino • Envíos a todo el país.",
+          subtitle:
+            "Piezas únicas hechas a mano en el Norte Argentino • Envíos a todo el país.",
           items: [
-            { id: "art-1", name: "Mate Imperial Calabaza y Alpaca", desc: "Cincelado a mano, virola gruesa de alpaca.", ars: 48000, img: "https://images.unsplash.com/photo-1589396575653-c09c794ff6a6?q=80&w=500" },
-            { id: "art-2", name: "Bombilla Pico de Loro Alpaca", desc: "Filtro pala desmontable, soldadura plata.", ars: 19500, img: "https://images.unsplash.com/photo-1589396575653-c09c794ff6a6?q=80&w=500" },
-            { id: "art-3", name: "Tabla de Asado Algarrobo 50x30", desc: "Curada con cera de abejas, canaleta jugos.", ars: 29000, img: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?q=80&w=500" },
-            { id: "art-4", name: "Poncho Tucumano Telar Criollo", desc: "Lana de oveja teñida con tintes naturales.", ars: 95000, img: "https://images.unsplash.com/photo-1544967082-d9d25d867d66?q=80&w=500" },
-            { id: "art-5", name: "Cuenco Cerámica Gres Esmaltado", desc: "Horneado a 1250°C, apto microondas.", ars: 14500, img: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?q=80&w=500" },
-            { id: "art-6", name: "Cuchillo Criollo Acero al Carbono 16cm", desc: "Cabo de asta de ciervo y vaina de cuero.", ars: 54000, img: "https://images.unsplash.com/photo-1593618998160-e34014e67546?q=80&w=500" },
-            { id: "art-7", name: "Set Matero Cuero Crudo Cosido", desc: "Yerbera, azucarera y porta termo.", ars: 42000, img: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?q=80&w=500" },
-            { id: "art-8", name: "Camino de Mesa Tejido en Telar", desc: "Algodón rústico 1.80m x 0.45m.", ars: 24500, img: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=500" },
-            { id: "art-9", name: "Lámpara Colgante Mimbre Tejido", desc: "45cm diámetro, incluye portalámparas.", ars: 36000, img: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?q=80&w=500" },
-            { id: "art-10", name: "Mortero de Piedra Tallada con Pilón", desc: "Ideal para especias y chimichurri.", ars: 22000, img: "https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?q=80&w=500" },
-            { id: "art-11", name: "Cartera Bandolera Cuero Repujado", desc: "Trabajo artesanal con cierre imantado.", ars: 49000, img: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=500" },
-            { id: "art-12", name: "Juego de 6 Posavasos Madera y Cuero", desc: "Incluye soporte organizador.", ars: 12800, img: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?q=80&w=500" },
+            {
+              id: "art-1",
+              name: "Mate Imperial Calabaza y Alpaca",
+              desc: "Cincelado a mano, virola gruesa de alpaca.",
+              ars: 48000,
+              img: "https://images.unsplash.com/photo-1589396575653-c09c794ff6a6?q=80&w=500",
+            },
+            {
+              id: "art-2",
+              name: "Bombilla Pico de Loro Alpaca",
+              desc: "Filtro pala desmontable, soldadura plata.",
+              ars: 19500,
+              img: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=600&q=80",
+            },
+            {
+              id: "art-3",
+              name: "Tabla de Asado Algarrobo 50x30",
+              desc: "Curada con cera de abejas, canaleta jugos.",
+              ars: 29000,
+              img: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?q=80&w=500",
+            },
+            {
+              id: "art-4",
+              name: "Poncho Tucumano Telar Criollo",
+              desc: "Lana de oveja teñida con tintes naturales.",
+              ars: 95000,
+              img: "https://images.unsplash.com/photo-1544967082-d9d25d867d66?q=80&w=500",
+            },
+            {
+              id: "art-5",
+              name: "Cuenco Cerámica Gres Esmaltado",
+              desc: "Horneado a 1250°C, apto microondas.",
+              ars: 14500,
+              img: "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=600&q=80",
+            },
+            {
+              id: "art-6",
+              name: "Cuchillo Criollo Acero al Carbono 16cm",
+              desc: "Cabo de asta de ciervo y vaina de cuero.",
+              ars: 54000,
+              img: "https://images.unsplash.com/photo-1593618998160-e34014e67546?q=80&w=500",
+            },
+            {
+              id: "art-7",
+              name: "Set Matero Cuero Crudo Cosido",
+              desc: "Yerbera, azucarera y porta termo.",
+              ars: 42000,
+              img: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?q=80&w=500",
+            },
+            {
+              id: "art-8",
+              name: "Camino de Mesa Tejido en Telar",
+              desc: "Algodón rústico 1.80m x 0.45m.",
+              ars: 24500,
+              img: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=500",
+            },
+            {
+              id: "art-9",
+              name: "Lámpara Colgante Mimbre Tejido",
+              desc: "45cm diámetro, incluye portalámparas.",
+              ars: 36000,
+              img: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?q=80&w=500",
+            },
+            {
+              id: "art-10",
+              name: "Mortero de Piedra Tallada con Pilón",
+              desc: "Ideal para especias y chimichurri.",
+              ars: 22000,
+              img: "https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?q=80&w=500",
+            },
+            {
+              id: "art-11",
+              name: "Cartera Bandolera Cuero Repujado",
+              desc: "Trabajo artesanal con cierre imantado.",
+              ars: 49000,
+              img: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=500",
+            },
+            {
+              id: "art-12",
+              name: "Juego de 6 Posavasos Madera y Cuero",
+              desc: "Incluye soporte organizador.",
+              ars: 12800,
+              img: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?q=80&w=500",
+            },
           ],
         },
       };
@@ -647,13 +1045,18 @@ Quiero consultar / encargar los siguientes artículos de su catálogo:
 
       function sendCatalogWhatsApp() {
         const text = buildMessageText();
+        const waNumber =
+          (window.SMARTMENU_CONFIG && window.SMARTMENU_CONFIG.whatsappNumber) ||
+          "5493816320130";
         window.open(
-          `https://wa.me/5493816320130?text=${encodeURIComponent(text)}`,
+          `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`,
           "_blank",
         );
       }
 
       document.addEventListener("DOMContentLoaded", () => {
+        const badgeEl = document.getElementById("usd-rate-badge");
+        if (badgeEl) badgeEl.innerText = USD_RATE.toLocaleString("es-AR");
         renderProducts();
         updateWhatsAppPreview();
       });

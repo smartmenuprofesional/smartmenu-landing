@@ -4,57 +4,68 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      Smart Menu Tucumán | Menús Digitales, Catálogos, Turnos y Gestión Web
+      SmartMenu | Webs de Pedidos, Catálogos y Turnos sin Comisiones
     </title>
     <meta
       name="description"
-      content="Digitalizá tu bar, sanguchería, comercio, gimnasio o consultorio en Tucumán. Menús interactivos, catálogos comerciales, turnos online y gestión de stock sin comisiones por venta."
+      content="Digitalizá tus ventas, pedidos, catálogos y turnos en un solo lugar. Directo a tu WhatsApp o con Panel Admin 24/7. Sin apps y con 0% comisiones en Tucumán y todo el país."
     />
     <meta
       property="og:title"
-      content="Smart Menu | Soluciones Web Interactivas en Tucumán"
+      content="SmartMenu | Pedidos, Catálogos y Turnos sin Comisiones"
     />
     <meta
       property="og:description"
-      content="Menús digitales, catálogos comerciales, sistemas de turnos y control de stock con pedidos directos a WhatsApp y 0% de comisiones."
-    />
-    <meta
-      property="og:image"
-      content="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200&auto=format&fit=crop"
+      content="Sistemas web a medida para gastronomía, comercios, gimnasios y profesionales. Entrega en 72 hs hábiles."
     />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://smartmenu.com.ar/" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      tailwind.config = {
-        darkMode: "class",
-      };
+      tailwind.config = { darkMode: "class" };
       if (localStorage.getItem("smartmenu_theme") === "dark") {
         document.documentElement.classList.add("dark");
       }
     </script>
+    <script src="config.js"></script>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       rel="stylesheet"
     />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+    </style>
   </head>
   <body
-    class="bg-stone-50 text-stone-900 dark:bg-zinc-950 dark:text-zinc-100 font-sans antialiased selection:bg-orange-500 selection:text-white transition-colors"
+    class="bg-stone-50 text-stone-800 dark:bg-zinc-950 dark:text-zinc-100 antialiased selection:bg-orange-500 selection:text-white transition-colors"
   >
-    <!-- NAVBAR UNIFICADO -->
+    <!-- NAVBAR UNIFICADO (SIN ÍCONO QR PROTAGONISTA) -->
     <header
-      class="sticky top-0 z-50 bg-white/95 dark:bg-zinc-950/90 backdrop-blur-md border-b border-stone-200 dark:border-emerald-900/40 transition-colors"
+      class="sticky top-0 z-50 bg-white/95 dark:bg-zinc-950/90 backdrop-blur-md border-b border-stone-200 dark:border-zinc-800 transition-colors"
     >
       <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3"
       >
         <a href="index.html" class="flex items-center gap-2.5 shrink-0">
+          <img
+            src="assets/logo-sello.png"
+            alt="SmartMenu"
+            onerror="
+              this.style.display = 'none';
+              this.nextElementSibling.classList.remove('hidden');
+            "
+            class="w-9 h-9 rounded-xl object-cover border border-emerald-500/30 shadow-sm"
+          />
           <div
-            class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-900 border border-emerald-400/30 flex items-center justify-center text-orange-400 font-black shadow-md"
+            class="hidden w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-700 to-emerald-950 border border-emerald-400/30 flex items-center justify-center text-white font-black text-sm tracking-tighter shadow-md"
           >
-            <i class="fa-solid fa-qrcode"></i>
+            S<span class="text-orange-400">M</span>
           </div>
           <span
-            class="font-black text-xl tracking-tight text-stone-900 dark:text-white"
+            class="font-extrabold text-xl tracking-tight text-stone-900 dark:text-white"
           >
             Smart<span class="text-orange-500">Menu</span>
           </span>
@@ -64,19 +75,14 @@
           class="hidden lg:flex items-center gap-6 text-sm font-semibold text-stone-600 dark:text-zinc-300"
         >
           <a
-            href="index.html"
-            class="text-orange-600 dark:text-orange-500 font-extrabold"
-            >Inicio</a
+            href="#soluciones"
+            class="hover:text-orange-600 dark:hover:text-orange-400 transition"
+            >Soluciones</a
           >
           <a
             href="demo_moderno.html"
             class="hover:text-orange-600 dark:hover:text-orange-400 transition"
-            >Menú Moderno</a
-          >
-          <a
-            href="demo_clasico.html"
-            class="hover:text-orange-600 dark:hover:text-orange-400 transition"
-            >Menú Clásico</a
+            >Gastronomía</a
           >
           <a
             href="catalogos.html"
@@ -103,22 +109,24 @@
         <div class="flex items-center gap-2">
           <button
             onclick="toggleTheme()"
-            title="Cambiar entre Modo Día y Modo Noche"
-            class="bg-stone-100 hover:bg-stone-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 border border-stone-300 dark:border-zinc-700 px-3 py-1.5 rounded-full text-xs font-extrabold text-stone-800 dark:text-zinc-200 flex items-center gap-1.5 transition"
+            aria-label="Cambiar tema"
+            class="min-h-[44px] bg-stone-100 hover:bg-stone-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 border border-stone-300 dark:border-zinc-700 px-3 rounded-full text-xs font-bold text-stone-700 dark:text-zinc-200 flex items-center gap-1.5 transition"
           >
-            <i class="fa-solid fa-moon text-stone-700 theme-icon"></i>
-            <span class="hidden sm:inline theme-label">Modo Noche</span>
+            <i class="fa-solid fa-moon theme-icon"></i>
+            <span class="hidden sm:inline theme-label">Noche</span>
           </button>
+
           <a
             href="planes.html"
-            class="hidden sm:inline-flex items-center gap-1.5 bg-orange-500 hover:bg-orange-600 text-white text-xs font-extrabold px-4 py-2 rounded-xl transition shadow-md shadow-orange-500/20"
+            class="min-h-[44px] inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-4 rounded-full text-xs sm:text-sm font-extrabold shadow-sm transition"
           >
-            Simulador Planes
+            Armar Presupuesto
           </a>
+
           <button
             onclick="toggleMobileMenu()"
             aria-label="Abrir menú"
-            class="lg:hidden w-9 h-9 rounded-xl bg-stone-100 dark:bg-zinc-900 border border-stone-300 dark:border-zinc-700 text-stone-800 dark:text-zinc-200 flex items-center justify-center"
+            class="lg:hidden min-h-[44px] min-w-[44px] rounded-xl bg-stone-100 dark:bg-zinc-900 border border-stone-300 dark:border-zinc-700 text-stone-800 dark:text-zinc-200 flex items-center justify-center"
           >
             <i class="fa-solid fa-bars"></i>
           </button>
@@ -131,1259 +139,628 @@
         class="hidden lg:hidden bg-white dark:bg-zinc-950 border-t border-stone-200 dark:border-zinc-800 px-4 py-3 space-y-1 shadow-lg"
       >
         <a
-          href="index.html"
-          class="block px-3 py-2 rounded-xl text-sm font-bold bg-orange-50 text-orange-600 dark:bg-orange-500/15 dark:text-orange-400"
-          >Inicio</a
-        >
-        <a
           href="demo_moderno.html"
-          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
-          >Menú Moderno</a
+          class="block px-3 py-2.5 rounded-xl text-sm font-bold hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >Gastronomía (Moderno)</a
         >
         <a
           href="demo_clasico.html"
-          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
-          >Menú Clásico</a
+          class="block px-3 py-2.5 rounded-xl text-sm font-bold hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >Gastronomía (Clásico)</a
         >
         <a
           href="catalogos.html"
-          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
-          >Catálogos</a
+          class="block px-3 py-2.5 rounded-xl text-sm font-bold hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >Smart Catálogo</a
         >
         <a
           href="turnos.html"
-          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
-          >Turnos</a
+          class="block px-3 py-2.5 rounded-xl text-sm font-bold hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >Turnos Online</a
         >
         <a
           href="gestion.html"
-          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
+          class="block px-3 py-2.5 rounded-xl text-sm font-bold hover:bg-stone-100 dark:hover:bg-zinc-900"
           >Gestión y Stock</a
         >
         <a
           href="planes.html"
-          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
-          >Planes</a
+          class="block px-3 py-2.5 rounded-xl text-sm font-extrabold text-orange-600"
+          >Simulador de Planes</a
         >
       </div>
     </header>
 
-    <!-- HERO -->
+    <!-- HERO TRANSVERSAL CON VISTA PREVIA MULTIRUBRO -->
     <section
-      class="relative overflow-hidden pt-12 pb-16 sm:pt-16 sm:pb-24 bg-gradient-to-b from-emerald-50/90 via-stone-50 to-stone-50 dark:from-emerald-950/30 dark:via-zinc-950 dark:to-zinc-950 border-b border-stone-200 dark:border-zinc-900"
+      class="pt-10 pb-16 sm:pt-16 sm:pb-24 border-b border-stone-200 dark:border-zinc-800"
     >
       <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid lg:grid-cols-12 gap-10 items-center"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-10 items-center"
       >
+        <!-- Columna Texto -->
         <div class="lg:col-span-7 space-y-6">
           <div
-            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-700/50 text-emerald-900 dark:text-emerald-300 text-xs font-bold"
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-300 text-xs font-extrabold"
           >
-            <span
-              class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"
-            ></span>
-            Ecosistema Web Comercial &amp; Gastronómico • Tucumán, Argentina
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            Tucumán y toda Argentina • Entrega en 72 hs hábiles
           </div>
 
           <h1
-            class="text-4xl sm:text-5xl lg:text-6xl font-black text-stone-900 dark:text-white leading-[1.08] tracking-tight"
+            class="text-3xl sm:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight leading-[1.12] text-stone-900 dark:text-white"
           >
-            Menús Digitales, Catálogos y Turnos listos en tu
-            <span class="text-orange-500">WhatsApp</span>.
+            Digitalizá tus ventas, pedidos y turnos en un solo lugar.
           </h1>
 
           <p
-            class="text-stone-600 dark:text-zinc-400 text-base sm:text-lg max-w-2xl leading-relaxed"
+            class="text-base sm:text-lg text-stone-600 dark:text-zinc-300 leading-relaxed max-w-2xl"
           >
-            Dejá atrás los PDFs pesados y las planillas desordenadas. Creamos la
-            plataforma interactiva de tu negocio —carta gastronómica, catálogo
-            comercial, agenda de turnos o gestión de stock—
-            <strong class="text-stone-900 dark:text-zinc-200"
-              >sin descargar apps y con 0% de comisiones por venta.</strong
-            >
-          </p>
-
-          <div class="flex flex-col sm:flex-row gap-3.5 pt-1">
-            <a
-              href="#soluciones"
-              class="bg-orange-500 hover:bg-orange-600 text-white font-extrabold px-6 py-4 rounded-2xl text-center transition shadow-lg shadow-orange-500/20 flex items-center justify-center gap-2"
-            >
-              <i class="fa-solid fa-layer-group"></i> Explorar Servicios y Demos
-            </a>
-            <a
-              href="planes.html"
-              class="bg-white hover:bg-emerald-50 dark:bg-emerald-950/70 dark:hover:bg-emerald-900/70 border border-stone-300 dark:border-emerald-700/50 text-stone-900 dark:text-white font-extrabold px-6 py-4 rounded-2xl text-center transition shadow-sm flex items-center justify-center gap-2"
-            >
-              <i
-                class="fa-solid fa-calculator text-emerald-700 dark:text-orange-400"
-              ></i>
-              Calcular Presupuesto en Planes
-            </a>
-          </div>
-
-          <div
-            class="grid grid-cols-3 gap-4 pt-4 border-t border-stone-200 dark:border-zinc-800/80 max-w-lg"
-          >
-            <div>
-              <p class="text-2xl font-black text-stone-900 dark:text-white">
-                72 hs
-              </p>
-              <p class="text-xs text-stone-500 dark:text-zinc-400">
-                Entrega estimada*
-              </p>
-            </div>
-            <div>
-              <p class="text-2xl font-black text-orange-500">0%</p>
-              <p class="text-xs text-stone-500 dark:text-zinc-400">
-                Comisión por operación
-              </p>
-            </div>
-            <div>
-              <p
-                class="text-2xl font-black text-emerald-700 dark:text-emerald-400"
-              >
-                5 en 1
-              </p>
-              <p class="text-xs text-stone-500 dark:text-zinc-400">
-                Soluciones por rubro
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="lg:col-span-5">
-          <div
-            class="bg-white dark:bg-zinc-900 border border-stone-200 dark:border-emerald-800/40 rounded-3xl p-6 shadow-xl space-y-5"
-          >
-            <div
-              class="flex items-center justify-between border-b border-stone-200 dark:border-zinc-800 pb-4"
-            >
-              <div class="flex items-center gap-3">
-                <div
-                  class="w-10 h-10 rounded-full bg-[#25D366]/15 text-[#1da851] dark:text-[#25D366] flex items-center justify-center text-xl"
-                >
-                  <i class="fa-brands fa-whatsapp"></i>
-                </div>
-                <div>
-                  <p
-                    class="text-sm font-extrabold text-stone-900 dark:text-white"
-                  >
-                    Pedidos, consultas y turnos ordenados
-                  </p>
-                  <p class="text-xs text-stone-500 dark:text-zinc-400">
-                    Directo a tu WhatsApp o Panel Admin en vivo
-                  </p>
-                </div>
-              </div>
-              <span
-                class="text-[11px] bg-emerald-100 dark:bg-emerald-900/80 text-emerald-800 dark:text-emerald-300 px-2.5 py-1 rounded-full font-bold"
-                >En vivo</span
-              >
-            </div>
-
-            <div
-              class="bg-stone-100 dark:bg-zinc-950/90 border border-stone-200 dark:border-zinc-800 rounded-2xl p-4 font-mono text-xs text-stone-800 dark:text-zinc-300 space-y-2 leading-relaxed"
-            >
-              <p class="text-orange-600 dark:text-orange-400 font-bold">
-                🔥 ¡Hola! Quiero hacer el siguiente pedido:
-              </p>
-              <p>▪️ 1x Sándwich Gigante Especial C/ Papas ($15.000)</p>
-              <p>▪️ 2x Pinta Cerveza Artesanal IPA ($9.600)</p>
-              <p class="text-emerald-700 dark:text-emerald-400 font-bold pt-1">
-                💰 Total a pagar: $24.600 ARS
-              </p>
-              <div
-                class="border-t border-stone-200 dark:border-zinc-800 pt-2 text-stone-500 dark:text-zinc-400"
-              >
-                <p>📍 Modalidad: Delivery / Mesa 4</p>
-                <p>👤 Cliente: Juan Pérez</p>
-              </div>
-            </div>
-
-            <p class="text-xs text-stone-500 dark:text-zinc-400 text-center">
-              El cliente arma su pedido o reserva solo y vos coordinás el cobro
-              directo en tu cuenta o mostrador.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TODAS LAS SOLUCIONES Y DEMOS INTERACTIVAS -->
-    <section
-      id="soluciones"
-      class="py-16 sm:py-20 border-b border-stone-200 dark:border-zinc-900"
-    >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-12">
-          <span
-            class="text-xs font-extrabold uppercase tracking-wider text-orange-600 dark:text-orange-500"
-            >Suite Completa Smart Menu</span
-          >
-          <h2
-            class="text-3xl sm:text-4xl font-black text-stone-900 dark:text-white mt-2"
-          >
-            Elegí la herramienta ideal y probala en vivo
-          </h2>
-          <p
-            class="text-stone-600 dark:text-zinc-400 text-sm sm:text-base mt-3"
-          >
-            Cada módulo cuenta con una demostración interactiva real para que
-            veas cómo operan tus clientes y cómo recibís la información.
-          </p>
-        </div>
-
-        <!-- Fila 1: Menús Gastronómicos -->
-        <div class="grid md:grid-cols-2 gap-6 mb-6">
-          <!-- 1. Menú Moderno -->
-          <div
-            class="bg-white dark:bg-gradient-to-b dark:from-emerald-950/60 dark:to-zinc-900 border-2 border-orange-500 rounded-3xl p-7 flex flex-col justify-between shadow-lg relative"
-          >
-            <span
-              class="absolute -top-3 right-6 bg-orange-500 text-white text-[10px] font-black uppercase px-3 py-1 rounded-full shadow"
-              >Más Elegido • Gastronomía</span
-            >
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span
-                  class="text-xs font-extrabold uppercase px-3 py-1 rounded-full bg-orange-100 text-orange-700 dark:bg-orange-500/20 dark:text-orange-400"
-                  >Alto Impacto Visual</span
-                >
-                <i class="fa-solid fa-fire text-orange-500 text-xl"></i>
-              </div>
-              <h3
-                class="text-2xl font-black text-stone-900 dark:text-white mb-2"
-              >
-                Menú Moderno Visual
-              </h3>
-              <p
-                class="text-sm text-stone-600 dark:text-zinc-300 leading-relaxed mb-6"
-              >
-                Interfaz estilo app nativa con fotos de platos, destacados,
-                pestañas interactivas, ventana de promociones, conversor
-                referencial ARS/USD y carrito directo a WhatsApp o Panel Admin.
-              </p>
-            </div>
-            <div
-              class="flex items-center justify-between gap-3 pt-4 border-t border-stone-100 dark:border-zinc-800"
-            >
-              <span
-                class="text-xs font-extrabold text-stone-500 dark:text-zinc-400"
-                >Desde
-                <strong class="text-stone-900 dark:text-white text-sm"
-                  >$50.000 ARS</strong
-                ></span
-              >
-              <a
-                href="demo_moderno.html"
-                class="bg-orange-500 hover:bg-orange-600 text-white font-extrabold px-5 py-3 rounded-xl text-xs transition shadow-md flex items-center gap-2"
-              >
-                Probar Menú Moderno <i class="fa-solid fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- 2. Menú Clásico -->
-          <div
-            class="bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-3xl p-7 flex flex-col justify-between shadow-sm hover:border-emerald-500 transition"
-          >
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span
-                  class="text-xs font-extrabold uppercase px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 dark:bg-zinc-800 dark:text-zinc-300"
-                  >Minimalista y Rápido</span
-                >
-                <i
-                  class="fa-solid fa-feather-pointed text-emerald-700 dark:text-emerald-400 text-xl"
-                ></i>
-              </div>
-              <h3
-                class="text-2xl font-black text-stone-900 dark:text-white mb-2"
-              >
-                Menú Clásico (Modo Claro)
-              </h3>
-              <p
-                class="text-sm text-stone-600 dark:text-zinc-400 leading-relaxed mb-6"
-              >
-                Carta digital limpia, clara y ultrarrápida con buscador
-                instantáneo y sumador de pedido. Ideal si aún no tenés fotos de
-                tus platos pero querés orden y velocidad.
-              </p>
-            </div>
-            <div
-              class="flex items-center justify-between gap-3 pt-4 border-t border-stone-100 dark:border-zinc-800"
-            >
-              <span
-                class="text-xs font-extrabold text-stone-500 dark:text-zinc-400"
-                >Desde
-                <strong class="text-stone-900 dark:text-white text-sm"
-                  >$30.000 ARS</strong
-                ></span
-              >
-              <a
-                href="demo_clasico.html"
-                class="bg-emerald-900 hover:bg-emerald-800 text-white font-extrabold px-5 py-3 rounded-xl text-xs transition flex items-center gap-2"
-              >
-                Probar Menú Clásico <i class="fa-solid fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Fila 2: Catálogos, Turnos y Gestión -->
-        <div class="grid md:grid-cols-3 gap-6">
-          <!-- 3. Smart Catálogo -->
-          <div
-            class="bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-3xl p-6 flex flex-col justify-between shadow-sm hover:border-orange-500 transition"
-          >
-            <div>
-              <div class="flex items-center justify-between mb-3">
-                <span
-                  class="text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-500/15 dark:text-amber-400"
-                >
-                  Comercios y Tiendas
-                </span>
-                <i class="fa-solid fa-store text-orange-500 text-lg"></i>
-              </div>
-              <h3
-                class="text-xl font-black text-stone-900 dark:text-white mb-2"
-              >
-                Smart Catálogo Comercial
-              </h3>
-              <p
-                class="text-xs sm:text-sm text-stone-600 dark:text-zinc-400 leading-relaxed mb-5"
-              >
-                Probá 4 rubros reales (Librería, Gimnasia, Automotor y
-                Artesanías) con 12 productos c/u, precios en ARS/USD* y vista
-                previa del mensaje al dueño.
-              </p>
-            </div>
-            <a
-              href="catalogos.html"
-              class="w-full bg-stone-900 hover:bg-orange-500 dark:bg-zinc-800 dark:hover:bg-orange-500 text-white font-extrabold py-3 rounded-xl text-xs text-center transition flex items-center justify-center gap-2"
-            >
-              Abrir Catálogos Interactivos
-              <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-
-          <!-- 4. Turnos Online -->
-          <div
-            class="bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-3xl p-6 flex flex-col justify-between shadow-sm hover:border-emerald-600 transition"
-          >
-            <div>
-              <div class="flex items-center justify-between mb-3">
-                <span
-                  class="text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300"
-                >
-                  Gimnasios y Profesionales
-                </span>
-                <i
-                  class="fa-solid fa-calendar-check text-emerald-700 dark:text-emerald-400 text-lg"
-                ></i>
-              </div>
-              <h3
-                class="text-xl font-black text-stone-900 dark:text-white mb-2"
-              >
-                Turnos y Reservas Online
-              </h3>
-              <p
-                class="text-xs sm:text-sm text-stone-600 dark:text-zinc-400 leading-relaxed mb-5"
-              >
-                Grilla de clases para gimnasios y agenda por hora para médicos,
-                psicólogos y profesores particulares con solicitud directa a
-                WhatsApp o agenda en vivo.
-              </p>
-            </div>
-            <a
-              href="turnos.html"
-              class="w-full bg-stone-900 hover:bg-emerald-700 dark:bg-zinc-800 dark:hover:bg-emerald-700 text-white font-extrabold py-3 rounded-xl text-xs text-center transition flex items-center justify-center gap-2"
-            >
-              Probar Sistema de Turnos <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-
-          <!-- 5. Gestión y Stock -->
-          <div
-            class="bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-3xl p-6 flex flex-col justify-between shadow-sm hover:border-sky-600 transition"
-          >
-            <div>
-              <div class="flex items-center justify-between mb-3">
-                <span
-                  class="text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 dark:bg-sky-500/15 dark:text-sky-300"
-                >
-                  Tienda + Backoffice
-                </span>
-                <i
-                  class="fa-solid fa-boxes-stacked text-sky-600 dark:text-sky-400 text-lg"
-                ></i>
-              </div>
-              <h3
-                class="text-xl font-black text-stone-900 dark:text-white mb-2"
-              >
-                Gestión y Stock en Vivo
-              </h3>
-              <p
-                class="text-xs sm:text-sm text-stone-600 dark:text-zinc-400 leading-relaxed mb-5"
-              >
-                Simulá una compra en la Vista Cliente y mirá cómo descuenta el
-                stock, registra el pedido y actualiza los KPIs en el Panel Admin
-                al instante.
-              </p>
-            </div>
-            <a
-              href="gestion.html"
-              class="w-full bg-stone-900 hover:bg-sky-600 dark:bg-zinc-800 dark:hover:bg-sky-600 text-white font-extrabold py-3 rounded-xl text-xs text-center transition flex items-center justify-center gap-2"
-            >
-              Probar Gestión y Stock <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- BENEFICIOS -->
-    <section
-      id="beneficios"
-      class="py-16 sm:py-20 bg-white dark:bg-zinc-950 border-b border-stone-200 dark:border-zinc-900"
-    >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-12">
-          <span
-            class="text-xs font-extrabold uppercase tracking-wider text-orange-600 dark:text-orange-500"
-            >Por qué elegir Smart Menu</span
-          >
-          <h2
-            class="text-3xl sm:text-4xl font-black text-stone-900 dark:text-white mt-2"
-          >
-            Diseñado para vender más y ahorrar tiempo
-          </h2>
-          <p
-            class="text-stone-600 dark:text-zinc-400 text-sm sm:text-base mt-3"
-          >
-            Pensado para comercios y profesionales de Tucumán que buscan
-            agilidad sin costos ocultos.
-          </p>
-        </div>
-
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div
-            class="bg-stone-50 dark:bg-zinc-900/60 border border-stone-200 dark:border-zinc-800 rounded-2xl p-6"
-          >
-            <div
-              class="w-11 h-11 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-orange-400 flex items-center justify-center text-lg mb-4"
-            >
-              <i class="fa-solid fa-bolt"></i>
-            </div>
-            <h3
-              class="text-lg font-extrabold text-stone-900 dark:text-white mb-2"
-            >
-              Sin descargar aplicaciones
-            </h3>
-            <p
-              class="text-sm text-stone-600 dark:text-zinc-400 leading-relaxed"
-            >
-              Abre en 1 segundo desde cualquier navegador en Android o iPhone
-              mediante link en Instagram o código QR.
-            </p>
-          </div>
-
-          <div
-            class="bg-stone-50 dark:bg-zinc-900/60 border border-stone-200 dark:border-zinc-800 rounded-2xl p-6"
-          >
-            <div
-              class="w-11 h-11 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-orange-400 flex items-center justify-center text-lg mb-4"
-            >
-              <i class="fa-solid fa-hand-holding-dollar"></i>
-            </div>
-            <h3
-              class="text-lg font-extrabold text-stone-900 dark:text-white mb-2"
-            >
-              Cero comisiones por venta
-            </h3>
-            <p
-              class="text-sm text-stone-600 dark:text-zinc-400 leading-relaxed"
-            >
-              No somos intermediarios financieros ni retenemos porcentaje sobre
-              tus operaciones. El 100% entra directo a tu caja.
-            </p>
-          </div>
-
-          <div
-            class="bg-stone-50 dark:bg-zinc-900/60 border border-stone-200 dark:border-zinc-800 rounded-2xl p-6"
-          >
-            <div
-              class="w-11 h-11 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-orange-400 flex items-center justify-center text-lg mb-4"
-            >
-              <i class="fa-solid fa-palette"></i>
-            </div>
-            <h3
-              class="text-lg font-extrabold text-stone-900 dark:text-white mb-2"
-            >
-              Identidad 100% de tu marca
-            </h3>
-            <p
-              class="text-sm text-stone-600 dark:text-zinc-400 leading-relaxed"
-            >
-              Personalizamos colores, logotipo, categorías y moneda (incluye
-              conversor referencial ARS/USD opcional).
-            </p>
-          </div>
-
-          <div
-            class="bg-stone-50 dark:bg-zinc-900/60 border border-stone-200 dark:border-zinc-800 rounded-2xl p-6"
-          >
-            <div
-              class="w-11 h-11 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-orange-400 flex items-center justify-center text-lg mb-4"
-            >
-              <i class="fa-solid fa-qrcode"></i>
-            </div>
-            <h3
-              class="text-lg font-extrabold text-stone-900 dark:text-white mb-2"
-            >
-              Código QR listo para imprimir
-            </h3>
-            <p
-              class="text-sm text-stone-600 dark:text-zinc-400 leading-relaxed"
-            >
-              Te entregamos el archivo QR en alta calidad para mesas,
-              mostradores, folletos o cajas de delivery.
-            </p>
-          </div>
-
-          <div
-            class="bg-stone-50 dark:bg-zinc-900/60 border border-stone-200 dark:border-zinc-800 rounded-2xl p-6"
-          >
-            <div
-              class="w-11 h-11 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-orange-400 flex items-center justify-center text-lg mb-4"
-            >
-              <i class="fa-solid fa-arrows-rotate"></i>
-            </div>
-            <h3
-              class="text-lg font-extrabold text-stone-900 dark:text-white mb-2"
-            >
-              Precios siempre actualizados
-            </h3>
-            <p
-              class="text-sm text-stone-600 dark:text-zinc-400 leading-relaxed"
-            >
-              Actualizamos tus tarifas cuando lo necesites o elegís el plan con
-              panel de autogestión para editarlos vos mismo 24/7.
-            </p>
-          </div>
-
-          <div
-            class="bg-stone-50 dark:bg-zinc-900/60 border border-stone-200 dark:border-zinc-800 rounded-2xl p-6"
-          >
-            <div
-              class="w-11 h-11 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-orange-400 flex items-center justify-center text-lg mb-4"
-            >
-              <i class="fa-solid fa-headset"></i>
-            </div>
-            <h3
-              class="text-lg font-extrabold text-stone-900 dark:text-white mb-2"
-            >
-              Atención humana directa
-            </h3>
-            <p
-              class="text-sm text-stone-600 dark:text-zinc-400 leading-relaxed"
-            >
-              Asesoramiento directo en San Miguel de Tucumán con Santiago Molina
-              para acompañar el crecimiento de tu negocio.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- RESUMEN DE PLANES + ACCESO AL SIMULADOR -->
-    <section
-      id="planes"
-      class="py-16 sm:py-20 border-b border-stone-200 dark:border-zinc-900"
-    >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-12">
-          <span
-            class="text-xs font-extrabold uppercase tracking-wider text-orange-600 dark:text-orange-500"
-            >Inversión Transparente en ARS</span
-          >
-          <h2
-            class="text-3xl sm:text-4xl font-black text-stone-900 dark:text-white mt-2"
-          >
-            Planes para cada etapa de tu negocio
-          </h2>
-          <p
-            class="text-stone-600 dark:text-zinc-400 text-sm sm:text-base mt-3"
-          >
-            Podés contratar directamente desde acá, abrir nuestro
-            <a
-              href="planes.html"
-              class="text-orange-600 dark:text-orange-400 font-bold underline"
-              >Simulador Interactivo de Planes</a
-            >
-            para sumar Panel Admin, mantenimiento y extras, o
-            <a
-              href="planes.html#consulta-personalizada"
-              class="text-emerald-700 dark:text-emerald-400 font-bold underline"
-              >agendar una llamada sin cargo</a
+            Creamos tu plataforma web a medida para
+            <strong class="text-stone-900 dark:text-white"
+              >gastronomía, comercios, gimnasios y profesionales</strong
+            >. Tus clientes eligen y reservan directo a tu WhatsApp o desde tu
+            Panel Admin —
+            <strong class="text-orange-600 dark:text-orange-400"
+              >sin apps y con 0% comisiones</strong
             >.
           </p>
-        </div>
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-          <!-- Plan 1 -->
-          <div
-            class="bg-white dark:bg-zinc-900/80 border border-stone-200 dark:border-zinc-800 rounded-3xl p-6 flex flex-col justify-between shadow-sm"
-          >
-            <div>
-              <span
-                class="text-[11px] font-extrabold uppercase text-emerald-700 dark:text-emerald-400"
-                >Gastronomía</span
-              >
-              <h3
-                class="text-xl font-black text-stone-900 dark:text-white mt-1"
-              >
-                Menú Clásico
-              </h3>
-              <div
-                class="my-4 pb-4 border-b border-stone-200 dark:border-zinc-800"
-              >
-                <span class="text-xs font-bold text-stone-400 block"
-                  >Desde</span
-                >
-                <span class="text-3xl font-black text-stone-900 dark:text-white"
-                  >$30.000</span
-                >
-                <span
-                  class="text-xs text-stone-500 dark:text-zinc-400 block mt-1"
-                  >ARS • Setup único (+$40.000 c/ Admin)</span
-                >
-              </div>
-              <ul
-                class="space-y-2.5 text-xs text-stone-600 dark:text-zinc-300 mb-6"
-              >
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-check text-emerald-600 mt-0.5"></i>
-                  Carta limpia sin fotos
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-check text-emerald-600 mt-0.5"></i>
-                  Buscador y carrito WhatsApp
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-check text-emerald-600 mt-0.5"></i>
-                  Subdominio y QR incluidos
-                </li>
-              </ul>
-            </div>
-            <button
-              onclick="
-                openHireModal(
-                  'Plan Menú Clásico',
-                  'Desde $30.000 ARS (Setup inicial)',
-                  [
-                    'Logo de tu negocio',
-                    'Listado de productos y precios en ARS',
-                    'Número de WhatsApp receptor',
-                    'Colores de tu marca',
-                  ],
-                )
-              "
-              class="w-full bg-stone-900 hover:bg-emerald-800 dark:bg-zinc-800 dark:hover:bg-emerald-800 text-white font-bold py-3 rounded-xl text-xs transition"
-            >
-              Solicitar Menú Clásico
-            </button>
-          </div>
-
-          <!-- Plan 2 -->
-          <div
-            class="bg-white dark:bg-zinc-900/80 border border-stone-200 dark:border-zinc-800 rounded-3xl p-6 flex flex-col justify-between shadow-sm"
-          >
-            <div>
-              <span
-                class="text-[11px] font-extrabold uppercase text-emerald-700 dark:text-emerald-400"
-                >Agendas</span
-              >
-              <h3
-                class="text-xl font-black text-stone-900 dark:text-white mt-1"
-              >
-                Turnos Online
-              </h3>
-              <div
-                class="my-4 pb-4 border-b border-stone-200 dark:border-zinc-800"
-              >
-                <span class="text-xs font-bold text-stone-400 block"
-                  >Desde</span
-                >
-                <span class="text-3xl font-black text-stone-900 dark:text-white"
-                  >$35.000</span
-                >
-                <span
-                  class="text-xs text-stone-500 dark:text-zinc-400 block mt-1"
-                  >ARS • Setup único (+$40.000 c/ Admin)</span
-                >
-              </div>
-              <ul
-                class="space-y-2.5 text-xs text-stone-600 dark:text-zinc-300 mb-6"
-              >
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-check text-emerald-600 mt-0.5"></i>
-                  Gimnasios o Profesionales
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-check text-emerald-600 mt-0.5"></i>
-                  Grilla de días y horarios
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-check text-emerald-600 mt-0.5"></i>
-                  WhatsApp o Agenda en vivo
-                </li>
-              </ul>
-            </div>
-            <button
-              onclick="
-                openHireModal(
-                  'Plan Turnos Online',
-                  'Desde $35.000 ARS (Setup inicial)',
-                  [
-                    'Nombre del gimnasio o profesional',
-                    'Grilla de horarios y días',
-                    'Aranceles de referencia en ARS',
-                    'Número de WhatsApp receptor',
-                  ],
-                )
-              "
-              class="w-full bg-stone-900 hover:bg-emerald-800 dark:bg-zinc-800 dark:hover:bg-emerald-800 text-white font-bold py-3 rounded-xl text-xs transition"
-            >
-              Solicitar Turnos Online
-            </button>
-          </div>
-
-          <!-- Plan 3 -->
-          <div
-            class="bg-white dark:bg-gradient-to-b dark:from-emerald-950/70 dark:to-zinc-900 border-2 border-orange-500 rounded-3xl p-6 flex flex-col justify-between relative shadow-xl"
-          >
-            <span
-              class="absolute -top-3 left-1/2 -translate-x-1/2 bg-orange-500 text-white text-[10px] font-black uppercase px-3 py-0.5 rounded-full"
-              >Más Elegido</span
-            >
-            <div>
-              <span
-                class="text-[11px] font-extrabold uppercase text-orange-600 dark:text-orange-400"
-                >Visual / Comercio</span
-              >
-              <h3
-                class="text-xl font-black text-stone-900 dark:text-white mt-1"
-              >
-                Moderno o Catálogo
-              </h3>
-              <div
-                class="my-4 pb-4 border-b border-stone-200 dark:border-emerald-800/50"
-              >
-                <span class="text-xs font-bold text-stone-400 block"
-                  >Desde</span
-                >
-                <span class="text-3xl font-black text-stone-900 dark:text-white"
-                  >$50.000</span
-                >
-                <span
-                  class="text-xs text-stone-500 dark:text-zinc-300 block mt-1"
-                  >ARS • Setup único (Opción Panel Admin)</span
-                >
-              </div>
-              <ul
-                class="space-y-2.5 text-xs text-stone-700 dark:text-zinc-200 mb-6"
-              >
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-check text-orange-500 mt-0.5"></i> Con
-                  fotos, pestañas y promos
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-check text-orange-500 mt-0.5"></i>
-                  Selector moneda ARS / USD*
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-check text-orange-500 mt-0.5"></i>
-                  Pedidos WhatsApp o en vivo a caja
-                </li>
-              </ul>
-            </div>
-            <button
-              onclick="
-                openHireModal(
-                  'Plan Menú Moderno / Smart Catálogo',
-                  'Desde $50.000 ARS (Setup inicial)',
-                  [
-                    'Logo de tu marca',
-                    'Listado completo de ítems y precios en ARS',
-                    'Fotografías de los platos o productos',
-                    'WhatsApp receptor y horarios',
-                  ],
-                )
-              "
-              class="w-full bg-orange-500 hover:bg-orange-600 text-white font-black py-3 rounded-xl text-xs transition shadow-md"
-            >
-              Solicitar Plan Visual
-            </button>
-          </div>
-
-          <!-- Plan 4 -->
-          <div
-            class="bg-white dark:bg-zinc-900/80 border border-stone-200 dark:border-zinc-800 rounded-3xl p-6 flex flex-col justify-between shadow-sm"
-          >
-            <div>
-              <span
-                class="text-[11px] font-extrabold uppercase text-sky-700 dark:text-sky-400"
-                >Sistemas</span
-              >
-              <h3
-                class="text-xl font-black text-stone-900 dark:text-white mt-1"
-              >
-                Gestión y Stock
-              </h3>
-              <div
-                class="my-4 pb-4 border-b border-stone-200 dark:border-zinc-800"
-              >
-                <span class="text-xs font-bold text-stone-400 block"
-                  >Desde</span
-                >
-                <span class="text-3xl font-black text-stone-900 dark:text-white"
-                  >$120.000</span
-                >
-                <span
-                  class="text-xs text-stone-500 dark:text-zinc-400 block mt-1"
-                  >ARS • Setup inicial (Panel Admin incluido)</span
-                >
-              </div>
-              <ul
-                class="space-y-2.5 text-xs text-stone-600 dark:text-zinc-300 mb-6"
-              >
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-check text-emerald-600 mt-0.5"></i>
-                  Tienda + Panel Admin en vivo
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-check text-emerald-600 mt-0.5"></i>
-                  Control de stock, caja y métricas
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-check text-emerald-600 mt-0.5"></i>
-                  Módulos de personal opcionales
-                </li>
-              </ul>
-            </div>
+          <div class="flex flex-col sm:flex-row gap-3 pt-1">
             <a
               href="planes.html"
-              class="w-full bg-emerald-800 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-xs text-center transition block"
+              class="min-h-[48px] px-6 rounded-2xl bg-orange-600 hover:bg-orange-700 text-white font-extrabold text-sm sm:text-base inline-flex items-center justify-center gap-2 shadow-lg shadow-orange-600/20 transition"
             >
-              Cotizar en Simulador →
+              Calcular Presupuesto <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a
+              href="#soluciones"
+              class="min-h-[48px] px-6 rounded-2xl bg-white dark:bg-zinc-900 hover:bg-stone-100 dark:hover:bg-zinc-800 border border-stone-300 dark:border-zinc-700 text-stone-800 dark:text-zinc-200 font-bold text-sm sm:text-base inline-flex items-center justify-center gap-2 transition"
+            >
+              Probar Demos en Vivo
+            </a>
+          </div>
+
+          <!-- 3 Pilares Directos (Sin relleno) -->
+          <div
+            class="grid grid-cols-3 gap-3 pt-4 border-t border-stone-200 dark:border-zinc-800 max-w-xl"
+          >
+            <div>
+              <p
+                class="text-lg sm:text-xl font-black text-emerald-700 dark:text-emerald-400"
+              >
+                0%
+              </p>
+              <p class="text-xs text-stone-500 dark:text-zinc-400 font-medium">
+                Comisiones por venta o turno
+              </p>
+            </div>
+            <div>
+              <p
+                class="text-lg sm:text-xl font-black text-stone-900 dark:text-white"
+              >
+                72 hs
+              </p>
+              <p class="text-xs text-stone-500 dark:text-zinc-400 font-medium">
+                Entrega llave en mano
+              </p>
+            </div>
+            <div>
+              <p
+                class="text-lg sm:text-xl font-black text-orange-600 dark:text-orange-400"
+              >
+                100% Web
+              </p>
+              <p class="text-xs text-stone-500 dark:text-zinc-400 font-medium">
+                Sin instalar aplicaciones
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Vista Previa Interactiva (3 Rubros) -->
+        <div class="lg:col-span-5">
+          <div
+            class="bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-3xl p-4 sm:p-5 shadow-xl"
+          >
+            <!-- Selector de Rubro en Preview -->
+            <div
+              class="grid grid-cols-3 gap-1.5 bg-stone-100 dark:bg-zinc-950 p-1.5 rounded-2xl mb-4"
+            >
+              <button
+                onclick="setHeroPreview('gastro')"
+                id="tab-prev-gastro"
+                class="min-h-[40px] rounded-xl text-xs font-extrabold bg-white dark:bg-zinc-800 text-stone-900 dark:text-white shadow-sm transition"
+              >
+                Gastronomía
+              </button>
+              <button
+                onclick="setHeroPreview('turnos')"
+                id="tab-prev-turnos"
+                class="min-h-[40px] rounded-xl text-xs font-bold text-stone-500 dark:text-zinc-400 hover:text-stone-900 transition"
+              >
+                Turnos
+              </button>
+              <button
+                onclick="setHeroPreview('catalogo')"
+                id="tab-prev-catalogo"
+                class="min-h-[40px] rounded-xl text-xs font-bold text-stone-500 dark:text-zinc-400 hover:text-stone-900 transition"
+              >
+                Catálogo
+              </button>
+            </div>
+
+            <!-- Contenedor Dinámico del Mockup -->
+            <div id="hero-preview-body" class="space-y-3"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 SOLUCIONES PRINCIPALES (LIMPIAS Y CONCRETAS) -->
+    <section id="soluciones" class="py-16 sm:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mb-10">
+          <span
+            class="text-xs font-extrabold uppercase tracking-wider text-orange-600 dark:text-orange-400"
+          >
+            4 Soluciones • 1 Ecosistema
+          </span>
+          <h2
+            class="text-2xl sm:text-4xl font-extrabold tracking-tight mt-1 text-stone-900 dark:text-white"
+          >
+            Elegí el sistema que necesita tu negocio
+          </h2>
+          <p
+            class="text-sm sm:text-base text-stone-600 dark:text-zinc-400 mt-2"
+          >
+            Probá cada demostración real desde tu celular antes de contratar.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- 1. Gastronomía -->
+          <div
+            class="bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-3xl p-6 sm:p-7 flex flex-col justify-between shadow-sm hover:border-orange-400 transition"
+          >
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span
+                  class="px-3 py-1 rounded-full bg-orange-100 dark:bg-orange-950 text-orange-800 dark:text-orange-300 text-xs font-extrabold"
+                >
+                  Gastronomía y Bares
+                </span>
+                <span class="text-sm font-black text-stone-900 dark:text-white"
+                  >Desde $30.000</span
+                >
+              </div>
+              <h3 class="text-xl font-extrabold text-stone-900 dark:text-white">
+                Carta Digital y Pedidos a WhatsApp o Caja
+              </h3>
+              <p
+                class="text-sm text-stone-600 dark:text-zinc-400 mt-2 leading-relaxed"
+              >
+                Reemplazá PDFs pesados y comisiones del 30% de apps externas.
+                Compartí tu link en Instagram, estados de WhatsApp o mediante QR
+                en mesas.
+              </p>
+              <ul
+                class="mt-4 space-y-2 text-xs font-medium text-stone-700 dark:text-zinc-300"
+              >
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-emerald-500"></i> Versión
+                  Clásica (texto veloz) o Moderna (con fotos y carrito)
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-emerald-500"></i> Opción de
+                  Panel Admin para pedidos en vivo por mesa
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="grid grid-cols-2 gap-2.5 mt-6 pt-5 border-t border-stone-100 dark:border-zinc-800"
+            >
+              <a
+                href="demo_moderno.html"
+                class="min-h-[44px] rounded-xl bg-stone-900 dark:bg-white text-white dark:text-zinc-950 font-bold text-xs flex items-center justify-center gap-1.5 hover:opacity-90 transition"
+              >
+                Demo Moderna
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <a
+                href="demo_clasico.html"
+                class="min-h-[44px] rounded-xl bg-stone-100 dark:bg-zinc-800 text-stone-800 dark:text-zinc-200 font-bold text-xs flex items-center justify-center gap-1.5 hover:bg-stone-200 dark:hover:bg-zinc-700 transition"
+              >
+                Demo Clásica
+              </a>
+            </div>
+          </div>
+
+          <!-- 2. Smart Catálogo -->
+          <div
+            class="bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-3xl p-6 sm:p-7 flex flex-col justify-between shadow-sm hover:border-orange-400 transition"
+          >
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span
+                  class="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 text-xs font-extrabold"
+                >
+                  Comercios y Showrooms
+                </span>
+                <span class="text-sm font-black text-stone-900 dark:text-white"
+                  >Desde $50.000</span
+                >
+              </div>
+              <h3 class="text-xl font-extrabold text-stone-900 dark:text-white">
+                Smart Catálogo con Consulta Armada
+              </h3>
+              <p
+                class="text-sm text-stone-600 dark:text-zinc-400 mt-2 leading-relaxed"
+              >
+                Ideal para librerías, repuestos, indumentaria, fitness o
+                automotores. Dejá de mandar 20 fotos sueltas por chat: tus
+                clientes filtran y consultan listos para comprar.
+              </p>
+              <ul
+                class="mt-4 space-y-2 text-xs font-medium text-stone-700 dark:text-zinc-300"
+              >
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-emerald-500"></i> Buscador
+                  por categorías y selector referencial ARS / USD
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-emerald-500"></i> Opción con
+                  Panel Admin 24/7 para actualizar precios y stock
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="mt-6 pt-5 border-t border-stone-100 dark:border-zinc-800"
+            >
+              <a
+                href="catalogos.html"
+                class="min-h-[44px] w-full rounded-xl bg-stone-900 dark:bg-white text-white dark:text-zinc-950 font-bold text-xs flex items-center justify-center gap-2 hover:opacity-90 transition"
+              >
+                Probar Demo de Catálogos
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- 3. Turnos Online -->
+          <div
+            class="bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-3xl p-6 sm:p-7 flex flex-col justify-between shadow-sm hover:border-orange-400 transition"
+          >
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span
+                  class="px-3 py-1 rounded-full bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 text-xs font-extrabold"
+                >
+                  Gimnasios, Salud y Educación
+                </span>
+                <span class="text-sm font-black text-stone-900 dark:text-white"
+                  >Desde $35.000</span
+                >
+              </div>
+              <h3 class="text-xl font-extrabold text-stone-900 dark:text-white">
+                Agenda de Turnos y Clases 24/7
+              </h3>
+              <p
+                class="text-sm text-stone-600 dark:text-zinc-400 mt-2 leading-relaxed"
+              >
+                Para gimnasios, boxes, consultorios médicos, estética y
+                profesores particulares. Cobrá en pesos argentinos y ahorrá
+                hasta 80% frente a plataformas en dólares.
+              </p>
+              <ul
+                class="mt-4 space-y-2 text-xs font-medium text-stone-700 dark:text-zinc-300"
+              >
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-emerald-500"></i> Cupos por
+                  clase, modalidad presencial/virtual y arancel claro
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-emerald-500"></i> Panel Admin
+                  opcional para bloquear horarios y gestionar reservas
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="mt-6 pt-5 border-t border-stone-100 dark:border-zinc-800"
+            >
+              <a
+                href="turnos.html"
+                class="min-h-[44px] w-full rounded-xl bg-stone-900 dark:bg-white text-white dark:text-zinc-950 font-bold text-xs flex items-center justify-center gap-2 hover:opacity-90 transition"
+              >
+                Probar Demo de Turnos
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- 4. Gestión y Stock -->
+          <div
+            class="bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-3xl p-6 sm:p-7 flex flex-col justify-between shadow-sm hover:border-orange-400 transition"
+          >
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span
+                  class="px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 text-xs font-extrabold"
+                >
+                  Control Operativo Integral
+                </span>
+                <span class="text-sm font-black text-stone-900 dark:text-white"
+                  >$120.000</span
+                >
+              </div>
+              <h3 class="text-xl font-extrabold text-stone-900 dark:text-white">
+                Sistema de Gestión, Caja y Stock en Vivo
+              </h3>
+              <p
+                class="text-sm text-stone-600 dark:text-zinc-400 mt-2 leading-relaxed"
+              >
+                Unificá tu tienda o carta online con tu tablero interno: cada
+                pedido confirmado descuenta inventario automáticamente y
+                registra ingresos del día.
+              </p>
+              <ul
+                class="mt-4 space-y-2 text-xs font-medium text-stone-700 dark:text-zinc-300"
+              >
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-emerald-500"></i> Panel Admin
+                  y base de datos en tiempo real incluidos de base
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-emerald-500"></i> Alertas de
+                  stock bajo, historial de clientes y caja diaria
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="mt-6 pt-5 border-t border-stone-100 dark:border-zinc-800"
+            >
+              <a
+                href="gestion.html"
+                class="min-h-[44px] w-full rounded-xl bg-stone-900 dark:bg-white text-white dark:text-zinc-950 font-bold text-xs flex items-center justify-center gap-2 hover:opacity-90 transition"
+              >
+                Probar Demo Gestión y Stock
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CÓMO ARRANCAMOS (3 PASOS CLAROS) -->
+    <section
+      class="py-14 bg-white dark:bg-zinc-900/50 border-y border-stone-200 dark:border-zinc-800"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <h2
+            class="text-2xl sm:text-3xl font-extrabold text-stone-900 dark:text-white"
+          >
+            Tu plataforma lista en 3 pasos simples
+          </h2>
+          <p class="text-sm text-stone-600 dark:text-zinc-400 mt-2">
+            Nos encargamos de toda la configuración inicial para que no pierdas
+            tiempo técnico.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div
+            class="p-6 rounded-2xl bg-stone-50 dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800"
+          >
+            <span
+              class="w-8 h-8 rounded-lg bg-orange-600 text-white font-black text-sm inline-flex items-center justify-center mb-3"
+              >1</span
+            >
+            <h3 class="font-extrabold text-base text-stone-900 dark:text-white">
+              Elegís tu plan y rubro
+            </h3>
+            <p
+              class="text-xs text-stone-600 dark:text-zinc-400 mt-1.5 leading-relaxed"
+            >
+              Calculás tu presupuesto exacto en pesos argentinos (ARS) y
+              confirmás tu lugar con el anticipo inicial.
+            </p>
+          </div>
+          <div
+            class="p-6 rounded-2xl bg-stone-50 dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800"
+          >
+            <span
+              class="w-8 h-8 rounded-lg bg-orange-600 text-white font-black text-sm inline-flex items-center justify-center mb-3"
+              >2</span
+            >
+            <h3 class="font-extrabold text-base text-stone-900 dark:text-white">
+              Nos pasás tus datos por chat
+            </h3>
+            <p
+              class="text-xs text-stone-600 dark:text-zinc-400 mt-1.5 leading-relaxed"
+            >
+              Enviás tu logotipo, lista de precios o grilla horaria y el número
+              de WhatsApp donde recibirás los pedidos.
+            </p>
+          </div>
+          <div
+            class="p-6 rounded-2xl bg-stone-50 dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800"
+          >
+            <span
+              class="w-8 h-8 rounded-lg bg-emerald-600 text-white font-black text-sm inline-flex items-center justify-center mb-3"
+              >3</span
+            >
+            <h3 class="font-extrabold text-base text-stone-900 dark:text-white">
+              Publicamos en 72 hs hábiles
+            </h3>
+            <p
+              class="text-xs text-stone-600 dark:text-zinc-400 mt-1.5 leading-relaxed"
+            >
+              Recibís tu enlace activo con certificado SSL y tu
+              <strong>Guía PDF de Uso</strong> para empezar a compartirlo al
+              instante.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL + CONSULTA PERSONALIZADA -->
+    <section class="py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <div
+          class="bg-gradient-to-br from-emerald-950 via-zinc-900 to-zinc-950 text-white rounded-3xl p-8 sm:p-12 border border-emerald-800/40 shadow-2xl"
+        >
+          <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
+            ¿Listo para ordenar tus pedidos o turnos?
+          </h2>
+          <p class="text-sm sm:text-base text-zinc-300 mt-3 max-w-xl mx-auto">
+            Simulá tu inversión sin compromiso o escribinos directamente si
+            necesitás una función a medida para tu local.
+          </p>
+
+          <div class="flex flex-col sm:flex-row justify-center gap-3 mt-7">
+            <a
+              href="planes.html"
+              class="min-h-[48px] px-7 rounded-2xl bg-orange-600 hover:bg-orange-500 text-white font-extrabold text-sm inline-flex items-center justify-center gap-2 transition"
+            >
+              Ir al Simulador de Planes
+            </a>
+            <a
+              href="planes.html#consulta-personalizada"
+              class="min-h-[48px] px-7 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/20 text-white font-bold text-sm inline-flex items-center justify-center gap-2 transition"
+            >
+              Pedir Cotización a Medida
             </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- REQUISITOS PARA ARRANCAR -->
-    <section
-      id="requisitos"
-      class="py-16 bg-white dark:bg-zinc-900/40 border-b border-stone-200 dark:border-zinc-900"
+    <!-- FOOTER LIMPIO Y COHERENTE CON LEGALES -->
+    <footer
+      class="border-t border-stone-200 dark:border-zinc-800 py-10 text-xs text-stone-500 dark:text-zinc-400"
     >
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-10">
-          <span
-            class="text-xs font-extrabold uppercase tracking-wider text-orange-600 dark:text-orange-500"
-            >Transparencia Operativa</span
-          >
-          <h2 class="text-3xl font-black text-stone-900 dark:text-white mt-2">
-            ¿Qué necesitás enviarnos para comenzar?
-          </h2>
-          <p class="text-stone-600 dark:text-zinc-400 text-sm mt-3">
-            El plazo estimado de entrega de
-            <strong class="text-stone-900 dark:text-white"
-              >72 horas hábiles</strong
-            >
-            comienza una vez recibido el anticipo acordado y la totalidad del
-            siguiente material:
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4"
+      >
+        <div class="text-center sm:text-left">
+          <p class="font-bold text-stone-800 dark:text-zinc-200">
+            SmartMenu • San Miguel de Tucumán, Argentina
+          </p>
+          <p class="mt-0.5">
+            Herramienta tecnológica sin intermediación financiera ni comisiones
+            por venta.
           </p>
         </div>
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          <div
-            class="bg-stone-50 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 rounded-2xl p-5"
-          >
-            <span
-              class="text-orange-600 dark:text-orange-500 font-black text-base"
-              >01. Identidad</span
-            >
-            <h4 class="font-bold text-stone-900 dark:text-white mt-1 mb-2">
-              Logo y Colores
-            </h4>
-            <p
-              class="text-xs text-stone-600 dark:text-zinc-400 leading-relaxed"
-            >
-              Archivo de tu logotipo (PNG, JPG o PDF) y los colores principales
-              de tu marca.
-            </p>
-          </div>
-          <div
-            class="bg-stone-50 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 rounded-2xl p-5"
-          >
-            <span
-              class="text-orange-600 dark:text-orange-500 font-black text-base"
-              >02. Carta / Stock</span
-            >
-            <h4 class="font-bold text-stone-900 dark:text-white mt-1 mb-2">
-              Productos y Precios
-            </h4>
-            <p
-              class="text-xs text-stone-600 dark:text-zinc-400 leading-relaxed"
-            >
-              Lista escrita (texto, Word, Excel o foto legible) con categorías,
-              descripciones y valores finales en ARS.
-            </p>
-          </div>
-          <div
-            class="bg-stone-50 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 rounded-2xl p-5"
-          >
-            <span
-              class="text-orange-600 dark:text-orange-500 font-black text-base"
-              >03. Imágenes</span
-            >
-            <h4 class="font-bold text-stone-900 dark:text-white mt-1 mb-2">
-              Fotos (Planes Visuales)
-            </h4>
-            <p
-              class="text-xs text-stone-600 dark:text-zinc-400 leading-relaxed"
-            >
-              Fotografías reales o autorizadas. El cliente garantiza contar con
-              derechos de uso sobre las mismas.
-            </p>
-          </div>
-          <div
-            class="bg-stone-50 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 rounded-2xl p-5"
-          >
-            <span
-              class="text-orange-600 dark:text-orange-500 font-black text-base"
-              >04. Contacto</span
-            >
-            <h4 class="font-bold text-stone-900 dark:text-white mt-1 mb-2">
-              WhatsApp y Datos
-            </h4>
-            <p
-              class="text-xs text-stone-600 dark:text-zinc-400 leading-relaxed"
-            >
-              Número receptor, dirección del local, horarios de atención y
-              modalidades (mesa, retiro o envío).
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section
-      id="faq"
-      class="py-16 border-b border-stone-200 dark:border-zinc-900"
-    >
-      <div class="max-w-3xl mx-auto px-4 sm:px-6">
-        <div class="text-center mb-10">
-          <span
-            class="text-xs font-extrabold uppercase tracking-wider text-orange-600 dark:text-orange-500"
-            >Despejá tus dudas</span
-          >
-          <h2 class="text-3xl font-black text-stone-900 dark:text-white mt-2">
-            Preguntas Frecuentes
-          </h2>
-        </div>
-
-        <div class="space-y-3.5">
-          <div
-            class="bg-white dark:bg-zinc-900/70 border border-stone-200 dark:border-zinc-800 rounded-2xl overflow-hidden shadow-sm"
-          >
-            <button
-              onclick="toggleFaq(this)"
-              class="w-full px-6 py-4 text-left flex justify-between items-center font-bold text-stone-900 dark:text-white text-sm sm:text-base"
-            >
-              <span
-                >1. ¿Smart Menu cobra comisiones o procesa los pagos de mis
-                clientes?</span
-              >
-              <i
-                class="fa-solid fa-chevron-down text-orange-500 transition-transform"
-              ></i>
-            </button>
-            <div
-              class="px-6 pb-4 text-sm text-stone-600 dark:text-zinc-400 hidden leading-relaxed"
-            >
-              No. Smart Menu provee únicamente la interfaz web interactiva. No
-              somos pasarela de pagos ni intermediarios financieros. El pedido o
-              turno llega detallado a tu WhatsApp (o a tu Panel Admin en vivo) y
-              vos cobrás directamente al cliente por transferencia, efectivo o
-              el medio de tu negocio.
-            </div>
-          </div>
-
-          <div
-            class="bg-white dark:bg-zinc-900/70 border border-stone-200 dark:border-zinc-800 rounded-2xl overflow-hidden shadow-sm"
-          >
-            <button
-              onclick="toggleFaq(this)"
-              class="w-full px-6 py-4 text-left flex justify-between items-center font-bold text-stone-900 dark:text-white text-sm sm:text-base"
-            >
-              <span>2. ¿En cuánto tiempo está listo mi proyecto?</span>
-              <i
-                class="fa-solid fa-chevron-down text-orange-500 transition-transform"
-              ></i>
-            </button>
-            <div
-              class="px-6 pb-4 text-sm text-stone-600 dark:text-zinc-400 hidden leading-relaxed"
-            >
-              El plazo estándar de entrega es de 72 horas hábiles, contadas
-              exclusivamente desde el momento en que nos enviás todo el material
-              completo (lista de precios, logo, fotos si corresponde y datos de
-              contacto) y se confirma el inicio del trabajo.
-            </div>
-          </div>
-
-          <div
-            class="bg-white dark:bg-zinc-900/70 border border-stone-200 dark:border-zinc-800 rounded-2xl overflow-hidden shadow-sm"
-          >
-            <button
-              onclick="toggleFaq(this)"
-              class="w-full px-6 py-4 text-left flex justify-between items-center font-bold text-stone-900 dark:text-white text-sm sm:text-base"
-            >
-              <span
-                >3. ¿Quién es responsable por los precios, stock o servicios
-                publicados?</span
-              >
-              <i
-                class="fa-solid fa-chevron-down text-orange-500 transition-transform"
-              ></i>
-            </button>
-            <div
-              class="px-6 pb-4 text-sm text-stone-600 dark:text-zinc-400 hidden leading-relaxed"
-            >
-              Cada comercio o profesional contratante es el único y exclusivo
-              responsable por la veracidad de sus precios, disponibilidad de
-              mercadería, calidad bromatológica, prestaciones profesionales y
-              cumplimiento fiscal frente a sus consumidores finales.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER & RESGUARDO LEGAL -->
-    <footer
-      class="bg-white dark:bg-zinc-950 py-12 text-stone-600 dark:text-zinc-400 text-xs"
-    >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         <div
-          class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b border-stone-200 dark:border-zinc-900 pb-6"
+          class="flex flex-wrap items-center justify-center gap-5 font-semibold"
         >
-          <div>
-            <span class="font-black text-xl text-stone-900 dark:text-white"
-              >Smart<span class="text-orange-500">Menu</span></span
-            >
-            <p class="mt-1">
-              Menús Digitales, Catálogos, Turnos y Gestión Web — San Miguel de
-              Tucumán, Argentina.
-            </p>
-            <p class="mt-1 text-stone-500 dark:text-zinc-500">
-              Contacto: smartmenuprofesional@gmail.com | WhatsApp: +54 9 381
-              632-0130
-            </p>
-          </div>
-
-          <div class="flex flex-wrap gap-4 font-bold">
-            <a href="demo_moderno.html" class="hover:text-orange-600 transition"
-              >Menú Moderno</a
-            >
-            <a href="demo_clasico.html" class="hover:text-orange-600 transition"
-              >Menú Clásico</a
-            >
-            <a href="catalogos.html" class="hover:text-orange-600 transition"
-              >Catálogos</a
-            >
-            <a href="turnos.html" class="hover:text-orange-600 transition"
-              >Turnos</a
-            >
-            <a href="gestion.html" class="hover:text-orange-600 transition"
-              >Gestión y Stock</a
-            >
-            <a href="planes.html" class="hover:text-orange-600 transition"
-              >Planes</a
-            >
-            <a
-              href="terminos.html"
-              class="text-orange-600 dark:text-orange-400 underline transition"
-              >Términos y Condiciones</a
-            >
-          </div>
-        </div>
-
-        <div
-          class="bg-stone-100 dark:bg-zinc-900/60 border border-stone-200 dark:border-zinc-800/80 rounded-2xl p-4 leading-relaxed text-[11px] text-stone-600 dark:text-zinc-500"
-        >
-          <strong class="text-stone-800 dark:text-zinc-400"
-            >Aviso Legal y Exención de Responsabilidad:</strong
+          <a href="planes.html" class="hover:text-orange-600 transition"
+            >Planes y Precios</a
           >
-          Smart Menu es un servicio independiente de diseño y desarrollo web
-          prestado por Santiago Molina. Smart Menu no actúa como intermediario
-          comercial, comisionista, entidad financiera ni pasarela de pagos entre
-          los comercios clientes y sus consumidores finales. La exactitud de los
-          precios, descripciones, alérgenos, tiempos de entrega, stock y
-          obligaciones tributarias corresponden exclusivamente al comercio o
-          profesional titular. Al contratar cualquier plan, el cliente declara
-          haber leído y aceptado nuestros
-          <a
-            href="terminos.html"
-            class="text-orange-600 dark:text-orange-400 underline font-bold"
+          <a href="terminos.html" class="hover:text-orange-600 transition"
             >Términos y Condiciones</a
-          >.
+          >
+          <a
+            href="https://wa.me/5493816320130?text=Hola%20Santiago!%20Vengo%20desde%20smartmenu.com.ar%20y%20quiero%20hacer%20una%20consulta."
+            target="_blank"
+            class="text-emerald-700 dark:text-emerald-400 font-bold hover:underline"
+          >
+            WhatsApp: +54 9 381 632-0130
+          </a>
         </div>
       </div>
     </footer>
 
-    <!-- MODAL DE CONTRATACIÓN CON REQUISITOS Y ACEPTACIÓN LEGAL -->
-    <div
-      id="hire-modal"
-      class="fixed inset-0 z-50 hidden items-center justify-center p-4"
-    >
-      <div
-        class="absolute inset-0 bg-black/70 backdrop-blur-sm"
-        onclick="closeHireModal()"
-      ></div>
-      <div
-        class="bg-white dark:bg-zinc-900 border border-stone-200 dark:border-emerald-800/60 rounded-3xl max-w-lg w-full relative z-10 p-6 sm:p-7 shadow-2xl max-h-[92vh] overflow-y-auto"
-      >
-        <div
-          class="flex justify-between items-start border-b border-stone-200 dark:border-zinc-800 pb-4"
-        >
-          <div>
-            <span
-              class="text-[11px] font-extrabold uppercase tracking-wider text-orange-600 dark:text-orange-400"
-              >Paso previo a WhatsApp</span
-            >
-            <h3
-              id="modal-plan-title"
-              class="text-2xl font-black text-stone-900 dark:text-white mt-0.5"
-            >
-              Plan Seleccionado
-            </h3>
-            <p
-              id="modal-plan-price"
-              class="text-sm font-bold text-emerald-700 dark:text-emerald-400 mt-0.5"
-            ></p>
-          </div>
-          <button
-            onclick="closeHireModal()"
-            class="w-9 h-9 rounded-full bg-stone-100 hover:bg-stone-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-stone-700 dark:text-zinc-300 flex items-center justify-center"
-          >
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </div>
-
-        <div class="mt-5 space-y-4">
-          <div class="grid sm:grid-cols-2 gap-3">
-            <div>
-              <label
-                class="block text-xs font-bold text-stone-700 dark:text-zinc-300 mb-1"
-                >Nombre de tu negocio (opcional)</label
-              >
-              <input
-                type="text"
-                id="client-business"
-                placeholder="Ej: Sanguchería El Tucumano"
-                class="w-full bg-stone-50 dark:bg-zinc-950 border border-stone-300 dark:border-zinc-800 rounded-xl px-3.5 py-2.5 text-sm text-stone-900 dark:text-white focus:outline-none focus:border-orange-500"
-              />
-            </div>
-            <div>
-              <label
-                class="block text-xs font-bold text-stone-700 dark:text-zinc-300 mb-1"
-                >Rubro</label
-              >
-              <select
-                id="client-rubro"
-                class="w-full bg-stone-50 dark:bg-zinc-950 border border-stone-300 dark:border-zinc-800 rounded-xl px-3.5 py-2.5 text-sm text-stone-900 dark:text-white focus:outline-none focus:border-orange-500"
-              >
-                <option value="Gastronomía / Bar / Sanguchería">
-                  Gastronomía / Bar / Sanguchería
-                </option>
-                <option value="Tienda / Catálogo Comercial">
-                  Tienda / Catálogo Comercial
-                </option>
-                <option value="Gimnasio / Turnos Profesionales">
-                  Gimnasio / Turnos Profesionales
-                </option>
-                <option value="Gestión y Stock">Gestión y Stock</option>
-                <option value="Otro rubro">Otro rubro</option>
-              </select>
-            </div>
-          </div>
-
-          <div
-            class="bg-stone-50 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 rounded-2xl p-4"
-          >
-            <p
-              class="text-xs font-extrabold uppercase tracking-wider text-orange-600 dark:text-orange-400 mb-2"
-            >
-              <i class="fa-solid fa-clipboard-list mr-1"></i> Requisitos que
-              necesitaremos que nos envíes:
-            </p>
-            <ul
-              id="modal-requirements"
-              class="space-y-1.5 text-xs text-stone-700 dark:text-zinc-300 list-disc pl-4"
-            ></ul>
-            <p class="text-[11px] text-stone-500 dark:text-zinc-500 mt-3">
-              *El plazo de entrega de 72 hs hábiles inicia una vez recibida la
-              totalidad de esta información y confirmado el inicio del servicio.
-            </p>
-          </div>
-
-          <label
-            class="flex items-start gap-3 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/40 rounded-2xl p-3.5 cursor-pointer select-none"
-          >
-            <input
-              type="checkbox"
-              id="accept-terms"
-              onchange="toggleHireButton()"
-              class="mt-1 w-4 h-4 accent-orange-500 rounded cursor-pointer"
-            />
-            <span
-              class="text-xs text-stone-700 dark:text-zinc-300 leading-relaxed"
-            >
-              He leído y acepto los
-              <a
-                href="terminos.html"
-                target="_blank"
-                class="text-orange-600 dark:text-orange-400 underline font-bold"
-                >Términos y Condiciones</a
-              >, el alcance del servicio y los requisitos necesarios para
-              comenzar el desarrollo.
-            </span>
-          </label>
-
-          <button
-            id="btn-send-plan"
-            disabled
-            onclick="confirmAndRedirectWhatsApp()"
-            class="w-full py-3.5 rounded-xl font-black text-sm flex items-center justify-center gap-2 transition bg-stone-200 dark:bg-zinc-800 text-stone-500 dark:text-zinc-500 cursor-not-allowed"
-          >
-            <i class="fa-brands fa-whatsapp text-lg"></i> Aceptá los términos
-            para continuar a WhatsApp
-          </button>
-        </div>
-      </div>
-    </div>
-
     <script>
+      const HERO_PREVIEWS = {
+        gastro: `
+          <div class="p-4 rounded-2xl bg-stone-50 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-extrabold text-orange-600">🍔 Sanguchería El Norte</span>
+              <span class="text-[11px] px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 font-bold">0% Comisión</span>
+            </div>
+            <div class="flex justify-between items-center text-xs py-2 border-y border-stone-200 dark:border-zinc-800">
+              <span>1x Sándwich Milanesa Completo + Papas</span>
+              <span class="font-extrabold">$14.500</span>
+            </div>
+            <div class="bg-[#DCF8C6] dark:bg-emerald-950/70 text-stone-900 dark:text-emerald-100 p-3 rounded-xl text-[11px] leading-relaxed">
+              <strong>Pedido listo en WhatsApp:</strong><br/>
+              Modalidad: Delivery • Pago: Transferencia<br/>
+              Total: <strong>$14.500 ARS</strong> (sin recortes de apps)
+            </div>
+            <a href="demo_moderno.html" class="block text-center text-xs font-extrabold text-orange-600 hover:underline pt-1">
+              Probar carta gastronómica interactiva →
+            </a>
+          </div>
+        `,
+        turnos: `
+          <div class="p-4 rounded-2xl bg-stone-50 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-extrabold text-sky-600 dark:text-sky-400">🏋️ Box & Funcional Tucumán</span>
+              <span class="text-[11px] px-2 py-0.5 rounded-full bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 font-bold">Agenda 24/7</span>
+            </div>
+            <div class="grid grid-cols-3 gap-2 text-center text-xs">
+              <div class="p-2 rounded-xl border border-stone-200 dark:border-zinc-800 opacity-50 line-through">18:00 Lleno</div>
+              <div class="p-2 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 font-extrabold text-emerald-700 dark:text-emerald-300">19:00 Libre</div>
+              <div class="p-2 rounded-xl border border-stone-200 dark:border-zinc-800">20:00 (3 cupos)</div>
+            </div>
+            <div class="bg-white dark:bg-zinc-900 p-3 rounded-xl border border-stone-200 dark:border-zinc-800 text-[11px]">
+              <strong>Reserva confirmada:</strong> Juan Pérez • Clase 19:00 hs.<br/>
+              Cupo descontado automáticamente en tu panel.
+            </div>
+            <a href="turnos.html" class="block text-center text-xs font-extrabold text-sky-600 dark:text-sky-400 hover:underline pt-1">
+              Explorar agenda para gimnasios y consultorios →
+            </a>
+          </div>
+        `,
+        catalogo: `
+          <div class="p-4 rounded-2xl bg-stone-50 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-extrabold text-emerald-600 dark:text-emerald-400">🛍️ Librería & Showroom</span>
+              <span class="text-[11px] px-2 py-0.5 rounded-full bg-stone-200 dark:bg-zinc-800 font-bold">ARS / USD</span>
+            </div>
+            <div class="flex justify-between items-center text-xs py-2 border-y border-stone-200 dark:border-zinc-800">
+              <span>Combo Mochila + Cuadernos A4 (2 ítems)</span>
+              <span class="font-extrabold">$48.000</span>
+            </div>
+            <div class="bg-[#DCF8C6] dark:bg-emerald-950/70 text-stone-900 dark:text-emerald-100 p-3 rounded-xl text-[11px] leading-relaxed">
+              <strong>Consulta directa al vendedor:</strong><br/>
+              "Hola! Me interesan estos 2 artículos del catálogo..."
+            </div>
+            <a href="catalogos.html" class="block text-center text-xs font-extrabold text-emerald-600 dark:text-emerald-400 hover:underline pt-1">
+              Ver catálogos de 4 rubros en vivo →
+            </a>
+          </div>
+        `,
+      };
+
+      function setHeroPreview(key) {
+        ["gastro", "turnos", "catalogo"].forEach((k) => {
+          const btn = document.getElementById(`tab-prev-${k}`);
+          if (!btn) return;
+          btn.className =
+            k === key
+              ? "min-h-[40px] rounded-xl text-xs font-extrabold bg-white dark:bg-zinc-800 text-stone-900 dark:text-white shadow-sm transition"
+              : "min-h-[40px] rounded-xl text-xs font-bold text-stone-500 dark:text-zinc-400 hover:text-stone-900 transition";
+        });
+        document.getElementById("hero-preview-body").innerHTML =
+          HERO_PREVIEWS[key];
+      }
+
       function toggleTheme() {
-        const html = document.documentElement;
-        const isDark = html.classList.toggle("dark");
+        const isDark = document.documentElement.classList.toggle("dark");
         localStorage.setItem("smartmenu_theme", isDark ? "dark" : "light");
         updateThemeIcons();
       }
+
       function updateThemeIcons() {
         const isDark = document.documentElement.classList.contains("dark");
         document.querySelectorAll(".theme-icon").forEach((el) => {
@@ -1392,96 +769,18 @@
             : "fa-solid fa-moon text-stone-700 theme-icon";
         });
         document.querySelectorAll(".theme-label").forEach((el) => {
-          el.innerText = isDark ? "Modo Día" : "Modo Noche";
+          el.innerText = isDark ? "Día" : "Noche";
         });
       }
+
       function toggleMobileMenu() {
-        const menu = document.getElementById("mobile-menu");
-        if (menu) menu.classList.toggle("hidden");
-      }
-      document.addEventListener("DOMContentLoaded", updateThemeIcons);
-
-      let selectedPlan = "";
-      let selectedPrice = "";
-
-      function openHireModal(plan, price, requirements) {
-        selectedPlan = plan;
-        selectedPrice = price;
-        document.getElementById("modal-plan-title").innerText = plan;
-        document.getElementById("modal-plan-price").innerText = price;
-
-        const reqList = document.getElementById("modal-requirements");
-        reqList.innerHTML = "";
-        requirements.forEach((req) => {
-          const li = document.createElement("li");
-          li.innerText = req;
-          reqList.appendChild(li);
-        });
-
-        const checkbox = document.getElementById("accept-terms");
-        checkbox.checked = false;
-        toggleHireButton();
-
-        const modal = document.getElementById("hire-modal");
-        modal.classList.remove("hidden");
-        modal.classList.add("flex");
+        document.getElementById("mobile-menu").classList.toggle("hidden");
       }
 
-      function closeHireModal() {
-        const modal = document.getElementById("hire-modal");
-        modal.classList.add("hidden");
-        modal.classList.remove("flex");
-      }
-
-      function toggleHireButton() {
-        const accepted = document.getElementById("accept-terms").checked;
-        const btn = document.getElementById("btn-send-plan");
-        if (accepted) {
-          btn.disabled = false;
-          btn.className =
-            "w-full py-3.5 rounded-xl font-black text-sm flex items-center justify-center gap-2 transition bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-lg cursor-pointer";
-          btn.innerHTML =
-            '<i class="fa-brands fa-whatsapp text-lg"></i> Continuar y Solicitar por WhatsApp';
-        } else {
-          btn.disabled = true;
-          btn.className =
-            "w-full py-3.5 rounded-xl font-black text-sm flex items-center justify-center gap-2 transition bg-stone-200 dark:bg-zinc-800 text-stone-500 cursor-not-allowed";
-          btn.innerHTML =
-            '<i class="fa-brands fa-whatsapp text-lg"></i> Aceptá los términos para continuar a WhatsApp';
-        }
-      }
-
-      function confirmAndRedirectWhatsApp() {
-        if (!document.getElementById("accept-terms").checked) return;
-
-        const business =
-          document.getElementById("client-business").value.trim() ||
-          "A confirmar";
-        const rubro = document.getElementById("client-rubro").value;
-        const dateStr = new Date().toLocaleDateString("es-AR");
-
-        const msg =
-          `👋 *Hola Santiago (Smart Menu)!* Quiero iniciar la contratación:\n\n` +
-          `📌 *Plan elegido:* ${selectedPlan}\n` +
-          `💰 *Referencia:* ${selectedPrice}\n` +
-          `🏪 *Negocio:* ${business}\n` +
-          `📂 *Rubro:* ${rubro}\n\n` +
-          `✅ *Conformidad Legal:* Declaro que leí y acepto los Términos y Condiciones y los requisitos de entrega (${dateStr}).\n\n` +
-          `¡Quedo atento para pasarte el material y comenzar!`;
-
-        window.open(
-          `https://wa.me/5493816320130?text=${encodeURIComponent(msg)}`,
-          "_blank",
-        );
-        closeHireModal();
-      }
-
-      function toggleFaq(button) {
-        const content = button.nextElementSibling;
-        const icon = button.querySelector("i");
-        content.classList.toggle("hidden");
-        icon.classList.toggle("rotate-180");
-      }
+      document.addEventListener("DOMContentLoaded", () => {
+        updateThemeIcons();
+        setHeroPreview("gastro");
+      });
     </script>
   </body>
 </html>
