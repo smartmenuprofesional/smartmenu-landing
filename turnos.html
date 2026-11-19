@@ -6,21 +6,43 @@
     <title>Turnos y Reservas Online | Smart Menu Tucumán</title>
     <meta
       name="description"
-      content="Sistema de reservas y turnos online para gimnasios, médicos, psicólogos y profesores particulares con confirmación directa a WhatsApp."
+      content="Sistema de reservas y turnos online multiformato para gimnasios, médicos, psicólogos y profesores particulares con envío directo a WhatsApp o Panel Admin en vivo."
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
-        darkMode: 'class',
+        darkMode: "class",
       };
-      if (localStorage.getItem('smartmenu_theme') === 'dark') {
-        document.documentElement.classList.add('dark');
+      if (localStorage.getItem("smartmenu_theme") === "dark") {
+        document.documentElement.classList.add("dark");
       }
     </script>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       rel="stylesheet"
     />
+    <style>
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .fade-panel {
+        animation: fadeSlide 0.25s ease-out;
+      }
+      @keyframes fadeSlide {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
   </head>
   <body
     class="bg-stone-50 text-stone-900 dark:bg-zinc-950 dark:text-zinc-100 font-sans antialiased pb-20 selection:bg-orange-500 selection:text-white transition-colors"
@@ -38,7 +60,9 @@
           >
             <i class="fa-solid fa-qrcode"></i>
           </div>
-          <span class="font-black text-xl tracking-tight text-stone-900 dark:text-white">
+          <span
+            class="font-black text-xl tracking-tight text-stone-900 dark:text-white"
+          >
             Smart<span class="text-orange-500">Menu</span>
           </span>
         </a>
@@ -46,13 +70,41 @@
         <nav
           class="hidden lg:flex items-center gap-6 text-sm font-semibold text-stone-600 dark:text-zinc-300"
         >
-          <a href="index.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Inicio</a>
-          <a href="demo_moderno.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Menú Moderno</a>
-          <a href="demo_clasico.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Menú Clásico</a>
-          <a href="catalogos.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Catálogos</a>
-          <a href="turnos.html" class="text-orange-600 dark:text-orange-500 font-extrabold">Turnos</a>
-          <a href="gestion.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Gestión y Stock</a>
-          <a href="planes.html" class="hover:text-orange-600 dark:hover:text-orange-400 transition">Planes</a>
+          <a
+            href="index.html"
+            class="hover:text-orange-600 dark:hover:text-orange-400 transition"
+            >Inicio</a
+          >
+          <a
+            href="demo_moderno.html"
+            class="hover:text-orange-600 dark:hover:text-orange-400 transition"
+            >Menú Moderno</a
+          >
+          <a
+            href="demo_clasico.html"
+            class="hover:text-orange-600 dark:hover:text-orange-400 transition"
+            >Menú Clásico</a
+          >
+          <a
+            href="catalogos.html"
+            class="hover:text-orange-600 dark:hover:text-orange-400 transition"
+            >Catálogos</a
+          >
+          <a
+            href="turnos.html"
+            class="text-orange-600 dark:text-orange-500 font-extrabold"
+            >Turnos</a
+          >
+          <a
+            href="gestion.html"
+            class="hover:text-orange-600 dark:hover:text-orange-400 transition"
+            >Gestión y Stock</a
+          >
+          <a
+            href="planes.html"
+            class="hover:text-orange-600 dark:hover:text-orange-400 transition"
+            >Planes</a
+          >
         </nav>
 
         <div class="flex items-center gap-2">
@@ -92,318 +144,345 @@
         id="mobile-menu"
         class="hidden lg:hidden bg-white dark:bg-zinc-950 border-t border-stone-200 dark:border-zinc-800 px-4 py-3 space-y-1 shadow-lg"
       >
-        <a href="index.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Inicio</a>
-        <a href="demo_moderno.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Menú Moderno</a>
-        <a href="demo_clasico.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Menú Clásico</a>
-        <a href="catalogos.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Catálogos</a>
-        <a href="turnos.html" class="block px-3 py-2 rounded-xl text-sm font-bold bg-orange-50 text-orange-600 dark:bg-orange-500/15 dark:text-orange-400">Turnos</a>
-        <a href="gestion.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Gestión y Stock</a>
-        <a href="planes.html" class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900">Planes</a>
+        <a
+          href="index.html"
+          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >Inicio</a
+        >
+        <a
+          href="demo_moderno.html"
+          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >Menú Moderno</a
+        >
+        <a
+          href="demo_clasico.html"
+          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >Menú Clásico</a
+        >
+        <a
+          href="catalogos.html"
+          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >Catálogos</a
+        >
+        <a
+          href="turnos.html"
+          class="block px-3 py-2 rounded-xl text-sm font-bold bg-orange-50 text-orange-600 dark:bg-orange-500/15 dark:text-orange-400"
+          >Turnos</a
+        >
+        <a
+          href="gestion.html"
+          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >Gestión y Stock</a
+        >
+        <a
+          href="planes.html"
+          class="block px-3 py-2 rounded-xl text-sm font-bold text-stone-700 dark:text-zinc-300 hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >Planes</a
+        >
       </div>
     </header>
 
-    <!-- HERO TURNOS -->
+    <!-- HERO Y SELECTORES DE DEMO -->
     <section
-      class="pt-10 pb-10 bg-gradient-to-b from-emerald-50/80 to-stone-50 dark:from-emerald-950/25 dark:to-zinc-950 border-b border-stone-200 dark:border-zinc-900"
+      class="pt-8 pb-8 bg-gradient-to-b from-emerald-50/80 to-stone-50 dark:from-emerald-950/25 dark:to-zinc-950 border-b border-stone-200 dark:border-zinc-900"
     >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl">
-          <span
-            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-700/50 text-emerald-900 dark:text-emerald-300 text-xs font-extrabold mb-3"
-          >
-            <i class="fa-solid fa-calendar-check text-orange-500"></i> Sistema
-            de Reservas • Setup desde $35.000 ARS
-          </span>
-          <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-stone-900 dark:text-white">
-            Turnos <span class="text-orange-500">Smart Menu</span>
-          </h1>
-          <p class="text-stone-600 dark:text-zinc-400 text-sm sm:text-base mt-2.5">
-            Diseñado para
-            <strong class="text-stone-900 dark:text-zinc-200"
-              >gimnasios, estudios de entrenamiento, psicólogos, médicos y
-              profesores particulares</strong
-            >. Tus alumnos o pacientes consultan tus horarios y reservan su
-            lugar directo a tu WhatsApp, sin comisiones por turno.
-          </p>
-        </div>
-
-        <!-- SELECTOR DE MODALIDAD -->
-        <div class="flex flex-wrap gap-3 mt-8">
-          <button
-            onclick="switchMode('gimnasio')"
-            id="tab-gimnasio"
-            class="px-6 py-3.5 rounded-2xl font-extrabold text-sm flex items-center gap-2.5 bg-orange-500 text-white shadow-md transition"
-          >
-            <i class="fa-solid fa-dumbbell"></i> Gimnasio Smart Menu (Clases
-            Semanales)
-          </button>
-          <button
-            onclick="switchMode('profesional')"
-            id="tab-profesional"
-            class="px-6 py-3.5 rounded-2xl font-extrabold text-sm flex items-center gap-2.5 bg-white dark:bg-zinc-900 text-stone-700 dark:text-zinc-300 border border-stone-300 dark:border-zinc-800 hover:border-stone-400 transition"
-          >
-            <i class="fa-solid fa-user-doctor text-emerald-700 dark:text-emerald-400"></i> Profesional
-            Smart Menu (Turnos por Hora)
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN 1: GIMNASIO SMART MENU -->
-    <section
-      id="section-gimnasio"
-      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10"
-    >
-      <div
-        class="bg-white dark:bg-zinc-900 rounded-3xl border border-stone-200 dark:border-zinc-800 p-6 sm:p-8 shadow-md mb-8"
-      >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         <div
-          class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-stone-200 dark:border-zinc-800"
+          class="flex flex-col lg:flex-row lg:items-end justify-between gap-5"
         >
-          <div>
+          <div class="max-w-3xl">
             <span
-              class="text-xs font-extrabold uppercase tracking-wider text-orange-600 dark:text-orange-400"
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-700/50 text-emerald-900 dark:text-emerald-300 text-xs font-extrabold mb-3"
             >
-              Demo Activa • Lunes a Sábado
+              <i class="fa-solid fa-calendar-check text-orange-500"></i> 5
+              Estilos Profesionales Adaptables • Setup desde $35.000 ARS
             </span>
-            <h2 class="text-2xl sm:text-3xl font-black text-stone-900 dark:text-white mt-1">
-              Gimnasio Smart Menu
-            </h2>
-            <p class="text-sm text-stone-600 dark:text-zinc-400 mt-1">
-              <i class="fa-solid fa-location-dot text-orange-500 mr-1"></i> Av.
-              Mate de Luna 1850, San Miguel de Tucumán • Pase Libre Mensual:
-              <strong class="text-stone-900 dark:text-white price-ars" data-ars="28000"
-                >$28.000</strong
+            <h1
+              class="text-3xl sm:text-5xl font-black tracking-tight text-stone-900 dark:text-white"
+            >
+              Turnos <span class="text-orange-500">Smart Menu</span>
+            </h1>
+            <p
+              class="text-stone-600 dark:text-zinc-400 text-sm sm:text-base mt-2.5 leading-relaxed"
+            >
+              Elegí primero el
+              <strong class="text-stone-900 dark:text-zinc-200"
+                >formato visual</strong
               >
-              | Clase Suelta:
-              <strong class="text-stone-900 dark:text-white price-ars" data-ars="4500"
-                >$4.500</strong
-              >
+              y el
+              <strong class="text-stone-900 dark:text-zinc-200">rubro</strong>
+              (Gimnasio o Profesional) para ver cómo reservan tus clientes:
+              desde botones rápidos hasta agendas estilo Google Calendar,
+              Calendly, Doctoralia o asistente paso a paso.
             </p>
           </div>
-          <div class="flex flex-wrap gap-2">
-            <button
-              onclick="filterGymDay('Todos')"
-              class="gym-day-btn bg-orange-500 text-white px-3.5 py-2 rounded-xl text-xs font-bold"
-            >
-              Todos
-            </button>
-            <button
-              onclick="filterGymDay('Lunes')"
-              class="gym-day-btn bg-stone-100 dark:bg-zinc-800 text-stone-700 dark:text-zinc-300 px-3.5 py-2 rounded-xl text-xs font-bold"
-            >
-              Lun
-            </button>
-            <button
-              onclick="filterGymDay('Martes')"
-              class="gym-day-btn bg-stone-100 dark:bg-zinc-800 text-stone-700 dark:text-zinc-300 px-3.5 py-2 rounded-xl text-xs font-bold"
-            >
-              Mar
-            </button>
-            <button
-              onclick="filterGymDay('Miércoles')"
-              class="gym-day-btn bg-stone-100 dark:bg-zinc-800 text-stone-700 dark:text-zinc-300 px-3.5 py-2 rounded-xl text-xs font-bold"
-            >
-              Mié
-            </button>
-            <button
-              onclick="filterGymDay('Jueves')"
-              class="gym-day-btn bg-stone-100 dark:bg-zinc-800 text-stone-700 dark:text-zinc-300 px-3.5 py-2 rounded-xl text-xs font-bold"
-            >
-              Jue
-            </button>
-            <button
-              onclick="filterGymDay('Viernes')"
-              class="gym-day-btn bg-stone-100 dark:bg-zinc-800 text-stone-700 dark:text-zinc-300 px-3.5 py-2 rounded-xl text-xs font-bold"
-            >
-              Vie
-            </button>
-            <button
-              onclick="filterGymDay('Sábado')"
-              class="gym-day-btn bg-stone-100 dark:bg-zinc-800 text-stone-700 dark:text-zinc-300 px-3.5 py-2 rounded-xl text-xs font-bold"
-            >
-              Sáb
-            </button>
+
+          <!-- SELECTOR DE FLUJO DE RESERVA (WHATSAPP VS PANEL ADMIN EN VIVO) -->
+          <div
+            class="bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-2xl p-3 shadow-sm shrink-0 space-y-2"
+          >
+            <div class="flex items-center justify-between gap-3">
+              <span
+                class="text-[10px] font-extrabold uppercase tracking-wider text-stone-500 dark:text-zinc-400"
+              >
+                Flujo de reserva (Demo):
+              </span>
+              <button
+                onclick="toggleAdminPanel()"
+                class="text-[11px] font-extrabold text-orange-600 dark:text-orange-400 hover:underline flex items-center gap-1"
+              >
+                <i class="fa-solid fa-desktop"></i> Ver Panel Admin
+                <span
+                  id="live-bookings-badge"
+                  class="bg-orange-500 text-white text-[10px] px-1.5 py-0.5 rounded-full"
+                  >0</span
+                >
+              </button>
+            </div>
+            <div class="grid grid-cols-2 gap-1.5">
+              <button
+                onclick="switchFlowMode('whatsapp')"
+                id="flow-whatsapp"
+                class="px-3 py-2 rounded-xl text-xs font-extrabold transition flex items-center justify-center gap-1.5 bg-[#25D366] text-stone-950 shadow-sm"
+              >
+                <i class="fa-brands fa-whatsapp"></i> Vía WhatsApp ($35k)
+              </button>
+              <button
+                onclick="switchFlowMode('live')"
+                id="flow-live"
+                class="px-3 py-2 rounded-xl text-xs font-extrabold transition flex items-center justify-center gap-1.5 bg-stone-100 dark:bg-zinc-800 text-stone-700 dark:text-zinc-300"
+              >
+                <i class="fa-solid fa-bolt text-orange-500"></i> Agenda en Vivo
+                ($75k)
+              </button>
+            </div>
           </div>
         </div>
 
+        <!-- PASO 1: SELECTOR DE FORMATO PROFESIONAL -->
         <div
-          id="gym-classes-grid"
-          class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6"
-        ></div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN 2: PROFESIONAL SMART MENU -->
-    <section
-      id="section-profesional"
-      class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10"
-    >
-      <div class="grid md:grid-cols-3 gap-4 mb-8">
-        <button
-          onclick="selectPro(0)"
-          id="pro-card-0"
-          class="pro-card p-5 rounded-2xl border-2 border-orange-500 bg-emerald-50 dark:bg-emerald-950/35 text-left transition"
-        >
-          <span
-            class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950 border border-emerald-300 dark:border-emerald-700/50 px-2.5 py-0.5 rounded-full"
-          >
-            Psicología
-          </span>
-          <h3 class="font-extrabold text-base text-stone-900 dark:text-white mt-2">
-            Lic. Laura Gómez • Profesional Smart Menu
-          </h3>
-          <p class="text-xs text-stone-600 dark:text-zinc-400 mt-1">
-            Terapia Cognitivo-Conductual • Atención presencial y online.
-          </p>
-        </button>
-
-        <button
-          onclick="selectPro(1)"
-          id="pro-card-1"
-          class="pro-card p-5 rounded-2xl border-2 border-stone-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-left transition hover:border-stone-400"
-        >
-          <span
-            class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950 border border-emerald-300 dark:border-emerald-700/50 px-2.5 py-0.5 rounded-full"
-          >
-            Pediatría
-          </span>
-          <h3 class="font-extrabold text-base text-stone-900 dark:text-white mt-2">
-            Dr. Martín Silva • Profesional Smart Menu
-          </h3>
-          <p class="text-xs text-stone-600 dark:text-zinc-400 mt-1">
-            Control niño sano y consultas pediátricas • Barrio Norte.
-          </p>
-        </button>
-
-        <button
-          onclick="selectPro(2)"
-          id="pro-card-2"
-          class="pro-card p-5 rounded-2xl border-2 border-stone-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-left transition hover:border-stone-400"
-        >
-          <span
-            class="text-[10px] font-extrabold uppercase tracking-wider text-orange-700 dark:text-orange-400 bg-orange-100 dark:bg-orange-500/15 px-2.5 py-0.5 rounded-full"
-          >
-            Clases Particulares
-          </span>
-          <h3 class="font-extrabold text-base text-stone-900 dark:text-white mt-2">
-            Prof. Diego Castro • Profesional Smart Menu
-          </h3>
-          <p class="text-xs text-stone-600 dark:text-zinc-400 mt-1">
-            Matemática, Física e Ingreso Universitario • Tucumán.
-          </p>
-        </button>
-      </div>
-
-      <!-- Landing + Agenda del Profesional Seleccionado -->
-      <div class="grid lg:grid-cols-12 gap-8">
-        <div
-          class="lg:col-span-4 bg-white dark:bg-zinc-900 rounded-3xl border border-stone-200 dark:border-zinc-800 p-6 shadow-md"
+          class="bg-white dark:bg-zinc-900 rounded-3xl border border-stone-200 dark:border-zinc-800 p-4 sm:p-5 shadow-sm"
         >
           <div
-            class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-900 border border-emerald-400/30 text-orange-400 flex items-center justify-center text-2xl font-black mb-4"
-            id="pro-avatar"
+            class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3.5"
           >
-            LG
-          </div>
-          <span
-            id="pro-specialty"
-            class="text-xs font-extrabold uppercase tracking-wider text-orange-600 dark:text-orange-400"
-          >
-            Psicología Clínica
-          </span>
-          <h2 id="pro-name" class="text-2xl font-black text-stone-900 dark:text-white mt-1 mb-2">
-            Lic. Laura Gómez • Profesional Smart Menu
-          </h2>
-          <p
-            id="pro-bio"
-            class="text-sm text-stone-600 dark:text-zinc-400 leading-relaxed mb-5"
-          ></p>
-
-          <div class="space-y-3 text-xs border-t border-stone-200 dark:border-zinc-800 pt-4">
-            <div class="flex items-center gap-2.5 text-stone-700 dark:text-zinc-300">
-              <i class="fa-solid fa-location-dot text-orange-500 w-4"></i>
-              <span id="pro-address"
-                >Consultorio: Calle Muñecas 420, Piso 2, San Miguel de
-                Tucumán</span
-              >
-            </div>
-            <div class="flex items-center gap-2.5 text-stone-700 dark:text-zinc-300">
-              <i class="fa-solid fa-clock text-orange-500 w-4"></i>
-              <span>Días hábiles: 09:00 a 13:00 hs y 16:00 a 20:00 hs</span>
-            </div>
-            <div class="flex items-center gap-2.5 text-stone-700 dark:text-zinc-300">
-              <i class="fa-solid fa-tag text-orange-500 w-4"></i>
+            <div class="flex items-center gap-2">
               <span
-                >Arancel de referencia:
-                <strong
-                  id="pro-price"
-                  class="font-extrabold text-emerald-700 dark:text-emerald-400"
-                ></strong
-              ></span>
+                class="w-6 h-6 rounded-lg bg-orange-500 text-white text-xs font-black flex items-center justify-center"
+                >1</span
+              >
+              <h2 class="text-sm font-black text-stone-900 dark:text-white">
+                Elegí el formato visual de la agenda
+              </h2>
             </div>
+            <span
+              id="format-helper-badge"
+              class="text-xs font-semibold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/50 px-3 py-1 rounded-full"
+            >
+              Ideal para celular: rápido y sin scroll horizontal
+            </span>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5">
+            <button
+              onclick="switchFormat('botones')"
+              id="fmt-botones"
+              class="fmt-card p-3.5 rounded-2xl border-2 border-orange-500 bg-orange-50/70 dark:bg-orange-500/10 text-left transition min-h-[82px]"
+            >
+              <div class="flex items-center justify-between mb-1">
+                <i
+                  class="fa-solid fa-table-cells-large text-orange-500 text-base"
+                ></i>
+                <span
+                  class="text-[9px] font-black uppercase px-1.5 py-0.5 rounded bg-orange-500 text-white"
+                  >Ágil</span
+                >
+              </div>
+              <p class="font-extrabold text-xs text-stone-900 dark:text-white">
+                Botones y Chips
+              </p>
+              <p class="text-[11px] text-stone-500 dark:text-zinc-400 mt-0.5">
+                Selector por franja horaria
+              </p>
+            </button>
+
+            <button
+              onclick="switchFormat('google')"
+              id="fmt-google"
+              class="fmt-card p-3.5 rounded-2xl border-2 border-stone-200 dark:border-zinc-800 bg-stone-50/50 dark:bg-zinc-950 text-left transition hover:border-stone-400 min-h-[82px]"
+            >
+              <div class="flex items-center justify-between mb-1">
+                <i class="fa-solid fa-calendar-week text-sky-600 text-base"></i>
+                <span
+                  class="text-[9px] font-black uppercase px-1.5 py-0.5 rounded bg-sky-100 dark:bg-sky-500/20 text-sky-800 dark:text-sky-300"
+                  >Google Cal</span
+                >
+              </div>
+              <p class="font-extrabold text-xs text-stone-900 dark:text-white">
+                Grilla Semanal
+              </p>
+              <p class="text-[11px] text-stone-500 dark:text-zinc-400 mt-0.5">
+                Bloques por hora y día
+              </p>
+            </button>
+
+            <button
+              onclick="switchFormat('calendly')"
+              id="fmt-calendly"
+              class="fmt-card p-3.5 rounded-2xl border-2 border-stone-200 dark:border-zinc-800 bg-stone-50/50 dark:bg-zinc-950 text-left transition hover:border-stone-400 min-h-[82px]"
+            >
+              <div class="flex items-center justify-between mb-1">
+                <i
+                  class="fa-regular fa-calendar-days text-emerald-600 text-base"
+                ></i>
+                <span
+                  class="text-[9px] font-black uppercase px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300"
+                  >Calendly</span
+                >
+              </div>
+              <p class="font-extrabold text-xs text-stone-900 dark:text-white">
+                Calendario Mensual
+              </p>
+              <p class="text-[11px] text-stone-500 dark:text-zinc-400 mt-0.5">
+                Mes + panel horario lateral
+              </p>
+            </button>
+
+            <button
+              onclick="switchFormat('columnas')"
+              id="fmt-columnas"
+              class="fmt-card p-3.5 rounded-2xl border-2 border-stone-200 dark:border-zinc-800 bg-stone-50/50 dark:bg-zinc-950 text-left transition hover:border-stone-400 min-h-[82px]"
+            >
+              <div class="flex items-center justify-between mb-1">
+                <i class="fa-solid fa-columns text-violet-600 text-base"></i>
+                <span
+                  class="text-[9px] font-black uppercase px-1.5 py-0.5 rounded bg-violet-100 dark:bg-violet-500/20 text-violet-800 dark:text-violet-300"
+                  >Cal / Doctoralia</span
+                >
+              </div>
+              <p class="font-extrabold text-xs text-stone-900 dark:text-white">
+                Columnas Multi-Día
+              </p>
+              <p class="text-[11px] text-stone-500 dark:text-zinc-400 mt-0.5">
+                Toda la semana a la vista
+              </p>
+            </button>
+
+            <button
+              onclick="switchFormat('wizard')"
+              id="fmt-wizard"
+              class="fmt-card p-3.5 rounded-2xl border-2 border-stone-200 dark:border-zinc-800 bg-stone-50/50 dark:bg-zinc-950 text-left transition hover:border-stone-400 min-h-[82px] col-span-2 sm:col-span-1"
+            >
+              <div class="flex items-center justify-between mb-1">
+                <i class="fa-solid fa-list-check text-amber-600 text-base"></i>
+                <span
+                  class="text-[9px] font-black uppercase px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300"
+                  >Fresha</span
+                >
+              </div>
+              <p class="font-extrabold text-xs text-stone-900 dark:text-white">
+                Asistente por Pasos
+              </p>
+              <p class="text-[11px] text-stone-500 dark:text-zinc-400 mt-0.5">
+                Flujo guiado 1 a 4
+              </p>
+            </button>
           </div>
         </div>
 
-        <div
-          class="lg:col-span-8 bg-white dark:bg-zinc-900 rounded-3xl border border-stone-200 dark:border-zinc-800 p-6 sm:p-8 shadow-md"
-        >
-          <h3 class="text-lg font-black text-stone-900 dark:text-white mb-1">
-            1. Elegí el día hábil
-          </h3>
-          <p class="text-xs text-stone-500 dark:text-zinc-400 mb-4">
-            Turnos de 1 hora • Horario cortado (mañana y tarde)
+        <!-- PASO 2: SELECTOR DE RUBRO -->
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center gap-2.5">
+            <span
+              class="w-6 h-6 rounded-lg bg-stone-900 dark:bg-zinc-800 text-white text-xs font-black flex items-center justify-center"
+              >2</span
+            >
+            <button
+              onclick="switchBusinessMode('gimnasio')"
+              id="tab-gimnasio"
+              class="px-5 py-3 rounded-2xl font-extrabold text-xs sm:text-sm flex items-center gap-2 bg-orange-500 text-white shadow-md transition"
+            >
+              <i class="fa-solid fa-dumbbell"></i> Gimnasio Smart Menu (Clases
+              Grupales)
+            </button>
+            <button
+              onclick="switchBusinessMode('profesional')"
+              id="tab-profesional"
+              class="px-5 py-3 rounded-2xl font-extrabold text-xs sm:text-sm flex items-center gap-2 bg-white dark:bg-zinc-900 text-stone-700 dark:text-zinc-300 border border-stone-300 dark:border-zinc-800 hover:border-stone-400 transition"
+            >
+              <i
+                class="fa-solid fa-user-doctor text-emerald-700 dark:text-emerald-400"
+              ></i>
+              Profesional Smart Menu (Turnos por Hora)
+            </button>
+          </div>
+
+          <p class="text-xs text-stone-500 dark:text-zinc-400">
+            <i class="fa-solid fa-wand-magic-sparkles text-orange-500 mr-1"></i>
+            Demo personalizable en colores, horarios y logo de tu marca.
           </p>
-
-          <div class="grid grid-cols-5 gap-2 mb-6" id="pro-days-bar"></div>
-
-          <h3 class="text-lg font-black text-stone-900 dark:text-white mb-3">
-            2. Seleccioná un horario disponible
-          </h3>
-
-          <div class="mb-5">
-            <p
-              class="text-xs font-extrabold uppercase tracking-wider text-stone-500 dark:text-zinc-500 mb-2"
-            >
-              ☀️ Turno Mañana (09:00 a 13:00 hs)
-            </p>
-            <div
-              class="grid grid-cols-2 sm:grid-cols-4 gap-2.5"
-              id="morning-slots"
-            ></div>
-          </div>
-
-          <div>
-            <p
-              class="text-xs font-extrabold uppercase tracking-wider text-stone-500 dark:text-zinc-500 mb-2"
-            >
-              🌙 Turno Tarde (16:00 a 20:00 hs)
-            </p>
-            <div
-              class="grid grid-cols-2 sm:grid-cols-4 gap-2.5"
-              id="afternoon-slots"
-            ></div>
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- MODAL DE RESERVA -->
+    <!-- TOAST DE CONFIRMACIÓN EN VIVO -->
+    <div
+      id="live-toast"
+      class="hidden fixed bottom-5 right-5 z-50 max-w-sm bg-emerald-900 text-white border border-emerald-500/60 rounded-2xl p-4 shadow-2xl fade-panel"
+    >
+      <div class="flex items-start gap-3">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-xl mt-0.5"></i>
+        <div class="text-xs flex-1">
+          <p class="font-black text-sm">¡Reserva registrada en vivo!</p>
+          <p id="live-toast-text" class="text-emerald-100 mt-1"></p>
+          <button
+            onclick="toggleAdminPanel()"
+            class="mt-2 font-extrabold text-orange-300 underline"
+          >
+            Ver en Panel Admin →
+          </button>
+        </div>
+        <button
+          onclick="
+            document.getElementById('live-toast').classList.add('hidden')
+          "
+          class="text-emerald-300 hover:text-white"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- ÁREA DINÁMICA DE VISUALIZACIÓN -->
+    <main
+      id="booking-workspace"
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6"
+    ></main>
+
+    <!-- MODAL DE RESERVA UNIFICADO -->
     <div
       id="booking-modal"
       class="fixed inset-0 z-50 hidden items-center justify-center p-4"
     >
       <div
-        class="absolute inset-0 bg-black/70 backdrop-blur-sm"
+        class="absolute inset-0 bg-black/75 backdrop-blur-sm"
         onclick="closeBookingModal()"
       ></div>
       <div
-        class="bg-white dark:bg-zinc-900 border border-stone-200 dark:border-emerald-800/60 rounded-3xl max-w-md w-full p-6 relative z-10 shadow-2xl"
+        class="bg-white dark:bg-zinc-900 border border-stone-200 dark:border-emerald-800/60 rounded-3xl max-w-md w-full p-6 relative z-10 shadow-2xl max-h-[92vh] overflow-y-auto"
       >
         <div class="flex justify-between items-center mb-4">
-          <h3 class="text-xl font-black text-stone-900 dark:text-white">
-            Confirmar Solicitud de Turno
-          </h3>
+          <div>
+            <span
+              id="modal-flow-badge"
+              class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300"
+            >
+              Solicitud vía WhatsApp
+            </span>
+            <h3 class="text-xl font-black text-stone-900 dark:text-white mt-1">
+              Confirmar Reserva
+            </h3>
+          </div>
           <button
             onclick="closeBookingModal()"
             class="w-8 h-8 rounded-full bg-stone-100 dark:bg-zinc-800 text-stone-700 dark:text-zinc-300 flex items-center justify-center"
@@ -413,23 +492,74 @@
         </div>
 
         <div
-          class="bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/50 rounded-2xl p-4 mb-4 text-xs space-y-1"
+          class="bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/50 rounded-2xl p-4 mb-4 text-xs space-y-1.5"
         >
           <p
-            class="font-extrabold text-orange-600 dark:text-orange-400"
+            class="font-extrabold text-orange-600 dark:text-orange-400 text-sm"
             id="modal-service-title"
           ></p>
-          <p class="text-stone-800 dark:text-zinc-200" id="modal-slot-detail"></p>
           <p
-            class="font-bold text-emerald-700 dark:text-emerald-400 pt-1"
+            class="text-stone-800 dark:text-zinc-200 font-semibold"
+            id="modal-slot-detail"
+          ></p>
+          <p
+            class="font-black text-emerald-800 dark:text-emerald-400 pt-0.5"
             id="modal-price-detail"
           ></p>
         </div>
 
+        <!-- Selector opcional de día y pase para Gimnasio -->
+        <div id="modal-gym-pass-box" class="hidden mb-4 space-y-3">
+          <div id="modal-gym-day-wrapper">
+            <label
+              class="block text-xs font-bold text-stone-700 dark:text-zinc-300 mb-1"
+              >Día de tu clase</label
+            >
+            <select
+              id="modal-gym-day"
+              onchange="onModalGymDayChange(this.value)"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 dark:border-zinc-800 bg-stone-50 dark:bg-zinc-950 text-stone-900 dark:text-white text-xs font-bold"
+            ></select>
+          </div>
+          <div>
+            <label
+              class="block text-xs font-bold text-stone-700 dark:text-zinc-300 mb-1.5"
+              >Elegí tu modalidad de pase</label
+            >
+            <div class="grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                id="btn-pass-suelta"
+                onclick="setModalGymPass('suelta')"
+                class="p-2.5 rounded-xl border-2 border-orange-500 bg-orange-50 dark:bg-orange-500/15 text-stone-900 dark:text-white text-left text-xs font-bold"
+              ></button>
+              <button
+                type="button"
+                id="btn-pass-mensual"
+                onclick="setModalGymPass('mensual')"
+                class="p-2.5 rounded-xl border-2 border-stone-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-stone-800 dark:text-zinc-200 text-left text-xs font-bold"
+              ></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Selector de modalidad para Profesional -->
+        <div id="modal-pro-modality-box" class="hidden mb-4">
+          <label
+            class="block text-xs font-bold text-stone-700 dark:text-zinc-300 mb-1.5"
+            >Modalidad de atención</label
+          >
+          <select
+            id="modal-modality"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 dark:border-zinc-800 bg-stone-50 dark:bg-zinc-950 text-stone-900 dark:text-white text-xs font-bold"
+          ></select>
+        </div>
+
         <div class="space-y-3 mb-4">
           <div>
-            <label class="block text-xs font-bold text-stone-700 dark:text-zinc-300 mb-1"
-              >Tu Nombre y Apellido</label
+            <label
+              class="block text-xs font-bold text-stone-700 dark:text-zinc-300 mb-1"
+              >Tu Nombre y Apellido *</label
             >
             <input
               type="text"
@@ -439,31 +569,133 @@
             />
           </div>
           <div>
-            <label class="block text-xs font-bold text-stone-700 dark:text-zinc-300 mb-1"
-              >Observación o Modalidad (Opcional)</label
+            <label
+              class="block text-xs font-bold text-stone-700 dark:text-zinc-300 mb-1"
+              >Celular / WhatsApp de contacto *</label
+            >
+            <input
+              type="tel"
+              id="client-phone"
+              placeholder="Ej: 381 555-1234"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 dark:border-zinc-800 bg-stone-50 dark:bg-zinc-950 text-stone-900 dark:text-white text-sm focus:outline-none focus:border-orange-500"
+            />
+          </div>
+          <div>
+            <label
+              class="block text-xs font-bold text-stone-700 dark:text-zinc-300 mb-1"
+              >Observación (Opcional)</label
             >
             <input
               type="text"
               id="client-note"
-              placeholder="Ej: Primera consulta / Pase mensual"
+              placeholder="Ej: Primera consulta / Obra social / Nivel"
               class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 dark:border-zinc-800 bg-stone-50 dark:bg-zinc-950 text-stone-900 dark:text-white text-sm focus:outline-none focus:border-orange-500"
             />
           </div>
         </div>
 
-        <p class="text-[11px] text-stone-500 dark:text-zinc-500 mb-4 leading-relaxed">
-          *Esta reserva envía una solicitud directa al WhatsApp del prestador.
-          La confirmación definitiva del turno y el cobro corresponden
-          exclusivamente al profesional o gimnasio titular.
+        <p
+          class="text-[11px] text-stone-500 dark:text-zinc-500 mb-4 leading-relaxed"
+        >
+          *Simulación demostrativa: en Modo WhatsApp envía la solicitud al chat
+          del prestador; en Agenda en Vivo bloquea el horario o descuenta 1 cupo
+          al instante en todos los formatos.
         </p>
 
         <button
-          onclick="confirmWhatsAppBooking()"
+          id="modal-confirm-btn"
+          onclick="confirmBooking()"
           class="w-full bg-[#25D366] hover:bg-[#20bd5a] text-stone-950 font-black py-3.5 rounded-xl text-sm flex items-center justify-center gap-2 shadow-md transition"
         >
           <i class="fa-brands fa-whatsapp text-lg"></i> Enviar Solicitud por
           WhatsApp
         </button>
+      </div>
+    </div>
+
+    <!-- MODAL PANEL ADMIN DE TURNOS EN VIVO -->
+    <div
+      id="admin-panel-modal"
+      class="fixed inset-0 z-50 hidden items-center justify-center p-4"
+    >
+      <div
+        class="absolute inset-0 bg-black/80 backdrop-blur-sm"
+        onclick="toggleAdminPanel()"
+      ></div>
+      <div
+        class="bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-3xl max-w-2xl w-full p-6 relative z-10 shadow-2xl max-h-[88vh] flex flex-col"
+      >
+        <div
+          class="flex justify-between items-start pb-4 border-b border-stone-200 dark:border-zinc-800"
+        >
+          <div>
+            <span
+              class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-orange-100 text-orange-700 dark:bg-orange-500/15 dark:text-orange-400"
+            >
+              Sistema Pro ($75.000) • Simulación en Vivo
+            </span>
+            <h3 class="text-xl font-black text-stone-900 dark:text-white mt-1">
+              Panel Admin de Turnos y Cupos
+            </h3>
+          </div>
+          <button
+            onclick="toggleAdminPanel()"
+            class="w-8 h-8 rounded-full bg-stone-100 dark:bg-zinc-800 text-stone-700 dark:text-zinc-300 flex items-center justify-center"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 my-4">
+          <div
+            class="bg-stone-50 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 rounded-2xl p-3.5"
+          >
+            <span
+              class="text-[10px] font-extrabold uppercase text-stone-500 dark:text-zinc-400"
+              >Reservas Registradas</span
+            >
+            <p
+              id="admin-kpi-total"
+              class="text-2xl font-black text-stone-900 dark:text-white"
+            >
+              0
+            </p>
+          </div>
+          <div
+            class="bg-stone-50 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 rounded-2xl p-3.5"
+          >
+            <span
+              class="text-[10px] font-extrabold uppercase text-stone-500 dark:text-zinc-400"
+              >Facturación Ref. Estimada</span
+            >
+            <p
+              id="admin-kpi-revenue"
+              class="text-2xl font-black text-emerald-700 dark:text-emerald-400"
+            >
+              $0
+            </p>
+          </div>
+        </div>
+
+        <div
+          id="admin-bookings-list"
+          class="space-y-2.5 overflow-y-auto flex-1 pr-1"
+        ></div>
+
+        <div
+          class="pt-4 mt-4 border-t border-stone-200 dark:border-zinc-800 flex flex-wrap justify-between items-center gap-3"
+        >
+          <p class="text-[11px] text-stone-500 dark:text-zinc-400">
+            Al cancelar un turno aquí, el cupo o horario se libera al instante
+            en los 5 formatos.
+          </p>
+          <button
+            onclick="resetDemoBookings()"
+            class="text-xs font-extrabold text-rose-600 hover:underline"
+          >
+            Reiniciar cupos y agenda
+          </button>
+        </div>
       </div>
     </div>
 
@@ -479,12 +711,16 @@
             >Smart<span class="text-orange-500">Menu</span></span
           >
           <span class="ml-2"
-            >Reservas y Agendas Web — San Miguel de Tucumán.</span
+            >Reservas y Agendas Web — San Miguel de Tucumán, Argentina.</span
           >
         </div>
-        <div class="flex flex-wrap gap-4 font-bold text-stone-600 dark:text-zinc-400">
+        <div
+          class="flex flex-wrap gap-4 font-bold text-stone-600 dark:text-zinc-400"
+        >
           <a href="index.html" class="hover:text-orange-600">Inicio</a>
-          <a href="planes.html" class="hover:text-orange-600">Planes y Presupuestos</a>
+          <a href="planes.html" class="hover:text-orange-600"
+            >Planes y Presupuestos</a
+          >
           <a
             href="terminos.html"
             class="text-orange-600 dark:text-orange-400 underline"
@@ -495,59 +731,162 @@
       <p
         class="text-[11px] bg-stone-100 dark:bg-zinc-900/60 border border-stone-200 dark:border-zinc-800 rounded-xl p-3.5 leading-relaxed"
       >
-        <strong class="text-stone-800 dark:text-zinc-400">Aviso Legal de Demostración:</strong> Los
-        perfiles profesionales, matrículas, sedes y horarios mostrados son
+        <strong class="text-stone-800 dark:text-zinc-400"
+          >Aviso Legal de Demostración:</strong
+        >
+        Los perfiles profesionales, matrículas, sedes y horarios mostrados son
         ficticios a fines demostrativos. *La conversión a USD es meramente
         referencial. Smart Menu provee exclusivamente el desarrollo de la
         interfaz web y no actúa como prestador médico, deportivo, educativo ni
         intermediario de pagos. Ver
-        <a href="terminos.html" class="text-orange-600 dark:text-orange-400 underline font-bold"
+        <a
+          href="terminos.html"
+          class="text-orange-600 dark:text-orange-400 underline font-bold"
           >Términos y Condiciones</a
         >.
       </p>
     </footer>
 
     <script>
+      // ====== TEMA DÍA / NOCHE & MENÚ MÓVIL ======
       function toggleTheme() {
         const html = document.documentElement;
-        const isDark = html.classList.toggle('dark');
-        localStorage.setItem('smartmenu_theme', isDark ? 'dark' : 'light');
+        const isDark = html.classList.toggle("dark");
+        localStorage.setItem("smartmenu_theme", isDark ? "dark" : "light");
         updateThemeIcons();
       }
       function updateThemeIcons() {
-        const isDark = document.documentElement.classList.contains('dark');
-        document.querySelectorAll('.theme-icon').forEach((el) => {
+        const isDark = document.documentElement.classList.contains("dark");
+        document.querySelectorAll(".theme-icon").forEach((el) => {
           el.className = isDark
-            ? 'fa-solid fa-sun text-amber-400 theme-icon'
-            : 'fa-solid fa-moon text-stone-700 theme-icon';
+            ? "fa-solid fa-sun text-amber-400 theme-icon"
+            : "fa-solid fa-moon text-stone-700 theme-icon";
         });
-        document.querySelectorAll('.theme-label').forEach((el) => {
-          el.innerText = isDark ? 'Modo Día' : 'Modo Noche';
+        document.querySelectorAll(".theme-label").forEach((el) => {
+          el.innerText = isDark ? "Modo Día" : "Modo Noche";
         });
       }
       function toggleMobileMenu() {
-        const menu = document.getElementById('mobile-menu');
-        if (menu) menu.classList.toggle('hidden');
+        const menu = document.getElementById("mobile-menu");
+        if (menu) menu.classList.toggle("hidden");
       }
-      document.addEventListener('DOMContentLoaded', updateThemeIcons);
 
+      // ====== DATOS DE DEMO (GIMNASIO Y PROFESIONALES) ======
       const USD_RATE = 1200;
-      let isUSD = false;
-      let selectedGymDay = "Todos";
-      let currentProIdx = 0;
-      let selectedProDay = "Lunes";
-      let pendingBooking = null;
+      const GYM_MONTHLY_ARS = 28000;
+      const DAYS_GYM = [
+        "Lunes",
+        "Martes",
+        "Miércoles",
+        "Jueves",
+        "Viernes",
+        "Sábado",
+      ];
+      const DAYS_PRO = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
+      const MORNING_SLOTS = ["09:00", "10:00", "11:00", "12:00"];
+      const AFTERNOON_SLOTS = ["16:00", "17:00", "18:00", "19:00"];
+      const ALL_PRO_SLOTS = [...MORNING_SLOTS, ...AFTERNOON_SLOTS];
 
       const GYM_CLASSES = [
-        { activity: "Zumba Fitness", days: ["Lunes", "Miércoles", "Viernes"], time: "10:00 a 11:00 hs", coach: "Profe Vale", spots: 6, ars: 4500 },
-        { activity: "Zumba Tarde", days: ["Lunes", "Miércoles", "Viernes"], time: "17:00 a 18:00 hs", coach: "Profe Vale", spots: 4, ars: 4500 },
-        { activity: "Spinning Indoor", days: ["Martes", "Jueves"], time: "09:00 a 10:00 hs", coach: "Profe Nico", spots: 3, ars: 5000 },
-        { activity: "Spinning Night", days: ["Martes", "Jueves"], time: "18:30 a 19:30 hs", coach: "Profe Nico", spots: 5, ars: 5000 },
-        { activity: "Funcional & HIIT", days: ["Lunes", "Miércoles", "Viernes"], time: "19:00 a 20:00 hs", coach: "Profe Santi", spots: 8, ars: 4500 },
-        { activity: "Musculación Libre", days: ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"], time: "08:00 a 22:00 hs", coach: "Staff Sala", spots: 15, ars: 28000 },
-        { activity: "Yoga & Stretching", days: ["Martes", "Jueves"], time: "10:30 a 11:30 hs", coach: "Profe Sofía", spots: 7, ars: 4500 },
-        { activity: "GAP (Glúteos, Abd, Piernas)", days: ["Lunes", "Miércoles", "Viernes"], time: "18:00 a 19:00 hs", coach: "Profe Flor", spots: 5, ars: 4500 },
-        { activity: "Boxeo Recreativo", days: ["Sábado"], time: "10:00 a 11:30 hs", coach: "Profe Marcos", spots: 9, ars: 5000 },
+        {
+          id: "gym-zumba-am",
+          activity: "Zumba Fitness",
+          category: "Cardio & Baile",
+          days: ["Lunes", "Miércoles", "Viernes"],
+          startHour: "10:00",
+          time: "10:00 a 11:00 hs",
+          coach: "Profe Vale",
+          spots: 6,
+          ars: 4500,
+        },
+        {
+          id: "gym-zumba-pm",
+          activity: "Zumba Tarde",
+          category: "Cardio & Baile",
+          days: ["Lunes", "Miércoles", "Viernes"],
+          startHour: "17:00",
+          time: "17:00 a 18:00 hs",
+          coach: "Profe Vale",
+          spots: 4,
+          ars: 4500,
+        },
+        {
+          id: "gym-spin-am",
+          activity: "Spinning Indoor",
+          category: "Ciclismo",
+          days: ["Martes", "Jueves"],
+          startHour: "09:00",
+          time: "09:00 a 10:00 hs",
+          coach: "Profe Nico",
+          spots: 3,
+          ars: 5000,
+        },
+        {
+          id: "gym-spin-pm",
+          activity: "Spinning Night",
+          category: "Ciclismo",
+          days: ["Martes", "Jueves"],
+          startHour: "18:00",
+          time: "18:00 a 19:00 hs",
+          coach: "Profe Nico",
+          spots: 5,
+          ars: 5000,
+        },
+        {
+          id: "gym-hiit",
+          activity: "Funcional & HIIT",
+          category: "Fuerza",
+          days: ["Lunes", "Miércoles", "Viernes"],
+          startHour: "19:00",
+          time: "19:00 a 20:00 hs",
+          coach: "Profe Santi",
+          spots: 8,
+          ars: 4500,
+        },
+        {
+          id: "gym-musc",
+          activity: "Musculación Libre",
+          category: "Sala & Pesas",
+          days: ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+          startHour: "08:00",
+          time: "08:00 a 22:00 hs",
+          coach: "Staff Sala",
+          spots: 15,
+          ars: 4500,
+        },
+        {
+          id: "gym-yoga",
+          activity: "Yoga & Stretching",
+          category: "Bienestar",
+          days: ["Martes", "Jueves"],
+          startHour: "11:00",
+          time: "11:00 a 12:00 hs",
+          coach: "Profe Sofía",
+          spots: 7,
+          ars: 4500,
+        },
+        {
+          id: "gym-gap",
+          activity: "GAP (Glúteos, Abd, Piernas)",
+          category: "Fuerza",
+          days: ["Lunes", "Miércoles", "Viernes"],
+          startHour: "18:00",
+          time: "18:00 a 19:00 hs",
+          coach: "Profe Flor",
+          spots: 5,
+          ars: 4500,
+        },
+        {
+          id: "gym-box",
+          activity: "Boxeo Recreativo",
+          category: "Combate",
+          days: ["Sábado"],
+          startHour: "10:00",
+          time: "10:00 a 11:30 hs",
+          coach: "Profe Marcos",
+          spots: 9,
+          ars: 5000,
+        },
       ];
 
       const PROFESSIONALS = [
@@ -555,184 +894,1548 @@
           initials: "LG",
           specialty: "Psicología Clínica • Demo",
           name: "Lic. Laura Gómez • Profesional Smart Menu",
+          shortName: "Lic. Laura Gómez",
+          duration: "50 min",
+          modalities: ["Presencial en Consultorio", "Sesión Online (Meet)"],
           bio: "Especialista en ansiedad, estrés laboral y desarrollo personal. Sesiones individuales de 50 minutos en un espacio cálido y confidencial.",
           address: "Calle Muñecas 420, Piso 2, San Miguel de Tucumán",
           ars: 18000,
-          busySlots: { Lunes: ["10:00", "17:00"], Martes: ["09:00", "18:00"], Miércoles: ["11:00"], Jueves: ["16:00", "19:00"], Viernes: ["12:00"] },
+          busySlots: {
+            Lunes: ["10:00", "17:00"],
+            Martes: ["09:00", "18:00"],
+            Miércoles: ["11:00"],
+            Jueves: ["16:00", "19:00"],
+            Viernes: ["12:00"],
+          },
         },
         {
           initials: "MS",
           specialty: "Médico Pediatra • Demo",
           name: "Dr. Martín Silva • Profesional Smart Menu",
+          shortName: "Dr. Martín Silva",
+          duration: "30 min",
+          modalities: ["Presencial en Consultorio", "Teleconsulta Pediátrica"],
           bio: "Atención pediátrica integral, control de crecimiento, seguimiento del recién nacido y consultas por demanda espontánea programada.",
           address: "Av. Sarmiento 650, Consultorio 4, San Miguel de Tucumán",
           ars: 22000,
-          busySlots: { Lunes: ["09:00", "11:00", "18:00"], Martes: ["10:00", "16:00"], Miércoles: ["17:00"], Jueves: ["09:00", "19:00"], Viernes: ["10:00", "11:00"] },
+          busySlots: {
+            Lunes: ["09:00", "11:00", "18:00"],
+            Martes: ["10:00", "16:00"],
+            Miércoles: ["17:00"],
+            Jueves: ["09:00", "19:00"],
+            Viernes: ["10:00", "11:00"],
+          },
         },
         {
           initials: "DC",
           specialty: "Clases Particulares • Ingreso Universitario",
           name: "Prof. Diego Castro • Profesional Smart Menu",
+          shortName: "Prof. Diego Castro",
+          duration: "60 min",
+          modalities: ["Presencial (Barrio Sur)", "Clase Virtual (Meet)"],
           bio: "Preparación personalizada en Matemática, Análisis Matemático y Física para secundaria e ingreso a Ingeniería y Ciencias Económicas.",
           address: "Barrio Sur (Lavalle 710) o Modalidad Virtual por Meet",
           ars: 10000,
-          busySlots: { Lunes: ["16:00"], Martes: ["17:00", "18:00"], Miércoles: ["10:00", "19:00"], Jueves: ["11:00"], Viernes: ["16:00", "17:00"] },
+          busySlots: {
+            Lunes: ["16:00"],
+            Martes: ["17:00", "18:00"],
+            Miércoles: ["10:00", "19:00"],
+            Jueves: ["11:00"],
+            Viernes: ["16:00", "17:00"],
+          },
         },
       ];
 
+      const FORMAT_HINTS = {
+        botones:
+          "Formato 1 (Botones y Chips): veloz en celulares, agrupa Mañana/Tarde con botones táctiles amplios.",
+        google:
+          "Formato 2 (Grilla Semanal estilo Google Calendar): bloques horarios por día, con vista diaria en móvil.",
+        calendly:
+          "Formato 3 (Calendario Mensual estilo Calendly): almanaque de mes completo + horarios disponibles al lado.",
+        columnas:
+          "Formato 4 (Columnas Multi-Día estilo Cal.com y Doctoralia): compará toda la semana en paralelo.",
+        wizard:
+          "Formato 5 (Asistente por Pasos estilo Fresha y Square): flujo guiado 1→4 ideal para evitar abandonos.",
+      };
+
+      // ====== ESTADO GLOBAL ======
+      let isUSD = false;
+      let currentBusinessMode = "gimnasio";
+      let currentFormat = "botones";
+      let currentFlowMode = "whatsapp";
+
+      let selectedGymDay = "Todos";
+      let selectedGymCat = "Todas";
+      let googleMobileGymDay = "Lunes";
+
+      let currentProIdx = 0;
+      let selectedProDay = "Lunes";
+      let selectedProModality = "Todas";
+      let googleMobileProDay = "Lunes";
+
+      const todayRef = new Date();
+      let calYear = todayRef.getFullYear();
+      let calMonth = todayRef.getMonth();
+      let calSelectedDateIso = getInitialAvailableIso();
+
+      let wizardStep = 1;
+      let wizardDraft = {
+        classId: GYM_CLASSES[0].id,
+        passType: "suelta",
+        proIdx: 0,
+        modality: PROFESSIONALS[0].modalities[0],
+        day: "Lunes",
+        time: "09:00",
+      };
+
+      let liveBookings = [];
+      let pendingBooking = null;
+
+      // ====== UTILIDADES ======
+      function escapeHtml(str) {
+        return String(str || "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
       function formatPrice(ars) {
         if (isUSD) {
-          return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(ars / USD_RATE);
+          return new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD",
+          }).format(ars / USD_RATE);
         }
-        return new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS", minimumFractionDigits: 0 }).format(ars);
+        return new Intl.NumberFormat("es-AR", {
+          style: "currency",
+          currency: "ARS",
+          minimumFractionDigits: 0,
+        }).format(ars);
       }
 
+      function toIso(date) {
+        const y = date.getFullYear();
+        const m = String(date.getMonth() + 1).padStart(2, "0");
+        const d = String(date.getDate()).padStart(2, "0");
+        return `${y}-${m}-${d}`;
+      }
+
+      function getDayNameFromDate(date) {
+        const names = [
+          "Domingo",
+          "Lunes",
+          "Martes",
+          "Miércoles",
+          "Jueves",
+          "Viernes",
+          "Sábado",
+        ];
+        return names[date.getDay()];
+      }
+
+      function getInitialAvailableIso() {
+        const d = new Date();
+        for (let i = 0; i < 10; i++) {
+          const cand = new Date(d.getFullYear(), d.getMonth(), d.getDate() + i);
+          if (cand.getDay() >= 1 && cand.getDay() <= 5) return toIso(cand);
+        }
+        return toIso(d);
+      }
+
+      function getDateFromIso(iso) {
+        const [y, m, d] = iso.split("-").map(Number);
+        return new Date(y, m - 1, d);
+      }
+
+      function formatHumanDate(iso) {
+        const d = getDateFromIso(iso);
+        const months = [
+          "Enero",
+          "Febrero",
+          "Marzo",
+          "Abril",
+          "Mayo",
+          "Junio",
+          "Julio",
+          "Agosto",
+          "Septiembre",
+          "Octubre",
+          "Noviembre",
+          "Diciembre",
+        ];
+        return `${getDayNameFromDate(d)} ${d.getDate()} de ${months[d.getMonth()]}`;
+      }
+
+      function getRemainingGymSpots(gymClass, dayName) {
+        const bookedCount = liveBookings.filter((b) => {
+          if (b.businessType !== "gimnasio" || b.classId !== gymClass.id)
+            return false;
+          if (!dayName || dayName === "Todos") return true;
+          return b.day === dayName || b.day === "Todos";
+        }).length;
+        return Math.max(0, gymClass.spots - bookedCount);
+      }
+
+      function getProSlotStatus(proIdx, dayName, time) {
+        const pro = PROFESSIONALS[proIdx];
+        if ((pro.busySlots[dayName] || []).includes(time)) {
+          return { busy: true, label: "Ocupado" };
+        }
+        const live = liveBookings.find(
+          (b) =>
+            b.businessType === "profesional" &&
+            b.proIdx === proIdx &&
+            b.day === dayName &&
+            b.time === time,
+        );
+        if (live) {
+          return { busy: true, label: `Reservado (${live.clientName})` };
+        }
+        return { busy: false, label: "Disponible" };
+      }
+
+      function getFirstAvailableProSlot(proIdx) {
+        for (const day of DAYS_PRO) {
+          for (const time of ALL_PRO_SLOTS) {
+            if (!getProSlotStatus(proIdx, day, time).busy) {
+              return { day, time };
+            }
+          }
+        }
+        return null;
+      }
+
+      // ====== CONTROLES SUPERIORES ======
       function toggleCurrency() {
         isUSD = !isUSD;
-        document.getElementById("currency-label").innerText = isUSD ? "Ver en ARS" : "Ver en USD*";
-        document.querySelectorAll(".price-ars").forEach((el) => {
-          el.innerText = formatPrice(parseFloat(el.getAttribute("data-ars")));
-        });
-        renderGymClasses();
-        renderProfessional();
+        document.getElementById("currency-label").innerText = isUSD
+          ? "Ver en ARS"
+          : "Ver en USD*";
+        renderWorkspace();
+        renderAdminPanel();
       }
 
-      function switchMode(mode) {
-        const gymSec = document.getElementById("section-gimnasio");
-        const proSec = document.getElementById("section-profesional");
+      function switchFormat(fmt) {
+        currentFormat = fmt;
+        document.querySelectorAll(".fmt-card").forEach((el) => {
+          el.className =
+            "fmt-card p-3.5 rounded-2xl border-2 border-stone-200 dark:border-zinc-800 bg-stone-50/50 dark:bg-zinc-950 text-left transition hover:border-stone-400 min-h-[82px]";
+        });
+        const active = document.getElementById(`fmt-${fmt}`);
+        if (active) {
+          active.className =
+            "fmt-card p-3.5 rounded-2xl border-2 border-orange-500 bg-orange-50/70 dark:bg-orange-500/10 text-left transition min-h-[82px] shadow-sm";
+        }
+        document.getElementById("format-helper-badge").innerText =
+          FORMAT_HINTS[fmt];
+        wizardStep = 1;
+        renderWorkspace();
+      }
+
+      function switchBusinessMode(mode) {
+        currentBusinessMode = mode;
         const tabGym = document.getElementById("tab-gimnasio");
         const tabPro = document.getElementById("tab-profesional");
-
         if (mode === "gimnasio") {
-          gymSec.classList.remove("hidden");
-          proSec.classList.add("hidden");
-          tabGym.className = "px-6 py-3.5 rounded-2xl font-extrabold text-sm flex items-center gap-2.5 bg-orange-500 text-white shadow-md transition";
-          tabPro.className = "px-6 py-3.5 rounded-2xl font-extrabold text-sm flex items-center gap-2.5 bg-white dark:bg-zinc-900 text-stone-700 dark:text-zinc-300 border border-stone-300 dark:border-zinc-800 hover:border-stone-400 transition";
+          tabGym.className =
+            "px-5 py-3 rounded-2xl font-extrabold text-xs sm:text-sm flex items-center gap-2 bg-orange-500 text-white shadow-md transition";
+          tabPro.className =
+            "px-5 py-3 rounded-2xl font-extrabold text-xs sm:text-sm flex items-center gap-2 bg-white dark:bg-zinc-900 text-stone-700 dark:text-zinc-300 border border-stone-300 dark:border-zinc-800 hover:border-stone-400 transition";
         } else {
-          gymSec.classList.add("hidden");
-          proSec.classList.remove("hidden");
-          tabPro.className = "px-6 py-3.5 rounded-2xl font-extrabold text-sm flex items-center gap-2.5 bg-orange-500 text-white shadow-md transition";
-          tabGym.className = "px-6 py-3.5 rounded-2xl font-extrabold text-sm flex items-center gap-2.5 bg-white dark:bg-zinc-900 text-stone-700 dark:text-zinc-300 border border-stone-300 dark:border-zinc-800 hover:border-stone-400 transition";
+          tabPro.className =
+            "px-5 py-3 rounded-2xl font-extrabold text-xs sm:text-sm flex items-center gap-2 bg-orange-500 text-white shadow-md transition";
+          tabGym.className =
+            "px-5 py-3 rounded-2xl font-extrabold text-xs sm:text-sm flex items-center gap-2 bg-white dark:bg-zinc-900 text-stone-700 dark:text-zinc-300 border border-stone-300 dark:border-zinc-800 hover:border-stone-400 transition";
+          const dt = getDateFromIso(calSelectedDateIso);
+          if (dt.getDay() === 0 || dt.getDay() === 6) {
+            calSelectedDateIso = getInitialAvailableIso();
+          }
+        }
+        wizardStep = 1;
+        renderWorkspace();
+      }
+
+      function switchFlowMode(flow) {
+        currentFlowMode = flow;
+        const btnWa = document.getElementById("flow-whatsapp");
+        const btnLive = document.getElementById("flow-live");
+        if (flow === "whatsapp") {
+          btnWa.className =
+            "px-3 py-2 rounded-xl text-xs font-extrabold transition flex items-center justify-center gap-1.5 bg-[#25D366] text-stone-950 shadow-sm";
+          btnLive.className =
+            "px-3 py-2 rounded-xl text-xs font-extrabold transition flex items-center justify-center gap-1.5 bg-stone-100 dark:bg-zinc-800 text-stone-700 dark:text-zinc-300";
+        } else {
+          btnLive.className =
+            "px-3 py-2 rounded-xl text-xs font-extrabold transition flex items-center justify-center gap-1.5 bg-orange-500 text-white shadow-sm";
+          btnWa.className =
+            "px-3 py-2 rounded-xl text-xs font-extrabold transition flex items-center justify-center gap-1.5 bg-stone-100 dark:bg-zinc-800 text-stone-700 dark:text-zinc-300";
         }
       }
 
-      function filterGymDay(day) {
-        selectedGymDay = day;
-        document.querySelectorAll(".gym-day-btn").forEach((btn) => {
-          if (btn.innerText.startsWith(day.slice(0, 3)) || (day === "Todos" && btn.innerText === "Todos")) {
-            btn.className = "gym-day-btn bg-orange-500 text-white px-3.5 py-2 rounded-xl text-xs font-bold";
-          } else {
-            btn.className = "gym-day-btn bg-stone-100 dark:bg-zinc-800 text-stone-700 dark:text-zinc-300 px-3.5 py-2 rounded-xl text-xs font-bold";
-          }
-        });
-        renderGymClasses();
+      // ====== RENDER PRINCIPAL ======
+      function renderWorkspace() {
+        const ws = document.getElementById("booking-workspace");
+        if (currentBusinessMode === "gimnasio") {
+          ws.innerHTML = renderGymContainer();
+        } else {
+          ws.innerHTML = renderProContainer();
+        }
       }
 
-      function renderGymClasses() {
-        const grid = document.getElementById("gym-classes-grid");
-        const filtered = selectedGymDay === "Todos" ? GYM_CLASSES : GYM_CLASSES.filter((c) => c.days.includes(selectedGymDay));
-
-        grid.innerHTML = filtered
-          .map(
-            (c) => `
-          <div class="bg-stone-50 dark:bg-zinc-950 rounded-2xl border border-stone-200 dark:border-zinc-800 p-5 flex flex-col justify-between hover:border-orange-500 transition">
+      // ==========================================================
+      // MÓDULO GIMNASIO (5 FORMATOS)
+      // ==========================================================
+      function renderGymContainer() {
+        const headerCard = `
+          <div class="bg-white dark:bg-zinc-900 rounded-3xl border border-stone-200 dark:border-zinc-800 p-5 sm:p-6 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div>
-              <div class="flex justify-between items-start gap-2 mb-2">
-                <span class="bg-orange-100 dark:bg-orange-500/15 text-orange-700 dark:text-orange-400 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full">${c.days.join(" • ")}</span>
-                <span class="text-[11px] font-bold text-emerald-700 dark:text-emerald-400">${c.spots} cupos</span>
+              <div class="flex flex-wrap items-center gap-2 mb-1">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-orange-600 dark:text-orange-400">
+                  Gimnasio Smart Menu • Lunes a Sábado
+                </span>
+                <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-stone-100 dark:bg-zinc-800 text-stone-600 dark:text-zinc-300">
+                  Av. Mate de Luna 1850, Tucumán
+                </span>
               </div>
-              <h3 class="font-extrabold text-lg text-stone-900 dark:text-white">${c.activity}</h3>
-              <p class="text-xs text-stone-500 dark:text-zinc-400 mt-1"><i class="fa-regular fa-clock text-orange-500 mr-1"></i> ${c.time} • ${c.coach}</p>
+              <p class="text-sm text-stone-600 dark:text-zinc-400">
+                Clase Suelta desde <strong class="text-stone-900 dark:text-white">${formatPrice(4500)}</strong> •
+                Pase Libre Mensual (todos los días): <strong class="text-emerald-700 dark:text-emerald-400">${formatPrice(GYM_MONTHLY_ARS)}</strong>
+              </p>
             </div>
-            <div class="mt-4 pt-3 border-t border-stone-200 dark:border-zinc-800 flex items-center justify-between">
-              <div>
-                <span class="block text-[10px] text-stone-400 dark:text-zinc-500 font-bold uppercase">${c.activity === "Musculación Libre" ? "Pase Mensual" : "Clase / Pase"}</span>
-                <span class="font-black text-base text-stone-900 dark:text-white">${formatPrice(c.ars)}</span>
-              </div>
-              <button
-                onclick="openBookingModal('Gimnasio Smart Menu', '${c.activity} (${c.days.join(", ")} - ${c.time})', ${c.ars})"
-                class="bg-emerald-800 hover:bg-orange-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition"
+            <div class="flex flex-wrap items-center gap-2">
+              <select
+                onchange="selectedGymCat = this.value; renderWorkspace();"
+                class="px-3.5 py-2 rounded-xl border border-stone-300 dark:border-zinc-700 bg-stone-50 dark:bg-zinc-950 text-xs font-bold text-stone-800 dark:text-zinc-200"
               >
-                Reservar Lugar
+                <option value="Todas" ${selectedGymCat === "Todas" ? "selected" : ""}>Todas las disciplinas</option>
+                <option value="Cardio & Baile" ${selectedGymCat === "Cardio & Baile" ? "selected" : ""}>Cardio & Baile</option>
+                <option value="Ciclismo" ${selectedGymCat === "Ciclismo" ? "selected" : ""}>Ciclismo (Spinning)</option>
+                <option value="Fuerza" ${selectedGymCat === "Fuerza" ? "selected" : ""}>Fuerza (HIIT / GAP)</option>
+                <option value="Bienestar" ${selectedGymCat === "Bienestar" ? "selected" : ""}>Bienestar (Yoga)</option>
+                <option value="Combate" ${selectedGymCat === "Combate" ? "selected" : ""}>Combate (Boxeo)</option>
+                <option value="Sala & Pesas" ${selectedGymCat === "Sala & Pesas" ? "selected" : ""}>Sala & Pesas</option>
+              </select>
+              <button
+                onclick="openGymPassBooking()"
+                class="bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-extrabold px-4 py-2 rounded-xl transition shadow-sm"
+              >
+                <i class="fa-solid fa-crown mr-1"></i> Solicitar Pase Libre (${formatPrice(GYM_MONTHLY_ARS)})
               </button>
             </div>
           </div>
-        `,
-          )
-          .join("");
+        `;
+
+        let bodyHtml = "";
+        if (currentFormat === "botones") bodyHtml = renderGymBotones();
+        else if (currentFormat === "google") bodyHtml = renderGymGoogle();
+        else if (currentFormat === "calendly") bodyHtml = renderGymCalendly();
+        else if (currentFormat === "columnas") bodyHtml = renderGymColumnas();
+        else if (currentFormat === "wizard") bodyHtml = renderGymWizard();
+
+        return `<div class="space-y-6 fade-panel">${headerCard}${bodyHtml}</div>`;
       }
 
-      function selectPro(idx) {
-        currentProIdx = idx;
-        document.querySelectorAll(".pro-card").forEach((c, i) => {
-          c.className =
-            i === idx
-              ? "pro-card p-5 rounded-2xl border-2 border-orange-500 bg-emerald-50 dark:bg-emerald-950/35 text-left transition"
-              : "pro-card p-5 rounded-2xl border-2 border-stone-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-left transition hover:border-stone-400";
+      function getFilteredGymClasses(dayFilter) {
+        return GYM_CLASSES.filter((c) => {
+          const matchDay =
+            !dayFilter || dayFilter === "Todos" || c.days.includes(dayFilter);
+          const matchCat =
+            selectedGymCat === "Todas" || c.category === selectedGymCat;
+          return matchDay && matchCat;
         });
-        renderProfessional();
       }
 
-      function selectProDay(day) {
-        selectedProDay = day;
-        renderProfessional();
-      }
-
-      function renderProfessional() {
-        const pro = PROFESSIONALS[currentProIdx];
-        document.getElementById("pro-avatar").innerText = pro.initials;
-        document.getElementById("pro-specialty").innerText = pro.specialty;
-        document.getElementById("pro-name").innerText = pro.name;
-        document.getElementById("pro-bio").innerText = pro.bio;
-        document.getElementById("pro-address").innerText = pro.address;
-        document.getElementById("pro-price").innerText = formatPrice(pro.ars);
-
-        const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
-        document.getElementById("pro-days-bar").innerHTML = days
+      // GYM FORMATO 1: BOTONES Y TARJETAS
+      function renderGymBotones() {
+        const dayBtns = ["Todos", ...DAYS_GYM]
           .map(
             (d) => `
           <button
-            onclick="selectProDay('${d}')"
-            class="py-2.5 px-2 rounded-xl text-xs font-extrabold border transition ${
-              selectedProDay === d
-                ? "bg-orange-500 text-white border-orange-500 shadow"
-                : "bg-stone-50 dark:bg-zinc-950 text-stone-700 dark:text-zinc-300 border-stone-200 dark:border-zinc-800 hover:border-stone-400"
+            onclick="selectedGymDay = '${d}'; renderWorkspace();"
+            class="px-4 py-2.5 rounded-xl text-xs font-extrabold transition min-h-[40px] ${
+              selectedGymDay === d
+                ? "bg-orange-500 text-white shadow"
+                : "bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 text-stone-700 dark:text-zinc-300 hover:border-orange-400"
             }"
           >
-            ${d}
+            ${d === "Todos" ? "Todos los días" : d}
           </button>
         `,
           )
           .join("");
 
-        const busy = pro.busySlots[selectedProDay] || [];
-        const morning = ["09:00", "10:00", "11:00", "12:00"];
-        const afternoon = ["16:00", "17:00", "18:00", "19:00"];
+        const list = getFilteredGymClasses(selectedGymDay);
+        const targetDay = selectedGymDay === "Todos" ? "" : selectedGymDay;
 
-        const renderSlotBtn = (time) => {
-          const isBusy = busy.includes(time);
-          if (isBusy) {
-            return `<div class="py-3 px-3 rounded-xl bg-stone-100 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 text-stone-400 dark:text-zinc-600 text-xs font-bold text-center line-through">${time} hs (Ocupado)</div>`;
+        const cards = list
+          .map((c) => {
+            const spots = getRemainingGymSpots(c, targetDay);
+            const isFull = spots === 0;
+            const chosenDay =
+              selectedGymDay === "Todos" ? c.days[0] : selectedGymDay;
+            return `
+            <div class="bg-white dark:bg-zinc-900 rounded-2xl border border-stone-200 dark:border-zinc-800 p-5 flex flex-col justify-between hover:border-orange-500 transition shadow-sm">
+              <div>
+                <div class="flex justify-between items-start gap-2 mb-2.5">
+                  <span class="bg-orange-100 dark:bg-orange-500/15 text-orange-700 dark:text-orange-400 text-[10px] font-extrabold px-2.5 py-1 rounded-full">
+                    ${c.days.join(" • ")}
+                  </span>
+                  <span class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full ${
+                    isFull
+                      ? "bg-rose-100 text-rose-700 dark:bg-rose-500/20 dark:text-rose-300"
+                      : spots <= 3
+                        ? "bg-amber-100 text-amber-800 dark:bg-amber-500/20 dark:text-amber-300"
+                        : "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300"
+                  }">
+                    ${isFull ? "Sin cupos" : `${spots} cupos`}
+                  </span>
+                </div>
+                <h3 class="font-extrabold text-lg text-stone-900 dark:text-white">${c.activity}</h3>
+                <p class="text-xs text-stone-500 dark:text-zinc-400 mt-1">
+                  <i class="fa-regular fa-clock text-orange-500 mr-1"></i> ${c.time} • ${c.coach}
+                </p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-stone-200 dark:border-zinc-800 flex items-center justify-between gap-2">
+                <div>
+                  <span class="block text-[10px] text-stone-400 dark:text-zinc-500 font-bold uppercase">Clase Suelta</span>
+                  <span class="font-black text-base text-stone-900 dark:text-white">${formatPrice(c.ars)}</span>
+                </div>
+                <button
+                  onclick="openGymBooking('${c.id}', '${chosenDay}')"
+                  ${isFull ? "disabled" : ""}
+                  class="min-h-[44px] px-4 py-2 rounded-xl text-xs font-extrabold transition ${
+                    isFull
+                      ? "bg-stone-200 dark:bg-zinc-800 text-stone-400 cursor-not-allowed"
+                      : "bg-emerald-800 hover:bg-orange-500 text-white"
+                  }"
+                >
+                  ${isFull ? "Completo" : "Reservar Lugar"}
+                </button>
+              </div>
+            </div>
+          `;
+          })
+          .join("");
+
+        return `
+          <div class="space-y-5">
+            <div class="flex flex-wrap gap-2">${dayBtns}</div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">${cards}</div>
+          </div>
+        `;
+      }
+
+      // GYM FORMATO 2: GRILLA SEMANAL TIPO GOOGLE CALENDAR
+      function renderGymGoogle() {
+        const hours = [
+          "08:00",
+          "09:00",
+          "10:00",
+          "11:00",
+          "17:00",
+          "18:00",
+          "19:00",
+        ];
+
+        const desktopRows = hours
+          .map((hr) => {
+            const cells = DAYS_GYM.map((day) => {
+              const classesHere = getFilteredGymClasses(day).filter(
+                (c) => c.startHour === hr,
+              );
+              if (!classesHere.length) {
+                return `<div class="p-2 border-l border-stone-100 dark:border-zinc-800/70 min-h-[76px]"></div>`;
+              }
+              return `
+                <div class="p-1.5 border-l border-stone-100 dark:border-zinc-800/70 space-y-1.5 min-h-[76px]">
+                  ${classesHere
+                    .map((c) => {
+                      const spots = getRemainingGymSpots(c, day);
+                      const isFull = spots === 0;
+                      return `
+                        <button
+                          onclick="openGymBooking('${c.id}', '${day}')"
+                          ${isFull ? "disabled" : ""}
+                          class="w-full text-left p-2 rounded-xl border-l-4 transition text-[11px] ${
+                            isFull
+                              ? "bg-stone-100 dark:bg-zinc-800/60 border-stone-400 text-stone-400 cursor-not-allowed"
+                              : "bg-sky-50 hover:bg-sky-100 dark:bg-sky-950/40 dark:hover:bg-sky-900/50 border-sky-600 text-stone-900 dark:text-white shadow-sm"
+                          }"
+                        >
+                          <p class="font-extrabold leading-tight truncate">${c.activity}</p>
+                          <p class="text-[10px] text-stone-600 dark:text-zinc-400 mt-0.5">${c.coach} • ${isFull ? "Lleno" : `${spots} cupos`}</p>
+                        </button>
+                      `;
+                    })
+                    .join("")}
+                </div>
+              `;
+            }).join("");
+
+            return `
+              <div class="grid grid-cols-7 border-t border-stone-200 dark:border-zinc-800">
+                <div class="p-2.5 text-xs font-extrabold text-stone-400 dark:text-zinc-500 text-right pr-3 bg-stone-50/70 dark:bg-zinc-950/60">
+                  ${hr} hs
+                </div>
+                ${cells}
+              </div>
+            `;
+          })
+          .join("");
+
+        const mobileDayBar = DAYS_GYM.map(
+          (d) => `
+          <button
+            onclick="googleMobileGymDay = '${d}'; renderWorkspace();"
+            class="px-3.5 py-2 rounded-xl text-xs font-extrabold whitespace-nowrap min-h-[40px] ${
+              googleMobileGymDay === d
+                ? "bg-sky-600 text-white"
+                : "bg-stone-100 dark:bg-zinc-800 text-stone-700 dark:text-zinc-300"
+            }"
+          >
+            ${d.slice(0, 3)}
+          </button>
+        `,
+        ).join("");
+
+        const mobileList = getFilteredGymClasses(googleMobileGymDay)
+          .map((c) => {
+            const spots = getRemainingGymSpots(c, googleMobileGymDay);
+            const isFull = spots === 0;
+            return `
+              <div class="flex gap-3 items-stretch">
+                <div class="w-16 text-right pt-2 text-xs font-extrabold text-stone-400">${c.startHour} hs</div>
+                <button
+                  onclick="openGymBooking('${c.id}', '${googleMobileGymDay}')"
+                  ${isFull ? "disabled" : ""}
+                  class="flex-1 text-left p-3.5 rounded-2xl border-l-4 min-h-[56px] ${
+                    isFull
+                      ? "bg-stone-100 dark:bg-zinc-800 border-stone-400 text-stone-400"
+                      : "bg-sky-50 dark:bg-sky-950/40 border-sky-600 text-stone-900 dark:text-white"
+                  }"
+                >
+                  <div class="flex justify-between items-center">
+                    <span class="font-extrabold text-sm">${c.activity}</span>
+                    <span class="text-xs font-black text-sky-700 dark:text-sky-300">${formatPrice(c.ars)}</span>
+                  </div>
+                  <p class="text-xs text-stone-500 dark:text-zinc-400 mt-0.5">${c.time} • ${c.coach} • ${isFull ? "Sin cupos" : `${spots} cupos`}</p>
+                </button>
+              </div>
+            `;
+          })
+          .join("");
+
+        return `
+          <div class="bg-white dark:bg-zinc-900 rounded-3xl border border-stone-200 dark:border-zinc-800 overflow-hidden shadow-md">
+            <div class="px-5 py-4 border-b border-stone-200 dark:border-zinc-800 flex flex-wrap items-center justify-between gap-3">
+              <div class="flex items-center gap-2.5">
+                <i class="fa-solid fa-calendar-week text-sky-600 text-lg"></i>
+                <div>
+                  <h3 class="font-black text-sm text-stone-900 dark:text-white">Grilla Semanal de Clases (Estilo Google Calendar)</h3>
+                  <p class="text-[11px] text-stone-500 dark:text-zinc-400">Zona horaria: GMT-3 Tucumán, Argentina • Tocá cualquier bloque para reservar</p>
+                </div>
+              </div>
+              <span class="text-[11px] font-bold text-sky-700 dark:text-sky-300 bg-sky-50 dark:bg-sky-950/60 px-3 py-1 rounded-full">
+                Lunes a Sábado • 08:00 a 22:00 hs
+              </span>
+            </div>
+
+            <div class="hidden md:block overflow-x-auto">
+              <div class="min-w-[780px]">
+                <div class="grid grid-cols-7 bg-stone-50 dark:bg-zinc-950 text-xs font-black text-stone-700 dark:text-zinc-300">
+                  <div class="p-3 text-right pr-3 text-stone-400">Hora</div>
+                  ${DAYS_GYM.map((d) => `<div class="p-3 text-center border-l border-stone-200 dark:border-zinc-800">${d}</div>`).join("")}
+                </div>
+                ${desktopRows}
+              </div>
+            </div>
+
+            <div class="md:hidden p-4 space-y-4">
+              <div class="flex gap-1.5 overflow-x-auto no-scrollbar pb-1">${mobileDayBar}</div>
+              <div class="space-y-3">${mobileList}</div>
+            </div>
+          </div>
+        `;
+      }
+
+      // GYM FORMATO 3: CALENDARIO MENSUAL ESTILO CALENDLY
+      function renderGymCalendly() {
+        const dt = getDateFromIso(calSelectedDateIso);
+        const dayName = getDayNameFromDate(dt);
+        const dayClasses =
+          dayName === "Domingo" ? [] : getFilteredGymClasses(dayName);
+
+        const rightList =
+          dayName === "Domingo"
+            ? `<div class="p-6 rounded-2xl bg-stone-50 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 text-center text-xs text-stone-500">El gimnasio permanece cerrado los domingos. Elegí otro día en el calendario.</div>`
+            : dayClasses
+                .map((c) => {
+                  const spots = getRemainingGymSpots(c, dayName);
+                  const isFull = spots === 0;
+                  return `
+                  <button
+                    onclick="openGymBooking('${c.id}', '${dayName}', '${calSelectedDateIso}')"
+                    ${isFull ? "disabled" : ""}
+                    class="w-full p-4 rounded-2xl border-2 text-left transition min-h-[56px] flex items-center justify-between gap-3 ${
+                      isFull
+                        ? "border-stone-200 dark:border-zinc-800 bg-stone-100 dark:bg-zinc-950 opacity-50 cursor-not-allowed"
+                        : "border-emerald-200 dark:border-emerald-800/60 bg-emerald-50/40 dark:bg-emerald-950/30 hover:border-orange-500"
+                    }"
+                  >
+                    <div>
+                      <p class="font-extrabold text-sm text-stone-900 dark:text-white">${c.activity}</p>
+                      <p class="text-xs text-stone-500 dark:text-zinc-400 mt-0.5">${c.time} • ${c.coach} • <strong>${isFull ? "Completo" : `${spots} cupos`}</strong></p>
+                    </div>
+                    <span class="px-3 py-1.5 rounded-xl bg-stone-900 dark:bg-orange-500 text-white text-xs font-extrabold shrink-0">
+                      ${formatPrice(c.ars)}
+                    </span>
+                  </button>
+                `;
+                })
+                .join("");
+
+        return `
+          <div class="bg-white dark:bg-zinc-900 rounded-3xl border border-stone-200 dark:border-zinc-800 p-5 sm:p-7 shadow-md grid lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-6">${renderMonthCalendarWidget(true)}</div>
+            <div class="lg:col-span-6 space-y-4">
+              <div class="border-b border-stone-200 dark:border-zinc-800 pb-3">
+                <span class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">Clases para el día elegido</span>
+                <h3 class="text-xl font-black text-stone-900 dark:text-white mt-0.5">${formatHumanDate(calSelectedDateIso)}</h3>
+              </div>
+              <div class="space-y-2.5 max-h-[380px] overflow-y-auto pr-1">${rightList}</div>
+            </div>
+          </div>
+        `;
+      }
+
+      // GYM FORMATO 4: COLUMNAS MULTI-DÍA ESTILO CAL.COM / MINDBODY
+      function renderGymColumnas() {
+        const cols = DAYS_GYM.map((day) => {
+          const list = getFilteredGymClasses(day);
+          return `
+            <div class="bg-stone-50 dark:bg-zinc-950 rounded-2xl border border-stone-200 dark:border-zinc-800 p-3 flex flex-col">
+              <div class="text-center pb-2.5 mb-2.5 border-b border-stone-200 dark:border-zinc-800">
+                <p class="font-black text-sm text-stone-900 dark:text-white">${day}</p>
+                <p class="text-[10px] font-bold text-stone-400">${list.length} clases</p>
+              </div>
+              <div class="space-y-2 flex-1">
+                ${list
+                  .map((c) => {
+                    const spots = getRemainingGymSpots(c, day);
+                    const isFull = spots === 0;
+                    return `
+                      <button
+                        onclick="openGymBooking('${c.id}', '${day}')"
+                        ${isFull ? "disabled" : ""}
+                        class="w-full p-2.5 rounded-xl border text-left transition min-h-[52px] ${
+                          isFull
+                            ? "bg-stone-100 dark:bg-zinc-900 border-stone-200 dark:border-zinc-800 text-stone-400 cursor-not-allowed"
+                            : "bg-white dark:bg-zinc-900 border-stone-200 dark:border-zinc-800 hover:border-orange-500 shadow-sm"
+                        }"
+                      >
+                        <p class="text-[10px] font-black text-orange-600 dark:text-orange-400">${c.startHour} hs</p>
+                        <p class="font-extrabold text-xs text-stone-900 dark:text-white leading-snug mt-0.5">${c.activity}</p>
+                        <p class="text-[10px] text-emerald-700 dark:text-emerald-400 font-bold mt-1">${isFull ? "Completo" : `${spots} cupos • ${formatPrice(c.ars)}`}</p>
+                      </button>
+                    `;
+                  })
+                  .join("")}
+              </div>
+            </div>
+          `;
+        }).join("");
+
+        return `<div class="grid sm:grid-cols-2 lg:grid-cols-6 gap-3">${cols}</div>`;
+      }
+
+      // GYM FORMATO 5: ASISTENTE POR PASOS (WIZARD)
+      function renderGymWizard() {
+        const selectedClass =
+          GYM_CLASSES.find((c) => c.id === wizardDraft.classId) ||
+          GYM_CLASSES[0];
+        if (!selectedClass.days.includes(wizardDraft.day)) {
+          wizardDraft.day = selectedClass.days[0];
+        }
+        const price =
+          wizardDraft.passType === "mensual"
+            ? GYM_MONTHLY_ARS
+            : selectedClass.ars;
+
+        let stepBody = "";
+        if (wizardStep === 1) {
+          stepBody = `
+            <h3 class="text-lg font-black text-stone-900 dark:text-white mb-1">Paso 1: Elegí tu disciplina</h3>
+            <p class="text-xs text-stone-500 dark:text-zinc-400 mb-4">Seleccioná la actividad que querés entrenar.</p>
+            <div class="grid sm:grid-cols-3 gap-3">
+              ${GYM_CLASSES.map(
+                (c) => `
+                <button
+                  onclick="wizardDraft.classId = '${c.id}'; wizardDraft.day = '${c.days[0]}'; wizardStep = 2; renderWorkspace();"
+                  class="p-4 rounded-2xl border-2 text-left transition min-h-[84px] ${
+                    wizardDraft.classId === c.id
+                      ? "border-orange-500 bg-orange-50/60 dark:bg-orange-500/10"
+                      : "border-stone-200 dark:border-zinc-800 hover:border-orange-400"
+                  }"
+                >
+                  <span class="text-[10px] font-extrabold uppercase text-orange-600 dark:text-orange-400">${c.category}</span>
+                  <p class="font-extrabold text-sm text-stone-900 dark:text-white mt-0.5">${c.activity}</p>
+                  <p class="text-[11px] text-stone-500 dark:text-zinc-400 mt-1">${c.time} • Desde ${formatPrice(c.ars)}</p>
+                </button>
+              `,
+              ).join("")}
+            </div>
+          `;
+        } else if (wizardStep === 2) {
+          stepBody = `
+            <h3 class="text-lg font-black text-stone-900 dark:text-white mb-1">Paso 2: Elegí tipo de pase</h3>
+            <p class="text-xs text-stone-500 dark:text-zinc-400 mb-4">Actividad: <strong>${selectedClass.activity}</strong></p>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <button
+                onclick="wizardDraft.passType = 'suelta'; wizardStep = 3; renderWorkspace();"
+                class="p-5 rounded-2xl border-2 text-left transition ${
+                  wizardDraft.passType === "suelta"
+                    ? "border-orange-500 bg-orange-50/60 dark:bg-orange-500/10"
+                    : "border-stone-200 dark:border-zinc-800 hover:border-orange-400"
+                }"
+              >
+                <span class="text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-stone-200 dark:bg-zinc-800 text-stone-700 dark:text-zinc-300">Por día</span>
+                <p class="font-black text-lg text-stone-900 dark:text-white mt-2">Clase Suelta</p>
+                <p class="text-2xl font-black text-orange-600 my-1">${formatPrice(selectedClass.ars)}</p>
+                <p class="text-xs text-stone-500 dark:text-zinc-400">Pagás y reservás únicamente la clase del día elegido.</p>
+              </button>
+              <button
+                onclick="wizardDraft.passType = 'mensual'; wizardStep = 3; renderWorkspace();"
+                class="p-5 rounded-2xl border-2 text-left transition ${
+                  wizardDraft.passType === "mensual"
+                    ? "border-emerald-500 bg-emerald-50/60 dark:bg-emerald-950/30"
+                    : "border-stone-200 dark:border-zinc-800 hover:border-emerald-400"
+                }"
+              >
+                <span class="text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-emerald-600 text-white">Más conveniente</span>
+                <p class="font-black text-lg text-stone-900 dark:text-white mt-2">Pase Libre Mensual</p>
+                <p class="text-2xl font-black text-emerald-700 dark:text-emerald-400 my-1">${formatPrice(GYM_MONTHLY_ARS)}</p>
+                <p class="text-xs text-stone-500 dark:text-zinc-400">Acceso ilimitado a todas las clases, días y horarios del mes.</p>
+              </button>
+            </div>
+            <button onclick="wizardStep = 1; renderWorkspace();" class="mt-4 text-xs font-bold text-stone-500 hover:text-stone-900 dark:hover:text-white">← Volver al paso 1</button>
+          `;
+        } else if (wizardStep === 3) {
+          stepBody = `
+            <h3 class="text-lg font-black text-stone-900 dark:text-white mb-1">Paso 3: Elegí el día de inicio</h3>
+            <p class="text-xs text-stone-500 dark:text-zinc-400 mb-4">${selectedClass.activity} (${selectedClass.time}) • ${wizardDraft.passType === "mensual" ? "Pase Libre Mensual" : "Clase Suelta"}</p>
+            <div class="grid sm:grid-cols-3 gap-3">
+              ${selectedClass.days
+                .map((d) => {
+                  const spots = getRemainingGymSpots(selectedClass, d);
+                  const isFull = spots === 0;
+                  return `
+                    <button
+                      onclick="wizardDraft.day = '${d}'; wizardStep = 4; renderWorkspace();"
+                      ${isFull ? "disabled" : ""}
+                      class="p-4 rounded-2xl border-2 text-left transition min-h-[70px] ${
+                        isFull
+                          ? "border-stone-200 dark:border-zinc-800 opacity-50 cursor-not-allowed"
+                          : "border-emerald-200 dark:border-emerald-800/50 bg-emerald-50/40 dark:bg-emerald-950/30 hover:border-orange-500"
+                      }"
+                    >
+                      <p class="font-black text-base text-stone-900 dark:text-white">${d}</p>
+                      <p class="text-xs text-emerald-700 dark:text-emerald-400 font-bold mt-0.5">${isFull ? "Sin cupos" : `${spots} cupos • ${selectedClass.startHour} hs`}</p>
+                    </button>
+                  `;
+                })
+                .join("")}
+            </div>
+            <button onclick="wizardStep = 2; renderWorkspace();" class="mt-4 text-xs font-bold text-stone-500 hover:text-stone-900 dark:hover:text-white">← Volver al paso 2</button>
+          `;
+        } else {
+          stepBody = `
+            <h3 class="text-lg font-black text-stone-900 dark:text-white mb-1">Paso 4: Confirmar tu lugar</h3>
+            <div class="bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/50 rounded-2xl p-4 my-4 text-xs space-y-1">
+              <p class="font-black text-orange-600 dark:text-orange-400 text-sm">${selectedClass.activity}</p>
+              <p class="text-stone-800 dark:text-zinc-200">Día y horario: <strong>${wizardDraft.day} • ${selectedClass.time}</strong> (${selectedClass.coach})</p>
+              <p class="text-stone-800 dark:text-zinc-200">Pase: <strong>${wizardDraft.passType === "mensual" ? "Pase Libre Mensual" : "Clase Suelta"}</strong> — <strong>${formatPrice(price)}</strong></p>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <button onclick="wizardStep = 3; renderWorkspace();" class="px-4 py-3 rounded-xl border border-stone-300 dark:border-zinc-700 text-xs font-bold text-stone-700 dark:text-zinc-300">← Cambiar día</button>
+              <button
+                onclick="openGymBooking('${selectedClass.id}', '${wizardDraft.day}', null, '${wizardDraft.passType}')"
+                class="flex-1 py-3.5 px-6 rounded-xl bg-orange-500 hover:bg-orange-600 text-white text-xs font-black shadow-md transition"
+              >
+                Completar Nombre y Celular para Reservar →
+              </button>
+            </div>
+          `;
+        }
+
+        return renderWizardShell(
+          wizardStep,
+          ["Disciplina", "Pase", "Día", "Confirmar"],
+          stepBody,
+        );
+      }
+
+      // ==========================================================
+      // MÓDULO PROFESIONAL (5 FORMATOS)
+      // ==========================================================
+      function renderProContainer() {
+        const proCards = PROFESSIONALS.map(
+          (p, i) => `
+          <button
+            onclick="currentProIdx = ${i}; wizardDraft.proIdx = ${i}; wizardDraft.modality = PROFESSIONALS[${i}].modalities[0]; renderWorkspace();"
+            class="p-4 sm:p-5 rounded-2xl border-2 text-left transition ${
+              i === currentProIdx
+                ? "border-orange-500 bg-emerald-50/70 dark:bg-emerald-950/35 shadow-sm"
+                : "border-stone-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-stone-400"
+            }"
+          >
+            <span class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950 border border-emerald-300 dark:border-emerald-700/50 px-2.5 py-0.5 rounded-full">
+              ${p.specialty}
+            </span>
+            <h3 class="font-extrabold text-sm sm:text-base text-stone-900 dark:text-white mt-2">${p.name}</h3>
+            <p class="text-xs text-stone-500 dark:text-zinc-400 mt-1">Sesión ${p.duration} • <strong>${formatPrice(p.ars)}</strong></p>
+          </button>
+        `,
+        ).join("");
+
+        const pro = PROFESSIONALS[currentProIdx];
+        const useWideLayout =
+          currentFormat === "google" || currentFormat === "columnas";
+
+        let formatContent = "";
+        if (currentFormat === "botones") formatContent = renderProBotones(pro);
+        else if (currentFormat === "google")
+          formatContent = renderProGoogle(pro);
+        else if (currentFormat === "calendly")
+          formatContent = renderProCalendly(pro);
+        else if (currentFormat === "columnas")
+          formatContent = renderProColumnas(pro);
+        else if (currentFormat === "wizard")
+          formatContent = renderProWizard(pro);
+
+        if (useWideLayout) {
+          return `
+            <div class="space-y-6 fade-panel">
+              <div class="grid md:grid-cols-3 gap-4">${proCards}</div>
+              <div class="bg-white dark:bg-zinc-900 rounded-3xl border border-stone-200 dark:border-zinc-800 p-5 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-900 text-orange-400 flex items-center justify-center text-lg font-black shrink-0">${pro.initials}</div>
+                  <div>
+                    <h2 class="font-black text-lg text-stone-900 dark:text-white">${pro.name}</h2>
+                    <p class="text-xs text-stone-500 dark:text-zinc-400">${pro.address} • Duración: ${pro.duration} • Arancel ref.: <strong class="text-emerald-700 dark:text-emerald-400">${formatPrice(pro.ars)}</strong></p>
+                  </div>
+                </div>
+                <div class="flex gap-1.5">
+                  ${["Todas", "Presencial", "Online"]
+                    .map(
+                      (m) => `
+                    <button
+                      onclick="selectedProModality = '${m}'; renderWorkspace();"
+                      class="px-3 py-1.5 rounded-xl text-xs font-bold transition ${
+                        selectedProModality === m
+                          ? "bg-orange-500 text-white"
+                          : "bg-stone-100 dark:bg-zinc-800 text-stone-700 dark:text-zinc-300"
+                      }"
+                    >
+                      ${m}
+                    </button>
+                  `,
+                    )
+                    .join("")}
+                </div>
+              </div>
+              ${formatContent}
+            </div>
+          `;
+        }
+
+        return `
+          <div class="space-y-6 fade-panel">
+            <div class="grid md:grid-cols-3 gap-4">${proCards}</div>
+            <div class="grid lg:grid-cols-12 gap-8 items-start">
+              <aside class="lg:col-span-4 bg-white dark:bg-zinc-900 rounded-3xl border border-stone-200 dark:border-zinc-800 p-6 shadow-md">
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-900 border border-emerald-400/30 text-orange-400 flex items-center justify-center text-2xl font-black mb-4">${pro.initials}</div>
+                <span class="text-xs font-extrabold uppercase tracking-wider text-orange-600 dark:text-orange-400">${pro.specialty}</span>
+                <h2 class="text-2xl font-black text-stone-900 dark:text-white mt-1 mb-2">${pro.name}</h2>
+                <p class="text-sm text-stone-600 dark:text-zinc-400 leading-relaxed mb-5">${pro.bio}</p>
+                <div class="space-y-3 text-xs border-t border-stone-200 dark:border-zinc-800 pt-4">
+                  <div class="flex items-center gap-2.5 text-stone-700 dark:text-zinc-300">
+                    <i class="fa-solid fa-location-dot text-orange-500 w-4"></i>
+                    <span>${pro.address}</span>
+                  </div>
+                  <div class="flex items-center gap-2.5 text-stone-700 dark:text-zinc-300">
+                    <i class="fa-solid fa-clock text-orange-500 w-4"></i>
+                    <span>Duración: ${pro.duration} • 09:00 a 13:00 y 16:00 a 20:00 hs</span>
+                  </div>
+                  <div class="flex items-center gap-2.5 text-stone-700 dark:text-zinc-300">
+                    <i class="fa-solid fa-video text-orange-500 w-4"></i>
+                    <span>Modalidad: ${pro.modalities.join(" / ")}</span>
+                  </div>
+                  <div class="flex items-center gap-2.5 text-stone-700 dark:text-zinc-300">
+                    <i class="fa-solid fa-tag text-orange-500 w-4"></i>
+                    <span>Arancel ref.: <strong class="font-extrabold text-emerald-700 dark:text-emerald-400">${formatPrice(pro.ars)}</strong></span>
+                  </div>
+                </div>
+              </aside>
+              <div class="lg:col-span-8">${formatContent}</div>
+            </div>
+          </div>
+        `;
+      }
+
+      // PRO FORMATO 1: BOTONES RÁPIDOS
+      function renderProBotones(pro) {
+        const nextSlot = getFirstAvailableProSlot(currentProIdx);
+        const daysBar = DAYS_PRO.map((d) => {
+          const freeCount = ALL_PRO_SLOTS.filter(
+            (t) => !getProSlotStatus(currentProIdx, d, t).busy,
+          ).length;
+          return `
+            <button
+              onclick="selectedProDay = '${d}'; renderWorkspace();"
+              class="py-2.5 px-2 rounded-xl text-xs font-extrabold border transition min-h-[48px] ${
+                selectedProDay === d
+                  ? "bg-orange-500 text-white border-orange-500 shadow"
+                  : "bg-stone-50 dark:bg-zinc-950 text-stone-700 dark:text-zinc-300 border-stone-200 dark:border-zinc-800 hover:border-stone-400"
+              }"
+            >
+              <span class="block">${d.slice(0, 3)}</span>
+              <span class="text-[10px] font-semibold opacity-80">${freeCount} lib.</span>
+            </button>
+          `;
+        }).join("");
+
+        const renderBtn = (time) => {
+          const st = getProSlotStatus(currentProIdx, selectedProDay, time);
+          if (st.busy) {
+            return `<div class="min-h-[46px] py-3 px-3 rounded-xl bg-stone-100 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 text-stone-400 dark:text-zinc-600 text-xs font-bold flex items-center justify-center line-through">${time} hs • ${escapeHtml(st.label)}</div>`;
           }
           return `
             <button
-              onclick="openBookingModal('${pro.name}', '${selectedProDay} a las ${time} hs', ${pro.ars})"
-              class="py-3 px-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-600 text-emerald-900 dark:text-emerald-300 hover:text-white border border-emerald-300 dark:border-emerald-700/50 text-xs font-extrabold text-center transition"
+              onclick="openProBooking(${currentProIdx}, '${selectedProDay}', '${time}')"
+              class="min-h-[46px] py-3 px-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-600 text-emerald-900 dark:text-emerald-300 hover:text-white border border-emerald-300 dark:border-emerald-700/50 text-xs font-extrabold text-center transition"
             >
               ${time} hs • Disponible
             </button>
           `;
         };
 
-        document.getElementById("morning-slots").innerHTML = morning.map(renderSlotBtn).join("");
-        document.getElementById("afternoon-slots").innerHTML = afternoon.map(renderSlotBtn).join("");
+        return `
+          <div class="bg-white dark:bg-zinc-900 rounded-3xl border border-stone-200 dark:border-zinc-800 p-6 sm:p-8 shadow-md space-y-6">
+            ${
+              nextSlot
+                ? `<div class="flex flex-wrap items-center justify-between gap-3 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/50 rounded-2xl p-3.5">
+                    <div class="text-xs">
+                      <span class="font-extrabold text-emerald-800 dark:text-emerald-300 uppercase text-[10px] block">⚡ Próximo turno disponible</span>
+                      <span class="font-bold text-stone-900 dark:text-white">${nextSlot.day} a las ${nextSlot.time} hs</span>
+                    </div>
+                    <button
+                      onclick="openProBooking(${currentProIdx}, '${nextSlot.day}', '${nextSlot.time}')"
+                      class="bg-emerald-700 hover:bg-orange-500 text-white text-xs font-extrabold px-4 py-2 rounded-xl transition"
+                    >
+                      Reservar ya
+                    </button>
+                  </div>`
+                : ""
+            }
+            <div>
+              <h3 class="text-lg font-black text-stone-900 dark:text-white mb-1">1. Elegí el día hábil</h3>
+              <p class="text-xs text-stone-500 dark:text-zinc-400 mb-3">Turnos de ${pro.duration} • Horario cortado (mañana y tarde)</p>
+              <div class="grid grid-cols-5 gap-2">${daysBar}</div>
+            </div>
+            <div>
+              <h3 class="text-lg font-black text-stone-900 dark:text-white mb-3">2. Seleccioná un horario disponible</h3>
+              <p class="text-xs font-extrabold uppercase tracking-wider text-stone-500 dark:text-zinc-500 mb-2">☀️ Turno Mañana (09:00 a 13:00 hs)</p>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-5">${MORNING_SLOTS.map(renderBtn).join("")}</div>
+              <p class="text-xs font-extrabold uppercase tracking-wider text-stone-500 dark:text-zinc-500 mb-2">🌙 Turno Tarde (16:00 a 20:00 hs)</p>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">${AFTERNOON_SLOTS.map(renderBtn).join("")}</div>
+            </div>
+          </div>
+        `;
       }
 
-      function openBookingModal(serviceTitle, slotDetail, ars) {
-        pendingBooking = { serviceTitle, slotDetail, ars };
-        document.getElementById("modal-service-title").innerText = serviceTitle;
-        document.getElementById("modal-slot-detail").innerText = `📅 Turno seleccionado: ${slotDetail}`;
-        document.getElementById("modal-price-detail").innerText = `💰 Arancel de referencia: ${formatPrice(ars)}`;
+      // PRO FORMATO 2: GRILLA SEMANAL ESTILO GOOGLE CALENDAR
+      function renderProGoogle(pro) {
+        const modTag =
+          selectedProModality === "Todas"
+            ? pro.duration
+            : `${selectedProModality}`;
+
+        const rows = ALL_PRO_SLOTS.map((time, idx) => {
+          const divider =
+            idx === 4
+              ? `<div class="col-span-6 bg-stone-100 dark:bg-zinc-950/90 text-[10px] font-extrabold uppercase tracking-widest text-stone-400 text-center py-1.5 border-t border-stone-200 dark:border-zinc-800">Corte de mediodía (13:00 a 16:00 hs)</div>`
+              : "";
+          const cells = DAYS_PRO.map((day) => {
+            const st = getProSlotStatus(currentProIdx, day, time);
+            if (st.busy) {
+              return `
+                <div class="p-1.5 border-l border-stone-100 dark:border-zinc-800/70">
+                  <div class="p-2 rounded-xl bg-stone-100 dark:bg-zinc-800/50 border-l-4 border-stone-400 text-stone-400 dark:text-zinc-500 text-[11px] min-h-[52px] flex flex-col justify-center">
+                    <span class="font-bold line-through">${time} hs</span>
+                    <span class="text-[10px] truncate">${escapeHtml(st.label)}</span>
+                  </div>
+                </div>
+              `;
+            }
+            return `
+              <div class="p-1.5 border-l border-stone-100 dark:border-zinc-800/70">
+                <button
+                  onclick="openProBooking(${currentProIdx}, '${day}', '${time}')"
+                  class="w-full text-left p-2 rounded-xl bg-sky-50 hover:bg-sky-600 dark:bg-sky-950/40 dark:hover:bg-sky-600 border-l-4 border-sky-600 text-stone-900 dark:text-white hover:text-white text-[11px] min-h-[52px] transition shadow-sm"
+                >
+                  <span class="font-black block">${time} hs</span>
+                  <span class="text-[10px] opacity-80">${modTag} • Libre</span>
+                </button>
+              </div>
+            `;
+          }).join("");
+
+          return `
+            ${divider}
+            <div class="grid grid-cols-6 border-t border-stone-200 dark:border-zinc-800">
+              <div class="p-3 text-xs font-extrabold text-stone-400 text-right pr-3 bg-stone-50/70 dark:bg-zinc-950/60 flex items-center justify-end">${time}</div>
+              ${cells}
+            </div>
+          `;
+        }).join("");
+
+        const mobileDayBar = DAYS_PRO.map(
+          (d) => `
+          <button
+            onclick="googleMobileProDay = '${d}'; renderWorkspace();"
+            class="px-3.5 py-2 rounded-xl text-xs font-extrabold min-h-[40px] ${
+              googleMobileProDay === d
+                ? "bg-sky-600 text-white"
+                : "bg-stone-100 dark:bg-zinc-800 text-stone-700 dark:text-zinc-300"
+            }"
+          >
+            ${d.slice(0, 3)}
+          </button>
+        `,
+        ).join("");
+
+        const mobileTimeline = ALL_PRO_SLOTS.map((time) => {
+          const st = getProSlotStatus(currentProIdx, googleMobileProDay, time);
+          return `
+            <div class="flex gap-3 items-center">
+              <div class="w-14 text-right text-xs font-extrabold text-stone-400">${time}</div>
+              ${
+                st.busy
+                  ? `<div class="flex-1 p-3 rounded-2xl bg-stone-100 dark:bg-zinc-800/50 border-l-4 border-stone-400 text-stone-400 text-xs font-bold line-through">${escapeHtml(st.label)}</div>`
+                  : `<button onclick="openProBooking(${currentProIdx}, '${googleMobileProDay}', '${time}')" class="flex-1 text-left p-3 rounded-2xl bg-sky-50 dark:bg-sky-950/40 border-l-4 border-sky-600 text-stone-900 dark:text-white text-xs font-extrabold min-h-[48px] flex justify-between items-center"><span>Disponible (${modTag})</span><span class="text-sky-700 dark:text-sky-300">Reservar →</span></button>`
+              }
+            </div>
+          `;
+        }).join("");
+
+        return `
+          <div class="bg-white dark:bg-zinc-900 rounded-3xl border border-stone-200 dark:border-zinc-800 overflow-hidden shadow-md">
+            <div class="px-5 py-4 border-b border-stone-200 dark:border-zinc-800 flex flex-wrap items-center justify-between gap-3">
+              <div class="flex items-center gap-2.5">
+                <i class="fa-solid fa-calendar-week text-sky-600 text-lg"></i>
+                <div>
+                  <h3 class="font-black text-sm text-stone-900 dark:text-white">Agenda de Citas (Estilo Google Calendar)</h3>
+                  <p class="text-[11px] text-stone-500 dark:text-zinc-400">Hacé clic en cualquier bloque celeste disponible • Zona horaria: GMT-3 Tucumán</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 text-[11px] font-bold">
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-sky-600"></span> Disponible</span>
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-stone-400"></span> Ocupado</span>
+              </div>
+            </div>
+
+            <div class="hidden md:block overflow-x-auto">
+              <div class="min-w-[700px]">
+                <div class="grid grid-cols-6 bg-stone-50 dark:bg-zinc-950 text-xs font-black text-stone-700 dark:text-zinc-300">
+                  <div class="p-3 text-right pr-3 text-stone-400">Hora</div>
+                  ${DAYS_PRO.map((d) => `<div class="p-3 text-center border-l border-stone-200 dark:border-zinc-800">${d}</div>`).join("")}
+                </div>
+                ${rows}
+              </div>
+            </div>
+
+            <div class="md:hidden p-4 space-y-3">
+              <div class="flex gap-1.5 overflow-x-auto no-scrollbar pb-1">${mobileDayBar}</div>
+              <div class="space-y-2.5">${mobileTimeline}</div>
+            </div>
+          </div>
+        `;
+      }
+
+      // PRO FORMATO 3: CALENDARIO MENSUAL + PANEL HORARIO (ESTILO CALENDLY)
+      function renderProCalendly(pro) {
+        const dt = getDateFromIso(calSelectedDateIso);
+        const dayName = getDayNameFromDate(dt);
+        const isWeekend = dt.getDay() === 0 || dt.getDay() === 6;
+
+        const slotsList = isWeekend
+          ? `<div class="p-6 rounded-2xl bg-stone-50 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 text-center text-xs text-stone-500">El profesional atiende de Lunes a Viernes. Elegí un día hábil en el calendario.</div>`
+          : ALL_PRO_SLOTS.map((time) => {
+              const st = getProSlotStatus(currentProIdx, dayName, time);
+              if (st.busy) {
+                return `<div class="min-h-[46px] px-4 py-3 rounded-xl bg-stone-100 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 text-stone-400 dark:text-zinc-600 text-xs font-bold flex justify-between items-center line-through"><span>${time} hs</span><span>${escapeHtml(st.label)}</span></div>`;
+              }
+              return `
+                <button
+                  onclick="openProBooking(${currentProIdx}, '${dayName}', '${time}', '${calSelectedDateIso}')"
+                  class="w-full min-h-[46px] px-4 py-3 rounded-xl border-2 border-emerald-200 dark:border-emerald-800/60 bg-emerald-50/40 dark:bg-emerald-950/30 hover:border-orange-500 hover:bg-orange-500 hover:text-white text-emerald-900 dark:text-emerald-300 text-xs font-extrabold flex justify-between items-center transition"
+                >
+                  <span>${time} hs</span>
+                  <span>Reservar →</span>
+                </button>
+              `;
+            }).join("");
+
+        return `
+          <div class="bg-white dark:bg-zinc-900 rounded-3xl border border-stone-200 dark:border-zinc-800 p-6 shadow-md grid md:grid-cols-12 gap-6">
+            <div class="md:col-span-7">${renderMonthCalendarWidget(false)}</div>
+            <div class="md:col-span-5 space-y-3 border-t md:border-t-0 md:border-l border-stone-200 dark:border-zinc-800 pt-5 md:pt-0 md:pl-6">
+              <div>
+                <span class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">Horarios disponibles</span>
+                <h3 class="text-base font-black text-stone-900 dark:text-white">${formatHumanDate(calSelectedDateIso)}</h3>
+              </div>
+              <div class="space-y-2 max-h-[360px] overflow-y-auto pr-1">${slotsList}</div>
+            </div>
+          </div>
+        `;
+      }
+
+      // PRO FORMATO 4: COLUMNAS MULTI-DÍA (ESTILO CAL.COM / DOCTORALIA)
+      function renderProColumnas(pro) {
+        const modLabel =
+          selectedProModality === "Todas"
+            ? "Presencial / Online"
+            : selectedProModality;
+
+        const cols = DAYS_PRO.map((day) => {
+          const btns = ALL_PRO_SLOTS.map((time) => {
+            const st = getProSlotStatus(currentProIdx, day, time);
+            if (st.busy) {
+              return `<div class="min-h-[40px] py-2 px-2 rounded-xl bg-stone-100 dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 text-stone-400 dark:text-zinc-600 text-xs font-bold text-center line-through">${time}</div>`;
+            }
+            return `
+              <button
+                onclick="openProBooking(${currentProIdx}, '${day}', '${time}')"
+                class="w-full min-h-[40px] py-2 px-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 hover:bg-orange-500 text-emerald-900 dark:text-emerald-300 hover:text-white border border-emerald-200 dark:border-emerald-800/50 text-xs font-extrabold text-center transition"
+              >
+                ${time} hs
+              </button>
+            `;
+          }).join("");
+
+          return `
+            <div class="bg-white dark:bg-zinc-900 rounded-2xl border border-stone-200 dark:border-zinc-800 p-3.5 shadow-sm">
+              <div class="text-center pb-2.5 mb-3 border-b border-stone-200 dark:border-zinc-800">
+                <p class="font-black text-sm text-stone-900 dark:text-white">${day}</p>
+                <p class="text-[10px] font-bold text-emerald-700 dark:text-emerald-400">
+                  ${ALL_PRO_SLOTS.filter((t) => !getProSlotStatus(currentProIdx, day, t).busy).length} libres • ${modLabel}
+                </p>
+              </div>
+              <div class="grid grid-cols-2 sm:grid-cols-1 gap-2">${btns}</div>
+            </div>
+          `;
+        }).join("");
+
+        return `<div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-3.5">${cols}</div>`;
+      }
+
+      // PRO FORMATO 5: ASISTENTE POR PASOS (WIZARD)
+      function renderProWizard(pro) {
+        let stepBody = "";
+        if (wizardStep === 1) {
+          stepBody = `
+            <h3 class="text-lg font-black text-stone-900 dark:text-white mb-1">Paso 1: Elegí el servicio / profesional</h3>
+            <p class="text-xs text-stone-500 dark:text-zinc-400 mb-4">Cada opción define la duración y el arancel.</p>
+            <div class="space-y-2.5">
+              ${PROFESSIONALS.map(
+                (p, idx) => `
+                <button
+                  onclick="currentProIdx = ${idx}; wizardDraft.proIdx = ${idx}; wizardDraft.modality = PROFESSIONALS[${idx}].modalities[0]; wizardStep = 2; renderWorkspace();"
+                  class="w-full p-4 rounded-2xl border-2 text-left transition flex items-center justify-between gap-4 ${
+                    currentProIdx === idx
+                      ? "border-orange-500 bg-orange-50/50 dark:bg-orange-500/10"
+                      : "border-stone-200 dark:border-zinc-800 hover:border-orange-400"
+                  }"
+                >
+                  <div>
+                    <span class="text-[10px] font-extrabold uppercase text-orange-600 dark:text-orange-400">${p.specialty}</span>
+                    <p class="font-black text-sm text-stone-900 dark:text-white">${p.shortName}</p>
+                    <p class="text-xs text-stone-500 dark:text-zinc-400 mt-0.5">Sesión ${p.duration}</p>
+                  </div>
+                  <span class="font-black text-base text-stone-900 dark:text-white">${formatPrice(p.ars)} →</span>
+                </button>
+              `,
+              ).join("")}
+            </div>
+          `;
+        } else if (wizardStep === 2) {
+          stepBody = `
+            <h3 class="text-lg font-black text-stone-900 dark:text-white mb-1">Paso 2: Elegí la modalidad</h3>
+            <p class="text-xs text-stone-500 dark:text-zinc-400 mb-4">Con <strong>${pro.shortName}</strong> (${pro.duration})</p>
+            <div class="grid sm:grid-cols-2 gap-3">
+              ${pro.modalities
+                .map(
+                  (mod, mIdx) => `
+                <button
+                  onclick="wizardDraft.modality = PROFESSIONALS[${currentProIdx}].modalities[${mIdx}]; wizardStep = 3; renderWorkspace();"
+                  class="p-5 rounded-2xl border-2 border-stone-200 dark:border-zinc-800 hover:border-orange-500 text-left transition"
+                >
+                  <i class="fa-solid ${mod.includes("Online") || mod.includes("Virtual") || mod.includes("Tele") ? "fa-video text-sky-600" : "fa-building text-emerald-600"} text-xl mb-2"></i>
+                  <p class="font-black text-sm text-stone-900 dark:text-white">${mod}</p>
+                  <p class="text-xs text-stone-500 dark:text-zinc-400 mt-1">${mod.includes("Online") || mod.includes("Virtual") || mod.includes("Tele") ? "Enlace enviado por WhatsApp" : pro.address}</p>
+                </button>
+              `,
+                )
+                .join("")}
+            </div>
+            <button onclick="wizardStep = 1; renderWorkspace();" class="mt-4 text-xs font-bold text-stone-500 hover:text-stone-900 dark:hover:text-white">← Volver al paso 1</button>
+          `;
+        } else if (wizardStep === 3) {
+          stepBody = `
+            <h3 class="text-lg font-black text-stone-900 dark:text-white mb-1">Paso 3: Elegí día y horario</h3>
+            <p class="text-xs text-stone-500 dark:text-zinc-400 mb-4">${pro.shortName} • ${wizardDraft.modality}</p>
+            <div class="grid grid-cols-5 gap-2 mb-4">
+              ${DAYS_PRO.map(
+                (d) => `
+                <button
+                  onclick="wizardDraft.day = '${d}'; renderWorkspace();"
+                  class="py-2 rounded-xl text-xs font-extrabold border ${
+                    wizardDraft.day === d
+                      ? "bg-orange-500 text-white border-orange-500"
+                      : "bg-stone-50 dark:bg-zinc-950 text-stone-700 dark:text-zinc-300 border-stone-200 dark:border-zinc-800"
+                  }"
+                >
+                  ${d.slice(0, 3)}
+                </button>
+              `,
+              ).join("")}
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              ${ALL_PRO_SLOTS.map((time) => {
+                const st = getProSlotStatus(
+                  currentProIdx,
+                  wizardDraft.day,
+                  time,
+                );
+                if (st.busy) {
+                  return `<div class="py-2.5 rounded-xl bg-stone-100 dark:bg-zinc-950 text-stone-400 text-xs font-bold text-center line-through">${time}</div>`;
+                }
+                return `
+                  <button
+                    onclick="wizardDraft.time = '${time}'; wizardStep = 4; renderWorkspace();"
+                    class="py-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 hover:bg-orange-500 text-emerald-900 dark:text-emerald-300 hover:text-white border border-emerald-200 dark:border-emerald-800/50 text-xs font-extrabold min-h-[44px] transition"
+                  >
+                    ${time} hs
+                  </button>
+                `;
+              }).join("")}
+            </div>
+            <button onclick="wizardStep = 2; renderWorkspace();" class="mt-4 text-xs font-bold text-stone-500 hover:text-stone-900 dark:hover:text-white">← Volver al paso 2</button>
+          `;
+        } else {
+          stepBody = `
+            <h3 class="text-lg font-black text-stone-900 dark:text-white mb-1">Paso 4: Confirmar tu solicitud</h3>
+            <div class="bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/50 rounded-2xl p-4 my-4 text-xs space-y-1">
+              <p class="font-black text-orange-600 dark:text-orange-400 text-sm">${pro.name}</p>
+              <p class="text-stone-800 dark:text-zinc-200">Turno: <strong>${wizardDraft.day} a las ${wizardDraft.time} hs</strong> (${pro.duration})</p>
+              <p class="text-stone-800 dark:text-zinc-200">Modalidad: <strong>${wizardDraft.modality}</strong> • Arancel ref.: <strong>${formatPrice(pro.ars)}</strong></p>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <button onclick="wizardStep = 3; renderWorkspace();" class="px-4 py-3 rounded-xl border border-stone-300 dark:border-zinc-700 text-xs font-bold text-stone-700 dark:text-zinc-300">← Cambiar horario</button>
+              <button
+                onclick="openProBooking(${currentProIdx}, '${wizardDraft.day}', '${wizardDraft.time}', null, wizardDraft.modality)"
+                class="flex-1 py-3.5 px-6 rounded-xl bg-orange-500 hover:bg-orange-600 text-white text-xs font-black shadow-md transition"
+              >
+                Completar Nombre y Celular para Confirmar →
+              </button>
+            </div>
+          `;
+        }
+
+        return renderWizardShell(
+          wizardStep,
+          ["Profesional", "Modalidad", "Fecha/Hora", "Confirmar"],
+          stepBody,
+        );
+      }
+
+      // ====== COMPONENTES COMPARTIDOS ======
+      function renderMonthCalendarWidget(includeSaturdays) {
+        const months = [
+          "Enero",
+          "Febrero",
+          "Marzo",
+          "Abril",
+          "Mayo",
+          "Junio",
+          "Julio",
+          "Agosto",
+          "Septiembre",
+          "Octubre",
+          "Noviembre",
+          "Diciembre",
+        ];
+        const firstDay = new Date(calYear, calMonth, 1);
+        const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+        const startOffset = (firstDay.getDay() + 6) % 7;
+        const todayZero = new Date(
+          todayRef.getFullYear(),
+          todayRef.getMonth(),
+          todayRef.getDate(),
+        );
+
+        let cells = "";
+        for (let i = 0; i < startOffset; i++) {
+          cells += `<div class="h-11"></div>`;
+        }
+        for (let dayNum = 1; dayNum <= daysInMonth; dayNum++) {
+          const dt = new Date(calYear, calMonth, dayNum);
+          const iso = toIso(dt);
+          const dow = dt.getDay();
+          const isPast = dt < todayZero;
+          const isValidDow = includeSaturdays
+            ? dow >= 1 && dow <= 6
+            : dow >= 1 && dow <= 5;
+          const isSelected = iso === calSelectedDateIso;
+
+          if (isPast || !isValidDow) {
+            cells += `<div class="h-11 flex items-center justify-center text-xs text-stone-300 dark:text-zinc-700 font-semibold">${dayNum}</div>`;
+          } else {
+            cells += `
+              <button
+                onclick="calSelectedDateIso = '${iso}'; renderWorkspace();"
+                class="h-11 w-full rounded-xl text-xs font-extrabold transition flex flex-col items-center justify-center ${
+                  isSelected
+                    ? "bg-orange-500 text-white shadow-md"
+                    : "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 hover:bg-orange-100 dark:hover:bg-orange-500/20"
+                }"
+              >
+                <span>${dayNum}</span>
+                <span class="w-1 h-1 rounded-full ${isSelected ? "bg-white" : "bg-emerald-500"} mt-0.5"></span>
+              </button>
+            `;
+          }
+        }
+
+        return `
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-black text-base text-stone-900 dark:text-white">${months[calMonth]} ${calYear}</h3>
+              <div class="flex gap-1.5">
+                <button onclick="changeCalMonth(-1)" class="w-9 h-9 rounded-xl bg-stone-100 dark:bg-zinc-800 hover:bg-stone-200 flex items-center justify-center text-xs"><i class="fa-solid fa-chevron-left"></i></button>
+                <button onclick="changeCalMonth(1)" class="w-9 h-9 rounded-xl bg-stone-100 dark:bg-zinc-800 hover:bg-stone-200 flex items-center justify-center text-xs"><i class="fa-solid fa-chevron-right"></i></button>
+              </div>
+            </div>
+            <div class="grid grid-cols-7 gap-1.5 text-center text-[11px] font-extrabold text-stone-400 uppercase">
+              <div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div><div>Dom</div>
+            </div>
+            <div class="grid grid-cols-7 gap-1.5">${cells}</div>
+          </div>
+        `;
+      }
+
+      function changeCalMonth(delta) {
+        calMonth += delta;
+        if (calMonth > 11) {
+          calMonth = 0;
+          calYear++;
+        } else if (calMonth < 0) {
+          calMonth = 11;
+          calYear--;
+        }
+        renderWorkspace();
+      }
+
+      function renderWizardShell(step, labels, bodyHtml) {
+        const stepsBar = labels
+          .map(
+            (lbl, idx) => `
+          <div class="flex items-center gap-2 ${idx + 1 <= step ? "text-orange-600 dark:text-orange-400" : "text-stone-400 dark:text-zinc-600"}">
+            <span class="w-7 h-7 rounded-full text-xs font-black flex items-center justify-center ${
+              idx + 1 < step
+                ? "bg-emerald-600 text-white"
+                : idx + 1 === step
+                  ? "bg-orange-500 text-white"
+                  : "bg-stone-200 dark:bg-zinc-800"
+            }">
+              ${idx + 1 < step ? '<i class="fa-solid fa-check"></i>' : idx + 1}
+            </span>
+            <span class="text-xs font-extrabold hidden sm:inline">${lbl}</span>
+          </div>
+        `,
+          )
+          .join(
+            '<div class="flex-1 h-0.5 bg-stone-200 dark:bg-zinc-800 mx-1"></div>',
+          );
+
+        return `
+          <div class="bg-white dark:bg-zinc-900 rounded-3xl border border-stone-200 dark:border-zinc-800 p-6 sm:p-8 shadow-md space-y-6">
+            <div class="flex items-center justify-between pb-4 border-b border-stone-200 dark:border-zinc-800">
+              ${stepsBar}
+            </div>
+            <div>${bodyHtml}</div>
+          </div>
+        `;
+      }
+
+      // ====== MODAL DE RESERVA & CONFIRMACIÓN ======
+      function openGymBooking(classId, dayName, dateIso, forcedPassType) {
+        const c = GYM_CLASSES.find((item) => item.id === classId);
+        if (!c) return;
+        const passType = forcedPassType || "suelta";
+
+        pendingBooking = {
+          businessType: "gimnasio",
+          classId: c.id,
+          availableDays: c.days,
+          serviceTitle: "Gimnasio Smart Menu",
+          activityName: c.activity,
+          day: dayName,
+          dateIso: dateIso || null,
+          time: c.time,
+          coach: c.coach,
+          passType,
+          sueltaArs: c.ars,
+          ars: passType === "mensual" ? GYM_MONTHLY_ARS : c.ars,
+        };
+
+        document
+          .getElementById("modal-gym-pass-box")
+          .classList.remove("hidden");
+        document
+          .getElementById("modal-pro-modality-box")
+          .classList.add("hidden");
+
+        const daySelect = document.getElementById("modal-gym-day");
+        daySelect.innerHTML = c.days
+          .map((d) => {
+            const spots = getRemainingGymSpots(c, d);
+            return `<option value="${d}" ${d === dayName ? "selected" : ""} ${spots === 0 ? "disabled" : ""}>${d} (${spots === 0 ? "Sin cupos" : `${spots} cupos`})</option>`;
+          })
+          .join("");
+
+        document.getElementById("btn-pass-suelta").innerHTML =
+          `Clase Suelta<br><span class="text-orange-600">${formatPrice(c.ars)}</span>`;
+        document.getElementById("btn-pass-mensual").innerHTML =
+          `Pase Libre Mensual<br><span class="text-emerald-700 dark:text-emerald-400">${formatPrice(GYM_MONTHLY_ARS)}</span>`;
+
+        setModalGymPass(passType);
+        showBookingModal();
+      }
+
+      function openGymPassBooking() {
+        openGymBooking(GYM_CLASSES[5].id, "Lunes", null, "mensual");
+      }
+
+      function onModalGymDayChange(newDay) {
+        if (!pendingBooking || pendingBooking.businessType !== "gimnasio")
+          return;
+        pendingBooking.day = newDay;
+        pendingBooking.dateIso = null;
+        setModalGymPass(pendingBooking.passType);
+      }
+
+      function setModalGymPass(type) {
+        if (!pendingBooking || pendingBooking.businessType !== "gimnasio")
+          return;
+        pendingBooking.passType = type;
+        pendingBooking.ars =
+          type === "mensual" ? GYM_MONTHLY_ARS : pendingBooking.sueltaArs;
+
+        document
+          .getElementById("modal-gym-day-wrapper")
+          .classList.toggle("hidden", type === "mensual");
+
+        document.getElementById("btn-pass-suelta").className =
+          type === "suelta"
+            ? "p-2.5 rounded-xl border-2 border-orange-500 bg-orange-50 dark:bg-orange-500/15 text-stone-900 dark:text-white text-left text-xs font-bold"
+            : "p-2.5 rounded-xl border-2 border-stone-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-stone-800 dark:text-zinc-200 text-left text-xs font-bold";
+        document.getElementById("btn-pass-mensual").className =
+          type === "mensual"
+            ? "p-2.5 rounded-xl border-2 border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-stone-900 dark:text-white text-left text-xs font-bold"
+            : "p-2.5 rounded-xl border-2 border-stone-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-stone-800 dark:text-zinc-200 text-left text-xs font-bold";
+
+        const dateTag = pendingBooking.dateIso
+          ? formatHumanDate(pendingBooking.dateIso)
+          : pendingBooking.day;
+        document.getElementById("modal-service-title").innerText =
+          type === "mensual"
+            ? `${pendingBooking.serviceTitle} — Pase Libre Mensual`
+            : `${pendingBooking.serviceTitle} — ${pendingBooking.activityName}`;
+        document.getElementById("modal-slot-detail").innerText =
+          type === "mensual"
+            ? "📅 Acceso libre de Lunes a Sábado a todas las clases y horarios"
+            : `📅 Clase puntual: ${dateTag} (${pendingBooking.time}) • ${pendingBooking.coach}`;
+        document.getElementById("modal-price-detail").innerText =
+          `💰 Arancel de referencia: ${formatPrice(pendingBooking.ars)}`;
+      }
+
+      function openProBooking(proIdx, dayName, time, dateIso, forcedModality) {
+        const pro = PROFESSIONALS[proIdx];
+        if (!pro) return;
+        const st = getProSlotStatus(proIdx, dayName, time);
+        if (st.busy) return;
+
+        pendingBooking = {
+          businessType: "profesional",
+          proIdx,
+          serviceTitle: pro.name,
+          day: dayName,
+          dateIso: dateIso || null,
+          time,
+          ars: pro.ars,
+        };
+
+        document.getElementById("modal-gym-pass-box").classList.add("hidden");
+        document
+          .getElementById("modal-pro-modality-box")
+          .classList.remove("hidden");
+
+        let preselected = forcedModality || "";
+        if (!preselected && selectedProModality !== "Todas") {
+          const match = pro.modalities.find((m) =>
+            m.toLowerCase().includes(selectedProModality.toLowerCase()),
+          );
+          if (match) preselected = match;
+        }
+
+        const modSelect = document.getElementById("modal-modality");
+        modSelect.innerHTML = pro.modalities
+          .map(
+            (m) =>
+              `<option value="${m}" ${preselected === m ? "selected" : ""}>${m}</option>`,
+          )
+          .join("");
+
+        const dateTag = dateIso ? formatHumanDate(dateIso) : dayName;
+        document.getElementById("modal-service-title").innerText = pro.name;
+        document.getElementById("modal-slot-detail").innerText =
+          `📅 Turno: ${dateTag} a las ${time} hs (${pro.duration})`;
+        document.getElementById("modal-price-detail").innerText =
+          `💰 Arancel de referencia: ${formatPrice(pro.ars)}`;
+
+        showBookingModal();
+      }
+
+      function showBookingModal() {
+        const badge = document.getElementById("modal-flow-badge");
+        const btn = document.getElementById("modal-confirm-btn");
+        if (currentFlowMode === "whatsapp") {
+          badge.innerText = "Modo Landing • Solicitud vía WhatsApp";
+          btn.className =
+            "w-full bg-[#25D366] hover:bg-[#20bd5a] text-stone-950 font-black py-3.5 rounded-xl text-sm flex items-center justify-center gap-2 shadow-md transition";
+          btn.innerHTML =
+            '<i class="fa-brands fa-whatsapp text-lg"></i> Enviar Solicitud por WhatsApp';
+        } else {
+          badge.innerText = "Modo Sistema Pro • Reserva en Vivo";
+          btn.className =
+            "w-full bg-orange-500 hover:bg-orange-600 text-white font-black py-3.5 rounded-xl text-sm flex items-center justify-center gap-2 shadow-md transition";
+          btn.innerHTML =
+            '<i class="fa-solid fa-bolt"></i> Confirmar Turno en Vivo (Panel Admin)';
+        }
         const modal = document.getElementById("booking-modal");
         modal.classList.remove("hidden");
         modal.classList.add("flex");
@@ -744,25 +2447,152 @@
         modal.classList.remove("flex");
       }
 
-      function confirmWhatsAppBooking() {
+      function confirmBooking() {
         if (!pendingBooking) return;
-        const name = document.getElementById("client-name").value.trim() || "Cliente Web";
-        const note = document.getElementById("client-note").value.trim() || "Sin observaciones";
-        const text = `📅 *SOLICITUD DE TURNO - ${pendingBooking.serviceTitle.toUpperCase()}*
+        const name = document.getElementById("client-name").value.trim();
+        const phone = document.getElementById("client-phone").value.trim();
+        const note =
+          document.getElementById("client-note").value.trim() ||
+          "Sin observaciones";
 
-▪️ *Horario:* ${pendingBooking.slotDetail}
-▪️ *Valor ref.:* ${formatPrice(pendingBooking.ars)}
-▪️ *Nombre:* ${name}
-▪️ *Detalle:* ${note}
+        if (!name || !phone) {
+          alert("Por favor completá tu Nombre y tu Celular / WhatsApp.");
+          return;
+        }
 
-¿Me confirman disponibilidad? ¡Muchas gracias!`;
-        window.open(`https://wa.me/5493816320130?text=${encodeURIComponent(text)}`, "_blank");
+        const extraDetail =
+          pendingBooking.businessType === "gimnasio"
+            ? pendingBooking.passType === "mensual"
+              ? "Pase Libre Mensual"
+              : "Clase Suelta"
+            : document.getElementById("modal-modality").value;
+
+        if (currentFlowMode === "whatsapp") {
+          const slotText =
+            document.getElementById("modal-slot-detail").innerText;
+          const text =
+            `📅 *SOLICITUD DE TURNO - ${pendingBooking.serviceTitle.toUpperCase()}*\n\n` +
+            `▪️ *Formato visto:* ${currentFormat.toUpperCase()}\n` +
+            `▪️ *Detalle:* ${slotText.replace("📅 ", "")}\n` +
+            `▪️ *Modalidad/Pase:* ${extraDetail}\n` +
+            `▪️ *Valor ref.:* ${formatPrice(pendingBooking.ars)}\n` +
+            `▪️ *Nombre:* ${name}\n` +
+            `▪️ *WhatsApp:* ${phone}\n` +
+            `▪️ *Observación:* ${note}\n\n` +
+            `¿Me confirman disponibilidad? ¡Muchas gracias!`;
+          window.open(
+            `https://wa.me/5493816320130?text=${encodeURIComponent(text)}`,
+            "_blank",
+          );
+          closeBookingModal();
+          return;
+        }
+
+        const bookingDay =
+          pendingBooking.businessType === "gimnasio" &&
+          pendingBooking.passType === "mensual"
+            ? "Todos"
+            : pendingBooking.day;
+
+        liveBookings.unshift({
+          id: Date.now(),
+          ...pendingBooking,
+          day: bookingDay,
+          extraDetail,
+          clientName: name,
+          clientPhone: phone,
+          note,
+        });
+
         closeBookingModal();
+        renderWorkspace();
+        renderAdminPanel();
+
+        document.getElementById("live-toast-text").innerText =
+          pendingBooking.businessType === "gimnasio"
+            ? pendingBooking.passType === "mensual"
+              ? `Pase Libre Mensual activado para ${name}.`
+              : `Lugar reservado para ${name} en ${pendingBooking.activityName} (${bookingDay}). Se descontó 1 cupo en todos los formatos.`
+            : `Turno bloqueado para ${name} con ${pendingBooking.serviceTitle} (${bookingDay} ${pendingBooking.time} hs).`;
+        document.getElementById("live-toast").classList.remove("hidden");
       }
 
+      // ====== PANEL ADMIN DE TURNOS EN VIVO ======
+      function toggleAdminPanel() {
+        const modal = document.getElementById("admin-panel-modal");
+        modal.classList.toggle("hidden");
+        modal.classList.toggle("flex");
+        renderAdminPanel();
+      }
+
+      function cancelBooking(id) {
+        liveBookings = liveBookings.filter((b) => b.id !== id);
+        renderWorkspace();
+        renderAdminPanel();
+      }
+
+      function resetDemoBookings() {
+        liveBookings = [];
+        renderWorkspace();
+        renderAdminPanel();
+      }
+
+      function renderAdminPanel() {
+        document.getElementById("live-bookings-badge").innerText =
+          liveBookings.length;
+        document.getElementById("admin-kpi-total").innerText =
+          liveBookings.length;
+
+        const rev = liveBookings.reduce((sum, b) => sum + b.ars, 0);
+        document.getElementById("admin-kpi-revenue").innerText =
+          formatPrice(rev);
+
+        const list = document.getElementById("admin-bookings-list");
+        if (!liveBookings.length) {
+          list.innerHTML = `<p class="text-xs text-stone-500 dark:text-zinc-400 italic text-center py-8">Todavía no hay reservas en vivo. Activá "Agenda en Vivo ($75k)" arriba y reservá un horario o clase para verlo impactar acá en tiempo real.</p>`;
+          return;
+        }
+
+        list.innerHTML = liveBookings
+          .map(
+            (b) => `
+          <div class="bg-stone-50 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="text-xs space-y-1">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-extrabold text-[10px]">CONFIRMADO</span>
+                <span class="font-black text-stone-900 dark:text-white text-sm">${escapeHtml(b.clientName)}</span>
+                <span class="text-stone-500 dark:text-zinc-400">(${escapeHtml(b.clientPhone)})</span>
+              </div>
+              <p class="font-bold text-orange-600 dark:text-orange-400">
+                ${
+                  b.businessType === "gimnasio"
+                    ? b.passType === "mensual"
+                      ? `Gimnasio • Pase Libre Mensual (Lun a Sáb)`
+                      : `${b.activityName} • ${b.day} (${b.time})`
+                    : `${b.serviceTitle} • ${b.day} ${b.time} hs`
+                }
+              </p>
+              <p class="text-stone-500 dark:text-zinc-400">${escapeHtml(b.extraDetail)} • ${escapeHtml(b.note)}</p>
+            </div>
+            <div class="flex items-center justify-between sm:flex-col sm:items-end gap-2">
+              <span class="font-black text-sm text-stone-900 dark:text-white">${formatPrice(b.ars)}</span>
+              <button onclick="cancelBooking(${b.id})" class="text-[11px] font-bold text-rose-600 hover:underline">
+                Cancelar y liberar
+              </button>
+            </div>
+          </div>
+        `,
+          )
+          .join("");
+      }
+
+      // ====== INICIALIZACIÓN ======
       document.addEventListener("DOMContentLoaded", () => {
-        renderGymClasses();
-        renderProfessional();
+        updateThemeIcons();
+        switchFormat("botones");
+        switchBusinessMode("gimnasio");
+        switchFlowMode("whatsapp");
+        renderAdminPanel();
       });
     </script>
   </body>
