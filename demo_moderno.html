@@ -84,7 +84,7 @@
         </h2>
         <p class="text-zinc-400 text-sm mb-6">
           Ideales para compartir con abundantes papas fritas crocantes. Armá tu
-          pedido y envialo directo a WhatsApp.
+          pedido y envialo directo a WhatsApp o por autogestión en mesa.
         </p>
         <button
           onclick="closePromo()"
@@ -1039,14 +1039,14 @@
       >
     </button>
 
-    <!-- MODAL CARRITO -->
+    <!-- MODAL CARRITO CON OPCIÓN DIVIDIDA (WHATSAPP VS AUTOGESTIÓN EN MESA) -->
     <div id="cart-modal" class="fixed inset-0 z-50 hidden">
       <div
         class="absolute inset-0 bg-black/85 backdrop-blur-sm"
         onclick="toggleCart()"
       ></div>
       <div
-        class="absolute bottom-0 w-full max-w-md left-1/2 -translate-x-1/2 bg-zinc-900 rounded-t-[2rem] flex flex-col max-h-[88vh] border-t border-zinc-700"
+        class="absolute bottom-0 w-full max-w-md left-1/2 -translate-x-1/2 bg-zinc-900 rounded-t-[2rem] flex flex-col max-h-[90vh] border-t border-zinc-700"
       >
         <div
           class="p-5 border-b border-zinc-800 flex justify-between items-center"
@@ -1059,41 +1059,170 @@
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
+
         <div id="cart-items" class="p-5 overflow-y-auto space-y-3 flex-1"></div>
-        <div class="p-5 bg-zinc-950 border-t border-zinc-800 space-y-3">
-          <div class="grid grid-cols-2 gap-2">
-            <input
-              type="text"
-              id="order-name"
-              placeholder="Tu nombre"
-              class="bg-zinc-900 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-orange-500"
-            />
-            <input
-              type="text"
-              id="order-location"
-              placeholder="Mesa o Dirección"
-              class="bg-zinc-900 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-orange-500"
-            />
-          </div>
-          <div class="flex justify-between items-center">
-            <span class="text-zinc-400 text-sm">Total estimado:</span>
-            <span id="cart-total" class="text-2xl font-black text-orange-500"
-              >$0</span
+
+        <div class="p-5 bg-zinc-950 border-t border-zinc-800 space-y-3.5">
+          <!-- SELECTOR DE MODALIDAD PARA DEMOSTRACIÓN AL CLIENTE -->
+          <div>
+            <p
+              class="text-[11px] font-bold uppercase tracking-wider text-zinc-400 mb-2"
             >
+              Elegí cómo probar el envío:
+            </p>
+            <div class="grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                id="mode-btn-wa"
+                onclick="setOrderMode('whatsapp')"
+                class="p-2.5 rounded-xl border-2 border-[#25D366] bg-[#25D366]/15 text-left transition"
+              >
+                <div
+                  class="flex items-center gap-1.5 text-xs font-black text-white"
+                >
+                  <i class="fa-brands fa-whatsapp text-[#25D366]"></i>
+                  <span>1. Por WhatsApp</span>
+                </div>
+                <span class="block text-[10px] text-zinc-300 mt-0.5"
+                  >Nombre y Dirección</span
+                >
+              </button>
+
+              <button
+                type="button"
+                id="mode-btn-auto"
+                onclick="setOrderMode('autogestion')"
+                class="p-2.5 rounded-xl border-2 border-zinc-800 bg-zinc-900 hover:border-zinc-700 text-left transition"
+              >
+                <div
+                  class="flex items-center gap-1.5 text-xs font-black text-zinc-300"
+                >
+                  <i class="fa-solid fa-utensils text-orange-400"></i>
+                  <span>2. Autogestión</span>
+                </div>
+                <span class="block text-[10px] text-zinc-400 mt-0.5"
+                  >Mesa en vivo + Admin</span
+                >
+              </button>
+            </div>
           </div>
-          <button
-            onclick="sendWhatsApp()"
-            class="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white py-3.5 rounded-xl font-black text-base flex items-center justify-center gap-2.5 shadow-lg"
+
+          <!-- OPCIÓN 1: POR WHATSAPP (NOMBRE Y DIRECCIÓN) -->
+          <div id="form-mode-wa" class="space-y-3">
+            <div class="grid grid-cols-2 gap-2">
+              <input
+                type="text"
+                id="order-name-wa"
+                oninput="syncOrderName(this.value)"
+                placeholder="Tu nombre"
+                class="bg-zinc-900 border border-zinc-800 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-[#25D366]"
+              />
+              <input
+                type="text"
+                id="order-address"
+                placeholder="Dirección de entrega"
+                class="bg-zinc-900 border border-zinc-800 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-[#25D366]"
+              />
+            </div>
+
+            <div class="flex justify-between items-center">
+              <span class="text-zinc-400 text-sm">Total estimado:</span>
+              <span id="cart-total" class="text-2xl font-black text-orange-500"
+                >$0</span
+              >
+            </div>
+
+            <button
+              onclick="sendWhatsApp()"
+              class="w-full bg-[#25D366] hover:bg-[#20bd5a] text-zinc-950 py-3.5 rounded-xl font-black text-sm flex items-center justify-center gap-2 shadow-lg transition"
+            >
+              <i class="fa-brands fa-whatsapp text-xl"></i> Enviar Pedido por
+              WhatsApp
+            </button>
+          </div>
+
+          <!-- OPCIÓN 2: AUTOGESTIÓN EN LOCAL / MESA (TIEMPO REAL CON ADMIN) -->
+          <div id="form-mode-auto" class="hidden space-y-3">
+            <div
+              class="bg-orange-500/10 border border-orange-500/30 rounded-xl px-3 py-2 text-[11px] text-orange-200 flex items-center gap-2"
+            >
+              <i class="fa-solid fa-bolt text-orange-400"></i>
+              <span
+                ><strong>Modo Salón en Tiempo Real:</strong> la comanda ingresa
+                directo a cocina y al Panel Admin.</span
+              >
+            </div>
+
+            <div class="grid grid-cols-2 gap-2">
+              <input
+                type="text"
+                id="order-name-table"
+                oninput="syncOrderName(this.value)"
+                placeholder="Tu nombre"
+                class="bg-zinc-900 border border-zinc-800 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-orange-500"
+              />
+              <input
+                type="text"
+                id="order-table"
+                placeholder="N° de Mesa (ej: Mesa 4)"
+                class="bg-zinc-900 border border-zinc-800 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-orange-500"
+              />
+            </div>
+
+            <div class="flex justify-between items-center">
+              <span class="text-zinc-400 text-sm">Total en mesa:</span>
+              <span
+                id="cart-total-auto"
+                class="text-2xl font-black text-orange-500"
+                >$0</span
+              >
+            </div>
+
+            <button
+              onclick="sendSelfServiceOrder()"
+              class="w-full bg-orange-500 hover:bg-orange-600 text-white py-3.5 rounded-xl font-black text-sm flex items-center justify-center gap-2 shadow-lg transition"
+            >
+              <i class="fa-solid fa-bell-concierge text-lg"></i> Enviar Comanda
+              a Cocina / Admin
+            </button>
+          </div>
+
+          <!-- CONFIRMACIÓN EN VIVO DE AUTOGESTIÓN -->
+          <div
+            id="autogestion-success"
+            class="hidden bg-emerald-950/70 border border-emerald-500/50 rounded-2xl p-4 space-y-2.5"
           >
-            <i class="fa-brands fa-whatsapp text-xl"></i> Enviar Pedido por
-            WhatsApp
-          </button>
+            <div class="flex items-center justify-between">
+              <span
+                class="inline-flex items-center gap-1.5 text-xs font-black text-emerald-400"
+              >
+                <i class="fa-solid fa-circle-check"></i> RECIBIDO EN PANEL ADMIN
+              </span>
+              <span
+                id="ticket-number"
+                class="bg-emerald-500 text-zinc-950 text-[11px] font-black px-2 py-0.5 rounded-md"
+                >#104</span
+              >
+            </div>
+            <p id="ticket-meta" class="text-xs text-white font-bold"></p>
+            <p
+              id="ticket-summary"
+              class="text-[11px] text-zinc-300 leading-relaxed"
+            ></p>
+            <button
+              onclick="resetSelfService()"
+              class="w-full bg-zinc-900 hover:bg-zinc-800 text-zinc-200 border border-zinc-700 text-xs font-bold py-2 rounded-xl transition"
+            >
+              Volver a probar modalidades
+            </button>
+          </div>
         </div>
       </div>
     </div>
 
     <script>
       let isUSD = false;
+      let orderMode = "whatsapp";
       const USD_RATE =
         (window.SMARTMENU_CONFIG && window.SMARTMENU_CONFIG.usdRate) || 1600;
 
@@ -1211,33 +1340,82 @@
           </div>`;
         });
 
-        document.getElementById("cart-total").innerText =
-          formatPrice(totalPrice);
+        const formattedTotal = formatPrice(totalPrice);
+        document.getElementById("cart-total").innerText = formattedTotal;
+        const autoTotalEl = document.getElementById("cart-total-auto");
+        if (autoTotalEl) autoTotalEl.innerText = formattedTotal;
       }
 
       function toggleCart() {
         const modal = document.getElementById("cart-modal");
-        if (modal.classList.contains("hidden") && cart.length > 0)
+        if (modal.classList.contains("hidden") && cart.length > 0) {
           modal.classList.remove("hidden");
-        else modal.classList.add("hidden");
+        } else {
+          modal.classList.add("hidden");
+        }
+      }
+
+      function syncOrderName(val) {
+        const waName = document.getElementById("order-name-wa");
+        const tableName = document.getElementById("order-name-table");
+        if (waName && waName.value !== val) waName.value = val;
+        if (tableName && tableName.value !== val) tableName.value = val;
+      }
+
+      function setOrderMode(mode) {
+        orderMode = mode;
+        const btnWa = document.getElementById("mode-btn-wa");
+        const btnAuto = document.getElementById("mode-btn-auto");
+        const formWa = document.getElementById("form-mode-wa");
+        const formAuto = document.getElementById("form-mode-auto");
+        const successBox = document.getElementById("autogestion-success");
+
+        successBox.classList.add("hidden");
+
+        if (mode === "whatsapp") {
+          btnWa.className =
+            "p-2.5 rounded-xl border-2 border-[#25D366] bg-[#25D366]/15 text-left transition";
+          btnWa.querySelector("div").className =
+            "flex items-center gap-1.5 text-xs font-black text-white";
+          btnAuto.className =
+            "p-2.5 rounded-xl border-2 border-zinc-800 bg-zinc-900 hover:border-zinc-700 text-left transition";
+          btnAuto.querySelector("div").className =
+            "flex items-center gap-1.5 text-xs font-black text-zinc-300";
+
+          formWa.classList.remove("hidden");
+          formAuto.classList.add("hidden");
+        } else {
+          btnAuto.className =
+            "p-2.5 rounded-xl border-2 border-orange-500 bg-orange-500/15 text-left transition";
+          btnAuto.querySelector("div").className =
+            "flex items-center gap-1.5 text-xs font-black text-white";
+          btnWa.className =
+            "p-2.5 rounded-xl border-2 border-zinc-800 bg-zinc-900 hover:border-zinc-700 text-left transition";
+          btnWa.querySelector("div").className =
+            "flex items-center gap-1.5 text-xs font-black text-zinc-300";
+
+          formWa.classList.add("hidden");
+          formAuto.classList.remove("hidden");
+        }
       }
 
       function sendWhatsApp() {
         if (cart.length === 0) return;
         const clientName =
-          document.getElementById("order-name").value.trim() || "A confirmar";
-        const clientLoc =
-          document.getElementById("order-location").value.trim() ||
+          document.getElementById("order-name-wa").value.trim() ||
           "A confirmar";
+        const clientAddress =
+          document.getElementById("order-address").value.trim() ||
+          "Retiro en local / A confirmar";
 
         let total = 0;
         let text =
-          "🔥 *Hola Fuego & Pan!* Quiero hacer el siguiente pedido (Demo Smart Menu):\n\n";
+          "🔥 *Hola Fuego & Pan!* Quiero hacer el siguiente pedido por WhatsApp (Demo Smart Menu):\n\n";
         cart.forEach((item) => {
           total += item.price * item.quantity;
           text += `▪️ ${item.quantity}x ${item.name} ($${item.price.toLocaleString("es-AR")} ARS)\n`;
         });
-        text += `\n💰 *Total a pagar: $${total.toLocaleString("es-AR")} ARS*\n\n👤 *Nombre:* ${clientName}\n📍 *Mesa / Dirección:* ${clientLoc}`;
+        text += `\n💰 *Total a pagar: $${total.toLocaleString("es-AR")} ARS*\n\n👤 *Nombre:* ${clientName}\n📍 *Dirección de entrega:* ${clientAddress}`;
         const waNumber =
           (window.SMARTMENU_CONFIG && window.SMARTMENU_CONFIG.whatsappNumber) ||
           "5493816320130";
@@ -1245,6 +1423,52 @@
           `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`,
           "_blank",
         );
+      }
+
+      function sendSelfServiceOrder() {
+        if (cart.length === 0) return;
+        const tableInput = document.getElementById("order-table");
+        const tableVal = tableInput.value.trim();
+        if (!tableVal) {
+          tableInput.classList.add("border-red-500");
+          tableInput.focus();
+          return;
+        }
+        tableInput.classList.remove("border-red-500");
+
+        const clientName =
+          document.getElementById("order-name-table").value.trim() ||
+          "Cliente en Salón";
+        const orderNum = "#" + (Math.floor(Math.random() * 89) + 101);
+        const now = new Date().toLocaleTimeString("es-AR", {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+
+        let total = 0;
+        const itemsText = cart
+          .map((item) => {
+            total += item.price * item.quantity;
+            return `${item.quantity}x ${item.name}`;
+          })
+          .join(" • ");
+
+        document.getElementById("ticket-number").innerText =
+          `${orderNum} • ${now} hs`;
+        document.getElementById("ticket-meta").innerText =
+          `📍 ${tableVal} — 👤 ${clientName}`;
+        document.getElementById("ticket-summary").innerText =
+          `${itemsText} | Total: $${total.toLocaleString("es-AR")} ARS (Estado: En preparación)`;
+
+        document.getElementById("form-mode-auto").classList.add("hidden");
+        document
+          .getElementById("autogestion-success")
+          .classList.remove("hidden");
+      }
+
+      function resetSelfService() {
+        document.getElementById("autogestion-success").classList.add("hidden");
+        setOrderMode(orderMode);
       }
     </script>
   </body>
