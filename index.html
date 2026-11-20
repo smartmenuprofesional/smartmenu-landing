@@ -20,6 +20,11 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://smartmenu.com.ar/" />
+    <meta
+      property="og:image"
+      content="https://smartmenu.com.ar/assets/logo.png"
+    />
+    <link rel="icon" type="image/png" href="assets/logo.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = { darkMode: "class" };
@@ -42,7 +47,7 @@
   <body
     class="bg-stone-50 text-stone-800 dark:bg-zinc-950 dark:text-zinc-100 antialiased selection:bg-orange-500 selection:text-white transition-colors"
   >
-    <!-- NAVBAR UNIFICADO (SIN ÍCONO QR PROTAGONISTA) -->
+    <!-- NAVBAR UNIFICADO (MONOGRAMA SM NÍTIDO) -->
     <header
       class="sticky top-0 z-50 bg-white/95 dark:bg-zinc-950/90 backdrop-blur-md border-b border-stone-200 dark:border-zinc-800 transition-colors"
     >
@@ -50,17 +55,8 @@
         class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3"
       >
         <a href="index.html" class="flex items-center gap-2.5 shrink-0">
-          <img
-            src="assets/logo-sello.png"
-            alt="SmartMenu"
-            onerror="
-              this.style.display = 'none';
-              this.nextElementSibling.classList.remove('hidden');
-            "
-            class="w-9 h-9 rounded-xl object-cover border border-emerald-500/30 shadow-sm"
-          />
           <div
-            class="hidden w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-700 to-emerald-950 border border-emerald-400/30 flex items-center justify-center text-white font-black text-sm tracking-tighter shadow-md"
+            class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-700 to-emerald-950 border border-emerald-400/30 flex items-center justify-center text-white font-black text-sm tracking-tighter shadow-md"
           >
             S<span class="text-orange-400">M</span>
           </div>
@@ -221,7 +217,7 @@
             </a>
           </div>
 
-          <!-- 3 Pilares Directos (Sin relleno) -->
+          <!-- 3 Pilares Directos -->
           <div
             class="grid grid-cols-3 gap-3 pt-4 border-t border-stone-200 dark:border-zinc-800 max-w-xl"
           >
@@ -297,7 +293,7 @@
       </div>
     </section>
 
-    <!-- 4 SOLUCIONES PRINCIPALES (LIMPIAS Y CONCRETAS) -->
+    <!-- 4 SOLUCIONES PRINCIPALES -->
     <section id="soluciones" class="py-16 sm:py-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-2xl mb-10">
@@ -642,21 +638,30 @@
       </div>
     </section>
 
-    <!-- FOOTER LIMPIO Y COHERENTE CON LEGALES -->
+    <!-- FOOTER CON LOGO OFICIAL CIRCULAR -->
     <footer
       class="border-t border-stone-200 dark:border-zinc-800 py-10 text-xs text-stone-500 dark:text-zinc-400"
     >
       <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6"
       >
-        <div class="text-center sm:text-left">
-          <p class="font-bold text-stone-800 dark:text-zinc-200">
-            SmartMenu • San Miguel de Tucumán, Argentina
-          </p>
-          <p class="mt-0.5">
-            Herramienta tecnológica sin intermediación financiera ni comisiones
-            por venta.
-          </p>
+        <div
+          class="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left"
+        >
+          <img
+            src="assets/logo.png"
+            alt="Logo SmartMenu"
+            class="w-20 h-20 rounded-full object-cover border border-stone-300 dark:border-zinc-700 shadow-sm shrink-0 bg-[#f8f6f2]"
+          />
+          <div>
+            <p class="font-bold text-sm text-stone-800 dark:text-zinc-200">
+              SmartMenu • San Miguel de Tucumán, Argentina
+            </p>
+            <p class="mt-1 max-w-md">
+              Herramienta tecnológica sin intermediación financiera ni
+              comisiones por venta.
+            </p>
+          </div>
         </div>
 
         <div
